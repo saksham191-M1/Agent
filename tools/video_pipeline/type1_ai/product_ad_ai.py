@@ -6,6 +6,13 @@ import google.generativeai as genai
 from config.settings import GEMINI_API_KEY, OUTPUT_DIR
 from type1_ai.viral_ai import generate_audio, stitch_video
 from colorama import Fore
+from PIL import Image, ImageDraw
+
+def create_placeholder(filepath):
+    img = Image.new('RGB', (1080, 1920), color=(73, 109, 137))
+    d = ImageDraw.Draw(img)
+    d.text((100, 960), "Image Gen Failed - Placeholder", fill=(255, 255, 0))
+    img.save(filepath)
 
 # Configure Gemini
 genai.configure(api_key=GEMINI_API_KEY)
@@ -57,14 +64,21 @@ def generate_ad_image(prompt, filepath):
     # Appending specific keywords to ensure high-quality ad visuals
     commercial_prompt = prompt + ", commercial product photography, depth of field, 8k, highly detailed"
     encoded_prompt = urllib.parse.quote(commercial_prompt)
-    url = f"https://pollinations.ai/p/{encoded_prompt}?width=1080&height=1920&nologo=true"
+    # The correct API endpoint for the raw image is image.pollinations.ai
+    url = f"https://image.pollinations.ai/prompt/{encoded_prompt}?width=1080&height=1920&nologo=true"
     
-    response = requests.get(url)
-    if response.status_code == 200:
-        with open(filepath, 'wb') as f:
-            f.write(response.content)
-    else:
-        print(f"{Fore.RED}Failed to fetch ad image.{Fore.RESET}")
+    try:
+        response = requests.get(url, timeout=30)
+        # Check if the response is an actual image, not an HTML error page
+        if response.status_code == 200 and 'image' in response.headers.get('content-type', ''):
+            with open(filepath, 'wb') as f:
+                f.write(response.content)
+        else:
+            print(f"{Fore.RED}Failed to fetch ad image (Invalid response). Creating placeholder.{Fore.RESET}")
+            create_placeholder(filepath)
+    except Exception as e:
+        print(f"{Fore.RED}Error fetching image: {e}. Creating placeholder.{Fore.RESET}")
+        create_placeholder(filepath)
 
 def run_type1_ad_pipeline():
     print(f"\n{Fore.MAGENTA}=== AI PRODUCT AD INTAKE ==={Fore.RESET}")
