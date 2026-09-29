@@ -11,9 +11,9 @@ init(autoreset=True)
 
 from type1_ai.viral_ai import run_type1_viral_pipeline
 
-def run_type1_viral(keyword):
-    print(f"{Fore.CYAN}[Type 1 - Viral AI]{Fore.RESET} Starting viral content generation for: {keyword}")
-    run_type1_viral_pipeline(keyword)
+def run_type1_viral(keyword, audience):
+    print(f"{Fore.CYAN}[Type 1 - Viral AI]{Fore.RESET} Starting viral content generation for: {keyword} (Audience: {audience})")
+    run_type1_viral_pipeline(keyword, audience)
     
 def run_type1_ad(keyword):
     print(f"{Fore.CYAN}[Type 1 - Product Ad]{Fore.RESET} Starting ad generation for: {keyword}")
@@ -34,6 +34,9 @@ def main():
     print(f"{Fore.GREEN}=== Video Generation Pipeline ==={Fore.RESET}")
     
     keyword = input("Enter the Keyword or Topic: ")
+    audience = input("Enter Target Audience (e.g., Kids, Gen Z, General): ")
+    if not audience.strip():
+        audience = "General"
     
     print("\nSelect the Video Type:")
     print("1. [Type 1] AI Viral Entertainment")
@@ -45,7 +48,7 @@ def main():
     
     print("\n" + "="*40)
     if choice == '1':
-        run_type1_viral(keyword)
+        run_type1_viral(keyword, audience)
     elif choice == '2':
         run_type1_ad(keyword)
     elif choice == '3':

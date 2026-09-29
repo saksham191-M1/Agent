@@ -15,7 +15,10 @@ model = genai.GenerativeModel('gemini-3.5-flash', generation_config={"response_m
 
 PROMPT_TEMPLATE = """
 Write a short viral short-form video script about: "{keyword}".
+Target Audience: "{audience}"
 The video should be 3-4 scenes (under 30 seconds total).
+
+If the audience is "Kids" or "Children", use a bright, exaggerated 3D cartoon/Pixar style. Make the characters funny (e.g., talking animals or silly creatures) and use clean, slapstick humor.
 
 FIRST, choose the best FORMAT for this topic:
 1. "story" (Dramatic/News narrator style)
@@ -44,9 +47,9 @@ Respond ONLY with a JSON object in this format:
 }
 """
 
-def generate_script(keyword):
-    print(f"{Fore.CYAN}🧠 Asking Gemini to write a dynamic script for '{keyword}'...{Fore.RESET}")
-    response = model.generate_content(PROMPT_TEMPLATE.format(keyword=keyword))
+def generate_script(keyword, audience="General"):
+    print(f"{Fore.CYAN}🧠 Asking Gemini to write a dynamic script for '{keyword}' (Audience: {audience})...{Fore.RESET}")
+    response = model.generate_content(PROMPT_TEMPLATE.format(keyword=keyword, audience=audience))
     try:
         data = json.loads(response.text)
         print(f"{Fore.GREEN}✅ Script generated! Format chosen: {data['format'].upper()}{Fore.RESET}")
@@ -102,8 +105,8 @@ def stitch_video(scenes_data, output_filename, format_type):
     final_video.write_videofile(output_filename, fps=24, codec="libx264", audio_codec="aac", logger=None)
     print(f"{Fore.GREEN}🎉 Video saved to {output_filename}{Fore.RESET}")
 
-def run_type1_viral_pipeline(keyword):
-    script_data = generate_script(keyword)
+def run_type1_viral_pipeline(keyword, audience="General"):
+    script_data = generate_script(keyword, audience)
     if not script_data:
         return
         
