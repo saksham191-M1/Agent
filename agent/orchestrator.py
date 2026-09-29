@@ -20,7 +20,7 @@ class Orchestrator:
             self.model = None
         else:
             genai.configure(api_key=GEMINI_API_KEY)
-            self.model = genai.GenerativeModel('gemini-1.5-flash', system_instruction=SYSTEM_PROMPT)
+            self.model = genai.GenerativeModel('gemini-3.5-flash', system_instruction=SYSTEM_PROMPT)
             logger.info("Gemini model configured.")
 
     def process_message(self, user_text):
