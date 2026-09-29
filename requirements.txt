@@ -1,0 +1,13 @@
+google-generativeai
+gradio
+edge-tts
+openai-whisper
+SpeechRecognition
+pyaudio
+bcrypt
+python-dotenv
+sqlalchemy
+apscheduler
+requests
+pillow
+colorama

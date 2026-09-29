@@ -1,0 +1,14 @@
+venv/
+__pycache__/
+*.pyc
+.env
+data/*.db
+data/*.log
+assets/voices/*.pth
+output/videos/*
+output/thumbnails/*
+output/audio/*
+temp_*.wav
+temp_*.mp3
+.pytest_cache/
+.vscode/
