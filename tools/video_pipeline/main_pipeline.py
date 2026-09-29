@@ -10,15 +10,15 @@ from colorama import Fore, init
 init(autoreset=True)
 
 from type1_ai.viral_ai import run_type1_viral_pipeline
+from type1_ai.product_ad_ai import run_type1_ad_pipeline
 
 def run_type1_viral(keyword, audience):
     print(f"{Fore.CYAN}[Type 1 - Viral AI]{Fore.RESET} Starting viral content generation for: {keyword} (Audience: {audience})")
     run_type1_viral_pipeline(keyword, audience)
     
-def run_type1_ad(keyword):
-    print(f"{Fore.CYAN}[Type 1 - Product Ad]{Fore.RESET} Starting ad generation for: {keyword}")
-    # TODO: Marketing Script -> AI Visuals -> Hook -> CTA
-    print(f"{Fore.YELLOW}-> Step 1: Generating high-converting ad script...{Fore.RESET}")
+def run_type1_ad():
+    # Keyword is not used here because the ad pipeline has its own intake flow
+    run_type1_ad_pipeline()
     
 def run_type2_motion(keyword):
     print(f"{Fore.MAGENTA}[Type 2 - Motion Graphics]{Fore.RESET} Starting motion graphic video for: {keyword}")
@@ -32,12 +32,6 @@ def run_type2_repost(keyword):
 
 def main():
     print(f"{Fore.GREEN}=== Video Generation Pipeline ==={Fore.RESET}")
-    
-    keyword = input("Enter the Keyword or Topic: ")
-    audience = input("Enter Target Audience (e.g., Kids, Gen Z, General): ")
-    if not audience.strip():
-        audience = "General"
-    
     print("\nSelect the Video Type:")
     print("1. [Type 1] AI Viral Entertainment")
     print("2. [Type 1] AI Product Ad")
@@ -48,12 +42,18 @@ def main():
     
     print("\n" + "="*40)
     if choice == '1':
+        keyword = input("Enter the Keyword or Topic: ")
+        audience = input("Enter Target Audience (e.g., Kids, Gen Z, General): ")
+        if not audience.strip():
+            audience = "General"
         run_type1_viral(keyword, audience)
     elif choice == '2':
-        run_type1_ad(keyword)
+        run_type1_ad()
     elif choice == '3':
+        keyword = input("Enter the Keyword or Topic: ")
         run_type2_motion(keyword)
     elif choice == '4':
+        keyword = input("Enter the Keyword or Topic: ")
         run_type2_repost(keyword)
     else:
         print(f"{Fore.RED}Invalid choice.{Fore.RESET}")
