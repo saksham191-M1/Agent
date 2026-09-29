@@ -26,18 +26,18 @@ For each scene, provide:
 3. "text_on_screen": The bold text that should flash on the screen to grab attention (e.g. "TIRED OF THIS?", "50% OFF TODAY").
 
 Respond ONLY with a JSON object in this format:
-{
+{{
   "format": "ad",
   "scenes": [
-    {
+    {{
       "scene": 1,
       "phase": "Problem",
       "image_prompt": "...",
       "voiceover": "...",
       "text_on_screen": "..."
-    }
+    }}
   ]
-}
+}}
 """
 
 def generate_ad_script(product_name, problem, cta):

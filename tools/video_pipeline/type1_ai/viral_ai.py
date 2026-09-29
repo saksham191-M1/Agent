@@ -33,18 +33,18 @@ For each scene, provide:
 4. "text_on_screen": The text that should appear on the video.
 
 Respond ONLY with a JSON object in this format:
-{
+{{
   "format": "comedy",
   "scenes": [
-    {
+    {{
       "scene": 1,
       "image_prompt": "...",
       "voiceover": "...",
       "character": "Character_A",
       "text_on_screen": "..."
-    }
+    }}
   ]
-}
+}}
 """
 
 def generate_script(keyword, audience="General"):
