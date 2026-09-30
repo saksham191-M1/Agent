@@ -77,26 +77,93 @@ def setup_login():
             page.wait_for_timeout(5000)
             
 def generate_veo_media(prompt, output_filepath):
-    """Secretly uses the saved session to generate a video/image."""
-    print(f"{Fore.CYAN}🤖 Browser Agent: Navigating to Gemini...{Fore.RESET}")
+    """Secretly uses the saved session to type a prompt, wait for Veo video, and download it."""
+    print(f"{Fore.CYAN}🌐 Browser Agent: Infiltrating Gemini Web...{Fore.RESET}")
     
     with sync_playwright() as p:
+        # We run headless=False so you can watch JARVIS work, but it can be changed to True
         browser = p.chromium.launch_persistent_context(
             user_data_dir=SESSION_DIR,
-            headless=False, # Keeping visible for now so we can watch it work
+            headless=False, 
+            accept_downloads=True
         )
         page = browser.new_page()
         
         if not inject_cookies_and_verify(page):
             return False
             
-        print(f"{Fore.YELLOW}Waiting for chatbox...{Fore.RESET}")
-        # Note: Google's DOM is highly dynamic. We will map the exact selectors to type the prompt
-        # and extract the video in the next step.
-        page.wait_for_timeout(5000) 
+        print(f"{Fore.YELLOW}✍️ Locating chat interface and typing prompt...{Fore.RESET}")
         
-        print(f"{Fore.GREEN}Simulation complete for now.{Fore.RESET}")
+        # Google's DOM is highly obfuscated. The safest way is to target the rich-textarea or textbox.
+        chatbox = page.locator('rich-textarea, textarea, [contenteditable="true"]').first
+        chatbox.wait_for(state="visible", timeout=15000)
+        chatbox.click()
+        
+        # We append a strict instruction so Gemini knows to use Veo and not just output text
+        full_prompt = f"Generate a high quality video using Veo: {prompt}"
+        page.keyboard.type(full_prompt)
+        page.wait_for_timeout(1000)
+        page.keyboard.press("Enter")
+        
+        print(f"{Fore.YELLOW}⏳ Prompt submitted. Waiting for Veo to generate the video (this can take 1-3 minutes)...{Fore.RESET}")
+        
+        try:
+            # We wait up to 180 seconds for a <video> tag to appear in the DOM
+            page.wait_for_selector('video', timeout=180000)
+            print(f"{Fore.GREEN}🎥 Video generation complete! Found video element.{Fore.RESET}")
+            
+            # Allow video to fully load
+            page.wait_for_timeout(3000)
+            
+            # The safest way to download is usually clicking the built-in Download button on the video
+            # If Google obfuscated the button, we can evaluate a script to grab the video source URL
+            video_src = page.evaluate('''() => {
+                const vid = document.querySelector('video');
+                return vid ? vid.src : null;
+            }''')
+            
+            if video_src:
+                if video_src.startswith('blob:'):
+                    print(f"{Fore.CYAN}📥 Intercepting Blob Video stream and saving to disk...{Fore.RESET}")
+                    # Convert blob to base64 via browser evaluation and save to python
+                    base64_vid = page.evaluate('''async (blobUrl) => {
+                        const response = await fetch(blobUrl);
+                        const blob = await response.blob();
+                        return new Promise((resolve, reject) => {
+                            const reader = new FileReader();
+                            reader.onloadend = () => resolve(reader.result);
+                            reader.onerror = reject;
+                            reader.readAsDataURL(blob);
+                        });
+                    }''', video_src)
+                    
+                    import base64
+                    # Remove the data:video/mp4;base64, header
+                    b64_data = base64_vid.split(',')[1]
+                    with open(output_filepath, "wb") as f:
+                        f.write(base64.b64decode(b64_data))
+                        
+                    print(f"{Fore.GREEN}✅ Video successfully saved to {output_filepath}{Fore.RESET}")
+                else:
+                    print(f"{Fore.YELLOW}Warning: Non-blob video source found. Needs direct download handling.{Fore.RESET}")
+            else:
+                print(f"{Fore.RED}❌ Could not extract video source.{Fore.RESET}")
+                
+        except Exception as e:
+            print(f"{Fore.RED}❌ Timeout or Error waiting for Veo video: {e}{Fore.RESET}")
+        
+        page.wait_for_timeout(2000)
         browser.close()
 
 if __name__ == "__main__":
-    setup_login()
+    import argparse
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--prompt", type=str, help="The Veo prompt to generate")
+    parser.add_argument("--out", type=str, default="test_veo.mp4", help="Output filename")
+    args = parser.parse_args()
+    
+    if args.prompt:
+        out_path = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))), "input", "raw_videos", args.out)
+        generate_veo_media(args.prompt, out_path)
+    else:
+        setup_login()
