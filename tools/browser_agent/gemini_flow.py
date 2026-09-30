@@ -76,12 +76,11 @@ def setup_login():
             print(f"{Fore.YELLOW}Closing browser in 5 seconds...{Fore.RESET}")
             page.wait_for_timeout(5000)
             
-def generate_veo_media(prompt, output_filepath):
-    """Secretly uses the saved session to type a prompt, wait for Veo video, and download it."""
+def generate_veo_media(prompt, output_filepath, image_path=None):
+    """Secretly uses the saved session to type a prompt (and upload an image), wait for Veo video, and download it."""
     print(f"{Fore.CYAN}🌐 Browser Agent: Infiltrating Gemini Web...{Fore.RESET}")
     
     with sync_playwright() as p:
-        # We run headless=False so you can watch JARVIS work, but it can be changed to True
         browser = p.chromium.launch_persistent_context(
             user_data_dir=SESSION_DIR,
             headless=False, 
@@ -92,15 +91,21 @@ def generate_veo_media(prompt, output_filepath):
         if not inject_cookies_and_verify(page):
             return False
             
-        print(f"{Fore.YELLOW}✍️ Locating chat interface and typing prompt...{Fore.RESET}")
-        
-        # Google's DOM is highly obfuscated. The safest way is to target the rich-textarea or textbox.
+        print(f"{Fore.YELLOW}✍️ Locating chat interface...{Fore.RESET}")
         chatbox = page.locator('rich-textarea, textarea, [contenteditable="true"]').first
         chatbox.wait_for(state="visible", timeout=15000)
-        chatbox.click()
         
-        # We append a strict instruction so Gemini knows to use Veo and not just output text
-        full_prompt = f"Generate a high quality video using Veo: {prompt}"
+        # Image Upload Logic
+        if image_path and os.path.exists(image_path):
+            print(f"{Fore.MAGENTA}🖼️ Uploading UI Screenshot: {os.path.basename(image_path)}{Fore.RESET}")
+            # Gemini has a hidden file input we can target
+            file_input = page.locator('input[type="file"]').first
+            file_input.set_input_files(image_path)
+            # Wait a second for the image to attach to the chatbox
+            page.wait_for_timeout(3000)
+        
+        chatbox.click()
+        full_prompt = f"Generate a high quality video using Veo based on this image: {prompt}"
         page.keyboard.type(full_prompt)
         page.wait_for_timeout(1000)
         page.keyboard.press("Enter")
@@ -108,15 +113,10 @@ def generate_veo_media(prompt, output_filepath):
         print(f"{Fore.YELLOW}⏳ Prompt submitted. Waiting for Veo to generate the video (this can take 1-3 minutes)...{Fore.RESET}")
         
         try:
-            # We wait up to 180 seconds for a <video> tag to appear in the DOM
             page.wait_for_selector('video', timeout=180000)
             print(f"{Fore.GREEN}🎥 Video generation complete! Found video element.{Fore.RESET}")
-            
-            # Allow video to fully load
             page.wait_for_timeout(3000)
             
-            # The safest way to download is usually clicking the built-in Download button on the video
-            # If Google obfuscated the button, we can evaluate a script to grab the video source URL
             video_src = page.evaluate('''() => {
                 const vid = document.querySelector('video');
                 return vid ? vid.src : null;
@@ -125,7 +125,6 @@ def generate_veo_media(prompt, output_filepath):
             if video_src:
                 if video_src.startswith('blob:'):
                     print(f"{Fore.CYAN}📥 Intercepting Blob Video stream and saving to disk...{Fore.RESET}")
-                    # Convert blob to base64 via browser evaluation and save to python
                     base64_vid = page.evaluate('''async (blobUrl) => {
                         const response = await fetch(blobUrl);
                         const blob = await response.blob();
@@ -138,11 +137,9 @@ def generate_veo_media(prompt, output_filepath):
                     }''', video_src)
                     
                     import base64
-                    # Remove the data:video/mp4;base64, header
                     b64_data = base64_vid.split(',')[1]
                     with open(output_filepath, "wb") as f:
                         f.write(base64.b64decode(b64_data))
-                        
                     print(f"{Fore.GREEN}✅ Video successfully saved to {output_filepath}{Fore.RESET}")
                 else:
                     print(f"{Fore.YELLOW}Warning: Non-blob video source found. Needs direct download handling.{Fore.RESET}")
@@ -160,10 +157,11 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--prompt", type=str, help="The Veo prompt to generate")
     parser.add_argument("--out", type=str, default="test_veo.mp4", help="Output filename")
+    parser.add_argument("--image", type=str, help="Path to UI screenshot for Image-to-Video")
     args = parser.parse_args()
     
     if args.prompt:
         out_path = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))), "input", "raw_videos", args.out)
-        generate_veo_media(args.prompt, out_path)
+        generate_veo_media(args.prompt, out_path, image_path=args.image)
     else:
         setup_login()

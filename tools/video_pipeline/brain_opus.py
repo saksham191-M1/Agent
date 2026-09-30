@@ -17,22 +17,35 @@ def generate_multi_scene_blueprint(product_name):
         
     prompt = f"""
     You are an Opus-level Creative Director building an automated video pipeline for a product called '{product_name}'.
-    The user provided ZERO instructions. You must autonomously decide the best creative template (e.g., SaaS UI Walkthrough, Cinematic Reveal) and break it down into exactly 4 distinct video scenes.
+    The user wants a highly persuasive 'Problem-Agitate-Solution' (PAS) business ad to gain trust.
+    You must autonomously break this down into exactly 4 distinct video scenes.
+    Scenes 2 and 3 MUST focus on showcasing the actual app UI workflow to build trust.
     
     Output a JSON object with this exact structure:
     {{
         "product_name": "{product_name}",
-        "selected_template": "The name of the visual style you chose (e.g. 'Manus Glass UI Style')",
+        "selected_template": "Problem-Agitate-Solution (UI Showcase)",
         "scenes": [
             {{
                 "scene_id": 1,
                 "duration_seconds": 4,
-                "voiceover": "Short, punchy line.",
-                "veo_prompt": "Highly detailed prompt for a video generator. E.g. 'Cinematic 3D render of a mobile phone showcasing the {product_name} app floating on a porcelain background. Slow camera push-in.'",
-                "visual_fx": "choose one: fast_zoom, slow_pan, slide_up, glass_ui",
-                "kinetic_text": "The main bold word to display on screen"
+                "voiceover": "State the painful problem clearly.",
+                "veo_prompt": "Prompt for Veo to generate a cinematic stock video of the problem.",
+                "visual_fx": "fast_zoom",
+                "kinetic_text": "The main bold word (e.g. BROKEN)",
+                "requires_ui_image": false
+            }},
+            {{
+                "scene_id": 2,
+                "duration_seconds": 5,
+                "voiceover": "Introduce the product as the solution.",
+                "veo_prompt": "Prompt for Veo to take the uploaded UI image and map it onto a 3D floating glass card. Slow camera push-in.",
+                "visual_fx": "glass_ui",
+                "kinetic_text": "The solution word",
+                "requires_ui_image": true
             }}
-            // ... exactly 4 scenes total
+            // Scene 3 (Deep dive UI workflow, requires_ui_image: true)
+            // Scene 4 (CTA/Logo, requires_ui_image: false)
         ]
     }}
     Ensure valid JSON only. Do not use markdown blocks like ```json.
