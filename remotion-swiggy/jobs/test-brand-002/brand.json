@@ -1,0 +1,32 @@
+{
+  "name": "Aster",
+  "domain": "aster.example",
+  "tagline": "Make complex work feel clear.",
+  "description": "A fictional productivity platform used to prove that the ad engine is brand-agnostic.",
+  "products": ["Aster Flow"],
+  "logo": {
+    "src": null,
+    "text": "Aster",
+    "alt": "Aster wordmark",
+    "source": "Fixture fallback text wordmark."
+  },
+  "colors": {
+    "accent": "#56e0c4",
+    "accentLight": "#b9fff0",
+    "background": "#09151b",
+    "background2": "#12252d",
+    "text": "#f3fffc",
+    "muted": "#9dbbb8",
+    "surface": "#f3fffc",
+    "surfaceText": "#102629",
+    "surfaceMuted": "#5e7878"
+  },
+  "fonts": {
+    "display": {"family": "Space Grotesk", "source": "Google Fonts"},
+    "body": {"family": "DM Sans", "source": "Google Fonts"}
+  },
+  "imagery": [],
+  "claims": [
+    {"id": "steps", "label": "steps to a clear handoff", "value": "3", "sourceUrl": "fixture://test-brand-002"}
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "name": "SkillMe",
+  "domain": "skill-me-intern.in",
+  "tagline": "Bridge the gap to production engineering.",
+  "description": "An open-source internship platform where students work on real engineering tasks, build public proof of work, and receive career support.",
+  "products": ["Open-source engineering internship", "GitHub track", "Verified certificate"],
+  "logo": {
+    "src": "jobs/skillme-003/assets/logo.png",
+    "text": "SkillMe",
+    "alt": "SkillMe logo",
+    "source": "https://www.skill-me-intern.in/assets/logo.png"
+  },
+  "colors": {
+    "accent": "#c99a4e",
+    "accentLight": "#d8ac63",
+    "background": "#0c0b0b",
+    "background2": "#141313",
+    "text": "#eae6e1",
+    "muted": "#969089",
+    "surface": "#f3eee7",
+    "surfaceText": "#171313",
+    "surfaceMuted": "#6f6861"
+  },
+  "fonts": {
+    "display": {"family": "Outfit", "source": "Google Fonts link in site CSS"},
+    "body": {"family": "DM Sans", "source": "Google Fonts link in site CSS"}
+  },
+  "imagery": [
+    {"src":"jobs/skillme-003/assets/logo.png","alt":"SkillMe brand mark","source":"https://www.skill-me-intern.in/assets/logo.png"}
+  ],
+  "claims": [
+    {"id":"domains","label":"tech domains","value":"20","sourceUrl":"https://www.skill-me-intern.in/"},
+    {"id":"duration","label":"structured program","value":"4 weeks","sourceUrl":"https://www.skill-me-intern.in/"},
+    {"id":"remote","label":"remote and flexible","value":"100%","sourceUrl":"https://www.skill-me-intern.in/"},
+    {"id":"github","label":"verified GitHub contributions","value":"Verified","sourceUrl":"https://www.skill-me-intern.in/"},
+    {"id":"certificate","label":"QR-verifiable certificate","value":"Verified","sourceUrl":"https://www.skill-me-intern.in/"}
+  ]
+}

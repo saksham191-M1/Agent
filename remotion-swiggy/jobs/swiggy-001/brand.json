@@ -1,0 +1,38 @@
+{
+  "name": "Swiggy",
+  "domain": "swiggy.com",
+  "tagline": "One app for everyday convenience.",
+  "description": "A consumer platform connecting food, essentials, dining, and everyday plans.",
+  "products": ["Food delivery", "Instamart", "Dineout"],
+  "logo": {
+    "src": "jobs/swiggy-001/assets/logo.png",
+    "text": "Swiggy",
+    "alt": "Swiggy wordmark",
+    "source": "https://www.swiggy.com/corporate/wp-content/uploads/unlimited_elements/Swiggy-newsroom-logo.png"
+  },
+  "colors": {
+    "accent": "#fc8019",
+    "accentLight": "#ffad65",
+    "background": "#0a1118",
+    "background2": "#111c25",
+    "text": "#f7f8fa",
+    "muted": "#9eacb8",
+    "surface": "#f7f8fa",
+    "surfaceText": "#182530",
+    "surfaceMuted": "#687583"
+  },
+  "fonts": {
+    "display": {"family": "Inter", "source": "Google Fonts"},
+    "body": {"family": "Inter", "source": "Google Fonts"}
+  },
+  "imagery": [
+    {"src":"jobs/swiggy-001/assets/imagery/food.webp","alt":"Food service imagery","source":"https://www.swiggy.com/corporate/wp-content/uploads/2024/10/food.webp"},
+    {"src":"jobs/swiggy-001/assets/imagery/essentials.webp","alt":"Essentials service imagery","source":"https://www.swiggy.com/corporate/wp-content/uploads/2024/10/instamart-1.webp"},
+    {"src":"jobs/swiggy-001/assets/imagery/dining.webp","alt":"Dining service imagery","source":"https://www.swiggy.com/corporate/wp-content/uploads/2024/10/dineout.webp"}
+  ],
+  "claims": [
+    {"id": "orders", "label": "orders delivered", "value": "3B+", "sourceUrl": "https://www.swiggy.com/corporate/"},
+    {"id": "restaurants", "label": "restaurant partners", "value": "238K+", "sourceUrl": "https://www.swiggy.com/corporate/"},
+    {"id": "cities", "label": "cities", "value": "718+", "sourceUrl": "https://www.swiggy.com/corporate/"}
+  ]
+}
