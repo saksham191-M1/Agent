@@ -1,0 +1,122 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "shots": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "n": {
+            "type": "integer"
+          },
+          "t0": {
+            "type": "number"
+          },
+          "t1": {
+            "type": "number"
+          },
+          "role": {
+            "enum": [
+              "hook",
+              "problem",
+              "promise",
+              "feature",
+              "demo",
+              "proof",
+              "objection",
+              "cta"
+            ]
+          },
+          "source": {
+            "enum": [
+              "motion-graphic",
+              "screen-demo",
+              "product-photo",
+              "creator-footage",
+              "ai-video"
+            ]
+          },
+          "visual": {
+            "enum": [
+              "hero-type",
+              "phone",
+              "browser",
+              "photo-overlay",
+              "big-number",
+              "split",
+              "list",
+              "cta",
+              "motion-graphic",
+              "screen-demo",
+              "product-photo",
+              "creator-footage",
+              "ai-video"
+            ]
+          },
+          "camera": {
+            "anyOf": [
+              {
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "transitionOut": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "headline": {
+            "type": "string"
+          },
+          "subline": {
+            "type": "string"
+          },
+          "onScreenText": {
+            "type": "string"
+          },
+          "dialogue": {
+            "type": "string"
+          },
+          "sfx": {
+            "type": "array"
+          },
+          "energy": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 5
+          },
+          "broll": {
+            "type": "array"
+          },
+          "passthrough": {
+            "type": "object"
+          }
+        },
+        "required": [
+          "n",
+          "t0",
+          "t1",
+          "role",
+          "source",
+          "visual"
+        ]
+      }
+    },
+    "passthrough": {
+      "type": "object"
+    }
+  },
+  "required": [
+    "shots"
+  ]
+}

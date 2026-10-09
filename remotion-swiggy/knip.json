@@ -1,6 +1,27 @@
 {
-  "entry": ["job-entry.tsx", "project-entry.tsx", "scripts/**/*.{ts,mjs}"],
-  "project": ["engine/**/*.{ts,tsx}", "jobs/**/*.{ts,tsx}"],
-  "ignore": ["jobs/**/out/**"],
-  "ignoreDependencies": ["@remotion/three", "@remotion/lottie", "@remotion/noise", "@remotion/motion-blur", "@remotion/shapes", "@remotion/paths", "@remotion/captions", "@remotion/media", "@remotion/google-fonts"]
+  "entry": [
+    "job-entry.tsx",
+    "project-entry.tsx",
+    "scripts/**/*.{ts,mjs}"
+  ],
+  "project": [
+    "engine/**/*.{ts,tsx}",
+    "jobs/**/*.{ts,tsx}"
+  ],
+  "ignore": [
+    "jobs/**/out/**"
+  ],
+  "ignoreDependencies": [
+    "@remotion/three",
+    "@remotion/lottie",
+    "@remotion/noise",
+    "@remotion/motion-blur",
+    "@remotion/shapes",
+    "@remotion/paths",
+    "@remotion/captions",
+    "@remotion/media",
+    "@remotion/google-fonts",
+    // Ignored because npx wraps it
+    "@remotion/cli"
+  ]
 }

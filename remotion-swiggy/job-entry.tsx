@@ -20,7 +20,7 @@ const previewProject: ProjectManifest = {
 };
 
 export const RemotionRoot: React.FC = () => <>
-  <Composition id="Ad" component={JobComposition} defaultProps={{jobId: 'swiggy-001'}} calculateMetadata={({props}) => { const job = getJob(props.jobId); const size = dimensions(job.spec.format); return {durationInFrames: Math.round(job.spec.durationSec * job.spec.fps), fps: job.spec.fps, ...size}; }} />
+  <Composition id="Ad" component={JobComposition} defaultProps={{jobId: ''}} calculateMetadata={({props}) => { const job = getJob(props.jobId); const size = dimensions(job.spec.format); return {durationInFrames: Math.round(job.spec.durationSec * job.spec.fps), fps: job.spec.fps, ...size}; }} />
   <Composition id="ProjectAd" component={ProjectComposition} defaultProps={{project: previewProject}} calculateMetadata={({props}) => { const project = props.project as ProjectManifest; const size = projectDimensions(project.format, project.quality); return {durationInFrames: Math.round(project.durationSec * project.fps), fps: project.fps, ...size}; }} />
 </>;
 

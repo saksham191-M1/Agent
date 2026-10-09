@@ -3,10 +3,15 @@ import {mkdirSync} from 'node:fs';
 import {resolve} from 'node:path';
 import {getJob} from '../jobs/registry';
 import {stageJobAssets} from './stage-assets';
+import {listJobs} from '../jobs/registry';
 
 const root = process.cwd();
-const remotion = resolve(root, 'node_modules', '.bin', process.platform === 'win32' ? 'remotion.cmd' : 'remotion');
-const jobId = process.env.AD_JOB_ID ?? process.argv[2] ?? 'swiggy-001';
+const remotionPath = resolve(root, 'node_modules', '@remotion', 'cli', 'remotion-cli.js');
+const jobId = process.env.AD_JOB_ID ?? process.argv[2];
+if (!jobId) {
+  console.error(`Error: Job ID is required.\nAvailable jobs: ${listJobs().join(', ')}`);
+  process.exit(1);
+}
 const job = getJob(jobId);
 const outputDir = resolve(root, 'jobs', jobId, 'out', 'stills');
 const browser = process.env.REMOTION_BROWSER_EXECUTABLE;
@@ -22,6 +27,6 @@ for (const scene of selectedScenes) {
     console.log(`Rendering ${scene.id} ${label} frame ${frame} -> ${output}`);
     const args = ['still', resolve(root, 'job-entry.tsx'), 'Ad', output, `--frame=${frame}`, '--image-format=png', '--overwrite', '--log=error', '--public-dir', resolve(root, 'public'), '--props', JSON.stringify({jobId})];
     if (browser) args.push(`--browser-executable=${browser}`);
-    execFileSync(remotion, args, {stdio: 'inherit', env: {...process.env, AD_JOB_ID: jobId}});
+    execFileSync(process.execPath, [remotionPath, ...args], {stdio: 'inherit', env: {...process.env, AD_JOB_ID: jobId}});
   }
 }

@@ -17,7 +17,7 @@ npm run qa
 ```
 
 Install dependencies on the OS that will run the renderer (`npm ci`), then install a browser
-with `npx remotion browser ensure`. `npm run runtime:check` probes native esbuild, FFmpeg/ffprobe,
+with `npx remotion browser ensure`. **Note:** never share `node_modules` between Windows and WSL/Linux. Always run `rm -rf node_modules && npm ci` when switching OS. `npm run runtime:check` probes native esbuild, FFmpeg/ffprobe,
 and a real browser launch; it prints structured JSON and exits nonzero with the failed stage
 and a repair instruction if setup is incomplete. Windows and Linux/WSL require separate
 `node_modules` installations.
@@ -55,3 +55,5 @@ Adding a brand requires only a new `jobs/{id}/` fixture with `brand.json`, `spec
 `scenes/index.tsx`, and `assets/`. Run `npm run jobs:generate`; the registry is generated from
 the job folders and the engine remains unchanged. The generated registry is job metadata, not
 engine code, and should not be hand-edited.
+
+- catalog.json is the layout catalog.

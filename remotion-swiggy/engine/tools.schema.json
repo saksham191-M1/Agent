@@ -1,0 +1,68 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "tts",
+    "stt",
+    "avatar",
+    "videoGen",
+    "imageGen",
+    "musicSfxLibrary",
+    "brandfetch"
+  ],
+  "patternProperties": {
+    ".*": {
+      "type": "object",
+      "properties": {
+        "configured": {
+          "type": "boolean"
+        },
+        "provider": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "evidence": {
+          "type": "string"
+        },
+        "kind": {
+          "enum": [
+            "api",
+            "browser-automation",
+            "local-generation",
+            "cli"
+          ]
+        },
+        "keyPresent": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "configured",
+        "provider",
+        "evidence"
+      ],
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "configured": {
+                "const": true
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "provider",
+              "kind"
+            ]
+          }
+        }
+      ]
+    }
+  }
+}
