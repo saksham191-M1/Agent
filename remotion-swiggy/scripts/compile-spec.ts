@@ -14,13 +14,14 @@ const storyboardPath = resolve(root, 'jobs', jobId, 'storyboard.json');
 const brandPath = resolve(root, 'jobs', jobId, 'brand.json');
 const outDir = resolve(root, 'jobs', jobId, 'out');
 import {mkdirSync} from 'node:fs';
-try { mkdirSync(outDir, {recursive: true}); } catch { /* ignore */ }
+try { mkdirSync(outDir, {recursive: true}); } catch (e: unknown) { console.error("Failed to create out dir:", e instanceof Error ? e.message : String(e)); process.exit(1); }
 const outPath = resolve(outDir, 'spec.compiled.json');
 
 try {
   const storyboard = JSON.parse(readFileSync(storyboardPath, 'utf8'));
   const brand = JSON.parse(readFileSync(brandPath, 'utf8'));
 
+  const round3 = (n: number) => Math.round(n * 1000) / 1000;
   const spec = {
     brand: storyboard.passthrough?.brand || brand.brand,
     format: storyboard.passthrough?.format,
@@ -28,14 +29,13 @@ try {
     durationSec: storyboard.passthrough?.durationSec,
     bpm: storyboard.passthrough?.bpm,
     scenes: storyboard.shots.map((shot: any) => {
-      return {
+      const scene: any = {
         id: shot.passthrough?.id || `scene_${shot.n}`,
-        start: shot.t0,
-        duration: shot.t1 - shot.t0,
+        start: round3(shot.t0),
+        duration: shot.duration ?? round3(shot.t1 - shot.t0),
         layout: shot.visual,
         headline: shot.headline || "",
         subline: shot.subline || "",
-        caption: shot.onScreenText || "",
         captionWords: shot.passthrough?.captionWords || [],
         visual: shot.passthrough?.visualObj || {},
         motion: shot.passthrough?.motion || { enter: "fade", idle: "none", exit: "fade" },
@@ -43,6 +43,10 @@ try {
         sfx: shot.sfx || [],
         transitionOut: shot.transitionOut || "cut"
       };
+      if (shot.onScreenText) {
+        scene.caption = shot.onScreenText;
+      }
+      return scene;
     }),
     audio: storyboard.passthrough?.audio
   };

@@ -18,14 +18,21 @@ const browser = process.env.REMOTION_BROWSER_EXECUTABLE;
 stageJobAssets(root, jobId);
 mkdirSync(outputDir, {recursive: true});
 
-const selectedScenes = process.env.SCENE_ID ? job.spec.scenes.filter((scene) => scene.id === process.env.SCENE_ID) : job.spec.scenes;
+const specArg = process.argv.find(a => a.startsWith('--spec='));
+const customSpecPath = specArg ? resolve(root, specArg.split('=')[1]) : null;
+const specObj = customSpecPath ? JSON.parse(require('node:fs').readFileSync(customSpecPath, 'utf8')) : null;
+const activeSpec = specObj || job.spec;
+
+const selectedScenes = process.env.SCENE_ID ? activeSpec.scenes.filter((scene: any) => scene.id === process.env.SCENE_ID) : activeSpec.scenes;
 for (const scene of selectedScenes) {
-  const points = [['start', scene.start], ['middle', scene.start + scene.duration / 2], ['end', scene.start + scene.duration - 1 / job.spec.fps] ] as const;
+  const points = [['middle', scene.start + scene.duration / 2]] as const;
   for (const [label, seconds] of points) {
-    const frame = Math.round(seconds * job.spec.fps);
-    const output = resolve(outputDir, `${scene.id.toLowerCase()}-${label}.png`);
-    console.log(`Rendering ${scene.id} ${label} frame ${frame} -> ${output}`);
-    const args = ['still', resolve(root, 'job-entry.tsx'), 'Ad', output, `--frame=${frame}`, '--image-format=png', '--overwrite', '--log=error', '--public-dir', resolve(root, 'public'), '--props', JSON.stringify({jobId})];
+    const frame = Math.round(seconds * activeSpec.fps);
+    const prefix = customSpecPath ? 'compiled' : 'original';
+    const output = resolve(outputDir, `${scene.id.toLowerCase()}-${label}-${prefix}.png`);
+    console.log(`Rendering ${scene.id} ${label} frame ${frame} (${prefix}) -> ${output}`);
+    const props = specObj ? {jobId, customSpec: specObj} : {jobId};
+    const args = ['still', resolve(root, 'job-entry.tsx'), 'Ad', output, `--frame=${frame}`, '--image-format=png', '--overwrite', '--log=error', '--public-dir', resolve(root, 'public'), '--props', JSON.stringify(props)];
     if (browser) args.push(`--browser-executable=${browser}`);
     execFileSync(process.execPath, [remotionPath, ...args], {stdio: 'inherit', env: {...process.env, AD_JOB_ID: jobId}});
   }

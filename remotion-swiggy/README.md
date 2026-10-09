@@ -57,3 +57,25 @@ the job folders and the engine remains unchanged. The generated registry is job 
 engine code, and should not be hand-edited.
 
 - catalog.json is the layout catalog.
+
+## Running a job on Windows
+
+To render and master a job end-to-end on Windows:
+
+1. **Render Raw Video**:
+   ```powershell
+   npm run render:job <jobId>
+   ```
+   *Output lands in*: `jobs/<jobId>/out/raw.mp4`
+
+2. **Master the Video**:
+   ```powershell
+   npm run master:job <jobId>
+   ```
+   *Output lands in*: `jobs/<jobId>/out/final.mp4`
+
+3. **Run QA**:
+   ```powershell
+   npm run qa:job <jobId>
+   ```
+   *Output lands in*: `jobs/<jobId>/out/qa-report.json`

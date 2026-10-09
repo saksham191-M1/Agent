@@ -592,11 +592,11 @@
     "music": {
       "file": "audio/music-bed.mp3",
       "mood": "restrained electronic build",
-      "volume": 0.18
+      "volume": 1
     },
     "room": {
       "file": "audio/room-tone.wav",
-      "volume": 0.16
+      "volume": 0.6
     },
     "sfxFiles": {
       "logo-sting": "audio/logo-sting.wav",
