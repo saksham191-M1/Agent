@@ -24,51 +24,7 @@
           "type": "pop",
           "gain": 0.22
         }
-      ],
-      "passthrough": {
-        "id": "A1",
-        "captionWords": [
-          {
-            "word": "Bring",
-            "start": 8,
-            "end": 15.32
-          },
-          {
-            "word": "clarity",
-            "start": 17.39,
-            "end": 33.44
-          },
-          {
-            "word": "to",
-            "start": 35.87,
-            "end": 38.3
-          },
-          {
-            "word": "the",
-            "start": 40.4,
-            "end": 42.47
-          },
-          {
-            "word": "work",
-            "start": 43.52,
-            "end": 49.1
-          },
-          {
-            "word": "ahead.",
-            "start": 50.48,
-            "end": 70.7
-          }
-        ],
-        "visualObj": {
-          "orbLabel": "A",
-          "kicker": "Aster workspace"
-        },
-        "motion": {
-          "enter": "type-slam",
-          "idle": "orb-orbit",
-          "exit": "push-through"
-        }
-      }
+      ]
     },
     {
       "n": 2,
@@ -99,81 +55,7 @@
           "type": "click",
           "gain": 0.24
         }
-      ],
-      "passthrough": {
-        "id": "A2",
-        "captionWords": [
-          {
-            "word": "See",
-            "start": 8,
-            "end": 15.65
-          },
-          {
-            "word": "every",
-            "start": 17.75,
-            "end": 25.4
-          },
-          {
-            "word": "thread,",
-            "start": 26.81,
-            "end": 40.73
-          },
-          {
-            "word": "then",
-            "start": 48.05,
-            "end": 56.06
-          },
-          {
-            "word": "move",
-            "start": 58.49,
-            "end": 64.76
-          },
-          {
-            "word": "the",
-            "start": 65.81,
-            "end": 67.91
-          },
-          {
-            "word": "next",
-            "start": 69.29,
-            "end": 75.56
-          },
-          {
-            "word": "one",
-            "start": 77.66,
-            "end": 82.55
-          },
-          {
-            "word": "forward.",
-            "start": 83.93,
-            "end": 105.53
-          }
-        ],
-        "visualObj": {
-          "items": [
-            {
-              "label": "Brief",
-              "detail": "Aligned",
-              "icon": "B"
-            },
-            {
-              "label": "Signal",
-              "detail": "Sorted",
-              "icon": "S"
-            },
-            {
-              "label": "Next",
-              "detail": "Moving",
-              "icon": "N"
-            }
-          ]
-        },
-        "motion": {
-          "enter": "card-fan",
-          "idle": "slow-push",
-          "exit": "whip-left"
-        }
-      }
+      ]
     },
     {
       "n": 3,
@@ -199,85 +81,7 @@
           "type": "pop2",
           "gain": 0.2
         }
-      ],
-      "passthrough": {
-        "id": "A3",
-        "captionWords": [
-          {
-            "word": "Keep",
-            "start": 8,
-            "end": 14.96
-          },
-          {
-            "word": "the",
-            "start": 16.37,
-            "end": 18.8
-          },
-          {
-            "word": "signal",
-            "start": 20.54,
-            "end": 30.29
-          },
-          {
-            "word": "close,",
-            "start": 32.39,
-            "end": 45.62
-          },
-          {
-            "word": "wherever",
-            "start": 46.31,
-            "end": 56.42
-          },
-          {
-            "word": "the",
-            "start": 58.16,
-            "end": 60.23
-          },
-          {
-            "word": "day",
-            "start": 61.64,
-            "end": 66.17
-          },
-          {
-            "word": "takes",
-            "start": 67.91,
-            "end": 76.28
-          },
-          {
-            "word": "you.",
-            "start": 78.02,
-            "end": 92.99
-          }
-        ],
-        "visualObj": {
-          "greeting": "Good morning",
-          "prompt": "What needs your focus?",
-          "search": "Search the workspace",
-          "items": [
-            {
-              "label": "Briefs",
-              "icon": "B"
-            },
-            {
-              "label": "Signals",
-              "icon": "S"
-            },
-            {
-              "label": "Notes",
-              "icon": "N"
-            },
-            {
-              "label": "Focus",
-              "icon": "F"
-            }
-          ]
-        },
-        "motion": {
-          "enter": "device-orbit",
-          "idle": "parallax",
-          "exit": "whip-right"
-        }
-      }
+      ]
     },
     {
       "n": 4,
@@ -313,75 +117,7 @@
           "type": "riser",
           "gain": 0.2
         }
-      ],
-      "passthrough": {
-        "id": "A4",
-        "captionWords": [
-          {
-            "word": "See",
-            "start": 8,
-            "end": 15.65
-          },
-          {
-            "word": "it.",
-            "start": 17.39,
-            "end": 24.02
-          },
-          {
-            "word": "Shape",
-            "start": 32.39,
-            "end": 42.14
-          },
-          {
-            "word": "it.",
-            "start": 43.52,
-            "end": 49.1
-          },
-          {
-            "word": "Send",
-            "start": 52.94,
-            "end": 60.59
-          },
-          {
-            "word": "it",
-            "start": 62.33,
-            "end": 64.43
-          },
-          {
-            "word": "forward.",
-            "start": 66.17,
-            "end": 88.82
-          }
-        ],
-        "visualObj": {
-          "eyebrow": "A clearer working rhythm",
-          "label": "ASTER FLOW",
-          "stats": [
-            {
-              "value": 3,
-              "suffix": "",
-              "label": "steps to a handoff"
-            },
-            {
-              "value": 1,
-              "suffix": "×",
-              "label": "shared source of truth"
-            },
-            {
-              "value": 0,
-              "suffix": "",
-              "label": "lost threads"
-            }
-          ],
-          "progress": 92,
-          "detail": "A calmer path from signal to decision."
-        },
-        "motion": {
-          "enter": "counter-slam",
-          "idle": "ring-pulse",
-          "exit": "fade-slide"
-        }
-      }
+      ]
     },
     {
       "n": 5,
@@ -417,95 +153,7 @@
           "type": "logo-sting",
           "gain": 0.3
         }
-      ],
-      "passthrough": {
-        "id": "A5",
-        "captionWords": [
-          {
-            "word": "Open",
-            "start": 8,
-            "end": 17.06
-          },
-          {
-            "word": "Aster.",
-            "start": 19.16,
-            "end": 35.18
-          },
-          {
-            "word": "Make",
-            "start": 38.66,
-            "end": 45.62
-          },
-          {
-            "word": "the",
-            "start": 46.67,
-            "end": 48.74
-          },
-          {
-            "word": "next",
-            "start": 49.79,
-            "end": 56.42
-          },
-          {
-            "word": "move.",
-            "start": 58.49,
-            "end": 74.87
-          }
-        ],
-        "visualObj": {
-          "button": "Open Aster",
-          "domain": "aster.example"
-        },
-        "motion": {
-          "enter": "cta-slam",
-          "idle": "hold",
-          "exit": "fade"
-        }
-      }
+      ]
     }
-  ],
-  "passthrough": {
-    "brand": "test-brand-002",
-    "format": "9:16",
-    "fps": 30,
-    "durationSec": 20,
-    "bpm": 116,
-    "audio": {
-      "assetsRoot": "jobs/test-brand-002/assets",
-      "voice": {
-        "provider": "ElevenLabs",
-        "voiceId": "EXAVITQu4vr4xnSDxMaL",
-        "model": "eleven_multilingual_v2",
-        "clips": {
-          "A1": "audio/vo-a1.mp3",
-          "A2": "audio/vo-a2.mp3",
-          "A3": "audio/vo-a3.mp3",
-          "A4": "audio/vo-a4.mp3",
-          "A5": "audio/vo-a5.mp3"
-        }
-      },
-      "music": {
-        "file": "audio/music-bed.mp3",
-        "mood": "cool kinetic electronic",
-        "volume": 0.16
-      },
-      "room": {
-        "file": "audio/room-tone.wav",
-        "volume": 0.14
-      },
-      "sfxFiles": {
-        "logo-sting": "audio/logo-sting.wav",
-        "pop": "audio/pop.wav",
-        "pop2": "audio/pop2.wav",
-        "swipe": "audio/swipe.wav",
-        "tick": "audio/tick.wav",
-        "click": "audio/click.wav",
-        "riser": "audio/riser.wav",
-        "thud": "audio/thud.wav",
-        "success": "audio/success.wav",
-        "whoosh": "audio/whoosh.wav"
-      },
-      "duck": 7
-    }
-  }
+  ]
 }

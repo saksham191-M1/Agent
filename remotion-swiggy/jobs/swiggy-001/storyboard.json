@@ -28,41 +28,7 @@
           "type": "pop2",
           "gain": 0.2
         }
-      ],
-      "passthrough": {
-        "id": "S1",
-        "captionWords": [
-          {
-            "word": "One",
-            "start": 8,
-            "end": 13.91
-          },
-          {
-            "word": "tap.",
-            "start": 15.32,
-            "end": 28.19
-          },
-          {
-            "word": "More",
-            "start": 34.46,
-            "end": 41.78
-          },
-          {
-            "word": "flow.",
-            "start": 42.83,
-            "end": 60.95
-          }
-        ],
-        "visualObj": {
-          "kicker": "One app. Every plan.",
-          "pulseText": "Tap once. Keep moving."
-        },
-        "motion": {
-          "enter": "type-slam",
-          "idle": "pulse-orbit",
-          "exit": "push-through"
-        }
-      }
+      ]
     },
     {
       "n": 2,
@@ -92,77 +58,7 @@
           "type": "click",
           "gain": 0.28
         }
-      ],
-      "passthrough": {
-        "id": "S2",
-        "captionWords": [
-          {
-            "word": "Find",
-            "start": 8,
-            "end": 16.37
-          },
-          {
-            "word": "dinner",
-            "start": 17.75,
-            "end": 25.07
-          },
-          {
-            "word": "and",
-            "start": 26.81,
-            "end": 29.24
-          },
-          {
-            "word": "keep",
-            "start": 30.65,
-            "end": 35.87
-          },
-          {
-            "word": "moving.",
-            "start": 37.61,
-            "end": 55.37
-          }
-        ],
-        "visualObj": {
-          "title": "What are you craving?",
-          "detail": "Choose once. Keep moving.",
-          "location": "Bengaluru",
-          "cards": [
-            {
-              "label": "Momo House",
-              "detail": "A warm favorite",
-              "action": "View →",
-              "icon": "M"
-            },
-            {
-              "label": "Pizza Lane",
-              "detail": "A quick choice",
-              "action": "View →",
-              "icon": "P"
-            },
-            {
-              "label": "Biryani Bowl",
-              "detail": "Made for sharing",
-              "action": "View →",
-              "icon": "B"
-            }
-          ]
-        },
-        "motion": {
-          "enter": "push-through",
-          "idle": "card-fan",
-          "exit": "whip-left",
-          "cursorPath": [
-            [
-              10,
-              78
-            ],
-            [
-              78,
-              37
-            ]
-          ]
-        }
-      }
+      ]
     },
     {
       "n": 3,
@@ -192,65 +88,7 @@
           "type": "tick",
           "gain": 0.18
         }
-      ],
-      "passthrough": {
-        "id": "S3",
-        "captionWords": [
-          {
-            "word": "Bring",
-            "start": 8,
-            "end": 16.01
-          },
-          {
-            "word": "essentials",
-            "start": 18.11,
-            "end": 34.82
-          },
-          {
-            "word": "into",
-            "start": 36.92,
-            "end": 42.47
-          },
-          {
-            "word": "the",
-            "start": 43.88,
-            "end": 45.95
-          },
-          {
-            "word": "flow.",
-            "start": 47,
-            "end": 66.5
-          }
-        ],
-        "visualObj": {
-          "greeting": "Good evening",
-          "prompt": "What do you need next?",
-          "search": "Search essentials",
-          "items": [
-            {
-              "label": "Fresh fruit",
-              "icon": "F"
-            },
-            {
-              "label": "Daily essentials",
-              "icon": "D"
-            },
-            {
-              "label": "Quick snacks",
-              "icon": "Q"
-            },
-            {
-              "label": "Top-ups",
-              "icon": "T"
-            }
-          ]
-        },
-        "motion": {
-          "enter": "device-orbit",
-          "idle": "parallax",
-          "exit": "whip-right"
-        }
-      }
+      ]
     },
     {
       "n": 4,
@@ -280,73 +118,7 @@
           "type": "click",
           "gain": 0.2
         }
-      ],
-      "passthrough": {
-        "id": "S4",
-        "captionWords": [
-          {
-            "word": "Choose",
-            "start": 8,
-            "end": 19.16
-          },
-          {
-            "word": "where",
-            "start": 20.18,
-            "end": 26.81
-          },
-          {
-            "word": "tonight",
-            "start": 28.19,
-            "end": 38.66
-          },
-          {
-            "word": "goes.",
-            "start": 40.04,
-            "end": 59.54
-          }
-        ],
-        "visualObj": {
-          "title": "Where do you want to go?",
-          "detail": "Choose a table and make the night yours.",
-          "location": "Bengaluru",
-          "cards": [
-            {
-              "label": "The Terrace",
-              "detail": "Reserve your table",
-              "action": "Explore →",
-              "icon": "T"
-            },
-            {
-              "label": "Table Stories",
-              "detail": "Tonight's next place",
-              "action": "Explore →",
-              "icon": "T"
-            },
-            {
-              "label": "Basil & Co.",
-              "detail": "Make going out click",
-              "action": "Explore →",
-              "icon": "B"
-            }
-          ],
-          "sideLabel": "Dineout"
-        },
-        "motion": {
-          "enter": "map-pin",
-          "idle": "split-parallax",
-          "exit": "whip-left",
-          "cursorPath": [
-            [
-              10,
-              78
-            ],
-            [
-              78,
-              37
-            ]
-          ]
-        }
-      }
+      ]
     },
     {
       "n": 5,
@@ -376,71 +148,7 @@
           "type": "riser",
           "gain": 0.24
         }
-      ],
-      "passthrough": {
-        "id": "S5",
-        "captionWords": [
-          {
-            "word": "One",
-            "start": 8,
-            "end": 13.22
-          },
-          {
-            "word": "place",
-            "start": 14.27,
-            "end": 23.33
-          },
-          {
-            "word": "keeps",
-            "start": 25.07,
-            "end": 33.44
-          },
-          {
-            "word": "the",
-            "start": 35.51,
-            "end": 37.94
-          },
-          {
-            "word": "day",
-            "start": 39.71,
-            "end": 45.26
-          },
-          {
-            "word": "in",
-            "start": 46.67,
-            "end": 48.41
-          },
-          {
-            "word": "motion.",
-            "start": 50.48,
-            "end": 70.7
-          }
-        ],
-        "visualObj": {
-          "items": [
-            {
-              "label": "Food delivery",
-              "detail": "The next meal, sorted.",
-              "icon": "F"
-            },
-            {
-              "label": "Instamart",
-              "detail": "Essentials in the flow.",
-              "icon": "I"
-            },
-            {
-              "label": "Dineout",
-              "detail": "Make going out click.",
-              "icon": "D"
-            }
-          ]
-        },
-        "motion": {
-          "enter": "exploded-ui",
-          "idle": "card-stack",
-          "exit": "push-through"
-        }
-      }
+      ]
     },
     {
       "n": 6,
@@ -475,65 +183,7 @@
           "type": "tick",
           "gain": 0.16
         }
-      ],
-      "passthrough": {
-        "id": "S6",
-        "captionWords": [
-          {
-            "word": "Three",
-            "start": 8,
-            "end": 16.7
-          },
-          {
-            "word": "billion",
-            "start": 18.8,
-            "end": 31.34
-          },
-          {
-            "word": "orders.",
-            "start": 33.77,
-            "end": 48.05
-          },
-          {
-            "word": "One",
-            "start": 50.84,
-            "end": 57.8
-          },
-          {
-            "word": "network.",
-            "start": 59.54,
-            "end": 77.66
-          }
-        ],
-        "visualObj": {
-          "eyebrow": "A network built around the day",
-          "label": "SWIGGY NETWORK",
-          "stats": [
-            {
-              "value": 3,
-              "suffix": "B+",
-              "label": "orders delivered"
-            },
-            {
-              "value": 238,
-              "suffix": "K+",
-              "label": "restaurant partners"
-            },
-            {
-              "value": 718,
-              "suffix": "+",
-              "label": "cities"
-            }
-          ],
-          "progress": 92,
-          "detail": "Proof that the next plan can keep moving."
-        },
-        "motion": {
-          "enter": "counter-slam",
-          "idle": "ring-pulse",
-          "exit": "fade-slide"
-        }
-      }
+      ]
     },
     {
       "n": 7,
@@ -568,92 +218,7 @@
           "type": "logo-sting",
           "gain": 0.32
         }
-      ],
-      "passthrough": {
-        "id": "S7",
-        "captionWords": [
-          {
-            "word": "Open",
-            "start": 8,
-            "end": 17.39
-          },
-          {
-            "word": "Swiggy.",
-            "start": 19.85,
-            "end": 33.44
-          },
-          {
-            "word": "Make",
-            "start": 34.46,
-            "end": 40.4
-          },
-          {
-            "word": "it",
-            "start": 41.45,
-            "end": 43.52
-          },
-          {
-            "word": "happen.",
-            "start": 44.57,
-            "end": 63.74
-          }
-        ],
-        "visualObj": {
-          "button": "Open Swiggy",
-          "domain": "swiggy.com"
-        },
-        "motion": {
-          "enter": "cta-slam",
-          "idle": "hold",
-          "exit": "fade"
-        }
-      }
+      ]
     }
-  ],
-  "passthrough": {
-    "brand": "swiggy-001",
-    "format": "9:16",
-    "fps": 30,
-    "durationSec": 20,
-    "bpm": 108,
-    "audio": {
-      "assetsRoot": "jobs/swiggy-001/assets",
-      "voice": {
-        "provider": "ElevenLabs",
-        "voiceId": "EXAVITQu4vr4xnSDxMaL",
-        "model": "eleven_multilingual_v2",
-        "clips": {
-          "S1": "audio/vo-s1.mp3",
-          "S2": "audio/vo-s2.mp3",
-          "S3": "audio/vo-s3.mp3",
-          "S4": "audio/vo-s4.mp3",
-          "S5": "audio/vo-s5.mp3",
-          "S6": "audio/vo-s6.mp3",
-          "S7": "audio/vo-s7.mp3"
-        }
-      },
-      "music": {
-        "file": "audio/music-bed.mp3",
-        "mood": "restrained electronic build",
-        "volume": 0.18
-      },
-      "room": {
-        "file": "audio/room-tone.wav",
-        "volume": 0.16
-      },
-      "sfxFiles": {
-        "logo-sting": "audio/logo-sting.wav",
-        "pop": "audio/pop.wav",
-        "pop2": "audio/pop2.wav",
-        "swipe": "audio/swipe.wav",
-        "tick": "audio/tick.wav",
-        "click": "audio/click.wav",
-        "riser": "audio/riser.wav",
-        "thud": "audio/thud.wav",
-        "success": "audio/success.wav",
-        "whoosh": "audio/whoosh.wav"
-      },
-      "duck": 7
-    }
-  }
+  ]
 }
