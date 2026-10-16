@@ -1,0 +1,74 @@
+{
+  "brandId": "instagram.com",
+  "worldBounds": {
+    "width": 1920,
+    "height": 1080,
+    "depth": 2000
+  },
+  "nodes": [
+    {
+      "id": "node_hook_0",
+      "type": "kinetic_typography",
+      "position3D": [
+        0,
+        0,
+        0
+      ],
+      "effect": "phrase_flash",
+      "words": [
+        "BURIED VOICE",
+        "CAPTURE AND SHARE THE WORLD'S MOMENTS"
+      ],
+      "text": "BURIED VOICE",
+      "subtext": "Your best creative moments and stories are getting buried in static, silent feed",
+      "fontSize": 96
+    },
+    {
+      "id": "node_phone_1",
+      "type": "phone_mockup",
+      "position3D": [
+        0,
+        0,
+        0
+      ],
+      "greeting": "Welcome to Instagram",
+      "prompt": "Enter Instagram. Elevate your narrative with rich short-form",
+      "search": "Search Instagram...",
+      "items": [
+        {
+          "label": "Instagram Reels",
+          "icon": "🚀"
+        },
+        {
+          "label": "Stories",
+          "icon": "⚡"
+        },
+        {
+          "label": "Explore Feed",
+          "icon": "🎯"
+        },
+        {
+          "label": "Direct Messaging",
+          "icon": "✨"
+        }
+      ]
+    },
+    {
+      "id": "node_stat_2",
+      "type": "stat_counter",
+      "position3D": [0, 0, 0],
+      "value": 2.5,
+      "suffix": "B+",
+      "label": "Global Active Creators",
+      "index": 0
+    },
+    {
+      "id": "node_cta_3",
+      "type": "cta_button",
+      "position3D": [0, 0, 0],
+      "label": "Get Instagram",
+      "clickFrame": 20,
+      "width": 360
+    }
+  ]
+}

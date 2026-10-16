@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>{{SHORT_NAME}} – iPhone Showcase Ad</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&display=swap">
+<style>
+:root{--bg:#ece9f4;--fg:#1c1b2e;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#15141f;--fg:#ece9f4}}
+:root[data-theme="dark"]{--bg:#15141f;--fg:#ece9f4}
+*{box-sizing:border-box;margin:0}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{background:var(--bg);color:var(--fg);font-family:'Bricolage Grotesque',system-ui,sans-serif;min-height:100vh;display:flex;flex-direction:column;align-items:center;gap:14px;padding:16px}
+#st{container-type:inline-size;position:relative;width:min(100%,calc((100vh - 130px) * .5625));aspect-ratio:9/16;border-radius:18px;overflow:hidden;background:radial-gradient(120% 70% at 50% 45%,#5b3fd1 0%,#2a1a6b 45%,#0d0a24 100%);color:#fff;isolation:isolate}
+.glow{position:absolute;left:50%;top:50%;width:90cqw;height:90cqw;margin:-45cqw;border-radius:50%;background:radial-gradient(#9a86ff88,#0000 65%);transition:opacity 1s}
+.hl{position:absolute;left:8cqw;right:8cqw;top:10cqw;text-align:center;font-size:11cqw;font-weight:800;letter-spacing:-.03em;line-height:1.02;z-index:6}
+.hl.in{animation:up .55s both}
+@keyframes up{from{opacity:0;transform:translateY(4cqw)}to{opacity:1;transform:none}}
+.wrap{position:absolute;inset:0;perspective:190cqw;z-index:4}
+.ph{position:absolute;left:50%;top:50%;width:52cqw;height:108cqw;margin:-54cqw 0 0 -26cqw;border-radius:9cqw;background:linear-gradient(145deg,#4a4a55,#1d1d23);padding:1.3cqw;box-shadow:inset 0 0 0 .4cqw #a7a7b4,0 12cqw 26cqw #0009;transition:transform 1.9s cubic-bezier(.2,.7,.2,1),opacity 1s;transform:rotateY(80deg) scale(.6);opacity:0}
+.p1{transform:rotateY(-16deg) rotateX(5deg);opacity:1}
+.p2{transform:rotateY(18deg) rotateX(4deg) translateY(-2cqw);opacity:1}
+.p3{transform:rotateY(0) scale(.9);opacity:1}
+.p4{transform:translateY(-16cqw) scale(.58);opacity:1}
+.scr{position:absolute;inset:1.3cqw;border-radius:7.8cqw;overflow:hidden;background:#faf9ff;color:#1c1b2e}
+.isl{position:absolute;top:2.6cqw;left:50%;width:15cqw;height:4.4cqw;margin-left:-7.5cqw;border-radius:3cqw;background:#000;z-index:3}
+.shine{position:absolute;inset:0;background:linear-gradient(115deg,#fff0 35%,#fff3 48%,#fff0 60%);z-index:3;pointer-events:none}
+.pn{position:absolute;inset:0;padding:12cqw 4.5cqw 4cqw;opacity:0;transition:opacity .4s}
+.pn.on{opacity:1}
+.pn h3{font-size:4.6cqw;font-weight:800;display:flex;justify-content:space-between;align-items:center}
+.pn h3 em{font-style:normal;background:#6c4cf0;color:#fff;border-radius:2cqw;padding:.7cqw 2cqw;font-size:2.8cqw}
+.big{font-size:17cqw;font-weight:800;letter-spacing:-.05em;line-height:1;margin:3cqw 0 .5cqw}
+.sm{font-size:2.9cqw;opacity:.6}
+.row{display:flex;align-items:center;gap:2cqw;padding:2.2cqw 0;border-top:1px solid #1c1b2e14;font-size:3cqw}
+.row i{width:4.2cqw;height:4.2cqw;border-radius:50%;border:.5cqw solid #1c1b2e44;flex:none;display:grid;place-items:center;font-style:normal;font-size:2.6cqw;color:#fff;transition:.25s}
+.row span{transition:.25s}
+.row.d i{background:#2fbf8f;border-color:#2fbf8f}.row.d i::after{content:"✓"}.row.d span{opacity:.4}
+.ev{margin-top:2.4cqw;border-radius:2.6cqw;padding:2.6cqw 3cqw;font-size:3cqw;font-weight:500;opacity:0;transform:translateX(6cqw);transition:.4s}
+.ev.on{opacity:1;transform:none}
+.ev b{display:block;font-size:3.2cqw}
+.done{display:grid;place-items:center;height:100%;text-align:center}
+.done .ck{width:22cqw;height:22cqw;border-radius:50%;background:#2fbf8f;color:#fff;font-size:13cqw;display:grid;place-items:center;margin:0 auto 4cqw}
+.co{position:absolute;z-index:7;background:#fff;color:#1c1b2e;border-radius:10cqw;padding:2.6cqw 4.4cqw;font-size:4cqw;font-weight:800;box-shadow:0 3cqw 8cqw #0006;opacity:0;transform:scale(.6)}
+.co.on{animation:pp .5s cubic-bezier(.3,1.6,.5,1) forwards}
+.co.off{animation:none;opacity:0;transition:.3s}
+@keyframes pp{to{opacity:1;transform:none}}
+.bc{position:absolute;left:50%;top:50%;width:30cqw;margin:-9cqw 0 0 -15cqw;z-index:7;background:#ffffffee;color:#1c1b2e;border-radius:4cqw;padding:3cqw;font-size:3.2cqw;font-weight:500;box-shadow:0 3cqw 8cqw #0006;opacity:0;transform:scale(.2);transition:all 1s cubic-bezier(.2,.9,.2,1)}
+.bc b{display:block;font-size:3.6cqw}
+.bc.on{opacity:1;transform:translate(var(--x),var(--y)) rotate(var(--r)) scale(1)}
+.bc.off{opacity:0;transform:scale(.2);transition:.4s}
+.end{position:absolute;left:0;right:0;bottom:10cqw;text-align:center;z-index:6;opacity:0}
+.end.on{animation:up .6s both}
+.logo{width:20cqw;height:20cqw;border-radius:6cqw;background:#fff;color:#2a1a6b;font-size:13cqw;font-weight:800;display:grid;place-items:center;margin:0 auto 5cqw}
+.cta{display:inline-block;background:#2fbf8f;color:#08281d;border-radius:10cqw;padding:3.6cqw 9cqw;font-size:5.2cqw;font-weight:800}
+.url{margin-top:3cqw;font-size:4cqw;opacity:.8}
+#fl{position:absolute;inset:0;background:#fff;opacity:0;z-index:9;pointer-events:none}
+#fl.go{animation:fl .4s}
+@keyframes fl{0%{opacity:.8}100%{opacity:0}}
+#bar{position:absolute;left:0;top:0;height:1.2cqw;width:0;background:#fff;z-index:10}
+#bar.run{animation:bar 15s linear forwards}
+@keyframes bar{to{width:100%}}
+.ctl{display:flex;gap:10px;align-items:center;font-size:14px;flex-wrap:wrap;justify-content:center; opacity:0;}
+@media (prefers-reduced-motion:reduce){.ph,.bc{transition-duration:.01s}}
+</style>
+</head>
+<body>
+<div id="st" aria-label="15 second iPhone showcase ad for {{SHORT_NAME}}">
+  <div id="bar"></div><div id="fl"></div><div class="glow"></div>
+  <div class="hl" id="hl"></div>
+
+  <!-- Dynamic Feature Bubbles -->
+  <div class="bc" style="--x:-33cqw;--y:-44cqw;--r:-6deg"><b>{{BUBBLE_1_TITLE}}</b>{{BUBBLE_1_SUB}}</div>
+  <div class="bc" style="--x:33cqw;--y:-30cqw;--r:5deg"><b>{{BUBBLE_2_TITLE}}</b>{{BUBBLE_2_SUB}}</div>
+  <div class="bc" style="--x:-33cqw;--y:30cqw;--r:4deg"><b>{{BUBBLE_3_TITLE}}</b>{{BUBBLE_3_SUB}}</div>
+  <div class="bc" style="--x:33cqw;--y:44cqw;--r:-5deg"><b>{{BUBBLE_4_TITLE}}</b>{{BUBBLE_4_SUB}}</div>
+
+  <div class="wrap"><div class="ph" id="ph">
+    <div class="scr"><div class="isl"></div><div class="shine"></div>
+      
+      <!-- Panel A -->
+      <div class="pn on" id="pA"><h3>{{SHORT_NAME}} <em>{{PANEL_A_TAG}}</em></h3><div class="big" id="n">{{STAT_NUMBER}}</div><div class="sm">{{STAT_LABEL}}</div>
+        <div class="row"><i></i><span>{{LIST_1}}</span></div>
+        <div class="row"><i></i><span>{{LIST_2}}</span></div>
+        <div class="row"><i></i><span>{{LIST_3}}</span></div>
+        <div class="row"><i></i><span>{{LIST_4}}</span></div>
+        <div class="row"><i></i><span>{{LIST_5}}</span></div>
+      </div>
+      
+      <!-- Panel B -->
+      <div class="pn" id="pB"><h3>{{PANEL_B_TITLE}} <em>{{PANEL_B_TAG}}</em></h3>
+        <div class="ev" style="background:#e5defd"><b>{{CAL_1_TITLE}}</b>{{CAL_1_SUB}}</div>
+        <div class="ev" style="background:#d3f5e8"><b>{{CAL_2_TITLE}}</b>{{CAL_2_SUB}}</div>
+        <div class="ev" style="background:#ffe6c9"><b>{{CAL_3_TITLE}}</b>{{CAL_3_SUB}}</div>
+      </div>
+      
+      <!-- Panel C -->
+      <div class="pn" id="pC"><div class="done"><div><div class="ck">✓</div><h3 style="justify-content:center">{{SUCCESS_TITLE}}</h3><div class="sm" style="margin-top:1.5cqw">{{SUCCESS_SUB}}</div></div></div></div>
+    
+    </div></div></div>
+
+  <!-- Callouts -->
+  <div class="co" id="c1" style="left:4cqw;top:42cqw">{{CALLOUT_1}}</div>
+  <div class="co" id="c2" style="right:4cqw;top:108cqw">{{CALLOUT_2}}</div>
+
+  <!-- CTA -->
+  <div class="end" id="end"><div class="logo">{{APP_INITIAL}}</div><div class="cta">Try {{SHORT_NAME}}</div><div class="url">{{APP_URL}}</div></div>
+</div>
+<script>
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+let T=[],R=0;
+const at=(ms,f)=>T.push(setTimeout(f,ms));
+const ph=$('#ph');
+const pose=c=>ph.className='ph '+c;
+const hl=t=>{const h=$('#hl');h.textContent=t;h.classList.remove('in');void h.offsetWidth;h.classList.add('in')};
+const flash=()=>{const f=$('#fl');f.classList.remove('go');void f.offsetWidth;f.classList.add('go')};
+const pn=id=>$$('.pn').forEach(p=>p.classList.toggle('on',p.id===id));
+function count(el,a,b,ms){cancelAnimationFrame(R);const t0=performance.now();(function f(n){const p=Math.min(1,(n-t0)/ms);el.textContent=Math.round(a+(b-a)*p);if(p<1)R=requestAnimationFrame(f)})(t0)}
+function play(){
+  T.forEach(clearTimeout);T=[];cancelAnimationFrame(R);
+  ph.className='ph';$('#hl').textContent='';
+  $$('.row').forEach(r=>r.classList.remove('d'));$$('.ev,.bc,.co').forEach(e=>e.classList.remove('on','off'));
+  $('#end').classList.remove('on');$('#n').textContent={{STAT_NUMBER:js}};pn('pA');
+  const b=$('#bar');b.classList.remove('run');void b.offsetWidth;b.classList.add('run');
+  
+  at(60,()=>{pose('p1');hl({{HOOK_1:js}})});
+  at(2000,()=>{count($('#n'),parseInt({{STAT_NUMBER:js}}),0,3200);$$('.row').forEach((r,i)=>at(i*520,()=>r.classList.add('d')));$('#c1').classList.add('on')});
+  at(5600,()=>{$('#c1').classList.add('off');pose('p2');pn('pB');hl({{HOOK_2:js}});
+    $$('.ev').forEach((e,i)=>at(500+i*450,()=>e.classList.add('on')));at(900,()=>$('#c2').classList.add('on'))});
+  at(9800,()=>{$('#c2').classList.add('off');flash();pose('p3');pn('pC');hl({{HOOK_3:js}});
+    $$('.bc').forEach((c,i)=>at(300+i*260,()=>c.classList.add('on')))});
+  at(12800,()=>{$$('.bc').forEach(c=>c.classList.add('off'));pose('p4');hl({{HOOK_4:js}});at(700,()=>$('#end').classList.add('on'))});
+}
+window.onload=play;
+</script>
+</body>
+</html>

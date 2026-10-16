@@ -1,0 +1,20 @@
+{
+  "$schema": "remotion-cinematic-v1",
+  "source": "cinematic",
+  "brandName": "Vortex CI",
+  "appName": "Vortex Cloud Engine",
+  "accentColor": "#EC4899",
+  "durationSec": 10,
+  "fps": 30,
+  "appDescriptor": {
+    "appName": "Vortex CI",
+    "topbarTitle": "Build Telemetry",
+    "badgeText": "Cluster Healthy",
+    "sidebarItems": [
+      {"id": "pipelines", "label": "Pipelines", "active": true},
+      {"id": "deployments", "label": "Deployments", "active": false},
+      {"id": "analytics", "label": "Analytics", "active": false},
+      {"id": "security", "label": "Security Scan", "active": false}
+    ]
+  }
+}

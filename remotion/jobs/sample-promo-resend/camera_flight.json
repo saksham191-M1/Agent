@@ -1,0 +1,88 @@
+{
+  "waypoints": [
+    {
+      "timeSec": 0,
+      "frame": 0,
+      "position": [
+        0,
+        180,
+        -700
+      ],
+      "target": [
+        0,
+        180,
+        0
+      ],
+      "rotationDeg": [
+        0,
+        0,
+        0
+      ],
+      "fov": 45,
+      "easing": "agency-snap"
+    },
+    {
+      "timeSec": 2.5,
+      "frame": 75,
+      "position": [
+        -480,
+        -30,
+        -600
+      ],
+      "target": [
+        -480,
+        -30,
+        120
+      ],
+      "rotationDeg": [
+        3,
+        -10,
+        0
+      ],
+      "fov": 42,
+      "easing": "agency-snap"
+    },
+    {
+      "timeSec": 5,
+      "frame": 150,
+      "position": [
+        480,
+        -30,
+        -600
+      ],
+      "target": [
+        480,
+        -30,
+        120
+      ],
+      "rotationDeg": [
+        2,
+        8,
+        0
+      ],
+      "fov": 42,
+      "easing": "agency-snap"
+    },
+    {
+      "timeSec": 8,
+      "frame": 240,
+      "position": [
+        0,
+        -50,
+        -1500
+      ],
+      "target": [
+        0,
+        -50,
+        150
+      ],
+      "rotationDeg": [
+        0,
+        0,
+        0
+      ],
+      "fov": 52,
+      "easing": "smooth-drift"
+    }
+  ]
+}

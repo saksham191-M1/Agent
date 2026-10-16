@@ -1,0 +1,53 @@
+{
+  "name": "LinearApp",
+  "domain": "linear.app",
+  "tagline": "The issue tracking tool you will enjoy using.",
+  "description": "Purpose-built for modern software teams to streamline issues, projects, and roadmaps.",
+  "products": [
+    "Linear Cycles",
+    "Project Roadmaps",
+    "Insights"
+  ],
+  "logo": {
+    "src": "jobs/test-promo-001/assets/logo.png",
+    "text": "LinearApp",
+    "alt": "Linear logo",
+    "source": "https://linear.app"
+  },
+  "colors": {
+    "accent": "#5E6AD2",
+    "accentLight": "#8B94E5",
+    "background": "#08090C",
+    "background2": "#12141A",
+    "text": "#F7F8F8",
+    "muted": "#8A8F98",
+    "surface": "#12141A",
+    "surfaceText": "#F7F8F8",
+    "surfaceMuted": "#62666D"
+  },
+  "fonts": {
+    "display": {
+      "family": "Inter",
+      "source": "Google Fonts"
+    },
+    "body": {
+      "family": "Inter",
+      "source": "Google Fonts"
+    }
+  },
+  "imagery": [],
+  "claims": [
+    {
+      "id": "speed",
+      "label": "Speed",
+      "value": "Instant",
+      "sourceUrl": "https://linear.app"
+    },
+    {
+      "id": "sync",
+      "label": "Real-time Sync",
+      "value": "50ms",
+      "sourceUrl": "https://linear.app"
+    }
+  ]
+}

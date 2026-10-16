@@ -1,0 +1,43 @@
+{
+  "shots": [
+    {
+      "n": 1,
+      "t0": 0,
+      "t1": 2,
+      "role": "hook",
+      "source": "motion-graphic",
+      "visual": "hero-type",
+      "headline": "ShopMetrics",
+      "subline": "Intelligent automation for modern teams.",
+      "onScreenText": "Next generation workflow automation",
+      "transitionOut": "fade",
+      "camera": null
+    },
+    {
+      "n": 2,
+      "t0": 2,
+      "t1": 7,
+      "role": "feature",
+      "source": "screen-demo",
+      "visual": "browser",
+      "headline": "Unified Telemetry and Insights",
+      "subline": "Real-time metrics with autonomous agent supervision.",
+      "onScreenText": "High throughput data stream",
+      "transitionOut": "slide",
+      "camera": null
+    },
+    {
+      "n": 3,
+      "t0": 7,
+      "t1": 10,
+      "role": "cta",
+      "source": "motion-graphic",
+      "visual": "cta",
+      "headline": "Build Faster Today",
+      "subline": "Start free with zero credit card.",
+      "onScreenText": "Experience the modern engine",
+      "transitionOut": "fade",
+      "camera": null
+    }
+  ]
+}

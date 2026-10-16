@@ -1,0 +1,19 @@
+{
+  "shots": [
+    {
+      "n": 1,
+      "t0": 0,
+      "t1": 10,
+      "role": "hook",
+      "source": "motion-graphic",
+      "visual": "hero-type",
+      "transitionOut": "none",
+      "camera": null,
+      "headline": "Gemini Agent: The Autonomous Multimodal AI Agent",
+      "subline": "Reason across code, visuals, and tools with autonomous execution and native multimodal",
+      "onScreenText": "The Autonomous Multimodal AI Agent",
+      "dialogue": "The Autonomous Multimodal AI Agent",
+      "sfx": []
+    }
+  ]
+}

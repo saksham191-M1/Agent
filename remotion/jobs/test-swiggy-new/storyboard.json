@@ -1,0 +1,43 @@
+{
+  "product_name": "Swiggy",
+  "matched_opus_category": "MOTION",
+  "selected_template": "Problem-Agitate-Solution (UI Showcase)",
+  "scenes": [
+    {
+      "scene_id": 1,
+      "duration_seconds": 4,
+      "voiceover": "It's 9 PM, you're utterly exhausted, the fridge is empty, and cooking feels impossible.",
+      "veo_prompt": "Cinematic close-up of an exhausted young urban professional staring into an empty refrigerator illuminated by cold blue light, rapid kinetic cut to heavy rain and gridlock traffic outside, moody hyper-realistic commercial lighting, 35mm lens.",
+      "visual_fx": "fast_zoom",
+      "kinetic_text": "EXHAUSTED",
+      "requires_ui_image": false
+    },
+    {
+      "scene_id": 2,
+      "duration_seconds": 5,
+      "voiceover": "Enter Swiggy. Thousands of top-rated neighborhood restaurants and cravings unlocked in seconds.",
+      "veo_prompt": "The uploaded Swiggy food menu UI floating seamlessly on a curved 3D glass card with refractive edges, glowing warm orange rim light, smooth GSAP-inspired camera push-in and subtle levitation dynamics, ultra-clean commercial aesthetic, 8k render.",
+      "visual_fx": "glass_ui",
+      "kinetic_text": "SWIGGY IT",
+      "requires_ui_image": true
+    },
+    {
+      "scene_id": 3,
+      "duration_seconds": 5,
+      "voiceover": "One tap checkout, live real-time GPS tracking, and steaming hot food straight to your door.",
+      "veo_prompt": "High-angle kinetic tracking shot moving across the uploaded Swiggy live delivery map interface, showing interactive GPS pulse animations, 3D floating delivery status cards with micro-interactions, silky smooth parallax motion, crisp high-tech UI finish.",
+      "visual_fx": "parallax_tilt",
+      "kinetic_text": "LIVE TRACKING",
+      "requires_ui_image": true
+    },
+    {
+      "scene_id": 4,
+      "duration_seconds": 4,
+      "voiceover": "Why stay hungry? Download Swiggy and get your favorite meal delivered right now.",
+      "veo_prompt": "Fast kinetic burst of warm studio lighting resolving smoothly into the iconic Swiggy orange logo centered on a dark obsidian background, stylized delivery icon swooshing across frame leaving an orange light trail, high production value outro.",
+      "visual_fx": "logo_resolve",
+      "kinetic_text": "ORDER NOW",
+      "requires_ui_image": false
+    }
+  ]
+}

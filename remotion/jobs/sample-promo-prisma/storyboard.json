@@ -1,0 +1,19 @@
+{
+  "shots": [
+    {
+      "n": 1,
+      "t0": 0,
+      "t1": 20,
+      "role": "hook",
+      "source": "motion-graphic",
+      "visual": "hero-type",
+      "transitionOut": "none",
+      "camera": null,
+      "headline": "Prisma: Next-Gen ORM and Data Platform",
+      "subline": "Type-safe database queries and real-time data flows",
+      "onScreenText": "Build data apps with confidence.",
+      "dialogue": "Build data apps with confidence.",
+      "sfx": []
+    }
+  ]
+}

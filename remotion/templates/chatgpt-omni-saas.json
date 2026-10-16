@@ -1,0 +1,53 @@
+{
+  "$schema": "remotion-saas-skills",
+  "source": "remotion-dev",
+  "brandName": "ChatGPT",
+  "appName": "ChatGPT Pro",
+  "accentColor": "#10A37F",
+  "domain": "chatgpt.com",
+  "tagline": "Omni-Modal Intelligence for Modern Teams",
+  "durationSec": 10,
+  "fps": 30,
+  "skills": {
+    "charts": true,
+    "typography": true,
+    "messaging": true
+  },
+  "typography": {
+    "words": ["Reason.", "Code.", "Autonomous."],
+    "subtext": "Next generation omni-modal intelligence"
+  },
+  "charts": {
+    "chartType": "area",
+    "title": "Neural Token Throughput",
+    "data": [
+      {"label": "10k", "value": 180},
+      {"label": "50k", "value": 420},
+      {"label": "100k", "value": 850},
+      {"label": "500k", "value": 1600},
+      {"label": "1M", "value": 3100}
+    ]
+  },
+  "messaging": {
+    "messages": [
+      {
+        "id": "m1",
+        "sender": "user",
+        "text": "Refactor distributed queue and optimize P99 latency.",
+        "time": "10:24 AM"
+      },
+      {
+        "id": "m2",
+        "sender": "agent",
+        "text": "Optimizing memory pool allocation across compute clusters.",
+        "time": "10:24 AM"
+      },
+      {
+        "id": "m3",
+        "sender": "agent",
+        "text": "Latency optimized: P99 reduced by 58% across all regions.",
+        "time": "10:25 AM"
+      }
+    ]
+  }
+}

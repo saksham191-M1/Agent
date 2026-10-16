@@ -1,0 +1,479 @@
+{
+  "brand": "test-brand-002",
+  "format": "9:16",
+  "fps": 30,
+  "durationSec": 20,
+  "bpm": 116,
+  "scenes": [
+    {
+      "id": "A1",
+      "start": 0,
+      "duration": 2.4,
+      "layout": "hero-type",
+      "headline": "Clarity, in motion.",
+      "subline": "One calm surface for the work ahead.",
+      "caption": "Clarity, in motion.",
+      "visual": {
+        "orbLabel": "A",
+        "kicker": "Aster workspace"
+      },
+      "motion": {
+        "enter": "type-slam",
+        "idle": "orb-orbit",
+        "exit": "push-through"
+      },
+      "vo": "Bring clarity to the work ahead.",
+      "sfx": [
+        {
+          "t": 0.05,
+          "type": "logo-sting",
+          "gain": 0.35
+        },
+        {
+          "t": 0.45,
+          "type": "pop",
+          "gain": 0.22
+        }
+      ],
+      "transitionOut": "blur-right",
+      "captionWords": [
+        {
+          "word": "Bring",
+          "start": 8,
+          "end": 15.32
+        },
+        {
+          "word": "clarity",
+          "start": 17.39,
+          "end": 33.44
+        },
+        {
+          "word": "to",
+          "start": 35.87,
+          "end": 38.3
+        },
+        {
+          "word": "the",
+          "start": 40.4,
+          "end": 42.47
+        },
+        {
+          "word": "work",
+          "start": 43.52,
+          "end": 49.1
+        },
+        {
+          "word": "ahead.",
+          "start": 50.48,
+          "end": 70.7
+        }
+      ]
+    },
+    {
+      "id": "A2",
+      "start": 2.4,
+      "duration": 4.4,
+      "layout": "list",
+      "headline": "Every thread, visible.",
+      "subline": "Turn scattered updates into a shared rhythm.",
+      "caption": "Every thread, visible.",
+      "visual": {
+        "items": [
+          {
+            "label": "Brief",
+            "detail": "Aligned",
+            "icon": "B"
+          },
+          {
+            "label": "Signal",
+            "detail": "Sorted",
+            "icon": "S"
+          },
+          {
+            "label": "Next",
+            "detail": "Moving",
+            "icon": "N"
+          }
+        ]
+      },
+      "motion": {
+        "enter": "card-fan",
+        "idle": "slow-push",
+        "exit": "whip-left"
+      },
+      "vo": "See every thread, then move the next one forward.",
+      "sfx": [
+        {
+          "t": 0.02,
+          "type": "swipe",
+          "gain": 0.26
+        },
+        {
+          "t": 0.7,
+          "type": "tick",
+          "gain": 0.18
+        },
+        {
+          "t": 2.4,
+          "type": "click",
+          "gain": 0.24
+        }
+      ],
+      "transitionOut": "blur-left",
+      "captionWords": [
+        {
+          "word": "See",
+          "start": 8,
+          "end": 15.65
+        },
+        {
+          "word": "every",
+          "start": 17.75,
+          "end": 25.4
+        },
+        {
+          "word": "thread,",
+          "start": 26.81,
+          "end": 40.73
+        },
+        {
+          "word": "then",
+          "start": 48.05,
+          "end": 56.06
+        },
+        {
+          "word": "move",
+          "start": 58.49,
+          "end": 64.76
+        },
+        {
+          "word": "the",
+          "start": 65.81,
+          "end": 67.91
+        },
+        {
+          "word": "next",
+          "start": 69.29,
+          "end": 75.56
+        },
+        {
+          "word": "one",
+          "start": 77.66,
+          "end": 82.55
+        },
+        {
+          "word": "forward.",
+          "start": 83.93,
+          "end": 105.53
+        }
+      ]
+    },
+    {
+      "id": "A3",
+      "start": 6.8,
+      "duration": 3.4,
+      "layout": "phone",
+      "headline": "The signal stays close.",
+      "subline": "A focused view for decisions on the move.",
+      "caption": "The signal stays close.",
+      "visual": {
+        "greeting": "Good morning",
+        "prompt": "What needs your focus?",
+        "search": "Search the workspace",
+        "items": [
+          {
+            "label": "Briefs",
+            "icon": "B"
+          },
+          {
+            "label": "Signals",
+            "icon": "S"
+          },
+          {
+            "label": "Notes",
+            "icon": "N"
+          },
+          {
+            "label": "Focus",
+            "icon": "F"
+          }
+        ]
+      },
+      "motion": {
+        "enter": "device-orbit",
+        "idle": "parallax",
+        "exit": "whip-right"
+      },
+      "vo": "Keep the signal close, wherever the day takes you.",
+      "sfx": [
+        {
+          "t": 0.02,
+          "type": "swipe",
+          "gain": 0.26
+        },
+        {
+          "t": 0.4,
+          "type": "pop2",
+          "gain": 0.2
+        }
+      ],
+      "transitionOut": "blur-right",
+      "captionWords": [
+        {
+          "word": "Keep",
+          "start": 8,
+          "end": 14.96
+        },
+        {
+          "word": "the",
+          "start": 16.37,
+          "end": 18.8
+        },
+        {
+          "word": "signal",
+          "start": 20.54,
+          "end": 30.29
+        },
+        {
+          "word": "close,",
+          "start": 32.39,
+          "end": 45.62
+        },
+        {
+          "word": "wherever",
+          "start": 46.31,
+          "end": 56.42
+        },
+        {
+          "word": "the",
+          "start": 58.16,
+          "end": 60.23
+        },
+        {
+          "word": "day",
+          "start": 61.64,
+          "end": 66.17
+        },
+        {
+          "word": "takes",
+          "start": 67.91,
+          "end": 76.28
+        },
+        {
+          "word": "you.",
+          "start": 78.02,
+          "end": 92.99
+        }
+      ]
+    },
+    {
+      "id": "A4",
+      "start": 10.2,
+      "duration": 5,
+      "layout": "big-number",
+      "headline": "Three steps to clear.",
+      "subline": "See it. Shape it. Send it forward.",
+      "caption": "See it. Shape it. Send it forward.",
+      "visual": {
+        "eyebrow": "A clearer working rhythm",
+        "label": "ASTER FLOW",
+        "stats": [
+          {
+            "value": 3,
+            "suffix": "",
+            "label": "steps to a handoff"
+          },
+          {
+            "value": 1,
+            "suffix": "×",
+            "label": "shared source of truth"
+          },
+          {
+            "value": 0,
+            "suffix": "",
+            "label": "lost threads"
+          }
+        ],
+        "progress": 92,
+        "detail": "A calmer path from signal to decision."
+      },
+      "motion": {
+        "enter": "counter-slam",
+        "idle": "ring-pulse",
+        "exit": "fade-slide"
+      },
+      "vo": "See it. Shape it. Send it forward.",
+      "sfx": [
+        {
+          "t": 0.1,
+          "type": "thud",
+          "gain": 0.24
+        },
+        {
+          "t": 0.45,
+          "type": "tick",
+          "gain": 0.15
+        },
+        {
+          "t": 0.8,
+          "type": "tick",
+          "gain": 0.15
+        },
+        {
+          "t": 1.15,
+          "type": "riser",
+          "gain": 0.2
+        }
+      ],
+      "transitionOut": "blur-left",
+      "captionWords": [
+        {
+          "word": "See",
+          "start": 8,
+          "end": 15.65
+        },
+        {
+          "word": "it.",
+          "start": 17.39,
+          "end": 24.02
+        },
+        {
+          "word": "Shape",
+          "start": 32.39,
+          "end": 42.14
+        },
+        {
+          "word": "it.",
+          "start": 43.52,
+          "end": 49.1
+        },
+        {
+          "word": "Send",
+          "start": 52.94,
+          "end": 60.59
+        },
+        {
+          "word": "it",
+          "start": 62.33,
+          "end": 64.43
+        },
+        {
+          "word": "forward.",
+          "start": 66.17,
+          "end": 88.82
+        }
+      ]
+    },
+    {
+      "id": "A5",
+      "start": 15.2,
+      "duration": 4.8,
+      "layout": "cta",
+      "headline": "Make the next move.",
+      "subline": "Aster keeps the work moving.",
+      "caption": "Make the next move.",
+      "visual": {
+        "button": "Open Aster",
+        "domain": "aster.example"
+      },
+      "motion": {
+        "enter": "cta-slam",
+        "idle": "hold",
+        "exit": "fade"
+      },
+      "vo": "Open Aster. Make the next move.",
+      "sfx": [
+        {
+          "t": 0.02,
+          "type": "swipe",
+          "gain": 0.28
+        },
+        {
+          "t": 1.2,
+          "type": "click",
+          "gain": 0.36
+        },
+        {
+          "t": 1.34,
+          "type": "success",
+          "gain": 0.3
+        },
+        {
+          "t": 2,
+          "type": "logo-sting",
+          "gain": 0.3
+        }
+      ],
+      "transitionOut": "none",
+      "captionWords": [
+        {
+          "word": "Open",
+          "start": 8,
+          "end": 17.06
+        },
+        {
+          "word": "Aster.",
+          "start": 19.16,
+          "end": 35.18
+        },
+        {
+          "word": "Make",
+          "start": 38.66,
+          "end": 45.62
+        },
+        {
+          "word": "the",
+          "start": 46.67,
+          "end": 48.74
+        },
+        {
+          "word": "next",
+          "start": 49.79,
+          "end": 56.42
+        },
+        {
+          "word": "move.",
+          "start": 58.49,
+          "end": 74.87
+        }
+      ]
+    }
+  ],
+  "audio": {
+    "assetsRoot": "jobs/test-brand-002/assets",
+    "voice": {
+      "provider": "ElevenLabs",
+      "voiceId": "EXAVITQu4vr4xnSDxMaL",
+      "model": "eleven_multilingual_v2",
+      "clips": {
+        "A1": "audio/vo-a1.mp3",
+        "A2": "audio/vo-a2.mp3",
+        "A3": "audio/vo-a3.mp3",
+        "A4": "audio/vo-a4.mp3",
+        "A5": "audio/vo-a5.mp3"
+      }
+    },
+    "music": {
+      "file": "audio/music-bed.mp3",
+      "mood": "cool kinetic electronic",
+      "volume": 0.16
+    },
+    "room": {
+      "file": "audio/room-tone.wav",
+      "volume": 0.14
+    },
+    "sfxFiles": {
+      "logo-sting": "audio/logo-sting.wav",
+      "pop": "audio/pop.wav",
+      "pop2": "audio/pop2.wav",
+      "swipe": "audio/swipe.wav",
+      "tick": "audio/tick.wav",
+      "click": "audio/click.wav",
+      "riser": "audio/riser.wav",
+      "thud": "audio/thud.wav",
+      "success": "audio/success.wav",
+      "whoosh": "audio/whoosh.wav"
+    },
+    "duck": 7
+  }
+}

@@ -1,0 +1,111 @@
+{
+  "brandId": "sample-promo-resend",
+  "worldBounds": {
+    "width": 1920,
+    "height": 1080,
+    "depth": 2000
+  },
+  "nodes": [
+    {
+      "type": "interactive_input",
+      "id": "linear-prompt",
+      "placeholder": "Search issues, cycles, and roadmaps...",
+      "typedValue": "Fix render bottleneck across 128 BPM mesh",
+      "cursorPosition": 42,
+      "buttonLabel": "Create Issue",
+      "position3D": [
+        0,
+        180,
+        0
+      ]
+    },
+    {
+      "type": "pill_tag",
+      "id": "pill-cycle",
+      "text": "Cycle 42 · In Progress",
+      "variant": "glass",
+      "accent": "#5E6AD2",
+      "position3D": [
+        -320,
+        270,
+        40
+      ]
+    },
+    {
+      "type": "pill_tag",
+      "id": "pill-speed",
+      "text": "Real-time Sync: 50ms",
+      "variant": "solid",
+      "accent": "#8B94E5",
+      "position3D": [
+        320,
+        270,
+        40
+      ]
+    },
+    {
+      "type": "metric_card",
+      "id": "metric-velocity",
+      "label": "Team Velocity",
+      "value": "142 pts",
+      "delta": "+34.2%",
+      "chartPoints": [
+        20,
+        35,
+        52,
+        78,
+        110,
+        142
+      ],
+      "accentColor": "#5E6AD2",
+      "position3D": [
+        -480,
+        -30,
+        120
+      ]
+    },
+    {
+      "type": "asset_card",
+      "id": "asset-linear",
+      "assetUrl": "jobs/sample-promo-resend/assets/logo.png",
+      "scaleMode": "contain",
+      "title": "Continuous 3D Parallax",
+      "subtitle": "Hardware-accelerated issue workflow",
+      "position3D": [
+        480,
+        -30,
+        120
+      ]
+    },
+    {
+      "type": "bento_grid",
+      "id": "bento-features",
+      "columns": 3,
+      "cards": [
+        {
+          "id": "b1",
+          "title": "Zero Latency",
+          "subtitle": "Optimistic UI updates",
+          "accent": "#5E6AD2"
+        },
+        {
+          "id": "b2",
+          "title": "85% Bezier Curves",
+          "subtitle": "Snappy muscle feedback",
+          "accent": "#8B94E5"
+        },
+        {
+          "id": "b3",
+          "title": "Keyboard First",
+          "subtitle": "Pure flow state",
+          "accent": "#707CE8"
+        }
+      ],
+      "position3D": [
+        0,
+        -290,
+        260
+      ]
+    }
+  ]
+}

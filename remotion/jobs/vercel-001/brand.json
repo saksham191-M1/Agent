@@ -1,0 +1,60 @@
+{
+  "name": "Vercel",
+  "domain": "vercel.com",
+  "tagline": "Develop. Preview. Ship.",
+  "description": "The platform for frontend developers, providing the speed and reliability innovators need to create at the moment of inspiration.",
+  "products": [
+    "Next.js App Hosting",
+    "Edge Network",
+    "Preview Deployments",
+    "Serverless Functions"
+  ],
+  "logo": {
+    "src": "jobs/vercel-001/assets/logo.png",
+    "text": "▲ Vercel",
+    "alt": "Vercel Logo",
+    "source": "https://vercel.com"
+  },
+  "colors": {
+    "accent": "#0070F3",
+    "accentLight": "#3291FF",
+    "background": "#000000",
+    "background2": "#0A0A0A",
+    "surface": "#111111",
+    "surfaceText": "#EDEDED",
+    "text": "#EDEDED",
+    "muted": "#888888",
+    "surfaceMuted": "#666666"
+  },
+  "fonts": {
+    "display": {
+      "family": "Inter",
+      "source": "Google Fonts"
+    },
+    "body": {
+      "family": "Inter",
+      "source": "Google Fonts"
+    }
+  },
+  "imagery": [],
+  "claims": [
+    {
+      "id": "instant-deploy",
+      "label": "Deploy Speed",
+      "value": "Instant",
+      "sourceUrl": "https://vercel.com"
+    },
+    {
+      "id": "edge-latency",
+      "label": "Global Edge Latency",
+      "value": "35ms",
+      "sourceUrl": "https://vercel.com"
+    },
+    {
+      "id": "preview-feedback",
+      "label": "Preview URLs",
+      "value": "Automatic",
+      "sourceUrl": "https://vercel.com"
+    }
+  ]
+}

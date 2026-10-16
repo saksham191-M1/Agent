@@ -1,0 +1,13 @@
+{
+  "layouts": [
+    {"id":"hero-type","rating":"A","use":"Opening promise or type-led hook"},
+    {"id":"phone","rating":"A","use":"Mobile product demonstration"},
+    {"id":"browser","rating":"A","use":"Dense UI choreography"},
+    {"id":"photo-overlay","rating":"B","use":"Real imagery with legible overlay"},
+    {"id":"big-number","rating":"A","use":"Verified proof or animated data"},
+    {"id":"split","rating":"B","use":"Two-part comparison or before/after"},
+    {"id":"list","rating":"A","use":"Scannable feature progression"},
+    {"id":"cta","rating":"A","use":"Final action and brand lockup"}
+  ],
+  "motion": ["spring-stagger","push-through","card-fan","counter-slam","exploded-ui","cta-slam"]
+}

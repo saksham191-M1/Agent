@@ -1,0 +1,17 @@
+{
+  "shots": [
+    {
+      "n": 1,
+      "t0": 0,
+      "t1": 12,
+      "role": "hook",
+      "source": "motion-graphic",
+      "visual": "hero-type",
+      "headline": "Anthropic: Think deeper. Think faster.",
+      "subline": "Our smartest, fastest model yet with multimodal document intelligence and flagship reasoning.",
+      "onScreenText": "Our smartest, fastest model yet",
+      "transitionOut": "fade",
+      "camera": null
+    }
+  ]
+}

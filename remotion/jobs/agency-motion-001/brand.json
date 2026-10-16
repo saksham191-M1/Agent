@@ -1,0 +1,33 @@
+{
+  "name": "Pulse AI",
+  "domain": "pulse.ai",
+  "tagline": "Autonomous agency-tier motion intelligence.",
+  "description": "Continuous 3D spatial motion engine for enterprise SaaS.",
+  "products": ["Spatial Canvas", "Motion Velocity", "Foley Engine"],
+  "logo": {
+    "src": "jobs/agency-motion-001/assets/logo.png",
+    "text": "Pulse AI",
+    "alt": "Pulse AI logo",
+    "source": "https://pulse.ai"
+  },
+  "colors": {
+    "accent": "#00f2fe",
+    "accentLight": "#4facfe",
+    "background": "#070a14",
+    "background2": "#0f172a",
+    "text": "#f8fafc",
+    "muted": "#94a3b8",
+    "surface": "#0f172a",
+    "surfaceText": "#f8fafc",
+    "surfaceMuted": "#64748b"
+  },
+  "fonts": {
+    "display": {"family": "Inter", "source": "Google Fonts"},
+    "body": {"family": "Inter", "source": "Google Fonts"}
+  },
+  "imagery": [],
+  "claims": [
+    {"id": "throughput", "label": "monthly run rate", "value": "$142,500", "sourceUrl": "https://pulse.ai"},
+    {"id": "latency", "label": "render latency", "value": "1.15s", "sourceUrl": "https://pulse.ai"}
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "entry": [
+    "job-entry.tsx",
+    "project-entry.tsx",
+    "scripts/**/*.{ts,mjs}",
+    "engine/index.ts"
+  ],
+  "project": [
+    "engine/**/*.{ts,tsx}",
+    "jobs/**/*.{ts,tsx}"
+  ],
+  "ignore": [
+    "jobs/**/out/**"
+  ],
+  "ignoreDependencies": [
+    "@remotion/three",
+    "@remotion/lottie",
+    "@remotion/noise",
+    "@remotion/motion-blur",
+    "@remotion/shapes",
+    "@remotion/paths",
+    "@remotion/captions",
+    "@remotion/media",
+    "@remotion/google-fonts",
+    "@remotion/cli"
+  ],
+  "ignoreBinaries": [
+    "python"
+  ]
+}

@@ -1,0 +1,219 @@
+{
+  "shots": [
+    {
+      "n": 1,
+      "t0": 0,
+      "t1": 2,
+      "role": "hook",
+      "source": "motion-graphic",
+      "visual": "hero-type",
+      "transitionOut": "blur-right",
+      "camera": null,
+      "headline": "Build proof, not promises.",
+      "subline": "Real projects. Real GitHub work.",
+      "dialogue": "Build proof of work, not just another tutorial.",
+      "sfx": [
+        {
+          "t": 0.04,
+          "type": "logo-sting",
+          "gain": 0.35
+        },
+        {
+          "t": 0.45,
+          "type": "pop",
+          "gain": 0.22
+        }
+      ]
+    },
+    {
+      "n": 2,
+      "t0": 2,
+      "t1": 4.8,
+      "role": "feature",
+      "source": "motion-graphic",
+      "visual": "browser",
+      "transitionOut": "blur-left",
+      "camera": null,
+      "headline": "Start with a real issue.",
+      "subline": "A structured task on a working codebase.",
+      "dialogue": "Start with a real issue and a path to ship it.",
+      "sfx": [
+        {
+          "t": 0.02,
+          "type": "swipe",
+          "gain": 0.26
+        },
+        {
+          "t": 0.5,
+          "type": "tick",
+          "gain": 0.18
+        },
+        {
+          "t": 1.6,
+          "type": "click",
+          "gain": 0.25
+        }
+      ]
+    },
+    {
+      "n": 3,
+      "t0": 4.8,
+      "t1": 7.8,
+      "role": "feature",
+      "source": "motion-graphic",
+      "visual": "list",
+      "transitionOut": "blur-right",
+      "camera": null,
+      "headline": "Four weeks. Four milestones.",
+      "subline": "A clear rhythm from setup to review.",
+      "dialogue": "Four weeks. Four milestones. One stronger portfolio.",
+      "sfx": [
+        {
+          "t": 0.02,
+          "type": "swipe",
+          "gain": 0.26
+        },
+        {
+          "t": 0.45,
+          "type": "pop2",
+          "gain": 0.2
+        },
+        {
+          "t": 1.45,
+          "type": "tick",
+          "gain": 0.16
+        }
+      ]
+    },
+    {
+      "n": 4,
+      "t0": 7.8,
+      "t1": 10.8,
+      "role": "feature",
+      "source": "motion-graphic",
+      "visual": "phone",
+      "transitionOut": "blur-left",
+      "camera": null,
+      "headline": "Work from anywhere.",
+      "subline": "Remote, flexible, built around your schedule.",
+      "dialogue": "Work remotely, keep your schedule flexible, and keep moving.",
+      "sfx": [
+        {
+          "t": 0.02,
+          "type": "swipe",
+          "gain": 0.26
+        },
+        {
+          "t": 0.38,
+          "type": "pop",
+          "gain": 0.2
+        },
+        {
+          "t": 1.1,
+          "type": "click",
+          "gain": 0.22
+        }
+      ]
+    },
+    {
+      "n": 5,
+      "t0": 10.8,
+      "t1": 14,
+      "role": "feature",
+      "source": "motion-graphic",
+      "visual": "big-number",
+      "transitionOut": "blur-right",
+      "camera": null,
+      "headline": "Choose your track.",
+      "subline": "Find the domain that fits your next move.",
+      "dialogue": "Choose from twenty tech domains and find your next move.",
+      "sfx": [
+        {
+          "t": 0.12,
+          "type": "thud",
+          "gain": 0.24
+        },
+        {
+          "t": 0.45,
+          "type": "tick",
+          "gain": 0.15
+        },
+        {
+          "t": 0.8,
+          "type": "tick",
+          "gain": 0.15
+        },
+        {
+          "t": 1.35,
+          "type": "riser",
+          "gain": 0.2
+        }
+      ]
+    },
+    {
+      "n": 6,
+      "t0": 14,
+      "t1": 16.8,
+      "role": "feature",
+      "source": "motion-graphic",
+      "visual": "split",
+      "transitionOut": "blur-left",
+      "camera": null,
+      "headline": "Show the work.",
+      "subline": "Turn contributions into proof recruiters can verify.",
+      "dialogue": "Show the work, then let the proof speak for itself.",
+      "sfx": [
+        {
+          "t": 0.02,
+          "type": "swipe",
+          "gain": 0.28
+        },
+        {
+          "t": 0.42,
+          "type": "pop2",
+          "gain": 0.2
+        },
+        {
+          "t": 1.35,
+          "type": "click",
+          "gain": 0.25
+        }
+      ]
+    },
+    {
+      "n": 7,
+      "t0": 16.8,
+      "t1": 20,
+      "role": "cta",
+      "source": "motion-graphic",
+      "visual": "cta",
+      "transitionOut": "none",
+      "camera": null,
+      "headline": "Build what comes next.",
+      "subline": "Start your SkillMe sprint.",
+      "dialogue": "Apply to SkillMe. Build what recruiters can verify.",
+      "sfx": [
+        {
+          "t": 0.02,
+          "type": "swipe",
+          "gain": 0.28
+        },
+        {
+          "t": 1.1,
+          "type": "click",
+          "gain": 0.36
+        },
+        {
+          "t": 1.25,
+          "type": "success",
+          "gain": 0.3
+        },
+        {
+          "t": 2,
+          "type": "logo-sting",
+          "gain": 0.3
+        }
+      ]
+    }
+  ]
+}

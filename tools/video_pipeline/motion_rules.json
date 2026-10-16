@@ -1,0 +1,114 @@
+{
+  "name": "motion_rules",
+  "version": "1.0",
+  "scope": "global",
+  "notes": [
+    "Product-agnostic. No names, colors, fonts, copy, or song-specific values belong in this file.",
+    "Durations are given in beats and clamped in seconds, so they scale with any tempo. 1 beat = 60 / BPM seconds.",
+    "Any value can be overridden per brand or per run. Rules marked required cannot be overridden.",
+    "Every frame must be a pure function of time: render(t) with no state carried between frames."
+  ],
+
+  "timing": {
+    "unit": "beats",
+    "bpm_source": "measured_from_audio",
+    "downbeat_source": "detected_drop_or_first_strong_onset",
+    "events_placed_on": "beat_map",
+    "snap_motion_to_beat": false
+  },
+
+  "camera": {
+    "required": true,
+    "never_fully_stops": true,
+    "push_scale_per_scene": [1.03, 1.07],
+    "easing": "linear_or_gentle_ease",
+    "reset_between_scenes": false
+  },
+
+  "text_entry": {
+    "method": "mask_line_rise",
+    "per_letter": true,
+    "stagger_beats": 0.15,
+    "stagger_clamp_seconds": [0.03, 0.1],
+    "duration_beats": 1.1,
+    "duration_clamp_seconds": [0.35, 0.7],
+    "easing": "ease_out_cubic",
+    "typing_variant": { "allowed": true, "caret": "gliding", "chars_per_second": [10, 18] },
+    "ban_terminal_punctuation_on_headlines": true
+  },
+
+  "continuous_patterns": {
+    "rotate_continuously": true,
+    "rotate_per_beat_notch": false,
+    "loop_exact_at_final_frame": true,
+    "rule": "pick each ring's angular speed so total rotation over the video is a whole number of pattern periods"
+  },
+
+  "transitions": {
+    "scene_swap": {
+      "type": "carousel_glide",
+      "duration_beats": 1.2,
+      "duration_clamp_seconds": [0.35, 0.8],
+      "easing": "ease_in_out_cubic",
+      "centered_on_boundary": true
+    },
+    "element_swap": { "type": "carousel_glide", "duration_beats": 1.2 },
+    "flood_or_morph": {
+      "allowed": true,
+      "morph_inside_same_camera_transform": true,
+      "swap_flood_circle_for_full_rect_once_covered": true
+    }
+  },
+
+  "color_change": {
+    "type": "fade",
+    "duration_beats": 0.75,
+    "duration_clamp_seconds": [0.25, 0.5]
+  },
+
+  "objects": {
+    "entry": "ease_in",
+    "idle": "slow_sway",
+    "sway_degrees": [1, 3],
+    "sway_period_seconds": [4, 7],
+    "never_appear_instantly": true
+  },
+
+  "counters": {
+    "count_up": true,
+    "easing": "ease_out_cubic",
+    "duration_seconds": [1.5, 3],
+    "read_time_from": "frame_time_not_subframe_time",
+    "format": "compact_units"
+  },
+
+  "ending": {
+    "fold_back_to_opening": true,
+    "last_frame_matches_first": "preferred"
+  },
+
+  "banned": [
+    "beat_snapped_rotation",
+    "pop_in_or_scale_slam",
+    "spring_overshoot_on_text",
+    "white_flash",
+    "crossfade_between_scenes",
+    "hard_cut",
+    "stock_template_layouts",
+    "still_frames_longer_than_0.3s"
+  ],
+
+  "render": {
+    "fps": 60,
+    "motion_blur_subframes": 8,
+    "note_on_subframes": "4 subframes ghost on fast whips",
+    "audio_loudness_lufs": -14
+  },
+
+  "qa": {
+    "scan_single_frame_pops": true,
+    "max_hard_jumps_per_second": "match_reference_video",
+    "max_share_of_still_frames": "match_reference_video",
+    "fail_on_banned_rule_violation": true
+  }
+}

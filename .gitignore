@@ -12,3 +12,10 @@ temp_*.wav
 temp_*.mp3
 .pytest_cache/
 .vscode/
+node_modules/
+**/node_modules/
+**/out/
+jobs/*/out/
+*.mp4
+*.wav
+debug_login.png

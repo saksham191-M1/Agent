@@ -1,0 +1,47 @@
+{
+  "name": "ShopMetrics",
+  "domain": "shopmetrics.io",
+  "tagline": "Intelligent Automation for Modern Teams",
+  "description": "Enterprise-grade SaaS workflow automation platform.",
+  "products": [
+    "Autonomous Workflows",
+    "Dynamic Telemetry",
+    "AI Agent Grid"
+  ],
+  "logo": {
+    "src": "jobs/demo-rendervid-analytics/assets/logo.png",
+    "text": "ShopMetrics",
+    "alt": "ShopMetrics Logo",
+    "source": "https://example.com"
+  },
+  "colors": {
+    "accent": "#0D9488",
+    "accentLight": "#818CF8",
+    "background": "#090D16",
+    "background2": "#111827",
+    "text": "#F9FAFB",
+    "muted": "#9CA3AF",
+    "surface": "#161E2E",
+    "surfaceText": "#F9FAFB",
+    "surfaceMuted": "#6B7280"
+  },
+  "fonts": {
+    "display": {
+      "family": "Inter",
+      "source": "Google Fonts"
+    },
+    "body": {
+      "family": "Inter",
+      "source": "Google Fonts"
+    }
+  },
+  "imagery": [],
+  "claims": [
+    {
+      "id": "claim_perf",
+      "label": "Performance",
+      "value": "Enterprise Grade",
+      "sourceUrl": "https://example.com"
+    }
+  ]
+}

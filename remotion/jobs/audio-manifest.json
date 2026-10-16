@@ -1,0 +1,88 @@
+{
+  "description": "Complete registry of audio files accessible for AI agents, subagents, and automated QA pipelines.",
+  "master_soundtracks": [
+    {
+      "id": "motion_swell_final",
+      "name": "final-audio.wav",
+      "type": "audio/wav",
+      "format": "PCM 16-bit 48kHz stereo",
+      "durationSec": 12.0,
+      "sizeBytes": 2286962,
+      "uri": "file:///c:/Users/hemam/multi lingo/jar/jarvis/remotion-swiggy/jobs/motion-swell-clone/out/final-audio.wav",
+      "artifactUri": "file:///C:/Users/hemam/.gemini/antigravity/brain/3c4eb451-d156-463b-b133-6448310f27b8/motion_swell_final_audio.wav",
+      "description": "1:1 Motion Swell replica master audio with typing clicks, kinetic pop hits, and subtle room tone."
+    },
+    {
+      "id": "gemini_agent_final",
+      "name": "final-audio.wav",
+      "type": "audio/wav",
+      "format": "PCM 16-bit 48kHz stereo",
+      "durationSec": 10.0,
+      "sizeBytes": 1901614,
+      "uri": "file:///c:/Users/hemam/multi lingo/jar/jarvis/remotion-swiggy/jobs/promo-gemini-agent/out/final-audio.wav",
+      "description": "Google Gemini AI Agent 10s launch ad master track with zero music and synchronized tactile click/tick/pop cues."
+    },
+    {
+      "id": "audio_sync_test",
+      "name": "audio-sync-test.wav",
+      "type": "audio/wav",
+      "format": "PCM 16-bit 48kHz stereo",
+      "durationSec": 3.0,
+      "sizeBytes": 577650,
+      "uri": "file:///c:/Users/hemam/multi lingo/jar/jarvis/remotion-swiggy/out/audio-sync-test.wav",
+      "artifactUri": "file:///C:/Users/hemam/.gemini/antigravity/brain/3c4eb451-d156-463b-b133-6448310f27b8/audio_sync_test.wav",
+      "description": "Isolated frame-45 sync benchmark audio. Pure silence for 1.466s followed by instantaneous pop."
+    }
+  ],
+  "sfx_library": [
+    {
+      "id": "click",
+      "name": "click.wav",
+      "sizeBytes": 14478,
+      "uri": "file:///c:/Users/hemam/multi lingo/jar/jarvis/remotion-swiggy/jobs/motion-swell-clone/assets/audio/click.wav",
+      "description": "Sharp tactile keyboard/mouse click for typing and button triggers."
+    },
+    {
+      "id": "pop",
+      "name": "pop.wav",
+      "sizeBytes": 30798,
+      "uri": "file:///c:/Users/hemam/multi lingo/jar/jarvis/remotion-swiggy/jobs/motion-swell-clone/assets/audio/pop.wav",
+      "description": "Crisp UI pop for pill tags, notification badges, and card reveals."
+    },
+    {
+      "id": "tick",
+      "name": "tick.wav",
+      "sizeBytes": 14478,
+      "uri": "file:///c:/Users/hemam/multi lingo/jar/jarvis/remotion-swiggy/jobs/motion-swell-clone/assets/audio/tick.wav",
+      "description": "Subtle UI tick for micro-interactions, toggles, and cursor steps."
+    },
+    {
+      "id": "room_tone",
+      "name": "room-tone.wav",
+      "sizeBytes": 3840078,
+      "uri": "file:///c:/Users/hemam/multi lingo/jar/jarvis/remotion-swiggy/jobs/motion-swell-clone/assets/audio/room-tone.wav",
+      "description": "Natural ambient room air bed preventing digital silence."
+    },
+    {
+      "id": "whoosh",
+      "name": "whoosh.wav",
+      "sizeBytes": 80718,
+      "uri": "file:///c:/Users/hemam/multi lingo/jar/jarvis/remotion-swiggy/jobs/agency-motion-001/assets/audio/whoosh.wav",
+      "description": "High-velocity whip-pan transition whoosh."
+    },
+    {
+      "id": "thud",
+      "name": "thud.wav",
+      "sizeBytes": 38478,
+      "uri": "file:///c:/Users/hemam/multi lingo/jar/jarvis/remotion-swiggy/jobs/agency-motion-001/assets/audio/thud.wav",
+      "description": "Heavy physical slam impact for kinetic spring entrances."
+    },
+    {
+      "id": "logo_sting",
+      "name": "logo-sting.wav",
+      "sizeBytes": 97998,
+      "uri": "file:///c:/Users/hemam/multi lingo/jar/jarvis/remotion-swiggy/jobs/agency-motion-001/assets/audio/logo-sting.wav",
+      "description": "Outro logo reveal acoustic brand accent."
+    }
+  ]
+}

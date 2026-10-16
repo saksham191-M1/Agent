@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>{{SHORT_NAME}} – 15s Problem → Solution Ad</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&display=swap">
+<style>
+:root{--bg:#ece9f4;--fg:#1c1b2e;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#15141f;--fg:#ece9f4}}
+:root[data-theme="dark"]{--bg:#15141f;--fg:#ece9f4}
+*{box-sizing:border-box;margin:0}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{background:var(--bg);color:var(--fg);font-family:'Bricolage Grotesque',system-ui,sans-serif;min-height:100vh;display:flex;flex-direction:column;align-items:center;gap:14px;padding:16px}
+#stage{container-type:inline-size;position:relative;width:min(100%,calc((100vh - 130px) * .5625));aspect-ratio:9/16;border-radius:18px;overflow:hidden;background:#222;isolation:isolate}
+.s{position:absolute;inset:0;opacity:0;transition:opacity .15s;padding:9cqw;display:flex;flex-direction:column;justify-content:center}
+.s.on{opacity:1;z-index:2}
+h1,h2{font-weight:800;line-height:1.02;letter-spacing:-.03em}
+/* scene 1 hook + 2 chaos */
+#s1,#s2{background:#232c48;color:#e8ecff}
+#s1 h1{font-size:13cqw}
+#s1 .sub{margin-top:5cqw;font-size:5cqw;opacity:0;color:#ff8b7e}
+#s1.on .sub{animation:in .4s 1.4s forwards}
+#s1.on h1{animation:in .5s forwards}
+#s2{justify-content:flex-start;padding-top:12cqw}
+#s2 .big{font-size:30cqw;font-weight:800;color:#ff6b5e;letter-spacing:-.05em;line-height:1}
+#s2 .lbl{font-size:5cqw;opacity:.8}
+.chip{position:absolute;left:var(--x);top:var(--y);width:62cqw;background:#fff;color:#20233a;border-radius:3cqw;padding:3cqw 3.6cqw;font-size:4cqw;font-weight:500;box-shadow:0 2cqw 6cqw #0006;transform:rotate(var(--r)) scale(0);animation:pop .35s forwards}
+.chip b{display:block;font-size:3.2cqw;color:#e5483b;margin-bottom:.6cqw}
+@keyframes pop{to{transform:rotate(var(--r)) scale(1)}}
+@keyframes in{from{opacity:0;transform:translateY(3cqw)}to{opacity:1;transform:none}}
+/* scene 3 solution */
+#s3{background:#fff3d3;color:#14213d}
+#s3 h2{font-size:9cqw;margin-bottom:6cqw}
+.card{background:#fff;border-radius:4cqw;padding:5cqw;box-shadow:0 3cqw 10cqw #14213d22;position:relative}
+.top{display:flex;justify-content:space-between;align-items:center;margin-bottom:4cqw}
+.top .n{font-size:11cqw;font-weight:800;letter-spacing:-.04em}
+.top small{display:block;font-size:3.4cqw;opacity:.6}
+.btn{background:#14213d;color:#fff;font:inherit;font-weight:800;font-size:4.2cqw;padding:3cqw 5cqw;border-radius:10cqw;border:0;transition:transform .12s,background .2s}
+.btn.press{transform:scale(.92);background:#2fbf8f}
+.row{display:flex;align-items:center;gap:3cqw;padding:3cqw 0;border-top:1px solid #14213d14;font-size:4cqw}
+.row i{width:5.5cqw;height:5.5cqw;border-radius:50%;border:.6cqw solid #14213d44;flex:none;display:grid;place-items:center;font-style:normal;font-size:3.4cqw;color:#fff;transition:.25s}
+.row span{transition:.25s}
+.row.done i{background:#2fbf8f;border-color:#2fbf8f}
+.row.done i::after{content:"✓"}
+.row.done span{opacity:.35;text-decoration:line-through}
+#cur{position:absolute;left:78%;top:88%;width:7cqw;height:7cqw;z-index:5;transition:all .9s cubic-bezier(.3,.7,.2,1);filter:drop-shadow(0 1cqw 1cqw #0004)}
+/* scene 4 compare */
+#s4{background:#14213d;color:#fff;gap:5cqw}
+#s4 .c{border-radius:4cqw;padding:6cqw;opacity:0}
+#s4 .old{background:#2b3553}
+#s4 .new{background:#2fbf8f;color:#0d2a20}
+#s4 .c small{font-size:4cqw;opacity:.7}
+#s4 .c div{font-size:17cqw;font-weight:800;letter-spacing:-.04em;line-height:1.05}
+#s4.on .old{animation:in .4s .1s forwards}
+#s4.on .new{animation:in .4s 1s forwards}
+#s4 p{font-size:6cqw;font-weight:800;opacity:0;letter-spacing:-.02em}
+#s4.on p{animation:in .4s 1.9s forwards}
+/* scene 5 end */
+#s5{background:#2fbf8f;color:#0d2a20;align-items:center;text-align:center}
+.logo{width:26cqw;height:26cqw;border-radius:7cqw;background:#14213d;display:grid;place-items:center;color:#fff3d3;font-size:16cqw;font-weight:800;margin-bottom:6cqw}
+#s5.on .logo{animation:pop2 .5s forwards}
+@keyframes pop2{from{transform:scale(.3) rotate(-20deg)}to{transform:none}}
+#s5 h2{font-size:12cqw}
+#s5 .cta{margin-top:7cqw;background:#14213d;color:#fff;border-radius:10cqw;padding:3.6cqw 8cqw;font-size:5cqw;font-weight:800}
+#s5 .url{margin-top:4cqw;font-size:4.4cqw;font-weight:500}
+/* overlay */
+#flash{position:absolute;inset:0;background:#fff;opacity:0;z-index:9;pointer-events:none}
+#flash.go{animation:fl .3s}
+@keyframes fl{0%{opacity:.95}100%{opacity:0}}
+#cap{position:absolute;left:6cqw;right:6cqw;bottom:7cqw;z-index:8;text-align:center;font-size:4.6cqw;font-weight:800;color:#fff;background:#000a;padding:2.2cqw 3cqw;border-radius:2.5cqw;opacity:0;transition:opacity .2s}
+#cap.on{opacity:1}
+#bar{position:absolute;left:0;top:0;height:1.2cqw;width:0;background:#fff;z-index:10;opacity:.9}
+#bar.run{animation:bar 15s linear forwards}
+@keyframes bar{to{width:100%}}
+.ctl{display:flex;gap:10px;align-items:center;font-size:14px; opacity:0;}
+@media (prefers-reduced-motion:reduce){.chip,#cur{transition:none}}
+</style>
+</head>
+<body>
+<div id="stage" aria-label="15 second animated ad for {{SHORT_NAME}}">
+  <div id="bar"></div><div id="flash"></div><div id="cap"></div>
+
+  <section class="s" id="s1"><h1>{{HOOK_MAIN}}</h1><div class="sub">{{HOOK_SUB}}</div></section>
+
+  <section class="s" id="s2"><div class="big" id="cnt">0</div><div class="lbl">{{PROBLEM_METRIC}}</div></section>
+
+  <section class="s" id="s3">
+    <h2>Meet {{SHORT_NAME}}.<br>{{SOLUTION_HEADLINE}}</h2>
+    <div class="card">
+      <div class="top"><div><div class="n" id="n2">{{SOLUTION_START_NUM}}</div><small>{{SOLUTION_METRIC}}</small></div><button class="btn" id="go">{{SOLUTION_ACTION}}</button></div>
+      <div class="row"><i></i><span>{{TASK_1}}</span></div>
+      <div class="row"><i></i><span>{{TASK_2}}</span></div>
+      <div class="row"><i></i><span>{{TASK_3}}</span></div>
+      <div class="row"><i></i><span>{{TASK_4}}</span></div>
+      <div class="row"><i></i><span>{{TASK_5}}</span></div>
+      <svg id="cur" viewBox="0 0 24 24"><path d="M4 2l16 9-7 2-3 7z" fill="#fff" stroke="#14213d" stroke-width="1.6" stroke-linejoin="round"/></svg>
+    </div>
+  </section>
+
+  <section class="s" id="s4">
+    <div class="c old"><small>Before: {{BEFORE_TEXT}}</small><div>{{BEFORE_TIME}}</div></div>
+    <div class="c new"><small>After: with {{SHORT_NAME}}</small><div>{{AFTER_TIME}}</div></div>
+    <p>{{TRANSITION_TEXT}}</p>
+  </section>
+
+  <section class="s" id="s5"><div class="logo">{{APP_INITIAL}}</div><h2>{{CTA_HEADLINE}}</h2><div class="cta">Try {{SHORT_NAME}} free</div><div class="url">{{APP_URL}}</div></section>
+</div>
+
+<div class="ctl"><button id="rp">Replay</button><span>15s · 9:16 · Problem → Solution template</span></div>
+
+<script>
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+let T=[],R=0;
+const at=(ms,fn)=>T.push(setTimeout(fn,ms));
+const show=id=>$$('.s').forEach(e=>e.classList.toggle('on',e.id===id));
+const cap=t=>{const c=$('#cap');c.textContent=t;c.classList.toggle('on',!!t)};
+const flash=()=>{const f=$('#flash');f.classList.remove('go');void f.offsetWidth;f.classList.add('go')};
+function count(el,a,b,ms){cancelAnimationFrame(R);const t0=performance.now();(function f(n){const p=Math.min(1,(n-t0)/ms);el.textContent=Math.round(a+(b-a)*p);if(p<1)R=requestAnimationFrame(f)})(t0)}
+const mails=[[{{TASK_1_SUB:js}},{{TASK_1_HEAD:js}}],[{{TASK_2_SUB:js}},{{TASK_2_HEAD:js}}],[{{TASK_3_SUB:js}},{{TASK_3_HEAD:js}}],[{{TASK_4_SUB:js}},{{TASK_4_HEAD:js}}],[{{TASK_5_SUB:js}},{{TASK_5_HEAD:js}}]];
+function play(){
+  T.forEach(clearTimeout);T=[];cancelAnimationFrame(R);
+  $$('.chip').forEach(c=>c.remove());$$('.row').forEach(r=>r.classList.remove('done'));
+  $('#n2').textContent={{SOLUTION_START_NUM:js}};;$('#cnt').textContent='0';
+  const cur=$('#cur');cur.style.left='78%';cur.style.top='88%';$('#go').classList.remove('press');
+  const b=$('#bar');b.classList.remove('run');void b.offsetWidth;b.classList.add('run');
+  show('s1');cap({{CAPTION_1:js}});
+  at(2600,()=>{show('s2');cap({{CAPTION_2:js}});count($('#cnt'),0,parseInt({{SOLUTION_START_NUM:js}}),2600);
+    mails.forEach((m,i)=>at(i*330,()=>{const c=document.createElement('div');c.className='chip';
+      c.style.cssText=`--x:${6+(i%2)*26}cqw;--y:${58+i*4.2}cqw;--r:${(i%3-1)*3}deg`;
+      c.innerHTML=`<b>${m[1]}</b>${m[0]}`;$('#s2').appendChild(c)}))});
+  at(5600,()=>{flash();show('s3');cap(`Meet ${ {{SHORT_NAME:js}} }. One click.`);});
+  at(6300,()=>{cur.style.left='68%';cur.style.top='9%'});
+  at(7300,()=>$('#go').classList.add('press'));
+  at(7500,()=>{$('#go').classList.remove('press');count($('#n2'),parseInt({{SOLUTION_START_NUM:js}}),0,1900);cap(`${ {{SHORT_NAME:js}} } sorts and replies.`);
+    $$('.row').forEach((r,i)=>at(i*380,()=>r.classList.add('done')))});
+  at(9800,()=>{flash();show('s4');cap(`${ {{BEFORE_TIME:js}} } → ${ {{AFTER_TIME:js}} }`);});
+  at(12800,()=>{show('s5');cap('');});
+  at(15000,()=>cap(''));
+}
+window.onload=play;
+</script>
+</body>
+</html>

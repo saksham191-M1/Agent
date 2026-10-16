@@ -1,0 +1,129 @@
+{
+  "brand": "demo-remotion-skills",
+  "format": "16:9",
+  "fps": 30,
+  "durationSec": 10,
+  "bpm": 120,
+  "scenes": [
+    {
+      "id": "scene_hook",
+      "start": 0,
+      "duration": 2,
+      "layout": "hero-type",
+      "headline": "Supaflow",
+      "subline": "Intelligent automation for modern teams.",
+      "caption": "Next generation workflow automation",
+      "visual": {
+        "kicker": "Supaflow",
+        "pulseText": "Instant Acceleration"
+      },
+      "motion": {
+        "enter": "type-slam",
+        "idle": "pulse-orbit",
+        "exit": "push-through"
+      },
+      "vo": "",
+      "sfx": [
+        {
+          "t": 0.1,
+          "type": "pop",
+          "gain": 0.8
+        },
+        {
+          "t": 1.2,
+          "type": "tick",
+          "gain": 0.5
+        }
+      ],
+      "transitionOut": "fade"
+    },
+    {
+      "id": "scene_feature",
+      "start": 2,
+      "duration": 5,
+      "layout": "browser",
+      "headline": "Unified Telemetry and Insights",
+      "subline": "Real-time metrics with autonomous agent supervision.",
+      "caption": "High throughput data stream",
+      "visual": {
+        "kicker": "Live Engine",
+        "pulseText": "Operational Excellence"
+      },
+      "motion": {
+        "enter": "slide-up",
+        "idle": "float",
+        "exit": "zoom-in"
+      },
+      "vo": "",
+      "sfx": [
+        {
+          "t": 0.1,
+          "type": "click",
+          "gain": 0.75
+        },
+        {
+          "t": 1.8,
+          "type": "pop",
+          "gain": 0.8
+        }
+      ],
+      "transitionOut": "slide"
+    },
+    {
+      "id": "scene_cta",
+      "start": 7,
+      "duration": 3,
+      "layout": "cta",
+      "headline": "Build Faster Today",
+      "subline": "Start free with zero credit card.",
+      "caption": "Experience the modern engine",
+      "visual": {
+        "kicker": "Supaflow",
+        "pulseText": "Get Started"
+      },
+      "motion": {
+        "enter": "scale-up",
+        "idle": "pulse",
+        "exit": "fade"
+      },
+      "vo": "",
+      "sfx": [
+        {
+          "t": 0.2,
+          "type": "pop",
+          "gain": 0.85
+        },
+        {
+          "t": 1.5,
+          "type": "logo-sting",
+          "gain": 0.7
+        }
+      ],
+      "transitionOut": "fade"
+    }
+  ],
+  "audio": {
+    "assetsRoot": "jobs/demo-remotion-skills/assets",
+    "voice": {
+      "provider": "elevenlabs",
+      "voiceId": "none",
+      "model": "none",
+      "clips": {}
+    },
+    "music": {
+      "file": "",
+      "mood": "none",
+      "volume": 0
+    },
+    "room": {
+      "file": "audio/room-tone.wav",
+      "volume": 0.85
+    },
+    "sfxFiles": {
+      "click": "audio/click.wav",
+      "tick": "audio/tick.wav",
+      "pop": "audio/pop.wav"
+    },
+    "duck": 7
+  }
+}

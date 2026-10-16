@@ -1,0 +1,75 @@
+{
+  "brandId": "motion-swell-clone",
+  "worldBounds": {
+    "width": 1920,
+    "height": 1080,
+    "depth": 1000
+  },
+  "nodes": [
+    {
+      "id": "ui-drop",
+      "beat": "HOOK",
+      "type": "pill_tag",
+      "text": "GPT-5 Flagship model",
+      "icon": "sparkle",
+      "variant": "glass",
+      "accent": "#000000",
+      "position3D": [0, 0, 0]
+    },
+    {
+      "id": "prompt-bar",
+      "beat": "PROMPT",
+      "type": "interactive_input",
+      "placeholder": "Ask anything...",
+      "typedValue": "Our smartest, fastest model yet",
+      "cursorPosition": 31,
+      "buttonLabel": "Generate →",
+      "position3D": [0, 0, 0]
+    },
+    {
+      "id": "flash-text",
+      "beat": "FLASH",
+      "type": "headline",
+      "text1": "Think deeper.",
+      "text2": "Think faster.",
+      "position3D": [0, 0, 0]
+    },
+    {
+      "id": "doc-bento",
+      "beat": "BENTO",
+      "type": "bento_grid",
+      "columns": 3,
+      "gap": 24,
+      "cards": [
+        {
+          "id": "c1",
+          "title": "PDF Intelligence",
+          "subtitle": "Native document parsing across 1,000+ pages with layout awareness.",
+          "metric": "PDF"
+        },
+        {
+          "id": "c2",
+          "title": "Financial Spreadsheets",
+          "subtitle": "Multi-tab formula audit and automated tabular synthesis.",
+          "metric": "XLSX"
+        },
+        {
+          "id": "c3",
+          "title": "Structured Docs",
+          "subtitle": "Rich text extraction with recursive reference retrieval.",
+          "metric": "DOC"
+        }
+      ],
+      "position3D": [0, 0, 0]
+    },
+    {
+      "id": "final-cta",
+      "beat": "OUTRO",
+      "type": "pill_tag",
+      "text": "Available now ↗",
+      "variant": "solid",
+      "accent": "#000000",
+      "position3D": [0, 0, 0]
+    }
+  ]
+}

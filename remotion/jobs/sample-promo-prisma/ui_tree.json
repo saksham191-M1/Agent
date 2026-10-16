@@ -1,0 +1,111 @@
+{
+  "brandId": "sample-promo-prisma",
+  "worldBounds": {
+    "width": 1920,
+    "height": 1080,
+    "depth": 2000
+  },
+  "nodes": [
+    {
+      "type": "interactive_input",
+      "id": "prisma-query",
+      "placeholder": "Query database with type-safety...",
+      "typedValue": "const users = await prisma.user.findMany({ where: { active: true } });",
+      "cursorPosition": 68,
+      "buttonLabel": "Execute",
+      "position3D": [
+        0,
+        110,
+        0
+      ]
+    },
+    {
+      "type": "pill_tag",
+      "id": "pill-orm",
+      "text": "Prisma 6 · Type-Safe",
+      "variant": "glass",
+      "accent": "#16A394",
+      "position3D": [
+        -320,
+        230,
+        40
+      ]
+    },
+    {
+      "type": "pill_tag",
+      "id": "pill-speed",
+      "text": "Query Latency: < 2ms",
+      "variant": "solid",
+      "accent": "#2DD4BF",
+      "position3D": [
+        320,
+        230,
+        40
+      ]
+    },
+    {
+      "type": "metric_card",
+      "id": "metric-queries",
+      "label": "Database Queries",
+      "value": "1.2B /mo",
+      "delta": "100% Type-Safe",
+      "chartPoints": [
+        45,
+        90,
+        150,
+        280,
+        420,
+        590
+      ],
+      "accentColor": "#16A394",
+      "position3D": [
+        -540,
+        -80,
+        80
+      ]
+    },
+    {
+      "type": "asset_card",
+      "id": "asset-accelerate",
+      "assetUrl": "jobs/sample-promo-prisma/assets/logo.png",
+      "scaleMode": "contain",
+      "title": "Prisma Accelerate",
+      "subtitle": "Global connection pooling and edge caching",
+      "position3D": [
+        540,
+        -80,
+        80
+      ]
+    },
+    {
+      "type": "bento_grid",
+      "id": "bento-features",
+      "columns": 3,
+      "cards": [
+        {
+          "id": "b1",
+          "title": "Prisma ORM",
+          "subtitle": "Type-safe query builder",
+          "accent": "#16A394"
+        },
+        {
+          "id": "b2",
+          "title": "Prisma Pulse",
+          "subtitle": "Real-time database change streams",
+          "accent": "#2DD4BF"
+        },
+        {
+          "id": "b3",
+          "title": "Prisma Optimize",
+          "subtitle": "AI SQL insights & query indexing",
+          "accent": "#0D9488"
+        }
+      ],
+      "position3D": [
+        0,
+        -320,
+        140
+      ]
+    }
+  ]
+}

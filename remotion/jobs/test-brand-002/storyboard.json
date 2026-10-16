@@ -1,0 +1,159 @@
+{
+  "shots": [
+    {
+      "n": 1,
+      "t0": 0,
+      "t1": 2.4,
+      "role": "hook",
+      "source": "motion-graphic",
+      "visual": "hero-type",
+      "transitionOut": "blur-right",
+      "camera": null,
+      "headline": "Clarity, in motion.",
+      "subline": "One calm surface for the work ahead.",
+      "onScreenText": "Clarity, in motion.",
+      "dialogue": "Bring clarity to the work ahead.",
+      "sfx": [
+        {
+          "t": 0.05,
+          "type": "logo-sting",
+          "gain": 0.35
+        },
+        {
+          "t": 0.45,
+          "type": "pop",
+          "gain": 0.22
+        }
+      ]
+    },
+    {
+      "n": 2,
+      "t0": 2.4,
+      "t1": 6.800000000000001,
+      "role": "feature",
+      "source": "motion-graphic",
+      "visual": "list",
+      "transitionOut": "blur-left",
+      "camera": null,
+      "headline": "Every thread, visible.",
+      "subline": "Turn scattered updates into a shared rhythm.",
+      "onScreenText": "Every thread, visible.",
+      "dialogue": "See every thread, then move the next one forward.",
+      "sfx": [
+        {
+          "t": 0.02,
+          "type": "swipe",
+          "gain": 0.26
+        },
+        {
+          "t": 0.7,
+          "type": "tick",
+          "gain": 0.18
+        },
+        {
+          "t": 2.4,
+          "type": "click",
+          "gain": 0.24
+        }
+      ]
+    },
+    {
+      "n": 3,
+      "t0": 6.8,
+      "t1": 10.2,
+      "role": "feature",
+      "source": "motion-graphic",
+      "visual": "phone",
+      "transitionOut": "blur-right",
+      "camera": null,
+      "headline": "The signal stays close.",
+      "subline": "A focused view for decisions on the move.",
+      "onScreenText": "The signal stays close.",
+      "dialogue": "Keep the signal close, wherever the day takes you.",
+      "sfx": [
+        {
+          "t": 0.02,
+          "type": "swipe",
+          "gain": 0.26
+        },
+        {
+          "t": 0.4,
+          "type": "pop2",
+          "gain": 0.2
+        }
+      ]
+    },
+    {
+      "n": 4,
+      "t0": 10.2,
+      "t1": 15.2,
+      "role": "feature",
+      "source": "motion-graphic",
+      "visual": "big-number",
+      "transitionOut": "blur-left",
+      "camera": null,
+      "headline": "Three steps to clear.",
+      "subline": "See it. Shape it. Send it forward.",
+      "onScreenText": "See it. Shape it. Send it forward.",
+      "dialogue": "See it. Shape it. Send it forward.",
+      "sfx": [
+        {
+          "t": 0.1,
+          "type": "thud",
+          "gain": 0.24
+        },
+        {
+          "t": 0.45,
+          "type": "tick",
+          "gain": 0.15
+        },
+        {
+          "t": 0.8,
+          "type": "tick",
+          "gain": 0.15
+        },
+        {
+          "t": 1.15,
+          "type": "riser",
+          "gain": 0.2
+        }
+      ]
+    },
+    {
+      "n": 5,
+      "t0": 15.2,
+      "t1": 20,
+      "role": "cta",
+      "source": "motion-graphic",
+      "visual": "cta",
+      "transitionOut": "none",
+      "camera": null,
+      "headline": "Make the next move.",
+      "subline": "Aster keeps the work moving.",
+      "onScreenText": "Make the next move.",
+      "dialogue": "Open Aster. Make the next move.",
+      "sfx": [
+        {
+          "t": 0.02,
+          "type": "swipe",
+          "gain": 0.28
+        },
+        {
+          "t": 1.2,
+          "type": "click",
+          "gain": 0.36
+        },
+        {
+          "t": 1.34,
+          "type": "success",
+          "gain": 0.3
+        },
+        {
+          "t": 2,
+          "type": "logo-sting",
+          "gain": 0.3
+        }
+      ]
+    }
+  ]
+}

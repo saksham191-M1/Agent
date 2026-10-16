@@ -1,0 +1,43 @@
+{
+  "product_name": "Swiggy",
+  "matched_opus_category": "MOTION",
+  "selected_template": "Problem-Agitate-Solution (UI Showcase)",
+  "scenes": [
+    {
+      "scene_id": 1,
+      "duration_seconds": 4,
+      "voiceover": "Empty fridge, zero energy, and hours wasted wondering what to eat after an exhausting day.",
+      "veo_prompt": "Cinematic moody tracking shot of an exhausted professional staring into an empty glowing refrigerator, neon city rain reflected on window, high contrast, fast snap zoom into frustration.",
+      "visual_fx": "fast_zoom",
+      "kinetic_text": "EMPTY?",
+      "requires_ui_image": false
+    },
+    {
+      "scene_id": 2,
+      "duration_seconds": 5,
+      "voiceover": "Enter Swiggy. Trusted by millions to bring top restaurants directly to your fingertips in seconds.",
+      "veo_prompt": "Slick 3D floating glass card displaying the Swiggy feed UI, warm ambient orange backlighting, isometric slow camera push-in with floating interactive restaurant cards and clean kinetic depth.",
+      "visual_fx": "glass_ui",
+      "kinetic_text": "SWIGGY IT",
+      "requires_ui_image": true
+    },
+    {
+      "scene_id": 3,
+      "duration_seconds": 5,
+      "voiceover": "One-tap reordering, real-time GPS tracking, and seamless live updates from kitchen to your door.",
+      "veo_prompt": "Macro dynamic glide across the Swiggy live delivery tracking UI screen, pulsing GPS route line, smooth kinetic wipe transitioning into a delicious steaming meal delivered hot.",
+      "visual_fx": "ui_parallax_track",
+      "kinetic_text": "LIVE TRACKING",
+      "requires_ui_image": true
+    },
+    {
+      "scene_id": 4,
+      "duration_seconds": 4,
+      "voiceover": "Cravings satisfied, effortlessly. Download Swiggy and get your first meal delivered now.",
+      "veo_prompt": "Bold minimalist studio backdrop with signature energetic orange lighting, 3D smartphone smoothly locking into center frame beside bold typography, premium motion design finish.",
+      "visual_fx": "glow_resolve",
+      "kinetic_text": "ORDER NOW",
+      "requires_ui_image": false
+    }
+  ]
+}

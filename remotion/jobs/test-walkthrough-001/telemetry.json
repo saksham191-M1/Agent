@@ -1,0 +1,52 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "viewport": {
+    "width": 1920,
+    "height": 1080,
+    "scaleFactor": 2.0
+  },
+  "events": [
+    {
+      "id": "e1",
+      "type": "click",
+      "timestampSec": 1.5,
+      "selector": "button#create-api-key",
+      "label": "Create API Key",
+      "boundingBox": {
+        "x": 1280,
+        "y": 240,
+        "width": 160,
+        "height": 44
+      }
+    },
+    {
+      "id": "e2",
+      "type": "type",
+      "timestampSec": 4.0,
+      "selector": "input#key-name",
+      "label": "Key Name Field",
+      "boundingBox": {
+        "x": 680,
+        "y": 450,
+        "width": 420,
+        "height": 50
+      },
+      "payload": {
+        "typedText": "production_agent_mesh"
+      }
+    },
+    {
+      "id": "e3",
+      "type": "click",
+      "timestampSec": 7.5,
+      "selector": "button#deploy-key",
+      "label": "Deploy Key Button",
+      "boundingBox": {
+        "x": 1340,
+        "y": 780,
+        "width": 140,
+        "height": 44
+      }
+    }
+  ]
+}

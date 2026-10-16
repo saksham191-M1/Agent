@@ -1,0 +1,53 @@
+{
+  "name": "SupabaseApp",
+  "domain": "supabase.com",
+  "tagline": "Build in a weekend. Scale to millions.",
+  "description": "The open source Firebase alternative with Postgres database, Authentication, and instant APIs.",
+  "products": [
+    "Postgres Database",
+    "Edge Functions",
+    "Realtime Subscriptions"
+  ],
+  "logo": {
+    "src": "jobs/sample-promo-supabase/assets/logo.png",
+    "text": "SupabaseApp",
+    "alt": "Supabase logo",
+    "source": "https://supabase.com"
+  },
+  "colors": {
+    "accent": "#3ECF8E",
+    "accentLight": "#6EE7B7",
+    "background": "#121212",
+    "background2": "#181818",
+    "text": "#EDEDED",
+    "muted": "#A1A1A1",
+    "surface": "#242424",
+    "surfaceText": "#EDEDED",
+    "surfaceMuted": "#707070"
+  },
+  "fonts": {
+    "display": {
+      "family": "Inter",
+      "source": "Google Fonts"
+    },
+    "body": {
+      "family": "Inter",
+      "source": "Google Fonts"
+    }
+  },
+  "imagery": [],
+  "claims": [
+    {
+      "id": "db",
+      "label": "Database",
+      "value": "100% Portable Postgres",
+      "sourceUrl": "https://supabase.com"
+    },
+    {
+      "id": "latency",
+      "label": "Query Speed",
+      "value": "sub-10ms",
+      "sourceUrl": "https://supabase.com"
+    }
+  ]
+}

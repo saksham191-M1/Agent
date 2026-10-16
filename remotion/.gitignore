@@ -1,0 +1,6 @@
+node_modules/
+out/
+jobs/*/out/
+.cache/
+*.mp4
+docs/reports/logs/

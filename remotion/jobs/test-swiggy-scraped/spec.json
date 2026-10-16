@@ -1,0 +1,475 @@
+{
+  "jobId": "test-swiggy-scraped",
+  "brand": "Swiggy",
+  "format": "16:9",
+  "fps": 30,
+  "durationSec": 18,
+  "bpm": 120,
+  "scenes": [
+    {
+      "id": "scene_1",
+      "start": 0,
+      "duration": 4,
+      "layout": "hero-type",
+      "headline": "EMPTY?",
+      "subline": "Empty fridge, zero energy, and hours wasted wondering what to eat after an exhau",
+      "caption": "Cinematic moody tracking shot of an exhausted professional s",
+      "captionWords": [
+        {
+          "word": "Empty",
+          "start": 6,
+          "end": 13
+        },
+        {
+          "word": "fridge,",
+          "start": 13,
+          "end": 20
+        },
+        {
+          "word": "zero",
+          "start": 20,
+          "end": 27
+        },
+        {
+          "word": "energy,",
+          "start": 27,
+          "end": 34
+        },
+        {
+          "word": "and",
+          "start": 34,
+          "end": 41
+        },
+        {
+          "word": "hours",
+          "start": 41,
+          "end": 48
+        },
+        {
+          "word": "wasted",
+          "start": 48,
+          "end": 55
+        },
+        {
+          "word": "wondering",
+          "start": 55,
+          "end": 61
+        },
+        {
+          "word": "what",
+          "start": 61,
+          "end": 68
+        },
+        {
+          "word": "to",
+          "start": 68,
+          "end": 75
+        },
+        {
+          "word": "eat",
+          "start": 75,
+          "end": 82
+        },
+        {
+          "word": "after",
+          "start": 82,
+          "end": 89
+        },
+        {
+          "word": "an",
+          "start": 89,
+          "end": 96
+        },
+        {
+          "word": "exhausting",
+          "start": 96,
+          "end": 103
+        },
+        {
+          "word": "day.",
+          "start": 103,
+          "end": 110
+        }
+      ],
+      "visual": {
+        "kicker": "Swiggy",
+        "pulseText": "fast_zoom"
+      },
+      "motion": {
+        "enter": "slide-up",
+        "idle": "float",
+        "exit": "fade"
+      },
+      "vo": "",
+      "sfx": [
+        {
+          "t": 0.12,
+          "type": "pop",
+          "gain": 0.85
+        },
+        {
+          "t": 2.88,
+          "type": "tick",
+          "gain": 0.6
+        }
+      ],
+      "transitionOut": "fade"
+    },
+    {
+      "id": "scene_2",
+      "start": 4,
+      "duration": 5,
+      "layout": "browser",
+      "headline": "SWIGGY IT",
+      "subline": "Enter Swiggy. Trusted by millions to bring top restaurants directly to your fing",
+      "caption": "Slick 3D floating glass card displaying the Swiggy feed UI, ",
+      "captionWords": [
+        {
+          "word": "Enter",
+          "start": 6,
+          "end": 15
+        },
+        {
+          "word": "Swiggy.",
+          "start": 15,
+          "end": 24
+        },
+        {
+          "word": "Trusted",
+          "start": 24,
+          "end": 33
+        },
+        {
+          "word": "by",
+          "start": 33,
+          "end": 42
+        },
+        {
+          "word": "millions",
+          "start": 42,
+          "end": 51
+        },
+        {
+          "word": "to",
+          "start": 51,
+          "end": 60
+        },
+        {
+          "word": "bring",
+          "start": 60,
+          "end": 69
+        },
+        {
+          "word": "top",
+          "start": 69,
+          "end": 77
+        },
+        {
+          "word": "restaurants",
+          "start": 77,
+          "end": 86
+        },
+        {
+          "word": "directly",
+          "start": 86,
+          "end": 95
+        },
+        {
+          "word": "to",
+          "start": 95,
+          "end": 104
+        },
+        {
+          "word": "your",
+          "start": 104,
+          "end": 113
+        },
+        {
+          "word": "fingertips",
+          "start": 113,
+          "end": 122
+        },
+        {
+          "word": "in",
+          "start": 122,
+          "end": 131
+        },
+        {
+          "word": "seconds.",
+          "start": 131,
+          "end": 140
+        }
+      ],
+      "visual": {
+        "kicker": "Swiggy",
+        "pulseText": "glass_ui"
+      },
+      "motion": {
+        "enter": "slide-up",
+        "idle": "float",
+        "exit": "fade"
+      },
+      "vo": "",
+      "sfx": [
+        {
+          "t": 0.12,
+          "type": "pop",
+          "gain": 0.85
+        },
+        {
+          "t": 0.45,
+          "type": "tick",
+          "gain": 0.55
+        },
+        {
+          "t": 0.65,
+          "type": "tick",
+          "gain": 0.55
+        },
+        {
+          "t": 0.85,
+          "type": "tick",
+          "gain": 0.55
+        },
+        {
+          "t": 3,
+          "type": "click",
+          "gain": 0.7
+        }
+      ],
+      "transitionOut": "fade"
+    },
+    {
+      "id": "scene_3",
+      "start": 9,
+      "duration": 5,
+      "layout": "browser",
+      "headline": "LIVE TRACKING",
+      "subline": "One-tap reordering, real-time GPS tracking, and seamless live updates from kitch",
+      "caption": "Macro dynamic glide across the Swiggy live delivery tracking",
+      "captionWords": [
+        {
+          "word": "One-tap",
+          "start": 6,
+          "end": 16
+        },
+        {
+          "word": "reordering,",
+          "start": 16,
+          "end": 25
+        },
+        {
+          "word": "real-time",
+          "start": 25,
+          "end": 35
+        },
+        {
+          "word": "GPS",
+          "start": 35,
+          "end": 44
+        },
+        {
+          "word": "tracking,",
+          "start": 44,
+          "end": 54
+        },
+        {
+          "word": "and",
+          "start": 54,
+          "end": 63
+        },
+        {
+          "word": "seamless",
+          "start": 63,
+          "end": 73
+        },
+        {
+          "word": "live",
+          "start": 73,
+          "end": 83
+        },
+        {
+          "word": "updates",
+          "start": 83,
+          "end": 92
+        },
+        {
+          "word": "from",
+          "start": 92,
+          "end": 102
+        },
+        {
+          "word": "kitchen",
+          "start": 102,
+          "end": 111
+        },
+        {
+          "word": "to",
+          "start": 111,
+          "end": 121
+        },
+        {
+          "word": "your",
+          "start": 121,
+          "end": 130
+        },
+        {
+          "word": "door.",
+          "start": 130,
+          "end": 140
+        }
+      ],
+      "visual": {
+        "kicker": "Swiggy",
+        "pulseText": "ui_parallax_track"
+      },
+      "motion": {
+        "enter": "slide-up",
+        "idle": "float",
+        "exit": "fade"
+      },
+      "vo": "",
+      "sfx": [
+        {
+          "t": 0.12,
+          "type": "pop",
+          "gain": 0.85
+        },
+        {
+          "t": 2.25,
+          "type": "click",
+          "gain": 0.7
+        },
+        {
+          "t": 4,
+          "type": "tick",
+          "gain": 0.6
+        }
+      ],
+      "transitionOut": "fade"
+    },
+    {
+      "id": "scene_4",
+      "start": 14,
+      "duration": 4,
+      "layout": "cta",
+      "headline": "ORDER NOW",
+      "subline": "Cravings satisfied, effortlessly. Download Swiggy and get your first meal delive",
+      "caption": "Bold minimalist studio backdrop with signature energetic ora",
+      "captionWords": [
+        {
+          "word": "Cravings",
+          "start": 6,
+          "end": 15
+        },
+        {
+          "word": "satisfied,",
+          "start": 15,
+          "end": 23
+        },
+        {
+          "word": "effortlessly.",
+          "start": 23,
+          "end": 32
+        },
+        {
+          "word": "Download",
+          "start": 32,
+          "end": 41
+        },
+        {
+          "word": "Swiggy",
+          "start": 41,
+          "end": 49
+        },
+        {
+          "word": "and",
+          "start": 49,
+          "end": 58
+        },
+        {
+          "word": "get",
+          "start": 58,
+          "end": 67
+        },
+        {
+          "word": "your",
+          "start": 67,
+          "end": 75
+        },
+        {
+          "word": "first",
+          "start": 75,
+          "end": 84
+        },
+        {
+          "word": "meal",
+          "start": 84,
+          "end": 93
+        },
+        {
+          "word": "delivered",
+          "start": 93,
+          "end": 101
+        },
+        {
+          "word": "now.",
+          "start": 101,
+          "end": 110
+        }
+      ],
+      "visual": {
+        "kicker": "Swiggy",
+        "pulseText": "glow_resolve"
+      },
+      "motion": {
+        "enter": "slide-up",
+        "idle": "float",
+        "exit": "fade"
+      },
+      "vo": "",
+      "sfx": [
+        {
+          "t": 0.12,
+          "type": "pop",
+          "gain": 0.85
+        },
+        {
+          "t": 2.2,
+          "type": "pop",
+          "gain": 0.75
+        },
+        {
+          "t": 3.4,
+          "type": "tick",
+          "gain": 0.5
+        }
+      ],
+      "transitionOut": "fade"
+    }
+  ],
+  "audio": {
+    "assetsRoot": "jobs/test-swiggy-scraped/assets",
+    "voice": {
+      "provider": "none",
+      "voiceId": "none",
+      "model": "none",
+      "clips": {}
+    },
+    "music": {
+      "file": "",
+      "mood": "none",
+      "volume": 0
+    },
+    "room": {
+      "file": "audio/room-tone.wav",
+      "volume": 0.85
+    },
+    "sfxFiles": {
+      "click": "audio/click.wav",
+      "tick": "audio/tick.wav",
+      "pop": "audio/pop.wav"
+    },
+    "duck": 18
+  }
+}

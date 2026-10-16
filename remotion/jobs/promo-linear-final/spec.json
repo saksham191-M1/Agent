@@ -1,0 +1,63 @@
+{
+  "brand": "promo-linear-final",
+  "format": "16:9",
+  "fps": 30,
+  "durationSec": 20,
+  "bpm": 120,
+  "scenes": [
+    {
+      "id": "master_spatial_stage",
+      "start": 0,
+      "duration": 20,
+      "layout": "hero-type",
+      "headline": "LinearApp: The issue tracking tool you will enjoy",
+      "subline": "Purpose-built for modern software teams to streamline issues, projects, and roadmaps.",
+      "caption": "The issue tracking tool you will",
+      "visual": {
+        "kicker": "LinearApp",
+        "pulseText": "The issue tracking tool you will enjoy using."
+      },
+      "motion": {
+        "enter": "type-slam",
+        "idle": "pulse-orbit",
+        "exit": "push-through"
+      },
+      "vo": "The issue tracking tool you will",
+      "sfx": [],
+      "transitionOut": "none"
+    }
+  ],
+  "audio": {
+    "assetsRoot": "jobs/promo-linear-final/assets",
+    "voice": {
+      "provider": "ElevenLabs",
+      "voiceId": "EXAVITQu4vr4xnSDxMaL",
+      "model": "eleven_multilingual_v2",
+      "clips": {
+        "master_spatial_stage": "audio/vo-s1.mp3"
+      }
+    },
+    "music": {
+      "file": "audio/music-bed.mp3",
+      "mood": "restrained electronic build",
+      "volume": 1
+    },
+    "room": {
+      "file": "audio/room-tone.wav",
+      "volume": 0.6
+    },
+    "sfxFiles": {
+      "logo-sting": "audio/logo-sting.wav",
+      "pop": "audio/pop.wav",
+      "pop2": "audio/pop2.wav",
+      "swipe": "audio/swipe.wav",
+      "tick": "audio/tick.wav",
+      "click": "audio/click.wav",
+      "riser": "audio/riser.wav",
+      "thud": "audio/thud.wav",
+      "success": "audio/success.wav",
+      "whoosh": "audio/whoosh.wav"
+    },
+    "duck": 7
+  }
+}

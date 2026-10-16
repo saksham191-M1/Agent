@@ -1,0 +1,53 @@
+{
+  "$schema": "remotion-saas-skills",
+  "source": "remotion-dev",
+  "brandName": "Supaflow",
+  "appName": "Supaflow Cloud",
+  "accentColor": "#6366F1",
+  "domain": "supaflow.io",
+  "tagline": "The Modern Data Flow Engine",
+  "durationSec": 10,
+  "fps": 30,
+  "skills": {
+    "charts": true,
+    "typography": true,
+    "messaging": true
+  },
+  "typography": {
+    "words": ["Fast.", "Intelligent.", "Autonomous."],
+    "subtext": "Engineered for high velocity engineering teams"
+  },
+  "charts": {
+    "chartType": "bar",
+    "title": "Monthly Query Volume (M)",
+    "data": [
+      {"label": "Jan", "value": 42},
+      {"label": "Feb", "value": 78},
+      {"label": "Mar", "value": 130},
+      {"label": "Apr", "value": 210},
+      {"label": "May", "value": 380}
+    ]
+  },
+  "messaging": {
+    "messages": [
+      {
+        "id": "m1",
+        "sender": "user",
+        "text": "Optimize cluster distribution across us-east and eu-west.",
+        "time": "10:14 AM"
+      },
+      {
+        "id": "m2",
+        "sender": "agent",
+        "text": "Reallocating compute nodes with zero query interruption.",
+        "time": "10:14 AM"
+      },
+      {
+        "id": "m3",
+        "sender": "agent",
+        "text": "Cluster migration complete. P99 latency dropped by 48%.",
+        "time": "10:15 AM"
+      }
+    ]
+  }
+}

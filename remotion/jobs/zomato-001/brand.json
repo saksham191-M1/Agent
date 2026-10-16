@@ -1,0 +1,46 @@
+{
+  "name": "Zomato",
+  "domain": "zomato.com",
+  "tagline": "Discover the best food & drinks",
+  "description": "Zomato is a restaurant aggregator and food delivery company.",
+  "products": [
+    "Food delivery",
+    "Dining out"
+  ],
+  "logo": {
+    "src": "jobs/zomato-001/assets/logo.png",
+    "text": "Zomato",
+    "alt": "Swiggy wordmark",
+    "source": "https://www.swiggy.com/corporate/wp-content/uploads/unlimited_elements/Swiggy-newsroom-logo.png"
+  },
+  "colors": {
+    "accent": "#E23744",
+    "accentLight": "#F06D76",
+    "background": "#0a1118",
+    "background2": "#111c25",
+    "text": "#f7f8fa",
+    "muted": "#9eacb8",
+    "surface": "#f7f8fa",
+    "surfaceText": "#182530",
+    "surfaceMuted": "#687583"
+  },
+  "fonts": {
+    "display": {
+      "family": "Inter",
+      "source": "Google Fonts"
+    },
+    "body": {
+      "family": "Inter",
+      "source": "Google Fonts"
+    }
+  },
+  "imagery": [],
+  "claims": [
+    {
+      "id": "orders",
+      "label": "delivery in",
+      "value": "minutes",
+      "sourceUrl": "https://zomato.com"
+    }
+  ]
+}

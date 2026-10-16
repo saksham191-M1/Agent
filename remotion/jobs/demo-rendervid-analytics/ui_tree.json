@@ -1,0 +1,73 @@
+{
+  "brandId": "demo-rendervid-analytics",
+  "worldBounds": {
+    "width": 1920,
+    "height": 1080,
+    "depth": 1000
+  },
+  "nodes": [
+    {
+      "id": "rv-pill",
+      "type": "pill_tag",
+      "text": "E-Commerce Intelligence",
+      "variant": "glass",
+      "accent": "#0D9488",
+      "position3D": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "rv-chart",
+      "type": "chart",
+      "chartType": "area",
+      "title": "Gross Merchandise Value",
+      "data": [
+        {
+          "label": "Q1",
+          "value": 240
+        },
+        {
+          "label": "Q2",
+          "value": 480
+        },
+        {
+          "label": "Q3",
+          "value": 850
+        },
+        {
+          "label": "Q4",
+          "value": 1420
+        }
+      ],
+      "accentColor": "#0D9488",
+      "position3D": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "rv-card-kpi",
+      "type": "metric_card",
+      "label": "Annual Run Rate",
+      "value": "$14.2M",
+      "delta": "+128% YoY",
+      "chartPoints": [
+        30,
+        45,
+        60,
+        95,
+        140,
+        190
+      ],
+      "accentColor": "#0D9488",
+      "position3D": [
+        0,
+        0,
+        0
+      ]
+    }
+  ]
+}
