@@ -1,0 +1,100 @@
+{
+  "version": "1.0",
+  "composition": {
+    "width": 1920,
+    "height": 1080,
+    "fps": 24,
+    "duration": 4.5,
+    "backgroundColor": "#0E0E14"
+  },
+  "layers": [
+    {
+      "id": "bg_gradient",
+      "type": "solid",
+      "name": "Gradient Mesh BG",
+      "track": 1,
+      "startTime": 0,
+      "duration": 4.5,
+      "properties": {
+        "gradient": {
+          "type": "radial",
+          "colors": ["#2A1A6B", "#0E0E14"],
+          "position": [960, 540]
+        }
+      },
+      "keyframes": {}
+    },
+    {
+      "id": "text_3d",
+      "type": "text",
+      "name": "3D Title",
+      "track": 2,
+      "startTime": 0.2,
+      "duration": 4.3,
+      "properties": {
+        "text": "{{title}}",
+        "fontFamily": "Inter ExtraBold",
+        "fontSize": 140,
+        "fill": "#FFFFFF",
+        "extrusion": 22,
+        "bevel": true,
+        "lighting": {"type": "spot", "intensity": 1.2, "position": [400, -300, 800]},
+        "material": {"metalness": 0.3, "roughness": 0.4},
+        "position": [960, 540],
+        "align": "center"
+      },
+      "keyframes": {
+        "rotation_y": [
+          {"time": 0.2, "value": -15, "easing": "easeOut"},
+          {"time": 2.0, "value": 0, "easing": "easeOut"}
+        ],
+        "scale": [
+          {"time": 0.2, "value": [90, 90], "easing": "easeOut"},
+          {"time": 1.0, "value": [100, 100], "easing": "easeOut"}
+        ],
+        "opacity": [
+          {"time": 0.2, "value": 0, "easing": "easeOut"},
+          {"time": 0.7, "value": 1, "easing": "easeOut"}
+        ]
+      }
+    },
+    {
+      "id": "camera_orbit",
+      "type": "camera",
+      "name": "Orbit Camera",
+      "track": 3,
+      "startTime": 0,
+      "duration": 4.5,
+      "properties": {
+        "fov": 45,
+        "position": [960, 540, 1100],
+        "target": [960, 540, 0]
+      },
+      "keyframes": {
+        "position_z": [
+          {"time": 0, "value": 1100, "easing": "easeInOut"},
+          {"time": 4.5, "value": 850, "easing": "easeInOut"}
+        ],
+        "rotation_y": [
+          {"time": 0, "value": -8, "easing": "easeInOut"},
+          {"time": 4.5, "value": 6, "easing": "easeInOut"}
+        ]
+      }
+    },
+    {
+      "id": "adjust_glow",
+      "type": "adjustment",
+      "name": "Glow + Vignette",
+      "track": 4,
+      "startTime": 0,
+      "duration": 4.5,
+      "properties": {
+        "effects": [
+          {"type": "glow", "radius": 40, "intensity": 0.6, "color": "{{primary_color}}"},
+          {"type": "vignette", "amount": 0.4}
+        ]
+      },
+      "keyframes": {}
+    }
+  ]
+}

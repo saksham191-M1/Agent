@@ -1,0 +1,98 @@
+{
+  "version": "1.0",
+  "composition": {
+    "width": 1920,
+    "height": 1080,
+    "fps": 24,
+    "duration": 4.0,
+    "backgroundColor": "#0A0A12"
+  },
+  "layers": [
+    {
+      "id": "bg_solid",
+      "type": "solid",
+      "name": "Background Mesh",
+      "track": 1,
+      "startTime": 0,
+      "duration": 4.0,
+      "properties": {
+        "color": "#0A0A12",
+        "gradient": {
+          "type": "mesh",
+          "colors": ["#0A0A12", "#1A1033"],
+          "animated": true
+        }
+      },
+      "keyframes": {}
+    },
+    {
+      "id": "title_main",
+      "type": "text",
+      "name": "Main Title",
+      "track": 2,
+      "startTime": 0.3,
+      "duration": 3.7,
+      "properties": {
+        "text": "{{title}}",
+        "fontFamily": "Inter Bold",
+        "fontSize": 110,
+        "fill": "#FFFFFF",
+        "align": "center",
+        "position": [960, 540],
+        "letterSpacing": -2
+      },
+      "keyframes": {
+        "scale": [
+          {"time": 0.3, "value": [85, 85], "easing": "easeOut"},
+          {"time": 1.1, "value": [100, 100], "easing": "easeOut"}
+        ],
+        "opacity": [
+          {"time": 0.3, "value": 0, "easing": "easeOut"},
+          {"time": 0.8, "value": 1, "easing": "easeOut"}
+        ],
+        "blur": [
+          {"time": 0.3, "value": 12, "easing": "easeOut"},
+          {"time": 1.0, "value": 0, "easing": "easeOut"}
+        ]
+      }
+    },
+    {
+      "id": "camera_main",
+      "type": "camera",
+      "name": "Camera Push-In",
+      "track": 3,
+      "startTime": 0,
+      "duration": 4.0,
+      "properties": {
+        "fov": 50,
+        "position": [960, 540, 1000],
+        "target": [960, 540, 0]
+      },
+      "keyframes": {
+        "position_z": [
+          {"time": 0, "value": 1000, "easing": "easeInOut"},
+          {"time": 4.0, "value": 750, "easing": "easeInOut"}
+        ],
+        "rotation_y": [
+          {"time": 0, "value": -1.5, "easing": "easeInOut"},
+          {"time": 4.0, "value": 0, "easing": "easeInOut"}
+        ]
+      }
+    },
+    {
+      "id": "adjust_vignette",
+      "type": "adjustment",
+      "name": "Vignette + Grade",
+      "track": 4,
+      "startTime": 0,
+      "duration": 4.0,
+      "properties": {
+        "effects": [
+          {"type": "vignette", "amount": 0.35},
+          {"type": "lumetri", "preset": "teal_orange_cinematic"}
+        ]
+      },
+      "keyframes": {}
+    }
+  ]
+}

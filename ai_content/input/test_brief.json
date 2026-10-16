@@ -1,0 +1,11 @@
+{
+  "product": "LinearFlow",
+  "description": "High-velocity issue tracking and project management for software engineering teams.",
+  "target_audience": "developers",
+  "goal": "Drive free trial signups for engineering leaders",
+  "brand_colors": {
+    "primary": "#6366F1",
+    "secondary": "#0A0A12"
+  },
+  "competitors": ["Jira", "Asana"]
+}

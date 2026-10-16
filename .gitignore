@@ -18,4 +18,14 @@ node_modules/
 jobs/*/out/
 *.mp4
 *.wav
+*.png
+*.jpg
+*.jpeg
 debug_login.png
+storage_state.json
+**/storage_state.json
+ai_content/output/
+**/output/renders/
+**/output/audio/
+**/output/temp_ecproj/
+**/temp_ecproj/

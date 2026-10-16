@@ -1,0 +1,97 @@
+{
+  "version": "1.0",
+  "composition": {
+    "width": 1920,
+    "height": 1080,
+    "fps": 24,
+    "duration": 3.5,
+    "backgroundColor": "{{primary_color}}"
+  },
+  "layers": [
+    {
+      "id": "bg_brand",
+      "type": "solid",
+      "name": "Brand Solid",
+      "track": 1,
+      "startTime": 0,
+      "duration": 3.5,
+      "properties": {
+        "color": "{{primary_color}}",
+        "gradient": {"type": "linear", "colors": ["{{primary_color}}", "{{secondary_color}}"], "angle": 135}
+      },
+      "keyframes": {}
+    },
+    {
+      "id": "cta_group",
+      "type": "text",
+      "name": "Logo + CTA",
+      "track": 2,
+      "startTime": 0.2,
+      "duration": 3.3,
+      "properties": {
+        "logo": "{{logo_path}}",
+        "logoSize": 160,
+        "text": "{{title}}",
+        "cta_text": "{{cta_text}}",
+        "cta_style": {"background": "#FFFFFF", "color": "#000000", "padding": [28, 48], "radius": 999},
+        "fontFamily": "Inter Bold",
+        "fontSize": 72,
+        "fill": "#FFFFFF",
+        "position": [960, 540],
+        "align": "center",
+        "gap": 32
+      },
+      "keyframes": {
+        "scale": [
+          {"time": 0.2, "value": [92, 92], "easing": "easeOut"},
+          {"time": 0.6, "value": [104, 104], "easing": "easeOut"},
+          {"time": 0.85, "value": [100, 100], "easing": "easeInOut"}
+        ],
+        "opacity": [
+          {"time": 0.2, "value": 0, "easing": "easeOut"},
+          {"time": 0.5, "value": 1, "easing": "easeOut"}
+        ]
+      }
+    },
+    {
+      "id": "camera_punch",
+      "type": "camera",
+      "name": "Punch Camera",
+      "track": 3,
+      "startTime": 0,
+      "duration": 3.5,
+      "properties": {
+        "fov": 50,
+        "position": [960, 540, 1000],
+        "shake": 2
+      },
+      "keyframes": {
+        "position_z": [
+          {"time": 0.4, "value": 1000, "easing": "easeOut"},
+          {"time": 0.6, "value": 980, "easing": "easeOut"},
+          {"time": 0.85, "value": 1000, "easing": "easeInOut"}
+        ]
+      }
+    },
+    {
+      "id": "particles",
+      "type": "adjustment",
+      "name": "Particle Burst",
+      "track": 4,
+      "startTime": 0.5,
+      "duration": 1.5,
+      "properties": {
+        "effects": [
+          {"type": "particles", "emitter": "center", "count": 80, "speed": 600, "life": 1.2, "color": "#FFFFFF"},
+          {"type": "glow", "radius": 30, "intensity": 0.8}
+        ]
+      },
+      "keyframes": {
+        "opacity": [
+          {"time": 0.5, "value": 1, "easing": "linear"},
+          {"time": 2.0, "value": 0, "easing": "easeOut"}
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+pydantic>=2.0
+python-dotenv
+ffmpeg-python
+google-genai>=0.3.0
+playwright
+httpx
+mcp>=1.0

@@ -1,0 +1,93 @@
+{
+  "version": "1.0",
+  "composition": {
+    "width": 1920,
+    "height": 1080,
+    "fps": 24,
+    "duration": 5.0,
+    "backgroundColor": "#000000"
+  },
+  "layers": [
+    {
+      "id": "veo_footage",
+      "type": "footage",
+      "name": "Veo Raw Clip",
+      "track": 1,
+      "startTime": 0,
+      "duration": 5.0,
+      "properties": {
+        "source": "{{veo_clip_path}}",
+        "scale": [100, 100],
+        "position": [960, 540],
+        "objectFit": "cover"
+      },
+      "keyframes": {
+        "scale": [
+          {"time": 0, "value": [105, 105], "easing": "linear"},
+          {"time": 5.0, "value": [100, 100], "easing": "linear"}
+        ]
+      }
+    },
+    {
+      "id": "lower_third",
+      "type": "text",
+      "name": "Lower Third Title",
+      "track": 2,
+      "startTime": 0.5,
+      "duration": 4.0,
+      "properties": {
+        "text": "{{title}}",
+        "subtitle": "{{subtitle}}",
+        "fontFamily": "Inter SemiBold",
+        "fontSize": 64,
+        "fill": "#FFFFFF",
+        "background": {"color": "#000000", "opacity": 0.45, "padding": 24, "radius": 12},
+        "position": [120, 880],
+        "align": "left"
+      },
+      "keyframes": {
+        "position_x": [
+          {"time": 0.5, "value": 80, "easing": "easeOut"},
+          {"time": 1.2, "value": 120, "easing": "easeOut"}
+        ],
+        "opacity": [
+          {"time": 0.5, "value": 0, "easing": "easeOut"},
+          {"time": 0.9, "value": 1, "easing": "easeOut"}
+        ]
+      }
+    },
+    {
+      "id": "camera_subtle",
+      "type": "camera",
+      "name": "Subtle Drift",
+      "track": 3,
+      "startTime": 0,
+      "duration": 5.0,
+      "properties": {
+        "position": [960, 540, 900],
+        "fov": 55
+      },
+      "keyframes": {
+        "position_x": [
+          {"time": 0, "value": 960, "easing": "linear"},
+          {"time": 5.0, "value": 970, "easing": "linear"}
+        ]
+      }
+    },
+    {
+      "id": "adjust_grade",
+      "type": "adjustment",
+      "name": "Color Grade",
+      "track": 4,
+      "startTime": 0,
+      "duration": 5.0,
+      "properties": {
+        "effects": [
+          {"type": "lumetri", "preset": "{{color_grade}}"},
+          {"type": "sharpen", "amount": 0.15}
+        ]
+      },
+      "keyframes": {}
+    }
+  ]
+}
