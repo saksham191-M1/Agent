@@ -1,0 +1,61 @@
+{
+  "brandId": "agency-motion-001",
+  "worldBounds": {"width": 1920, "height": 1080, "depth": 2000},
+  "nodes": [
+    {
+      "type": "interactive_input",
+      "id": "input-prompt",
+      "placeholder": "Generate agency-tier motion ad...",
+      "typedValue": "Deploy spatial 3D canvas across 128 BPM beat grid",
+      "cursorPosition": 51,
+      "buttonLabel": "Generate",
+      "position3D": [0, 150, 0]
+    },
+    {
+      "type": "pill_tag",
+      "id": "pill-native",
+      "text": "EffectCraft 0.8.0 Native",
+      "variant": "glass",
+      "accent": "#00f2fe",
+      "position3D": [-260, 260, 50]
+    },
+    {
+      "type": "pill_tag",
+      "id": "pill-speed",
+      "text": "1.15s Headless Render",
+      "variant": "solid",
+      "accent": "#4facfe",
+      "position3D": [260, 260, 50]
+    },
+    {
+      "type": "metric_card",
+      "id": "metric-mrr",
+      "label": "Monthly Run Rate",
+      "value": "$142,500",
+      "delta": "+28.4%",
+      "chartPoints": [14, 25, 42, 68, 95, 142],
+      "accentColor": "#00f2fe",
+      "position3D": [-450, -80, 200]
+    },
+    {
+      "type": "asset_card",
+      "id": "asset-showcase",
+      "assetUrl": "jobs/agency-motion-001/assets/logo.png",
+      "scaleMode": "contain",
+      "title": "Continuous Spatial Stage",
+      "subtitle": "Single 3D world canvas with virtual camera rig",
+      "position3D": [450, -80, 200]
+    },
+    {
+      "type": "bento_grid",
+      "id": "bento-features",
+      "columns": 3,
+      "cards": [
+        {"id": "b1", "title": "Spatial Camera", "subtitle": "Flight path across 3D coordinates", "accent": "#00f2fe"},
+        {"id": "b2", "title": "85% Bezier Curves", "subtitle": "Tactile velocity snap braking", "accent": "#4facfe"},
+        {"id": "b3", "title": "Quantized Audio", "subtitle": "128 BPM beat grid sync", "accent": "#38bdf8"}
+      ],
+      "position3D": [0, -320, 350]
+    }
+  ]
+}

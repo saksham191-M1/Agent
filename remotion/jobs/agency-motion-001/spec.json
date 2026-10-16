@@ -1,0 +1,585 @@
+{
+  "brand": "agency-motion-001",
+  "format": "9:16",
+  "fps": 30,
+  "durationSec": 20,
+  "bpm": 120,
+  "scenes": [
+    {
+      "id": "S1",
+      "start": 0,
+      "duration": 1.6,
+      "layout": "hero-type",
+      "headline": "Pulse AI: Agency-Tier Motion",
+      "subline": "Continuous 3D Spatial Canvas",
+      "captionWords": [
+        {
+          "word": "One",
+          "start": 8,
+          "end": 13.91
+        },
+        {
+          "word": "tap.",
+          "start": 15.32,
+          "end": 28.19
+        },
+        {
+          "word": "More",
+          "start": 34.46,
+          "end": 41.78
+        },
+        {
+          "word": "flow.",
+          "start": 42.83,
+          "end": 60.95
+        }
+      ],
+      "visual": {
+        "kicker": "One app. Every plan.",
+        "pulseText": "Tap once. Keep moving."
+      },
+      "motion": {
+        "enter": "type-slam",
+        "idle": "pulse-orbit",
+        "exit": "push-through"
+      },
+      "vo": "One tap. More flow.",
+      "sfx": [
+        {
+          "t": 0.05,
+          "type": "logo-sting",
+          "gain": 0.38
+        },
+        {
+          "t": 0.35,
+          "type": "pop",
+          "gain": 0.24
+        },
+        {
+          "t": 0.62,
+          "type": "pop2",
+          "gain": 0.2
+        }
+      ],
+      "transitionOut": "blur-right"
+    },
+    {
+      "id": "S2",
+      "start": 1.6,
+      "duration": 2.4,
+      "layout": "browser",
+      "headline": "Pulse AI: Agency-Tier Motion",
+      "subline": "Continuous 3D Spatial Canvas",
+      "captionWords": [
+        {
+          "word": "Delivered",
+          "start": 0,
+          "end": 1
+        },
+        {
+          "word": "hot",
+          "start": 1,
+          "end": 2
+        }
+      ],
+      "visual": {
+        "title": "What are you craving?",
+        "detail": "Choose once. Keep moving.",
+        "location": "Bengaluru",
+        "cards": [
+          {
+            "label": "Momo House",
+            "detail": "A warm favorite",
+            "action": "View →",
+            "icon": "M"
+          },
+          {
+            "label": "Pizza Lane",
+            "detail": "A quick choice",
+            "action": "View →",
+            "icon": "P"
+          },
+          {
+            "label": "Biryani Bowl",
+            "detail": "Made for sharing",
+            "action": "View →",
+            "icon": "B"
+          }
+        ]
+      },
+      "motion": {
+        "enter": "push-through",
+        "idle": "card-fan",
+        "exit": "whip-left",
+        "cursorPath": [
+          [
+            10,
+            78
+          ],
+          [
+            78,
+            37
+          ]
+        ]
+      },
+      "vo": "Find dinner and keep moving.",
+      "sfx": [
+        {
+          "t": 0.02,
+          "type": "swipe",
+          "gain": 0.27
+        },
+        {
+          "t": 0.3,
+          "type": "tick",
+          "gain": 0.2
+        },
+        {
+          "t": 1.45,
+          "type": "click",
+          "gain": 0.28
+        }
+      ],
+      "transitionOut": "blur-left"
+    },
+    {
+      "id": "S3",
+      "start": 4,
+      "duration": 3.1,
+      "layout": "phone",
+      "headline": "Pulse AI: Agency-Tier Motion",
+      "subline": "Continuous 3D Spatial Canvas",
+      "captionWords": [
+        {
+          "word": "Live",
+          "start": 0,
+          "end": 1
+        },
+        {
+          "word": "tracking",
+          "start": 1,
+          "end": 2
+        }
+      ],
+      "visual": {
+        "greeting": "Good evening",
+        "prompt": "What do you need next?",
+        "search": "Search essentials",
+        "items": [
+          {
+            "label": "Fresh fruit",
+            "icon": "F"
+          },
+          {
+            "label": "Daily essentials",
+            "icon": "D"
+          },
+          {
+            "label": "Quick snacks",
+            "icon": "Q"
+          },
+          {
+            "label": "Top-ups",
+            "icon": "T"
+          }
+        ]
+      },
+      "motion": {
+        "enter": "device-orbit",
+        "idle": "parallax",
+        "exit": "whip-right"
+      },
+      "vo": "Bring essentials into the flow.",
+      "sfx": [
+        {
+          "t": 0.02,
+          "type": "swipe",
+          "gain": 0.27
+        },
+        {
+          "t": 0.3,
+          "type": "pop",
+          "gain": 0.22
+        },
+        {
+          "t": 1,
+          "type": "tick",
+          "gain": 0.18
+        }
+      ],
+      "transitionOut": "blur-right"
+    },
+    {
+      "id": "S4",
+      "start": 7.1,
+      "duration": 2.1,
+      "layout": "split",
+      "headline": "Pulse AI: Agency-Tier Motion",
+      "subline": "Continuous 3D Spatial Canvas",
+      "captionWords": [
+        {
+          "word": "Choose",
+          "start": 8,
+          "end": 19.16
+        },
+        {
+          "word": "where",
+          "start": 20.18,
+          "end": 26.81
+        },
+        {
+          "word": "tonight",
+          "start": 28.19,
+          "end": 38.66
+        },
+        {
+          "word": "goes.",
+          "start": 40.04,
+          "end": 59.54
+        }
+      ],
+      "visual": {
+        "title": "Where do you want to go?",
+        "detail": "Choose a table and make the night yours.",
+        "location": "Bengaluru",
+        "cards": [
+          {
+            "label": "The Terrace",
+            "detail": "Reserve your table",
+            "action": "Explore →",
+            "icon": "T"
+          },
+          {
+            "label": "Table Stories",
+            "detail": "Tonight's next place",
+            "action": "Explore →",
+            "icon": "T"
+          },
+          {
+            "label": "Basil & Co.",
+            "detail": "Make going out click",
+            "action": "Explore →",
+            "icon": "B"
+          }
+        ],
+        "sideLabel": "Dineout"
+      },
+      "motion": {
+        "enter": "map-pin",
+        "idle": "split-parallax",
+        "exit": "whip-left",
+        "cursorPath": [
+          [
+            10,
+            78
+          ],
+          [
+            78,
+            37
+          ]
+        ]
+      },
+      "vo": "Choose where tonight goes.",
+      "sfx": [
+        {
+          "t": 0.02,
+          "type": "swipe",
+          "gain": 0.27
+        },
+        {
+          "t": 0.35,
+          "type": "pop2",
+          "gain": 0.22
+        },
+        {
+          "t": 1.45,
+          "type": "click",
+          "gain": 0.2
+        }
+      ],
+      "transitionOut": "blur-left"
+    },
+    {
+      "id": "S5",
+      "start": 9.2,
+      "duration": 3.7,
+      "layout": "list",
+      "headline": "Pulse AI: Agency-Tier Motion",
+      "subline": "Continuous 3D Spatial Canvas",
+      "captionWords": [
+        {
+          "word": "One",
+          "start": 8,
+          "end": 13.22
+        },
+        {
+          "word": "place",
+          "start": 14.27,
+          "end": 23.33
+        },
+        {
+          "word": "keeps",
+          "start": 25.07,
+          "end": 33.44
+        },
+        {
+          "word": "the",
+          "start": 35.51,
+          "end": 37.94
+        },
+        {
+          "word": "day",
+          "start": 39.71,
+          "end": 45.26
+        },
+        {
+          "word": "in",
+          "start": 46.67,
+          "end": 48.41
+        },
+        {
+          "word": "motion.",
+          "start": 50.48,
+          "end": 70.7
+        }
+      ],
+      "visual": {
+        "items": [
+          {
+            "label": "Food delivery",
+            "detail": "The next meal, sorted.",
+            "icon": "F"
+          },
+          {
+            "label": "Instamart",
+            "detail": "Essentials in the flow.",
+            "icon": "I"
+          },
+          {
+            "label": "Dineout",
+            "detail": "Make going out click.",
+            "icon": "D"
+          }
+        ]
+      },
+      "motion": {
+        "enter": "exploded-ui",
+        "idle": "card-stack",
+        "exit": "push-through"
+      },
+      "vo": "One place keeps the day in motion.",
+      "sfx": [
+        {
+          "t": 0.02,
+          "type": "swipe",
+          "gain": 0.27
+        },
+        {
+          "t": 0.4,
+          "type": "pop",
+          "gain": 0.2
+        },
+        {
+          "t": 2.1,
+          "type": "riser",
+          "gain": 0.24
+        }
+      ],
+      "transitionOut": "blur-right"
+    },
+    {
+      "id": "S6",
+      "start": 12.9,
+      "duration": 2.6,
+      "layout": "big-number",
+      "headline": "Pulse AI: Agency-Tier Motion",
+      "subline": "Continuous 3D Spatial Canvas",
+      "captionWords": [
+        {
+          "word": "Three",
+          "start": 8,
+          "end": 16.7
+        },
+        {
+          "word": "billion",
+          "start": 18.8,
+          "end": 31.34
+        },
+        {
+          "word": "orders.",
+          "start": 33.77,
+          "end": 48.05
+        },
+        {
+          "word": "One",
+          "start": 50.84,
+          "end": 57.8
+        },
+        {
+          "word": "network.",
+          "start": 59.54,
+          "end": 77.66
+        }
+      ],
+      "visual": {
+        "eyebrow": "A network built around the day",
+        "label": "SWIGGY NETWORK",
+        "stats": [
+          {
+            "value": 3,
+            "suffix": "B+",
+            "label": "orders delivered"
+          },
+          {
+            "value": 238,
+            "suffix": "K+",
+            "label": "restaurant partners"
+          },
+          {
+            "value": 718,
+            "suffix": "+",
+            "label": "cities"
+          }
+        ],
+        "progress": 92,
+        "detail": "Proof that the next plan can keep moving."
+      },
+      "motion": {
+        "enter": "counter-slam",
+        "idle": "ring-pulse",
+        "exit": "fade-slide"
+      },
+      "vo": "Three billion orders. One network.",
+      "sfx": [
+        {
+          "t": 0.16,
+          "type": "thud",
+          "gain": 0.27
+        },
+        {
+          "t": 0.35,
+          "type": "tick",
+          "gain": 0.16
+        },
+        {
+          "t": 0.58,
+          "type": "tick",
+          "gain": 0.16
+        },
+        {
+          "t": 0.82,
+          "type": "tick",
+          "gain": 0.16
+        }
+      ],
+      "transitionOut": "blur-left"
+    },
+    {
+      "id": "S7",
+      "start": 15.5,
+      "duration": 4.5,
+      "layout": "cta",
+      "headline": "Pulse AI: Agency-Tier Motion",
+      "subline": "Continuous 3D Spatial Canvas",
+      "captionWords": [
+        {
+          "word": "Open",
+          "start": 8,
+          "end": 17.39
+        },
+        {
+          "word": "Swiggy.",
+          "start": 19.85,
+          "end": 33.44
+        },
+        {
+          "word": "Make",
+          "start": 34.46,
+          "end": 40.4
+        },
+        {
+          "word": "it",
+          "start": 41.45,
+          "end": 43.52
+        },
+        {
+          "word": "happen.",
+          "start": 44.57,
+          "end": 63.74
+        }
+      ],
+      "visual": {
+        "button": "Open Swiggy",
+        "domain": "swiggy.com"
+      },
+      "motion": {
+        "enter": "cta-slam",
+        "idle": "hold",
+        "exit": "fade"
+      },
+      "vo": "Open Swiggy. Make it happen.",
+      "sfx": [
+        {
+          "t": 0.02,
+          "type": "swipe",
+          "gain": 0.29
+        },
+        {
+          "t": 0.95,
+          "type": "click",
+          "gain": 0.4
+        },
+        {
+          "t": 1.08,
+          "type": "success",
+          "gain": 0.34
+        },
+        {
+          "t": 1.55,
+          "type": "logo-sting",
+          "gain": 0.32
+        }
+      ],
+      "transitionOut": "none"
+    }
+  ],
+  "audio": {
+    "assetsRoot": "jobs/swiggy-001/assets",
+    "voice": {
+      "provider": "ElevenLabs",
+      "voiceId": "EXAVITQu4vr4xnSDxMaL",
+      "model": "eleven_multilingual_v2",
+      "clips": {
+        "S1": "audio/vo-s1.mp3",
+        "S2": "audio/vo-s2.mp3",
+        "S3": "audio/vo-s3.mp3",
+        "S4": "audio/vo-s4.mp3",
+        "S5": "audio/vo-s5.mp3",
+        "S6": "audio/vo-s6.mp3",
+        "S7": "audio/vo-s7.mp3"
+      }
+    },
+    "music": {
+      "file": "audio/music-bed.mp3",
+      "mood": "restrained electronic build",
+      "volume": 1
+    },
+    "room": {
+      "file": "audio/room-tone.wav",
+      "volume": 0.6
+    },
+    "sfxFiles": {
+      "logo-sting": "audio/logo-sting.wav",
+      "pop": "audio/pop.wav",
+      "pop2": "audio/pop2.wav",
+      "swipe": "audio/swipe.wav",
+      "tick": "audio/tick.wav",
+      "click": "audio/click.wav",
+      "riser": "audio/riser.wav",
+      "thud": "audio/thud.wav",
+      "success": "audio/success.wav",
+      "whoosh": "audio/whoosh.wav"
+    },
+    "duck": 7
+  }
+}

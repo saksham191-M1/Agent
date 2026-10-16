@@ -1,4 +1,0 @@
-raw_ramp.mp4 YMIN/YMAX: 0, 252
-master_ramp.mp4 YMIN/YMAX: 16, 232
-swiggy-001 raw.mp4 YMIN/YMAX: 6, 255
-swiggy-001 final.mp4 YMIN/YMAX: 19, 237

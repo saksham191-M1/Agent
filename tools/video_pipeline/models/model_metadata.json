@@ -1,0 +1,15 @@
+{
+  "best_model": "Logistic Regression (L2)",
+  "test_accuracy": 0.6667,
+  "test_f1_weighted": 0.6591,
+  "test_f1_macro": 0.5957,
+  "num_classes": 4,
+  "classes": [
+    "3d",
+    "explainer",
+    "interactive",
+    "motion"
+  ],
+  "vocab_size": 4464,
+  "num_samples": 703
+}

@@ -1,0 +1,47 @@
+{
+  "name": "Anthropic",
+  "domain": "anthropic.com",
+  "tagline": "Think deeper. Think faster.",
+  "description": "Our smartest, fastest model yet with multimodal document intelligence.",
+  "products": [
+    "GPT-5 Flagship model",
+    "Document Intelligence",
+    "Autonomous Agency"
+  ],
+  "logo": {
+    "src": "jobs/motion-swell-clone/assets/logo.png",
+    "text": "Anthropic",
+    "alt": "Anthropic logo",
+    "source": "https://anthropic.com"
+  },
+  "colors": {
+    "accent": "#000000",
+    "accentLight": "#2D2D3A",
+    "background": "#FBFBFB",
+    "background2": "#F5EFEB",
+    "text": "#111827",
+    "muted": "#6B7280",
+    "surface": "#FBFBFB",
+    "surfaceText": "#111827",
+    "surfaceMuted": "#9CA3AF"
+  },
+  "fonts": {
+    "display": {
+      "family": "Inter",
+      "source": "Google Fonts"
+    },
+    "body": {
+      "family": "Inter",
+      "source": "Google Fonts"
+    }
+  },
+  "imagery": [],
+  "claims": [
+    {
+      "id": "model",
+      "label": "Model Capability",
+      "value": "Smartest & Fastest",
+      "sourceUrl": "https://anthropic.com"
+    }
+  ]
+}

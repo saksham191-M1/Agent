@@ -1,0 +1,91 @@
+{
+  "brandId": "demo-remotion-skills",
+  "worldBounds": {
+    "width": 1920,
+    "height": 1080,
+    "depth": 1000
+  },
+  "nodes": [
+    {
+      "id": "skill-typo-hero",
+      "type": "kinetic_typography",
+      "effect": "word_carousel",
+      "words": [
+        "Fast.",
+        "Intelligent.",
+        "Autonomous."
+      ],
+      "subtext": "Engineered for high velocity engineering teams",
+      "fontSize": 68,
+      "position3D": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "skill-chart-metric",
+      "type": "chart",
+      "chartType": "bar",
+      "title": "Monthly Query Volume (M)",
+      "data": [
+        {
+          "label": "Jan",
+          "value": 42
+        },
+        {
+          "label": "Feb",
+          "value": 78
+        },
+        {
+          "label": "Mar",
+          "value": 130
+        },
+        {
+          "label": "Apr",
+          "value": 210
+        },
+        {
+          "label": "May",
+          "value": 380
+        }
+      ],
+      "accentColor": "#6366F1",
+      "position3D": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "skill-chat-feed",
+      "type": "chat_messaging",
+      "messages": [
+        {
+          "id": "m1",
+          "sender": "user",
+          "text": "Optimize cluster distribution across us-east and eu-west.",
+          "time": "10:14 AM"
+        },
+        {
+          "id": "m2",
+          "sender": "agent",
+          "text": "Reallocating compute nodes with zero query interruption.",
+          "time": "10:14 AM"
+        },
+        {
+          "id": "m3",
+          "sender": "agent",
+          "text": "Cluster migration complete. P99 latency dropped by 48%.",
+          "time": "10:15 AM"
+        }
+      ],
+      "typingIndicator": true,
+      "position3D": [
+        0,
+        0,
+        0
+      ]
+    }
+  ]
+}

@@ -1,0 +1,53 @@
+{
+  "name": "PrismaORM",
+  "domain": "prisma.io",
+  "tagline": "Next-generation ORM for Node.js and TypeScript",
+  "description": "Prisma unlocks a new level of developer experience with its intuitive data model, automated migrations, type-safety & auto-completion.",
+  "products": [
+    "Prisma ORM",
+    "Prisma Accelerate",
+    "Prisma Pulse"
+  ],
+  "logo": {
+    "src": "jobs/sample-promo-prisma/assets/logo.png",
+    "text": "PrismaORM",
+    "alt": "Prisma logo",
+    "source": "https://prisma.io"
+  },
+  "colors": {
+    "accent": "#16A394",
+    "accentLight": "#2DD4BF",
+    "background": "#0B0F19",
+    "background2": "#111827",
+    "text": "#F8FAFC",
+    "muted": "#94A3B8",
+    "surface": "#111827",
+    "surfaceText": "#F8FAFC",
+    "surfaceMuted": "#64748B"
+  },
+  "fonts": {
+    "display": {
+      "family": "Inter",
+      "source": "Google Fonts"
+    },
+    "body": {
+      "family": "Inter",
+      "source": "Google Fonts"
+    }
+  },
+  "imagery": [],
+  "claims": [
+    {
+      "id": "typesafe",
+      "label": "Type Safety",
+      "value": "100% End-to-End",
+      "sourceUrl": "https://prisma.io"
+    },
+    {
+      "id": "query",
+      "label": "Query Performance",
+      "value": "sub-2ms",
+      "sourceUrl": "https://prisma.io"
+    }
+  ]
+}

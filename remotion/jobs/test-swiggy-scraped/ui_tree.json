@@ -1,0 +1,105 @@
+{
+  "brandId": "swiggy.com",
+  "worldBounds": {
+    "width": 1920,
+    "height": 1080,
+    "depth": 2000
+  },
+  "nodes": [
+    {
+      "id": "node_hook_0",
+      "type": "kinetic_typography",
+      "position3D": [
+        0,
+        0,
+        0
+      ],
+      "effect": "phrase_flash",
+      "words": [
+        "EMPTY?",
+        "SWIGGY — BUILT FOR WHAT'S NEXT"
+      ],
+      "text": "EMPTY?",
+      "subtext": "Empty fridge, zero energy, and hours wasted wondering what to eat after an exhau",
+      "fontSize": 96
+    },
+    {
+      "id": "node_phone_1",
+      "type": "phone_mockup",
+      "position3D": [
+        0,
+        0,
+        0
+      ],
+      "greeting": "Welcome to Swiggy",
+      "prompt": "Enter Swiggy. Trusted by millions to bring top restaurants d",
+      "search": "Search Swiggy...",
+      "items": [
+        {
+          "label": "Swiggy",
+          "icon": "🚀"
+        },
+        {
+          "label": "Discover",
+          "icon": "⚡"
+        },
+        {
+          "label": "Orders",
+          "icon": "🎯"
+        },
+        {
+          "label": "Profile",
+          "icon": "✨"
+        }
+      ]
+    },
+    {
+      "id": "node_phone_2",
+      "type": "phone_mockup",
+      "position3D": [
+        0,
+        0,
+        0
+      ],
+      "greeting": "Welcome to Swiggy",
+      "prompt": "One-tap reordering, real-time GPS tracking, and seamless liv",
+      "search": "Search Swiggy...",
+      "items": [
+        {
+          "label": "Swiggy",
+          "icon": "🚀"
+        },
+        {
+          "label": "Discover",
+          "icon": "⚡"
+        },
+        {
+          "label": "Orders",
+          "icon": "🎯"
+        },
+        {
+          "label": "Profile",
+          "icon": "✨"
+        }
+      ]
+    },
+    {
+      "id": "node_cta_3",
+      "type": "kinetic_typography",
+      "position3D": [
+        0,
+        0,
+        0
+      ],
+      "effect": "word_carousel",
+      "words": [
+        "ORDER NOW",
+        "SWIGGY",
+        "TRY FOR FREE"
+      ],
+      "text": "ORDER NOW",
+      "subtext": "Cravings satisfied, effortlessly. Download Swiggy and get your first meal delive",
+      "fontSize": 88
+    }
+  ]
+}

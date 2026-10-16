@@ -1,0 +1,60 @@
+{
+  "name": "Instagram",
+  "domain": "instagram.com",
+  "tagline": "Capture and share the world's moments.",
+  "description": "Connect with friends, share what you are up to, or see what's new from others all over the world.",
+  "products": [
+    "Instagram Reels",
+    "Stories",
+    "Explore Feed",
+    "Direct Messaging"
+  ],
+  "logo": {
+    "src": "jobs/instagram-001/assets/logo.png",
+    "text": "Instagram",
+    "alt": "Instagram Logo",
+    "source": "https://instagram.com"
+  },
+  "colors": {
+    "accent": "#E1306C",
+    "accentLight": "#FD1D1D",
+    "background": "#F6E4C6",
+    "background2": "#EDE0CA",
+    "surface": "#FFFFFF",
+    "surfaceText": "#0E0F1F",
+    "text": "#0E0F1F",
+    "muted": "#6B7280",
+    "surfaceMuted": "#6B6D82"
+  },
+  "fonts": {
+    "display": {
+      "family": "Inter",
+      "source": "Google Fonts"
+    },
+    "body": {
+      "family": "Inter",
+      "source": "Google Fonts"
+    }
+  },
+  "imagery": [],
+  "claims": [
+    {
+      "id": "creator-community",
+      "label": "Global Community",
+      "value": "2.5B+",
+      "sourceUrl": "https://instagram.com"
+    },
+    {
+      "id": "reels-sync",
+      "label": "Short-Form Video",
+      "value": "Instant",
+      "sourceUrl": "https://instagram.com"
+    },
+    {
+      "id": "direct-messaging",
+      "label": "Direct Chat",
+      "value": "Real-time",
+      "sourceUrl": "https://instagram.com"
+    }
+  ]
+}

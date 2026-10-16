@@ -1,0 +1,24 @@
+{
+  "$schema": "rendervid-template-v1",
+  "templateId": "rv_data_viz_ecommerce_042",
+  "category": "Data Visualization",
+  "source": "rendervid",
+  "brandName": "ShopMetrics",
+  "accentColor": "#0D9488",
+  "durationSec": 10,
+  "fps": 30,
+  "templateVariables": {
+    "badge": "E-Commerce Intelligence",
+    "chartTitle": "Gross Merchandise Value",
+    "chartType": "area",
+    "chartData": [
+      {"label": "Q1", "value": 240},
+      {"label": "Q2", "value": 480},
+      {"label": "Q3", "value": 850},
+      {"label": "Q4", "value": 1420}
+    ],
+    "kpiLabel": "Annual Run Rate",
+    "kpiValue": "$14.2M",
+    "kpiDelta": "+128% YoY"
+  }
+}

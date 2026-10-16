@@ -1,0 +1,51 @@
+{
+  "name": "Swiggy",
+  "domain": "swiggy.com",
+  "tagline": "Swiggy — built for what's next.",
+  "description": "Swiggy is a modern product trusted by millions.",
+  "products": [
+    "Swiggy"
+  ],
+  "logo": {
+    "src": "jobs/test-wired-gemini/assets/logo.svg",
+    "text": "Swiggy",
+    "alt": "Swiggy Logo",
+    "source": "https://swiggy.com"
+  },
+  "colors": {
+    "accent": "#FC8019",
+    "accentLight": "#FFAB4B",
+    "background": "#0D0D0D",
+    "background2": "#1A1A1A",
+    "text": "#F9FAFB",
+    "muted": "#9CA3AF",
+    "surface": "#1A1A1A",
+    "surfaceText": "#FFFFFF",
+    "surfaceMuted": "#6B7280"
+  },
+  "fonts": {
+    "display": {
+      "family": "Inter, system-ui, sans-serif",
+      "source": "Google Fonts"
+    },
+    "body": {
+      "family": "Inter, system-ui, sans-serif",
+      "source": "Google Fonts"
+    }
+  },
+  "imagery": [
+    {
+      "src": "jobs/test-wired-gemini/assets/studio-hero.png",
+      "alt": "Swiggy product screenshot",
+      "source": "https://swiggy.com"
+    }
+  ],
+  "claims": [
+    {
+      "id": "product",
+      "label": "Swiggy",
+      "value": "See it in action",
+      "sourceUrl": "https://swiggy.com"
+    }
+  ]
+}

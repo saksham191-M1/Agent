@@ -1,0 +1,493 @@
+/**
+ * scene-assembler.ts
+ * ──────────────────
+ * Converts:
+ *   storyboard.json   (from brain_opus.py --output-json)
+ *   brand.json        (from scrape-brand.ts)
+ * Into:
+ *   jobs/<jobId>/ui_tree.json   — VectorNode AST consumed by VectorRenderer
+ *   jobs/<jobId>/spec.json      — Remotion composition spec
+ *   jobs/<jobId>/storyboard.json (overwritten with assembled version)
+ *
+ * Node-type selection strategy (NO hardcoded archetypes):
+ *   - Product category detected from brand domain keywords + storyboard hints
+ *   - Each scene gets a distinct node type fitting its role
+ *   - Hook scenes → kinetic_typography
+ *   - UI scenes (web/SaaS) → app_frame or browser_mockup
+ *   - UI scenes (mobile/food/ride) → phone_mockup
+ *   - Metric/analytics scenes → chart or metric_card
+ *   - AI/agent/chat scenes → chat_messaging
+ *   - CTA scenes → kinetic_typography + pill_tag
+ */
+
+import fs from 'node:fs';
+import path from 'node:path';
+import type {UITree, VectorNode} from '../engine/semantic-ui/types';
+import type {BrandJson} from '../engine/types';
+import {MOTION_RULES} from '../engine/motion/motion-rules';
+
+// ──────────────────────────────────────────────────────────────────────────────
+// Product category detection
+// ──────────────────────────────────────────────────────────────────────────────
+
+type ProductCategory =
+  | 'mobile_app'
+  | 'web_saas'
+  | 'dev_tool'
+  | 'ai_agent'
+  | 'analytics'
+  | 'creator'
+  | 'ecommerce'
+  | 'social'
+  | 'generic';
+
+function detectCategory(brand: BrandJson, storyboardHints: string): ProductCategory {
+  const text = `${brand.domain} ${brand.description} ${brand.products.join(' ')} ${storyboardHints}`.toLowerCase();
+
+  if (/delivery|food|swiggy|zomato|uber|ride|order|restaurant|groceri/.test(text)) return 'mobile_app';
+  if (/instagram|tiktok|twitter|x\.com|snap|social|reel|feed|post/.test(text)) return 'social';
+  if (/youtube|netflix|spotify|creator|video|stream|podcast|music|channel/.test(text)) return 'creator';
+  if (/shop|ecommerce|amazon|shopify|cart|store|product|buy|sell/.test(text)) return 'ecommerce';
+  if (/gpt|gemini|claude|llm|agent|ai|chat|copilot|assistant|openai/.test(text)) return 'ai_agent';
+  if (/analytics|dashboard|metric|insight|chart|report|data|bi|tableau/.test(text)) return 'analytics';
+  if (/api|sdk|cli|orm|db|database|supabase|prisma|vercel|railway|deploy|devtool|github|repo/.test(text)) return 'dev_tool';
+  if (/app|mobile|ios|android|flutter|react native/.test(text)) return 'mobile_app';
+  if (/saas|platform|software|workspace|crm|erp|notion|linear|jira|slack|figma/.test(text)) return 'web_saas';
+
+  return 'generic';
+}
+
+// ──────────────────────────────────────────────────────────────────────────────
+// Per-scene VectorNode builders
+// ──────────────────────────────────────────────────────────────────────────────
+
+function makeHookNode(brand: BrandJson, scene: any, idx: number): VectorNode {
+  return {
+    id: `node_hook_${idx}`,
+    type: 'kinetic_typography',
+    position3D: [0, 0, 0],
+    effect: 'phrase_flash',
+    words: [
+      scene.kinetic_text?.toUpperCase() || brand.name.toUpperCase(),
+      brand.tagline?.split('.')[0]?.toUpperCase() || 'WHAT IF',
+    ],
+    text: scene.kinetic_text || brand.name,
+    subtext: scene.voiceover?.slice(0, 80) || brand.tagline,
+    fontSize: 96,
+  } as VectorNode;
+}
+
+function makeUINode(brand: BrandJson, scene: any, category: ProductCategory, idx: number): VectorNode {
+  if (category === 'mobile_app' || category === 'social' || category === 'ecommerce') {
+    // Phone mockup
+    const products = brand.products.length >= 4 ? brand.products : [...brand.products, 'Discover', 'Orders', 'Profile'];
+    return {
+      id: `node_phone_${idx}`,
+      type: 'phone_mockup',
+      position3D: [0, 0, 0],
+      greeting: `Welcome to ${brand.name}`,
+      prompt: scene.voiceover?.slice(0, 60) || brand.tagline,
+      search: `Search ${brand.name}...`,
+      items: products.slice(0, 4).map((p, i) => ({
+        label: p,
+        icon: ['🚀', '⚡', '🎯', '✨'][i] || '•',
+      })),
+    } as VectorNode;
+  }
+
+  if (category === 'ai_agent' || category === 'dev_tool') {
+    // Interactive input / chat for AI; app_frame for dev tools
+    if (category === 'ai_agent') {
+      return {
+        id: `node_chat_${idx}`,
+        type: 'chat_messaging',
+        position3D: [0, 0, 0],
+        messages: [
+          {id: 'm1', sender: 'user',   text: `Analyze ${brand.products[0] || brand.name} performance`},
+          {id: 'm2', sender: 'agent',  text: scene.voiceover?.slice(0, 100) || `Here's your ${brand.name} insight...`},
+          {id: 'm3', sender: 'system', text: `${brand.name} completed task in 1.2s`},
+        ],
+        typingIndicator: true,
+      } as VectorNode;
+    }
+    // dev_tool → app_frame with dev-flavored sidebar
+    return {
+      id: `node_appframe_${idx}`,
+      type: 'app_frame',
+      position3D: [0, 0, 0],
+      appName: brand.name,
+      topbarTitle: scene.voiceover?.slice(0, 50) || `${brand.name} Studio`,
+      badgeText: '● Live',
+      activePane: 'editor',
+      sidebarItems: (brand.products.length > 0 ? brand.products : ['Dashboard', 'Editor', 'Deploy', 'Analytics']).slice(0, 4).map(
+        (p, i) => ({id: `s${i}`, label: p, icon: ['◈', '⬡', '◉', '△'][i] || '•', active: i === 0})
+      ),
+    } as VectorNode;
+  }
+
+  if (category === 'creator') {
+    // Browser mockup showing creator/video platform UI
+    return {
+      id: `node_browser_${idx}`,
+      type: 'browser_mockup',
+      position3D: [0, 0, 0],
+      title: scene.voiceover?.split('.')[0] || `${brand.name} Studio`,
+      detail: brand.tagline,
+      location: brand.domain,
+      cards: (brand.products.length > 0 ? brand.products : ['Trending', 'For You', 'New Release']).slice(0, 3).map(
+        (p, i) => ({label: p, detail: brand.tagline, action: 'Open →', icon: ['▶', '★', '◎'][i] || '▶'})
+      ),
+      showCursor: true,
+    } as VectorNode;
+  }
+
+  if (category === 'analytics') {
+    // Chart node
+    const points = [22, 38, 55, 70, 88, 95, 99];
+    return {
+      id: `node_chart_${idx}`,
+      type: 'chart',
+      position3D: [0, 0, 0],
+      chartType: 'area',
+      title: scene.voiceover?.split('.')[0] || `${brand.name} Growth`,
+      data: ['Jan','Feb','Mar','Apr','May','Jun','Jul'].map((m, i) => ({label: m, value: points[i]})),
+      accentColor: brand.colors.accent,
+      showAxis: true,
+    } as VectorNode;
+  }
+
+  // web_saas + generic → cinematic app_frame
+  return {
+    id: `node_appframe_${idx}`,
+    type: 'app_frame',
+    position3D: [0, 0, 0],
+    appName: brand.name,
+    topbarTitle: scene.voiceover?.split('.')[0] || `${brand.name} Dashboard`,
+    badgeText: '● Live',
+    activePane: 'dashboard',
+    sidebarItems: (brand.products.length > 0 ? brand.products : ['Overview', 'Analytics', 'Team', 'Settings']).slice(0, 4).map(
+      (p, i) => ({id: `s${i}`, label: p, active: i === 0})
+    ),
+  } as VectorNode;
+}
+
+function makeMetricNode(brand: BrandJson, idx: number): VectorNode {
+  const claim = brand.claims?.[0];
+  return {
+    id: `node_metric_${idx}`,
+    type: 'metric_card',
+    position3D: [0, 0, 0],
+    label: claim?.label || brand.name,
+    value: claim?.value || '10×',
+    delta: '+↑ Growing',
+    chartPoints: [12, 28, 45, 62, 78, 91, 99],
+    accentColor: brand.colors.accent,
+  } as VectorNode;
+}
+
+function makeCTANode(brand: BrandJson, scene: any, idx: number): VectorNode {
+  return {
+    id: `node_cta_${idx}`,
+    type: 'kinetic_typography',
+    position3D: [0, 0, 0],
+    effect: 'word_carousel',
+    words: [
+      scene.kinetic_text?.toUpperCase() || 'START NOW',
+      brand.name.toUpperCase(),
+      'TRY FOR FREE',
+    ],
+    text: scene.kinetic_text || `Try ${brand.name}`,
+    subtext: scene.voiceover?.slice(0, 80) || brand.tagline,
+    fontSize: 88,
+  } as VectorNode;
+}
+
+// ──────────────────────────────────────────────────────────────────────────────
+// Main assembler
+// ──────────────────────────────────────────────────────────────────────────────
+
+export interface AssembleOptions {
+  storyboard: any;   // parsed from brain_opus.py --output-json
+  brand: BrandJson;
+  jobId: string;
+  fps?: number;
+}
+
+function resolveCategoryFromML(mlCategory?: string, techTags: string[] = []): ProductCategory | null {
+  if (!mlCategory) return null;
+  const cat = mlCategory.toLowerCase();
+  const tags = techTags.join(' ').toLowerCase();
+
+  if (cat === 'interactive') {
+    if (/canvas|webgl|chart|graph|d3|metric/.test(tags)) return 'analytics';
+    if (/terminal|code|cli|api|react|dev/.test(tags)) return 'dev_tool';
+    return 'web_saas';
+  }
+  if (cat === '3d') {
+    if (/phone|mobile|device|screen/.test(tags)) return 'mobile_app';
+    return 'creator';
+  }
+  if (cat === 'explainer') {
+    if (/dashboard|saas|app|finance/.test(tags)) return 'web_saas';
+    if (/ai|chat|llm|agent|prompt/.test(tags)) return 'ai_agent';
+    return 'creator';
+  }
+  if (cat === 'motion') {
+    if (/mobile|app|ios|android/.test(tags)) return 'mobile_app';
+    if (/metric|finance|data|analytics/.test(tags)) return 'analytics';
+  }
+  return null;
+}
+
+function resolveSceneLayout(nodeType: string, sceneIdx: number, totalScenes: number): string {
+  if (sceneIdx === 0) return 'hero-type';
+  if (sceneIdx === totalScenes - 1) return 'cta';
+  switch (nodeType) {
+    case 'phone_mockup':
+      return 'phone';
+    case 'chart':
+    case 'metric_card':
+    case 'stat_counter':
+      return 'big-number';
+    case 'bento_grid':
+      return 'split';
+    case 'browser_mockup':
+    case 'app_frame':
+    default:
+      return 'browser';
+  }
+}
+
+function resolveSceneTransition(visualFx: string, idx: number): string {
+  const fx = (visualFx || '').toLowerCase();
+  if (/carousel|glide/.test(fx)) return 'carousel_glide';
+  if (/zoom|push|in/.test(fx)) return 'cross_zoom';
+  if (/blur|smooth/.test(fx)) return 'carousel_glide';
+  if (/wipe|sweep/.test(fx)) return 'wipe';
+  if (/flip|rotate/.test(fx)) return 'flip';
+  if (/dissolve/.test(fx)) return 'dissolve';
+  
+  const cycle = ['carousel_glide', 'wipe', 'cross_zoom', 'carousel_glide', 'clock_wipe'];
+  return cycle[idx % cycle.length];
+}
+
+export function assembleScenes(opts: AssembleOptions): {uiTree: UITree; spec: any} {
+  const {storyboard, brand, jobId, fps = MOTION_RULES.render.fps || 60} = opts;
+
+  const scenes: any[] = storyboard.scenes || [];
+  const mlCat = storyboard.ml_match?.category || storyboard.matched_opus_category;
+  const mlTags: string[] = storyboard.ml_match?.tech_tags || [];
+  const mlResolved = resolveCategoryFromML(mlCat, mlTags);
+
+  const hints = scenes.map((s: any) => `${s.voiceover || ''} ${s.visual_fx || ''} ${s.veo_prompt || ''}`).join(' ');
+  const category = mlResolved || detectCategory(brand, hints);
+
+  console.log(`[Scene Assembler] Product: ${brand.name} | Domain: ${brand.domain}`);
+  console.log(`[Scene Assembler] Category Source: ${mlResolved ? `ML Predictor (${mlCat})` : 'Keyword Detection'} -> ${category}`);
+  console.log(`[Scene Assembler] Template: "${storyboard.selected_template || 'Problem-Agitate-Solution'}"`);
+  console.log(`[Scene Assembler] Building ${scenes.length} scenes from Opus storyboard...`);
+
+  // Build one VectorNode per scene
+  const nodes: VectorNode[] = scenes.map((scene: any, idx: number) => {
+    const role = scene.scene_id;
+    const isFirst = idx === 0;
+    const isLast  = idx === scenes.length - 1;
+    const requiresUI = scene.requires_ui_image === true;
+
+    if (isFirst) {
+      // Scene 1 is always the hook — kinetic typography
+      return makeHookNode(brand, scene, idx);
+    }
+    if (isLast) {
+      // Last scene is always CTA
+      return makeCTANode(brand, scene, idx);
+    }
+    if (requiresUI) {
+      // UI showcase scene — pick based on product category
+      return makeUINode(brand, scene, category, idx);
+    }
+    // Middle scene without ui requirement → metric card or chart depending on category
+    if (category === 'analytics' || category === 'dev_tool' || category === 'web_saas') {
+      return makeMetricNode(brand, idx);
+    }
+    return makeUINode(brand, scene, category, idx);
+  });
+
+  const uiTree: UITree = {
+    brandId: brand.domain,
+    worldBounds: {width: 1920, height: 1080, depth: 2000},
+    nodes,
+  };
+
+  function buildCaptionWords(text: string, durationSec: number, fps: number) {
+    if (!text) return [];
+    const rawWords = text.trim().split(/\s+/).filter(Boolean);
+    if (rawWords.length === 0) return [];
+
+    const totalFrames = Math.max(1, Math.round(durationSec * fps));
+    const availableFrames = Math.max(rawWords.length, totalFrames - 16);
+    const framesPerWord = availableFrames / rawWords.length;
+
+    return rawWords.map((word, i) => {
+      const start = Math.round(6 + i * framesPerWord);
+      const end = Math.round(6 + (i + 1) * framesPerWord);
+      return {word, start, end};
+    });
+  }
+
+  function generateSceneSfx(sceneIdx: number, durationSec: number, totalScenes: number) {
+    const cues: Array<{t: number; type: string; gain?: number; pitchVariation?: number; duckMusicDb?: number}> = [];
+    cues.push({t: 0.10, type: 'pop', gain: 0.85, duckMusicDb: -6});
+
+    if (sceneIdx === 0) {
+      cues.push({t: Math.round(durationSec * 0.72 * 100) / 100, type: 'tick', gain: 0.6});
+    } else if (sceneIdx === totalScenes - 1) {
+      cues.push({t: Math.round(durationSec * 0.45 * 100) / 100, type: 'click', gain: 0.75});
+      cues.push({t: Math.round(durationSec * 0.85 * 100) / 100, type: 'pop', gain: 0.80});
+    } else {
+      cues.push({t: Math.round(durationSec * 0.35 * 100) / 100, type: 'tick', gain: 0.55, pitchVariation: 1.0});
+      cues.push({t: Math.round(durationSec * 0.65 * 100) / 100, type: 'click', gain: 0.70});
+      cues.push({t: Math.round(durationSec * 0.85 * 100) / 100, type: 'tick', gain: 0.55, pitchVariation: 0.95});
+    }
+
+    return cues;
+  }
+
+  // Build spec.json
+  const totalSec = scenes.reduce((sum: number, s: any) => sum + (s.duration_seconds || 4), 0);
+  let elapsed = 0;
+  const specScenes = scenes.map((s: any, idx: number) => {
+    const dur = s.duration_seconds || 4;
+    const activeNode = nodes[idx] || nodes[0];
+    const layout = resolveSceneLayout(activeNode.type, idx, scenes.length);
+    const transition = idx < scenes.length - 1 ? resolveSceneTransition(s.visual_fx, idx) : 'none';
+
+    let headline = (s.kinetic_text || brand.name || '').trim();
+    if (MOTION_RULES.text_entry.ban_terminal_punctuation_on_headlines) {
+      headline = headline.replace(/[.;:]+$/, '');
+    }
+
+    const scene = {
+      id: `scene_${s.scene_id || idx + 1}`,
+      start: elapsed,
+      duration: dur,
+      layout,
+      headline,
+      subline: s.voiceover?.slice(0, 80) || brand.tagline,
+      caption: s.veo_prompt?.slice(0, 60) || '',
+      captionWords: buildCaptionWords(s.voiceover || '', dur, fps),
+      visual: {kicker: brand.name, pulseText: s.visual_fx || 'smooth'},
+      motion: {
+        enter: MOTION_RULES.text_entry.method || 'mask_line_rise',
+        idle: MOTION_RULES.objects.idle || 'slow_sway',
+        exit: 'carousel_glide',
+      },
+      vo: '',
+      sfx: generateSceneSfx(idx, dur, scenes.length),
+      transitionOut: transition,
+    };
+    elapsed += dur;
+    return scene;
+  });
+
+  const aesthetic = storyboard.aesthetic || storyboard.ml_match?.aesthetic;
+  const spec = {
+    jobId,
+    brand: brand.name,
+    format: '16:9' as const,
+    fps,
+    durationSec: totalSec,
+    bpm: aesthetic?.suggested_bpm || 120,
+    palette: aesthetic ? {
+      background: aesthetic.background,
+      background2: aesthetic.background2,
+      surface: aesthetic.surface,
+      surfaceText: aesthetic.surfaceText,
+      text: aesthetic.text,
+      muted: aesthetic.muted,
+      accent: aesthetic.accent,
+      accentLight: aesthetic.accentLight,
+      secondary: aesthetic.secondary,
+      isLightTheme: aesthetic.is_light_theme,
+    } : undefined,
+    mlMatch: {
+      category: storyboard.ml_match?.category || storyboard.matched_opus_category || 'MOTION',
+      score: storyboard.ml_match?.score ?? 0.85,
+      template: storyboard.selected_template || 'Problem-Agitate-Solution (UI Showcase)',
+      author: storyboard.ml_match?.author || 'Opus',
+      techTags: storyboard.ml_match?.tech_tags || [],
+      referenceUrl: storyboard.ml_match?.reference_url || '',
+      aesthetic,
+    },
+    scenes: specScenes,
+    audio: {
+      assetsRoot: `jobs/${jobId}/assets`,
+      voice:  {provider: 'none', voiceId: 'none', model: 'none', clips: {}},
+      music:  {file: '', mood: 'none', volume: 0},
+      room:   {file: 'audio/room-tone.wav', volume: 0.85},
+      sfxFiles: {
+        click: 'audio/click.wav',
+        tick:  'audio/tick.wav',
+        pop:   'audio/pop.wav',
+      },
+      duck: totalSec,
+    },
+  };
+
+  // Write to disk
+  const jobDir = path.resolve(process.cwd(), 'jobs', jobId);
+  fs.mkdirSync(jobDir, {recursive: true});
+  fs.writeFileSync(path.join(jobDir, 'ui_tree.json'),    JSON.stringify(uiTree, null, 2),  'utf8');
+  fs.writeFileSync(path.join(jobDir, 'spec.json'),       JSON.stringify(spec, null, 2),    'utf8');
+  fs.writeFileSync(path.join(jobDir, 'storyboard.json'), JSON.stringify(storyboard, null, 2), 'utf8');
+
+  // Synchronize brand.json if Opus aesthetic palette exists
+  if (aesthetic) {
+    const brandPath = path.join(jobDir, 'brand.json');
+    if (fs.existsSync(brandPath)) {
+      try {
+        const bData = JSON.parse(fs.readFileSync(brandPath, 'utf8'));
+        bData.colors = {
+          ...bData.colors,
+          background: aesthetic.background,
+          background2: aesthetic.background2,
+          surface: aesthetic.surface,
+          surfaceText: aesthetic.surfaceText,
+          text: aesthetic.text,
+          muted: aesthetic.muted,
+          accent: bData.colors?.accent || aesthetic.accent,
+          accentLight: bData.colors?.accentLight || aesthetic.accentLight,
+        };
+        fs.writeFileSync(brandPath, JSON.stringify(bData, null, 2), 'utf8');
+        console.log(`[Scene Assembler] 🎨 Synchronized brand.json with Opus palette (Light mode: ${aesthetic.is_light_theme}, bg: ${aesthetic.background})`);
+      } catch {}
+    }
+  }
+
+  console.log(`[Scene Assembler] ✅ ui_tree.json  — ${nodes.length} nodes: ${nodes.map(n => n.type).join(', ')}`);
+  console.log(`[Scene Assembler] ✅ spec.json     — ${totalSec}s total`);
+  console.log(`[Scene Assembler] ✅ storyboard.json written`);
+
+  return {uiTree, spec};
+}
+
+// CLI runner
+if (process.argv[1]?.includes('scene-assembler')) {
+  const jobId = process.argv[2] || 'test-assembly-001';
+  const jobDir = path.resolve(process.cwd(), 'jobs', jobId);
+  const storyboardPath = path.join(jobDir, 'storyboard.json');
+  const brandPath      = path.join(jobDir, 'brand.json');
+
+  if (!fs.existsSync(storyboardPath)) {
+    console.error(`[Scene Assembler] storyboard.json not found at ${storyboardPath}`);
+    process.exit(1);
+  }
+  if (!fs.existsSync(brandPath)) {
+    console.error(`[Scene Assembler] brand.json not found at ${brandPath}`);
+    process.exit(1);
+  }
+
+  const storyboard = JSON.parse(fs.readFileSync(storyboardPath, 'utf8'));
+  const brand      = JSON.parse(fs.readFileSync(brandPath,      'utf8')) as BrandJson;
+  assembleScenes({storyboard, brand, jobId});
+}

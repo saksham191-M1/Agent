@@ -1,0 +1,120 @@
+{
+  "brand": "promo-gemini-agent",
+  "format": "16:9",
+  "fps": 30,
+  "durationSec": 10,
+  "bpm": 120,
+  "scenes": [
+    {
+      "id": "master_spatial_stage",
+      "start": 0,
+      "duration": 10,
+      "layout": "hero-type",
+      "headline": "Gemini Agent: The Autonomous Multimodal AI Agent",
+      "subline": "Reason across code, visuals, and tools with autonomous execution and native multimodal",
+      "caption": "The Autonomous Multimodal AI Agent",
+      "visual": {
+        "kicker": "Gemini Agent",
+        "pulseText": "The Autonomous Multimodal AI Agent"
+      },
+      "motion": {
+        "enter": "type-slam",
+        "idle": "pulse-orbit",
+        "exit": "push-through"
+      },
+      "vo": "",
+      "sfx": [
+        {
+          "t": 0.4,
+          "type": "click",
+          "gain": 0.85
+        },
+        {
+          "t": 0.7,
+          "type": "tick",
+          "gain": 0.6
+        },
+        {
+          "t": 0.9,
+          "type": "tick",
+          "gain": 0.6
+        },
+        {
+          "t": 1.1,
+          "type": "tick",
+          "gain": 0.6
+        },
+        {
+          "t": 1.4,
+          "type": "tick",
+          "gain": 0.6
+        },
+        {
+          "t": 1.7,
+          "type": "click",
+          "gain": 0.9
+        },
+        {
+          "t": 2.6,
+          "type": "click",
+          "gain": 0.9
+        },
+        {
+          "t": 3.6,
+          "type": "tick",
+          "gain": 0.65
+        },
+        {
+          "t": 5.1,
+          "type": "click",
+          "gain": 0.9
+        },
+        {
+          "t": 5.8,
+          "type": "tick",
+          "gain": 0.65
+        },
+        {
+          "t": 6.6,
+          "type": "tick",
+          "gain": 0.65
+        },
+        {
+          "t": 7.4,
+          "type": "tick",
+          "gain": 0.65
+        },
+        {
+          "t": 8.4,
+          "type": "pop",
+          "gain": 0.95
+        }
+      ],
+      "transitionOut": "none"
+    }
+  ],
+  "audio": {
+    "assetsRoot": "jobs/promo-gemini-agent/assets",
+    "voice": {
+      "provider": "None",
+      "voiceId": "",
+      "model": "eleven_multilingual_v2",
+      "clips": {}
+    },
+    "music": {
+      "file": "",
+      "mood": "silent",
+      "volume": 0
+    },
+    "room": {
+      "file": "audio/room-tone.wav",
+      "volume": 0.6
+    },
+    "sfxFiles": {
+      "click": "audio/click.wav",
+      "tick": "audio/tick.wav",
+      "pop": "audio/pop.wav"
+    },
+    "duck": 7
+  }
+}

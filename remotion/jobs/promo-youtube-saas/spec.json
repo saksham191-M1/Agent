@@ -1,0 +1,92 @@
+{
+  "brand": "promo-youtube-saas",
+  "format": "16:9",
+  "fps": 30,
+  "durationSec": 10,
+  "bpm": 120,
+  "scenes": [
+    {
+      "id": "scene_hook",
+      "start": 0,
+      "duration": 2,
+      "layout": "hero-type",
+      "headline": "YouTube",
+      "subline": "Broadcast. Optimize. Monetize.",
+      "caption": "Algorithmic Growth Engine",
+      "visual": {
+        "kicker": "YouTube",
+        "pulseText": "Instant Acceleration"
+      },
+      "motion": {
+        "enter": "type-slam",
+        "idle": "pulse-orbit",
+        "exit": "push-through"
+      },
+      "vo": "Stop guessing why videos stall.",
+      "sfx": [],
+      "transitionOut": "fade"
+    },
+    {
+      "id": "scene_feature",
+      "start": 2,
+      "duration": 5,
+      "layout": "browser",
+      "headline": "Real-Time Retention Velocity",
+      "subline": "Pinpoint exact audience drop-offs and optimize packaging.",
+      "caption": "Real-time telemetry and dynamic A/B packaging",
+      "visual": {
+        "kicker": "Live Engine",
+        "pulseText": "Operational Excellence"
+      },
+      "motion": {
+        "enter": "slide-up",
+        "idle": "float",
+        "exit": "zoom-in"
+      },
+      "vo": "Track audience retention curves and test thumbnails to unlock massive algorithmic lift.",
+      "sfx": [],
+      "transitionOut": "slide"
+    },
+    {
+      "id": "scene_cta",
+      "start": 7,
+      "duration": 3,
+      "layout": "cta",
+      "headline": "Broadcast Your Signal",
+      "subline": "Scale your channel predictably today.",
+      "caption": "Built for world-class creators",
+      "visual": {
+        "kicker": "YouTube",
+        "pulseText": "Get Started"
+      },
+      "motion": {
+        "enter": "scale-up",
+        "idle": "pulse",
+        "exit": "fade"
+      },
+      "vo": "Scale your creative craft into predictable growth.",
+      "sfx": [],
+      "transitionOut": "fade"
+    }
+  ],
+  "audio": {
+    "assetsRoot": "jobs/promo-youtube-saas/assets",
+    "voice": {
+      "provider": "script-only",
+      "voiceId": "none",
+      "model": "none",
+      "clips": {}
+    },
+    "music": {
+      "file": "",
+      "mood": "none",
+      "volume": 0
+    },
+    "room": {
+      "file": "",
+      "volume": 0
+    },
+    "sfxFiles": {},
+    "duck": 0
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "shots": [
+    {
+      "n": 1,
+      "t0": 0,
+      "t1": 20,
+      "role": "hook",
+      "source": "motion-graphic",
+      "visual": "hero-type",
+      "transitionOut": "none",
+      "camera": null,
+      "headline": "LinearApp: The issue tracking tool you will enjoy",
+      "subline": "Purpose-built for modern software teams to streamline issues, projects, and roadmaps.",
+      "onScreenText": "The issue tracking tool you will",
+      "dialogue": "The issue tracking tool you will",
+      "sfx": []
+    }
+  ]
+}

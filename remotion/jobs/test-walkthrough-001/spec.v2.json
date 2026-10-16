@@ -1,0 +1,131 @@
+{
+  "version": "2.0.0",
+  "mode": "software_walkthrough",
+  "metadata": {
+    "title": "Test Walkthrough 001",
+    "fps": 60,
+    "width": 1920,
+    "height": 1080
+  },
+  "walkthroughConfig": {
+    "sourceRecording": "",
+    "cameraZoomTrack": [
+      {
+        "startFrame": 0,
+        "endFrame": 60,
+        "zoomScale": 1,
+        "center": [
+          960,
+          540
+        ],
+        "easing": "easeOutCubic"
+      },
+      {
+        "startFrame": 61,
+        "endFrame": 180,
+        "zoomScale": 1.85,
+        "center": [
+          1360,
+          262
+        ],
+        "easing": "easeInOutQuart"
+      },
+      {
+        "startFrame": 181,
+        "endFrame": 360,
+        "zoomScale": 1.7,
+        "center": [
+          890,
+          475
+        ],
+        "easing": "easeInOutQuart"
+      },
+      {
+        "startFrame": 361,
+        "endFrame": 500,
+        "zoomScale": 1.85,
+        "center": [
+          1410,
+          802
+        ],
+        "easing": "easeInOutQuart"
+      },
+      {
+        "startFrame": 501,
+        "endFrame": 600,
+        "zoomScale": 1,
+        "center": [
+          960,
+          540
+        ],
+        "easing": "easeOutCubic"
+      }
+    ],
+    "cursorTrack": [
+      {
+        "startFrame": 30,
+        "endFrame": 90,
+        "from": [
+          960,
+          540
+        ],
+        "to": [
+          1360,
+          262
+        ],
+        "clickFrame": 90,
+        "arcOffset": 32
+      },
+      {
+        "startFrame": 190,
+        "endFrame": 240,
+        "from": [
+          1360,
+          262
+        ],
+        "to": [
+          890,
+          475
+        ],
+        "clickFrame": 240,
+        "arcOffset": -28,
+        "typingText": "production_agent_mesh"
+      },
+      {
+        "startFrame": 370,
+        "endFrame": 450,
+        "from": [
+          890,
+          475
+        ],
+        "to": [
+          1410,
+          802
+        ],
+        "clickFrame": 450,
+        "arcOffset": 35
+      }
+    ],
+    "audio": {
+      "voiceoverTrack": "jobs/agency-motion-001/assets/audio/music-bed.mp3",
+      "duckingDb": -20,
+      "foleyEvents": [
+        {
+          "frame": 90,
+          "type": "mechanical_tick",
+          "volume": 0.7
+        },
+        {
+          "frame": 240,
+          "type": "keyboard_tap",
+          "volume": 0.5
+        },
+        {
+          "frame": 450,
+          "type": "mechanical_tick",
+          "volume": 0.7
+        }
+      ]
+    }
+  }
+}

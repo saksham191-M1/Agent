@@ -1,0 +1,48 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "WalkthroughTelemetry",
+  "type": "object",
+  "required": ["viewport", "events"],
+  "properties": {
+    "viewport": {
+      "type": "object",
+      "required": ["width", "height", "scaleFactor"],
+      "properties": {
+        "width": { "type": "integer", "default": 3840 },
+        "height": { "type": "integer", "default": 2160 },
+        "scaleFactor": { "type": "number", "default": 2.0 }
+      }
+    },
+    "events": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "type", "timestampSec", "selector", "boundingBox"],
+        "properties": {
+          "id": { "type": "string" },
+          "type": { "type": "string", "enum": ["click", "type", "scroll", "hover", "navigate"] },
+          "timestampSec": { "type": "number" },
+          "selector": { "type": "string" },
+          "label": { "type": "string" },
+          "boundingBox": {
+            "type": "object",
+            "required": ["x", "y", "width", "height"],
+            "properties": {
+              "x": { "type": "number" },
+              "y": { "type": "number" },
+              "width": { "type": "number" },
+              "height": { "type": "number" }
+            }
+          },
+          "payload": {
+            "type": "object",
+            "properties": {
+              "typedText": { "type": "string" },
+              "scrollDelta": { "type": "number" }
+            }
+          }
+        }
+      }
+    }
+  }
+}

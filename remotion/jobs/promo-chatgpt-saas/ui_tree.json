@@ -1,0 +1,91 @@
+{
+  "brandId": "promo-chatgpt-saas",
+  "worldBounds": {
+    "width": 1920,
+    "height": 1080,
+    "depth": 1000
+  },
+  "nodes": [
+    {
+      "id": "skill-typo-hero",
+      "type": "kinetic_typography",
+      "effect": "word_carousel",
+      "words": [
+        "Reason.",
+        "Code.",
+        "Autonomous."
+      ],
+      "subtext": "Next generation omni-modal intelligence",
+      "fontSize": 68,
+      "position3D": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "skill-chart-metric",
+      "type": "chart",
+      "chartType": "area",
+      "title": "Neural Token Throughput",
+      "data": [
+        {
+          "label": "10k",
+          "value": 180
+        },
+        {
+          "label": "50k",
+          "value": 420
+        },
+        {
+          "label": "100k",
+          "value": 850
+        },
+        {
+          "label": "500k",
+          "value": 1600
+        },
+        {
+          "label": "1M",
+          "value": 3100
+        }
+      ],
+      "accentColor": "#10A37F",
+      "position3D": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "skill-chat-feed",
+      "type": "chat_messaging",
+      "messages": [
+        {
+          "id": "m1",
+          "sender": "user",
+          "text": "Refactor distributed queue and optimize P99 latency.",
+          "time": "10:24 AM"
+        },
+        {
+          "id": "m2",
+          "sender": "agent",
+          "text": "Optimizing memory pool allocation across compute clusters.",
+          "time": "10:24 AM"
+        },
+        {
+          "id": "m3",
+          "sender": "agent",
+          "text": "Latency optimized: P99 reduced by 58% across all regions.",
+          "time": "10:25 AM"
+        }
+      ],
+      "typingIndicator": true,
+      "position3D": [
+        0,
+        0,
+        0
+      ]
+    }
+  ]
+}

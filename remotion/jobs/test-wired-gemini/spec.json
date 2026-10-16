@@ -1,0 +1,346 @@
+{
+  "jobId": "test-wired-gemini",
+  "brand": "Swiggy",
+  "format": "16:9",
+  "fps": 30,
+  "durationSec": 16,
+  "bpm": 120,
+  "mlMatch": {
+    "category": "MOTION",
+    "score": 0.2956,
+    "template": "Opus 5.5 Viral Blueprint (@q970270495)",
+    "author": "q970270495",
+    "techTags": [],
+    "referenceUrl": "https://x.com/q970270495/status/2105233470574497923"
+  },
+  "scenes": [
+    {
+      "id": "scene_1",
+      "start": 0,
+      "duration": 4,
+      "layout": "hero-type",
+      "headline": "SWIGGY",
+      "subline": "Experience what's next with Swiggy.",
+      "caption": "Cinematic dynamic opener for Swiggy",
+      "captionWords": [
+        {
+          "word": "Experience",
+          "start": 6,
+          "end": 27
+        },
+        {
+          "word": "what's",
+          "start": 27,
+          "end": 48
+        },
+        {
+          "word": "next",
+          "start": 48,
+          "end": 68
+        },
+        {
+          "word": "with",
+          "start": 68,
+          "end": 89
+        },
+        {
+          "word": "Swiggy.",
+          "start": 89,
+          "end": 110
+        }
+      ],
+      "visual": {
+        "kicker": "Swiggy",
+        "pulseText": "fast_zoom"
+      },
+      "motion": {
+        "enter": "slide-up",
+        "idle": "float",
+        "exit": "fade"
+      },
+      "vo": "",
+      "sfx": [
+        {
+          "t": 0.1,
+          "type": "pop",
+          "gain": 0.85,
+          "duckMusicDb": -6
+        },
+        {
+          "t": 2.88,
+          "type": "tick",
+          "gain": 0.6
+        }
+      ],
+      "transitionOut": "cross_zoom"
+    },
+    {
+      "id": "scene_2",
+      "start": 4,
+      "duration": 5,
+      "layout": "phone",
+      "headline": "SEAMLESS",
+      "subline": "Built specifically for speed and seamless everyday performance.",
+      "caption": "Interactive app showcase for Swiggy",
+      "captionWords": [
+        {
+          "word": "Built",
+          "start": 6,
+          "end": 23
+        },
+        {
+          "word": "specifically",
+          "start": 23,
+          "end": 40
+        },
+        {
+          "word": "for",
+          "start": 40,
+          "end": 56
+        },
+        {
+          "word": "speed",
+          "start": 56,
+          "end": 73
+        },
+        {
+          "word": "and",
+          "start": 73,
+          "end": 90
+        },
+        {
+          "word": "seamless",
+          "start": 90,
+          "end": 107
+        },
+        {
+          "word": "everyday",
+          "start": 107,
+          "end": 123
+        },
+        {
+          "word": "performance.",
+          "start": 123,
+          "end": 140
+        }
+      ],
+      "visual": {
+        "kicker": "Swiggy",
+        "pulseText": "glass_ui"
+      },
+      "motion": {
+        "enter": "slide-up",
+        "idle": "float",
+        "exit": "fade"
+      },
+      "vo": "",
+      "sfx": [
+        {
+          "t": 0.1,
+          "type": "pop",
+          "gain": 0.85,
+          "duckMusicDb": -6
+        },
+        {
+          "t": 1.75,
+          "type": "tick",
+          "gain": 0.55,
+          "pitchVariation": 1
+        },
+        {
+          "t": 3.25,
+          "type": "click",
+          "gain": 0.7
+        },
+        {
+          "t": 4.25,
+          "type": "tick",
+          "gain": 0.55,
+          "pitchVariation": 0.95
+        }
+      ],
+      "transitionOut": "wipe"
+    },
+    {
+      "id": "scene_3",
+      "start": 9,
+      "duration": 4,
+      "layout": "phone",
+      "headline": "FASTER",
+      "subline": "Designed to get you results faster than ever before.",
+      "caption": "Dense feature workflow in action for Swiggy",
+      "captionWords": [
+        {
+          "word": "Designed",
+          "start": 6,
+          "end": 18
+        },
+        {
+          "word": "to",
+          "start": 18,
+          "end": 29
+        },
+        {
+          "word": "get",
+          "start": 29,
+          "end": 41
+        },
+        {
+          "word": "you",
+          "start": 41,
+          "end": 52
+        },
+        {
+          "word": "results",
+          "start": 52,
+          "end": 64
+        },
+        {
+          "word": "faster",
+          "start": 64,
+          "end": 75
+        },
+        {
+          "word": "than",
+          "start": 75,
+          "end": 87
+        },
+        {
+          "word": "ever",
+          "start": 87,
+          "end": 98
+        },
+        {
+          "word": "before.",
+          "start": 98,
+          "end": 110
+        }
+      ],
+      "visual": {
+        "kicker": "Swiggy",
+        "pulseText": "blur_slide"
+      },
+      "motion": {
+        "enter": "slide-up",
+        "idle": "float",
+        "exit": "fade"
+      },
+      "vo": "",
+      "sfx": [
+        {
+          "t": 0.1,
+          "type": "pop",
+          "gain": 0.85,
+          "duckMusicDb": -6
+        },
+        {
+          "t": 1.4,
+          "type": "tick",
+          "gain": 0.55,
+          "pitchVariation": 1
+        },
+        {
+          "t": 2.6,
+          "type": "click",
+          "gain": 0.7
+        },
+        {
+          "t": 3.4,
+          "type": "tick",
+          "gain": 0.55,
+          "pitchVariation": 0.95
+        }
+      ],
+      "transitionOut": "blur_slide"
+    },
+    {
+      "id": "scene_4",
+      "start": 13,
+      "duration": 3,
+      "layout": "cta",
+      "headline": "START NOW",
+      "subline": "Get started with Swiggy today.",
+      "caption": "Brand lockup outro for Swiggy",
+      "captionWords": [
+        {
+          "word": "Get",
+          "start": 6,
+          "end": 21
+        },
+        {
+          "word": "started",
+          "start": 21,
+          "end": 36
+        },
+        {
+          "word": "with",
+          "start": 36,
+          "end": 50
+        },
+        {
+          "word": "Swiggy",
+          "start": 50,
+          "end": 65
+        },
+        {
+          "word": "today.",
+          "start": 65,
+          "end": 80
+        }
+      ],
+      "visual": {
+        "kicker": "Swiggy",
+        "pulseText": "fade_up"
+      },
+      "motion": {
+        "enter": "slide-up",
+        "idle": "float",
+        "exit": "fade"
+      },
+      "vo": "",
+      "sfx": [
+        {
+          "t": 0.1,
+          "type": "pop",
+          "gain": 0.85,
+          "duckMusicDb": -6
+        },
+        {
+          "t": 1.35,
+          "type": "click",
+          "gain": 0.75
+        },
+        {
+          "t": 2.55,
+          "type": "pop",
+          "gain": 0.8
+        }
+      ],
+      "transitionOut": "none"
+    }
+  ],
+  "audio": {
+    "assetsRoot": "jobs/test-wired-gemini/assets",
+    "voice": {
+      "provider": "none",
+      "voiceId": "none",
+      "model": "none",
+      "clips": {}
+    },
+    "music": {
+      "file": "",
+      "mood": "none",
+      "volume": 0
+    },
+    "room": {
+      "file": "audio/room-tone.wav",
+      "volume": 0.85
+    },
+    "sfxFiles": {
+      "click": "audio/click.wav",
+      "tick": "audio/tick.wav",
+      "pop": "audio/pop.wav"
+    },
+    "duck": 16
+  }
+}

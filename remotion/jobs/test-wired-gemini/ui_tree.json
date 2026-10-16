@@ -1,0 +1,105 @@
+{
+  "brandId": "swiggy.com",
+  "worldBounds": {
+    "width": 1920,
+    "height": 1080,
+    "depth": 2000
+  },
+  "nodes": [
+    {
+      "id": "node_hook_0",
+      "type": "kinetic_typography",
+      "position3D": [
+        0,
+        0,
+        0
+      ],
+      "effect": "phrase_flash",
+      "words": [
+        "SWIGGY",
+        "SWIGGY — BUILT FOR WHAT'S NEXT"
+      ],
+      "text": "SWIGGY",
+      "subtext": "Experience what's next with Swiggy.",
+      "fontSize": 96
+    },
+    {
+      "id": "node_phone_1",
+      "type": "phone_mockup",
+      "position3D": [
+        0,
+        0,
+        0
+      ],
+      "greeting": "Welcome to Swiggy",
+      "prompt": "Built specifically for speed and seamless everyday performan",
+      "search": "Search Swiggy...",
+      "items": [
+        {
+          "label": "Swiggy",
+          "icon": "🚀"
+        },
+        {
+          "label": "Discover",
+          "icon": "⚡"
+        },
+        {
+          "label": "Orders",
+          "icon": "🎯"
+        },
+        {
+          "label": "Profile",
+          "icon": "✨"
+        }
+      ]
+    },
+    {
+      "id": "node_phone_2",
+      "type": "phone_mockup",
+      "position3D": [
+        0,
+        0,
+        0
+      ],
+      "greeting": "Welcome to Swiggy",
+      "prompt": "Designed to get you results faster than ever before.",
+      "search": "Search Swiggy...",
+      "items": [
+        {
+          "label": "Swiggy",
+          "icon": "🚀"
+        },
+        {
+          "label": "Discover",
+          "icon": "⚡"
+        },
+        {
+          "label": "Orders",
+          "icon": "🎯"
+        },
+        {
+          "label": "Profile",
+          "icon": "✨"
+        }
+      ]
+    },
+    {
+      "id": "node_cta_3",
+      "type": "kinetic_typography",
+      "position3D": [
+        0,
+        0,
+        0
+      ],
+      "effect": "word_carousel",
+      "words": [
+        "START NOW",
+        "SWIGGY",
+        "TRY FOR FREE"
+      ],
+      "text": "START NOW",
+      "subtext": "Get started with Swiggy today.",
+      "fontSize": 88
+    }
+  ]
+}

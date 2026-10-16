@@ -1,0 +1,45 @@
+{
+  "name": "Swiggy",
+  "domain": "swiggy.com",
+  "tagline": "India's largest food delivery platform",
+  "description": "India's largest food delivery platform",
+  "products": [
+    "Swiggy"
+  ],
+  "logo": {
+    "src": "jobs/test-swiggy-new/assets/logo.png",
+    "text": "Swiggy",
+    "alt": "Swiggy Logo",
+    "source": ""
+  },
+  "colors": {
+    "accent": "#6366F1",
+    "accentLight": "#818CF8",
+    "background": "#09090B",
+    "background2": "#18181B",
+    "text": "#F9FAFB",
+    "muted": "#9CA3AF",
+    "surface": "#18181B",
+    "surfaceText": "#FFFFFF",
+    "surfaceMuted": "#6B7280"
+  },
+  "fonts": {
+    "display": {
+      "family": "Inter, sans-serif",
+      "source": "Google Fonts"
+    },
+    "body": {
+      "family": "Inter, sans-serif",
+      "source": "Google Fonts"
+    }
+  },
+  "imagery": [],
+  "claims": [
+    {
+      "id": "main",
+      "label": "Swiggy",
+      "value": "See it in action",
+      "sourceUrl": ""
+    }
+  ]
+}

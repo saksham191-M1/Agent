@@ -1,0 +1,53 @@
+{
+  "name": "Gemini Agent",
+  "domain": "gemini.google.com",
+  "tagline": "The Autonomous Multimodal AI Agent",
+  "description": "Reason across code, visuals, and tools with autonomous execution and native multimodal agency.",
+  "products": [
+    "Gemini 2.5 Flash",
+    "Deep Research Agent",
+    "Autonomous Tool Execution"
+  ],
+  "logo": {
+    "src": "jobs/promo-gemini-agent/assets/logo.png",
+    "text": "Gemini Agent",
+    "alt": "Google Gemini logo",
+    "source": "https://gemini.google.com"
+  },
+  "colors": {
+    "accent": "#4285F4",
+    "accentLight": "#9B72CB",
+    "background": "#07090E",
+    "background2": "#0D111A",
+    "text": "#F8FAFC",
+    "muted": "#94A3B8",
+    "surface": "#111622",
+    "surfaceText": "#F8FAFC",
+    "surfaceMuted": "#64748B"
+  },
+  "fonts": {
+    "display": {
+      "family": "Inter",
+      "source": "Google Fonts"
+    },
+    "body": {
+      "family": "Inter",
+      "source": "Google Fonts"
+    }
+  },
+  "imagery": [],
+  "claims": [
+    {
+      "id": "context",
+      "label": "Multimodal Context",
+      "value": "1M+ Tokens",
+      "sourceUrl": "https://gemini.google.com"
+    },
+    {
+      "id": "agency",
+      "label": "Agent Tools",
+      "value": "100+ Autonomous APIs",
+      "sourceUrl": "https://gemini.google.com"
+    }
+  ]
+}

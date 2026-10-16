@@ -1,0 +1,66 @@
+{
+  "name": "YouTube",
+  "domain": "youtube.com",
+  "tagline": "Broadcast Yourself. Reach the World.",
+  "description": "Enjoy the videos and music you love, upload original content, and share it all with friends, family, and the world on YouTube.",
+  "products": [
+    "YouTube Studio",
+    "Audience Retention Analytics",
+    "Shorts Monetization",
+    "A/B Thumbnail Testing"
+  ],
+  "logo": {
+    "src": "jobs/promo-youtube-saas/assets/logo.svg",
+    "text": "YouTube",
+    "alt": "YouTube Official Logo",
+    "source": "https://youtube.com"
+  },
+  "colors": {
+    "accent": "#FF0000",
+    "accentLight": "#FF4E45",
+    "background": "#0F0F0F",
+    "background2": "#1F1F1F",
+    "text": "#F1F1F1",
+    "muted": "#AAAAAA",
+    "surface": "#212121",
+    "surfaceText": "#FFFFFF",
+    "surfaceMuted": "#717171"
+  },
+  "fonts": {
+    "display": {
+      "family": "YouTube Sans, Roboto, Inter, sans-serif",
+      "source": "Google Fonts"
+    },
+    "body": {
+      "family": "Roboto, Inter, sans-serif",
+      "source": "Google Fonts"
+    }
+  },
+  "imagery": [
+    {
+      "src": "jobs/promo-youtube-saas/assets/studio-hero.png",
+      "alt": "YouTube Studio Dashboard & Retention Telemetry",
+      "source": "https://youtube.com"
+    }
+  ],
+  "claims": [
+    {
+      "id": "viewers",
+      "label": "Global Reach",
+      "value": "2.5B+ Monthly Active Users",
+      "sourceUrl": "https://youtube.com"
+    },
+    {
+      "id": "retention",
+      "label": "Real-Time Telemetry",
+      "value": "Second-by-Second Viewer Retention",
+      "sourceUrl": "https://studio.youtube.com"
+    },
+    {
+      "id": "monetization",
+      "label": "Creator Payouts",
+      "value": "$70B+ Paid to Creators",
+      "sourceUrl": "https://youtube.com/creators/"
+    }
+  ]
+}

@@ -1,0 +1,68 @@
+{
+  "brand": "motion-swell-clone",
+  "format": "16:9",
+  "fps": 30,
+  "durationSec": 12,
+  "bpm": 120,
+  "scenes": [
+    {
+      "id": "master_spatial_stage",
+      "start": 0,
+      "duration": 12,
+      "layout": "hero-type",
+      "headline": "Anthropic: Think deeper. Think faster.",
+      "subline": "Our smartest, fastest model yet with multimodal document intelligence and flagship reasoning.",
+      "caption": "Our smartest, fastest model yet",
+      "visual": {
+        "kicker": "Anthropic",
+        "pulseText": "Think deeper. Think faster."
+      },
+      "motion": {
+        "enter": "type-slam",
+        "idle": "pulse-orbit",
+        "exit": "push-through"
+      },
+      "vo": "",
+      "sfx": [
+        { "t": 0.2, "type": "pop", "gain": 0.8 },
+        { "t": 0.5, "type": "tick", "gain": 0.5 },
+        { "t": 2.4, "type": "pop", "gain": 0.8 },
+        { "t": 2.8, "type": "click", "gain": 0.7 },
+        { "t": 3.1, "type": "click", "gain": 0.7 },
+        { "t": 3.4, "type": "click", "gain": 0.7 },
+        { "t": 3.7, "type": "click", "gain": 0.7 },
+        { "t": 4.8, "type": "pop", "gain": 0.85 },
+        { "t": 5.8, "type": "tick", "gain": 0.6 },
+        { "t": 7.2, "type": "pop", "gain": 0.85 },
+        { "t": 7.6, "type": "tick", "gain": 0.6 },
+        { "t": 9.6, "type": "pop", "gain": 0.9 },
+        { "t": 10.5, "type": "click", "gain": 0.85 }
+      ],
+      "transitionOut": "fade"
+    }
+  ],
+  "audio": {
+    "assetsRoot": "jobs/motion-swell-clone/assets",
+    "voice": {
+      "provider": "elevenlabs",
+      "voiceId": "none",
+      "model": "none",
+      "clips": {}
+    },
+    "music": {
+      "file": "",
+      "mood": "none",
+      "volume": 0
+    },
+    "room": {
+      "file": "audio/room-tone.wav",
+      "volume": 0.9
+    },
+    "sfxFiles": {
+      "click": "audio/click.wav",
+      "tick": "audio/tick.wav",
+      "pop": "audio/pop.wav"
+    },
+    "duck": 7
+  }
+}

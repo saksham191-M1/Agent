@@ -1,0 +1,44 @@
+{
+  "tts": {
+    "configured": true,
+    "provider": "ElevenLabs",
+    "evidence": "../.env key",
+    "kind": "api"
+  },
+  "stt": {
+    "configured": false,
+    "provider": null,
+    "evidence": "Not configured yet"
+  },
+  "avatar": {
+    "configured": false,
+    "provider": null,
+    "evidence": "Not configured yet"
+  },
+  "videoGen": {
+    "configured": false,
+    "provider": null,
+    "evidence": "Not configured yet"
+  },
+  "imageGen": {
+    "configured": false,
+    "provider": null,
+    "evidence": "Not configured yet"
+  },
+  "musicSfxLibrary": {
+    "configured": false,
+    "provider": null,
+    "evidence": "Not configured yet"
+  },
+  "brandfetch": {
+    "configured": false,
+    "provider": null,
+    "evidence": "Not configured yet"
+  },
+  "effectcraft": {
+    "configured": true,
+    "provider": "EffectCraft",
+    "evidence": "bin/effectcraft/ effectcraft-cli 0.8.0 verified",
+    "kind": "cli"
+  }
+}

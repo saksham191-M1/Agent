@@ -1,0 +1,496 @@
+{
+  "jobId": "instagram-001",
+  "brand": "Instagram",
+  "format": "16:9",
+  "fps": 60,
+  "durationSec": 18,
+  "bpm": 130,
+  "palette": {
+    "background": "#F6E4C6",
+    "background2": "#EDE0CA",
+    "surface": "#FFFFFF",
+    "surfaceText": "#0E0F1F",
+    "text": "#0E0F1F",
+    "muted": "#6B7280",
+    "accent": "#2B3BFF",
+    "accentLight": "#FF7DC7",
+    "secondary": "#FF5A1F",
+    "isLightTheme": true
+  },
+  "mlMatch": {
+    "category": "MOTION",
+    "score": 0.2805,
+    "template": "Problem-Agitate-Solution (UI Showcase)",
+    "author": "twoclipping",
+    "techTags": [],
+    "referenceUrl": "https://x.com/twoclipping/status/2106101258834551116",
+    "aesthetic": {
+      "is_light_theme": true,
+      "background": "#F6E4C6",
+      "background2": "#EDE0CA",
+      "surface": "#FFFFFF",
+      "surfaceText": "#0E0F1F",
+      "text": "#0E0F1F",
+      "muted": "#6B7280",
+      "accent": "#2B3BFF",
+      "accentLight": "#FF7DC7",
+      "secondary": "#FF5A1F",
+      "suggested_bpm": 130,
+      "motion_rules": [
+        "continuous_camera_push",
+        "film_grain",
+        "die_cut_accents"
+      ]
+    }
+  },
+  "scenes": [
+    {
+      "id": "scene_1",
+      "start": 0,
+      "duration": 4,
+      "layout": "hero-type",
+      "headline": "BURIED VOICE",
+      "subline": "Your best creative moments and stories are getting buried in static, silent feed",
+      "caption": "Cinematic mood shot of a creator staring at a shadowy, dim s",
+      "captionWords": [
+        {
+          "word": "Your",
+          "start": 6,
+          "end": 14
+        },
+        {
+          "word": "best",
+          "start": 14,
+          "end": 22
+        },
+        {
+          "word": "creative",
+          "start": 22,
+          "end": 30
+        },
+        {
+          "word": "moments",
+          "start": 30,
+          "end": 38
+        },
+        {
+          "word": "and",
+          "start": 38,
+          "end": 46
+        },
+        {
+          "word": "stories",
+          "start": 46,
+          "end": 54
+        },
+        {
+          "word": "are",
+          "start": 54,
+          "end": 62
+        },
+        {
+          "word": "getting",
+          "start": 62,
+          "end": 70
+        },
+        {
+          "word": "buried",
+          "start": 70,
+          "end": 78
+        },
+        {
+          "word": "in",
+          "start": 78,
+          "end": 86
+        },
+        {
+          "word": "static,",
+          "start": 86,
+          "end": 94
+        },
+        {
+          "word": "silent",
+          "start": 94,
+          "end": 102
+        },
+        {
+          "word": "feeds.",
+          "start": 102,
+          "end": 110
+        }
+      ],
+      "visual": {
+        "kicker": "Instagram",
+        "pulseText": "fast_zoom"
+      },
+      "motion": {
+        "enter": "slide-up",
+        "idle": "float",
+        "exit": "fade"
+      },
+      "vo": "",
+      "sfx": [
+        {
+          "t": 0.1,
+          "type": "pop",
+          "gain": 0.85,
+          "duckMusicDb": -6
+        },
+        {
+          "t": 2.88,
+          "type": "tick",
+          "gain": 0.6
+        }
+      ],
+      "transitionOut": "cross_zoom"
+    },
+    {
+      "id": "scene_2",
+      "start": 4,
+      "duration": 5,
+      "layout": "phone",
+      "headline": "CREATE REELS",
+      "subline": "Enter Instagram. Elevate your narrative with rich short-form Reels and immersive",
+      "caption": "A sleek 3D floating glass mobile UI displaying a vibrant Ins",
+      "captionWords": [
+        {
+          "word": "Enter",
+          "start": 6,
+          "end": 16
+        },
+        {
+          "word": "Instagram.",
+          "start": 16,
+          "end": 27
+        },
+        {
+          "word": "Elevate",
+          "start": 27,
+          "end": 37
+        },
+        {
+          "word": "your",
+          "start": 37,
+          "end": 47
+        },
+        {
+          "word": "narrative",
+          "start": 47,
+          "end": 58
+        },
+        {
+          "word": "with",
+          "start": 58,
+          "end": 68
+        },
+        {
+          "word": "rich",
+          "start": 68,
+          "end": 78
+        },
+        {
+          "word": "short-form",
+          "start": 78,
+          "end": 88
+        },
+        {
+          "word": "Reels",
+          "start": 88,
+          "end": 99
+        },
+        {
+          "word": "and",
+          "start": 99,
+          "end": 109
+        },
+        {
+          "word": "immersive",
+          "start": 109,
+          "end": 119
+        },
+        {
+          "word": "daily",
+          "start": 119,
+          "end": 130
+        },
+        {
+          "word": "Stories.",
+          "start": 130,
+          "end": 140
+        }
+      ],
+      "visual": {
+        "kicker": "Instagram",
+        "pulseText": "glass_ui"
+      },
+      "motion": {
+        "enter": "slide-up",
+        "idle": "float",
+        "exit": "fade"
+      },
+      "vo": "",
+      "sfx": [
+        {
+          "t": 0.1,
+          "type": "pop",
+          "gain": 0.85,
+          "duckMusicDb": -6
+        },
+        {
+          "t": 1.75,
+          "type": "tick",
+          "gain": 0.55,
+          "pitchVariation": 1
+        },
+        {
+          "t": 3.25,
+          "type": "click",
+          "gain": 0.7
+        },
+        {
+          "t": 4.25,
+          "type": "tick",
+          "gain": 0.55,
+          "pitchVariation": 0.95
+        }
+      ],
+      "transitionOut": "wipe"
+    },
+    {
+      "id": "scene_3",
+      "start": 9,
+      "duration": 5,
+      "layout": "phone",
+      "headline": "2.5B CREATORS",
+      "subline": "Connect instantly across a global network of over two point five billion creator",
+      "caption": "An elegant multi-layered glass card display showcasing Insta",
+      "captionWords": [
+        {
+          "word": "Connect",
+          "start": 6,
+          "end": 14
+        },
+        {
+          "word": "instantly",
+          "start": 14,
+          "end": 23
+        },
+        {
+          "word": "across",
+          "start": 23,
+          "end": 31
+        },
+        {
+          "word": "a",
+          "start": 31,
+          "end": 40
+        },
+        {
+          "word": "global",
+          "start": 40,
+          "end": 48
+        },
+        {
+          "word": "network",
+          "start": 48,
+          "end": 56
+        },
+        {
+          "word": "of",
+          "start": 56,
+          "end": 65
+        },
+        {
+          "word": "over",
+          "start": 65,
+          "end": 73
+        },
+        {
+          "word": "two",
+          "start": 73,
+          "end": 81
+        },
+        {
+          "word": "point",
+          "start": 81,
+          "end": 90
+        },
+        {
+          "word": "five",
+          "start": 90,
+          "end": 98
+        },
+        {
+          "word": "billion",
+          "start": 98,
+          "end": 107
+        },
+        {
+          "word": "creators",
+          "start": 107,
+          "end": 115
+        },
+        {
+          "word": "and",
+          "start": 115,
+          "end": 123
+        },
+        {
+          "word": "dedicated",
+          "start": 123,
+          "end": 132
+        },
+        {
+          "word": "fans.",
+          "start": 132,
+          "end": 140
+        }
+      ],
+      "visual": {
+        "kicker": "Instagram",
+        "pulseText": "hologram_tilt"
+      },
+      "motion": {
+        "enter": "slide-up",
+        "idle": "float",
+        "exit": "fade"
+      },
+      "vo": "",
+      "sfx": [
+        {
+          "t": 0.1,
+          "type": "pop",
+          "gain": 0.85,
+          "duckMusicDb": -6
+        },
+        {
+          "t": 1.75,
+          "type": "tick",
+          "gain": 0.55,
+          "pitchVariation": 1
+        },
+        {
+          "t": 3.25,
+          "type": "click",
+          "gain": 0.7
+        },
+        {
+          "t": 4.25,
+          "type": "tick",
+          "gain": 0.55,
+          "pitchVariation": 0.95
+        }
+      ],
+      "transitionOut": "cross_zoom"
+    },
+    {
+      "id": "scene_4",
+      "start": 14,
+      "duration": 4,
+      "layout": "cta",
+      "headline": "SHARE WHAT YOU LOVE",
+      "subline": "Capture and share what you love. Download Instagram today.",
+      "caption": "Iconic Instagram camera logo rendering in glowing iridescent",
+      "captionWords": [
+        {
+          "word": "Capture",
+          "start": 6,
+          "end": 18
+        },
+        {
+          "word": "and",
+          "start": 18,
+          "end": 29
+        },
+        {
+          "word": "share",
+          "start": 29,
+          "end": 41
+        },
+        {
+          "word": "what",
+          "start": 41,
+          "end": 52
+        },
+        {
+          "word": "you",
+          "start": 52,
+          "end": 64
+        },
+        {
+          "word": "love.",
+          "start": 64,
+          "end": 75
+        },
+        {
+          "word": "Download",
+          "start": 75,
+          "end": 87
+        },
+        {
+          "word": "Instagram",
+          "start": 87,
+          "end": 98
+        },
+        {
+          "word": "today.",
+          "start": 98,
+          "end": 110
+        }
+      ],
+      "visual": {
+        "kicker": "Instagram",
+        "pulseText": "logo_burst"
+      },
+      "motion": {
+        "enter": "slide-up",
+        "idle": "float",
+        "exit": "fade"
+      },
+      "vo": "",
+      "sfx": [
+        {
+          "t": 0.1,
+          "type": "pop",
+          "gain": 0.85,
+          "duckMusicDb": -6
+        },
+        {
+          "t": 1.8,
+          "type": "click",
+          "gain": 0.75
+        },
+        {
+          "t": 3.4,
+          "type": "pop",
+          "gain": 0.8
+        }
+      ],
+      "transitionOut": "none"
+    }
+  ],
+  "audio": {
+    "assetsRoot": "jobs/instagram-001/assets",
+    "voice": {
+      "provider": "none",
+      "voiceId": "none",
+      "model": "none",
+      "clips": {}
+    },
+    "music": {
+      "file": "",
+      "mood": "none",
+      "volume": 0
+    },
+    "room": {
+      "file": "audio/room-tone.wav",
+      "volume": 0.85
+    },
+    "sfxFiles": {
+      "click": "audio/click.wav",
+      "tick": "audio/tick.wav",
+      "pop": "audio/pop.wav"
+    },
+    "duck": 18
+  }
+}

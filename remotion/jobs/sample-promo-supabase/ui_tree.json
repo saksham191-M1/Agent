@@ -1,0 +1,111 @@
+{
+  "brandId": "sample-promo-supabase",
+  "worldBounds": {
+    "width": 1920,
+    "height": 1080,
+    "depth": 2000
+  },
+  "nodes": [
+    {
+      "type": "interactive_input",
+      "id": "supabase-prompt",
+      "placeholder": "Connect to Postgres...",
+      "typedValue": "SELECT * FROM users WHERE active = true;",
+      "cursorPosition": 38,
+      "buttonLabel": "Run Query",
+      "position3D": [
+        0,
+        180,
+        0
+      ]
+    },
+    {
+      "type": "pill_tag",
+      "id": "pill-pg",
+      "text": "Postgres 16 · Online",
+      "variant": "glass",
+      "accent": "#3ECF8E",
+      "position3D": [
+        -320,
+        270,
+        40
+      ]
+    },
+    {
+      "type": "pill_tag",
+      "id": "pill-speed",
+      "text": "Edge Latency: sub-10ms",
+      "variant": "solid",
+      "accent": "#6EE7B7",
+      "position3D": [
+        320,
+        270,
+        40
+      ]
+    },
+    {
+      "type": "metric_card",
+      "id": "metric-queries",
+      "label": "Active SQL Queries",
+      "value": "48,290 /s",
+      "delta": "+99.9% uptime",
+      "chartPoints": [
+        120,
+        180,
+        260,
+        340,
+        410,
+        482
+      ],
+      "accentColor": "#3ECF8E",
+      "position3D": [
+        -480,
+        -30,
+        120
+      ]
+    },
+    {
+      "type": "asset_card",
+      "id": "asset-supabase",
+      "assetUrl": "jobs/sample-promo-supabase/assets/logo.png",
+      "scaleMode": "contain",
+      "title": "Instant Database APIs",
+      "subtitle": "Auto-generated REST & GraphQL endpoints",
+      "position3D": [
+        480,
+        -30,
+        120
+      ]
+    },
+    {
+      "type": "bento_grid",
+      "id": "bento-features",
+      "columns": 3,
+      "cards": [
+        {
+          "id": "b1",
+          "title": "Postgres & PgVector",
+          "subtitle": "Native vector embeddings",
+          "accent": "#3ECF8E"
+        },
+        {
+          "id": "b2",
+          "title": "Row Level Security",
+          "subtitle": "Enterprise authorization",
+          "accent": "#6EE7B7"
+        },
+        {
+          "id": "b3",
+          "title": "Edge Functions",
+          "subtitle": "Distributed TypeScript runtime",
+          "accent": "#34D399"
+        }
+      ],
+      "position3D": [
+        0,
+        -290,
+        260
+      ]
+    }
+  ]
+}

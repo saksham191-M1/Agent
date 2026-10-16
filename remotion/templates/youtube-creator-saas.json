@@ -1,0 +1,53 @@
+{
+  "$schema": "remotion-saas-skills",
+  "source": "remotion-dev",
+  "brandName": "YouTube",
+  "appName": "YouTube Studio Pro",
+  "accentColor": "#FF0000",
+  "domain": "studio.youtube.com",
+  "tagline": "Real-Time Algorithmic Intelligence for Modern Creators",
+  "durationSec": 10,
+  "fps": 30,
+  "skills": {
+    "charts": true,
+    "typography": true,
+    "messaging": true
+  },
+  "typography": {
+    "words": ["Broadcast.", "Optimize.", "Monetize."],
+    "subtext": "Transform your creative craft into predictable, exponential growth"
+  },
+  "charts": {
+    "chartType": "area",
+    "title": "Real-Time Audience Retention & Velocity (%)",
+    "data": [
+      {"label": "00:00", "value": 100},
+      {"label": "01:30", "value": 84},
+      {"label": "03:00", "value": 78},
+      {"label": "06:00", "value": 72},
+      {"label": "10:00", "value": 68}
+    ]
+  },
+  "messaging": {
+    "messages": [
+      {
+        "id": "m1",
+        "sender": "user",
+        "text": "Analyze drop-off at 01:30 and optimize packaging.",
+        "time": "02:14 PM"
+      },
+      {
+        "id": "m2",
+        "sender": "agent",
+        "text": "A/B testing dynamic title and high-contrast thumbnail variant B.",
+        "time": "02:14 PM"
+      },
+      {
+        "id": "m3",
+        "sender": "agent",
+        "text": "CTR surged by +34%. Algorithmic lift unlocked in 18 regions.",
+        "time": "02:15 PM"
+      }
+    ]
+  }
+}

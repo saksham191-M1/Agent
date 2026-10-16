@@ -1,0 +1,65 @@
+{
+  "brandId": "demo-cinematic-app",
+  "worldBounds": {
+    "width": 1920,
+    "height": 1080,
+    "depth": 1000
+  },
+  "nodes": [
+    {
+      "id": "cinematic-frame",
+      "type": "app_frame",
+      "appName": "Vortex CI",
+      "topbarTitle": "Build Telemetry",
+      "badgeText": "Cluster Healthy",
+      "sidebarItems": [
+        {
+          "id": "pipelines",
+          "label": "Pipelines",
+          "active": true
+        },
+        {
+          "id": "deployments",
+          "label": "Deployments",
+          "active": false
+        },
+        {
+          "id": "analytics",
+          "label": "Analytics",
+          "active": false
+        },
+        {
+          "id": "security",
+          "label": "Security Scan",
+          "active": false
+        }
+      ],
+      "position3D": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "cinematic-metric",
+      "type": "metric_card",
+      "label": "Edge Compute Latency",
+      "value": "4.2 ms",
+      "delta": "-58% p99",
+      "chartPoints": [
+        45,
+        38,
+        26,
+        18,
+        12,
+        4
+      ],
+      "accentColor": "#EC4899",
+      "position3D": [
+        0,
+        0,
+        0
+      ]
+    }
+  ]
+}
