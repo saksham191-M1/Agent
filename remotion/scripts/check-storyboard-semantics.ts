@@ -22,7 +22,16 @@ let knownExceptions: Record<string, string> = {};
 const exceptionsPath = resolve(process.cwd(), 'jobs', jobId, 'known-exceptions.json');
 if (existsSync(exceptionsPath)) {
   try {
-    knownExceptions = JSON.parse(readFileSync(exceptionsPath, 'utf8'));
+    const rawParsed = JSON.parse(readFileSync(exceptionsPath, 'utf8'));
+    if (Array.isArray(rawParsed)) {
+      for (const item of rawParsed) {
+        if (item && item.rule) {
+          knownExceptions[item.rule] = item.reason || 'waiver';
+        }
+      }
+    } else if (typeof rawParsed === 'object' && rawParsed !== null) {
+      knownExceptions = rawParsed as Record<string, string>;
+    }
   } catch (e: unknown) {
     console.warn(`[${jobId}] WARN: Failed to parse known-exceptions.json - ${e instanceof Error ? e.message : String(e)}`);
   }

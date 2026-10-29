@@ -47,14 +47,14 @@ export const PhoneMockup: React.FC<PhoneMockupProps> = ({
   return (
     <div
       style={{
-        width: 365,
-        height: 720,
-        borderRadius: 48,
-        padding: 12,
+        width: 440,
+        height: 820,
+        borderRadius: 52,
+        padding: 14,
         background: tokens.colors.surfaceText,
         border: `2px solid ${tokens.colors.text}33`,
         boxShadow: `0 35px 85px ${tokens.colors.background}80`,
-        transform: `translateY(${(1 - enter) * 80}px) scale(${scaleIn(enter)}) rotate(${rotate}deg)`,
+        transform: `translateY(${(1 - enter) * 80 - 30}px) scale(${scaleIn(enter)}) rotate(${rotate}deg)`,
         opacity: enter,
         ...style,
       }}
@@ -93,9 +93,11 @@ export const PhoneMockup: React.FC<PhoneMockupProps> = ({
           {screenType === 'checkout' ? (
             <div>
               <div style={{fontSize: 20, fontWeight: 800, marginBottom: 4}}>Order Summary</div>
-              <div style={{fontSize: 12, color: tokens.colors.surfaceMuted, marginBottom: 14}}>
-                1 Item in Cart • Express Delivery
-              </div>
+              {greeting && (
+                <div style={{fontSize: 12, color: tokens.colors.surfaceMuted, marginBottom: 14}}>
+                  {greeting}
+                </div>
+              )}
               <div
                 style={{
                   borderRadius: 16,

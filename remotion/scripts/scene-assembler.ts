@@ -105,9 +105,8 @@ function makeUINode(brand: BrandJson, scene: any, category: ProductCategory, idx
         type: 'chat_messaging',
         position3D: [0, 0, 0],
         messages: [
-          {id: 'm1', sender: 'user',   text: `Analyze ${brand.products[0] || brand.name} performance`},
-          {id: 'm2', sender: 'agent',  text: scene.voiceover?.slice(0, 100) || `Here's your ${brand.name} insight...`},
-          {id: 'm3', sender: 'system', text: `${brand.name} completed task in 1.2s`},
+          {id: 'm1', sender: 'user',   text: `Analyze ${brand.products[0] || brand.name}`},
+          {id: 'm2', sender: 'agent',  text: scene.voiceover?.slice(0, 100) || `${brand.name}`},
         ],
         typingIndicator: true,
       } as VectorNode;
@@ -179,10 +178,10 @@ function makeMetricNode(brand: BrandJson, idx: number): VectorNode {
     id: `node_metric_${idx}`,
     type: 'metric_card',
     position3D: [0, 0, 0],
-    label: claim?.label || brand.name,
-    value: claim?.value || '10×',
-    delta: '+↑ Growing',
-    chartPoints: [12, 28, 45, 62, 78, 91, 99],
+    label: claim?.label || '',
+    value: claim?.value || '',
+    delta: '',
+    chartPoints: [],
     accentColor: brand.colors.accent,
   } as VectorNode;
 }

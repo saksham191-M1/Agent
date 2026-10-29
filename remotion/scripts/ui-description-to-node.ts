@@ -47,8 +47,6 @@ export function buildNodeFromUIDescription(
 
   // If this is an ecommerce brand
   if (isEcommerce) {
-    // If scene is middle/detail scene (e.g. Scene 3) and not explicitly a phone overview,
-    // render a full authentic EcommerceProductCard instead of repeating the phone!
     const isProductHighlightScene = sceneIdx === 2 || /deal|price|discount|offer|save|assured|quality|choice|50%|off|rupee|₹|\$/.test(vo);
 
     if (isProductHighlightScene && !isCheckoutOrCart && sceneIdx !== 1) {
@@ -58,6 +56,19 @@ export function buildNodeFromUIDescription(
       const discountPct = desc.price_info?.discount_pct || null;
       const rating = desc.rating?.value ?? null;
       const ratingCount = desc.rating?.count_text || null;
+
+      // Only build product card if real extracted price or rating is present
+      if (!currentPrice && rating === null && (!desc.trust_badges || desc.trust_badges.length === 0)) {
+        return {
+          id: `node_kinetic_${sceneIdx}`,
+          type: 'kinetic_typography',
+          position3D: [0, 0, 0],
+          words: [scene.headline || brand.name],
+          text: scene.headline || brand.name,
+          subtext: scene.voiceover || brand.tagline,
+          fontSize: 96,
+        } as VectorNode;
+      }
 
       const productNode: EcommerceProductCardNode = {
         id: `node_ecommerce_card_${sceneIdx}`,
@@ -82,27 +93,25 @@ export function buildNodeFromUIDescription(
     }
 
     // Phone mockup screen (Scene 2: browse feed or checkout)
-    const brandTabs = desc.header.navLinks.length >= 3
+    const brandTabs = (desc.header.navLinks && desc.header.navLinks.length > 0)
       ? desc.header.navLinks.slice(0, 4)
-      : ['Home', 'Categories', 'Orders', 'Account'];
+      : [];
 
-    const items = (desc.brand_distinguishers.length >= 2
+    const items = (desc.brand_distinguishers.length > 0
       ? desc.brand_distinguishers
-      : brand.products.length >= 2
-      ? brand.products
-      : ['Top Deals', 'Best Sellers', 'New Launches', 'Discounts']
-    ).slice(0, 4).map((label, i) => ({
+      : (brand.products.length > 0 ? brand.products : [])
+    ).slice(0, 4).map((label) => ({
       label,
-      icon: ['⚡', '🎯', '✨', '🔥'][i] || '•',
+      icon: '',
     }));
 
     const phoneNode: PhoneMockupNode = {
       id: `node_phone_${sceneIdx}`,
       type: 'phone_mockup',
       position3D: [0, 0, 0],
-      greeting: isCheckoutOrCart ? `Checkout • ${brand.name}` : `Welcome to ${brand.name}`,
+      greeting: isCheckoutOrCart ? `Order Details` : brand.name,
       prompt: scene.voiceover?.slice(0, 60) || brand.tagline,
-      search: desc.searchBar.placeholder || `Search ${brand.name}...`,
+      search: desc.searchBar.placeholder || '',
       items,
       navTabs: brandTabs,
       headerBg: desc.header.bg || brand.colors.accent,
@@ -125,28 +134,28 @@ export function buildNodeFromUIDescription(
       type: 'app_frame',
       position3D: [0, 0, 0],
       appName: brand.name,
-      topbarTitle: scene.voiceover?.split('.')[0] || `${brand.name} Studio`,
+      topbarTitle: scene.voiceover?.split('.')[0] || `${brand.name} Platform`,
       badgeText: '● Live',
       activePane: 'dashboard',
-      sidebarItems: (desc.header.navLinks.length > 0 ? desc.header.navLinks : ['Overview', 'Analytics', 'Settings']).slice(0, 4).map(
+      sidebarItems: (desc.header.navLinks.length > 0 ? desc.header.navLinks : []).slice(0, 4).map(
         (p, i) => ({id: `s${i}`, label: p, active: i === 0})
       ),
     } as VectorNode;
   }
 
-  // Default fallback to standard phone mockup with authentic brand tabs and header
+  // Default fallback
   return {
     id: `node_phone_${sceneIdx}`,
     type: 'phone_mockup',
     position3D: [0, 0, 0],
-    greeting: `Welcome to ${brand.name}`,
+    greeting: brand.name,
     prompt: scene.voiceover?.slice(0, 60) || brand.tagline,
-    search: desc.searchBar.placeholder || `Search ${brand.name}...`,
-    items: brand.products.slice(0, 4).map((p, i) => ({
+    search: desc.searchBar.placeholder || '',
+    items: brand.products.slice(0, 4).map((p) => ({
       label: p,
-      icon: ['🚀', '⚡', '🎯', '✨'][i] || '•',
+      icon: '',
     })),
-    navTabs: desc.header.navLinks.length > 0 ? desc.header.navLinks.slice(0, 4) : ['Home', 'Orders', 'Account'],
+    navTabs: desc.header.navLinks.length > 0 ? desc.header.navLinks.slice(0, 4) : [],
     headerBg: desc.header.bg,
     headerColor: '#FFFFFF',
     badges: desc.trust_badges,
