@@ -1,0 +1,37 @@
+{
+  "fast_confident": {
+    "voice_id": "21m00Tcm4TlvDq8ikWAM",
+    "stability": 0.45,
+    "similarity_boost": 0.85,
+    "speed": 1.15,
+    "description": "Energetic, fast, confident commercial pacing"
+  },
+  "confident_engineer": {
+    "voice_id": "VR6AewLTigWG4xSOukaG",
+    "stability": 0.60,
+    "similarity_boost": 0.80,
+    "speed": 1.05,
+    "description": "Smart, authoritative tech explainer"
+  },
+  "calm_precise": {
+    "voice_id": "EXAVITQu4vr4xnSDxMaL",
+    "stability": 0.70,
+    "similarity_boost": 0.85,
+    "speed": 0.98,
+    "description": "Calm, refined, minimalist luxury"
+  },
+  "warm_conversational": {
+    "voice_id": "AZnzlk1XvdvUeBnXmlld",
+    "stability": 0.50,
+    "similarity_boost": 0.75,
+    "speed": 1.02,
+    "description": "Friendly, approachable, trusted customer voice"
+  },
+  "energetic": {
+    "voice_id": "yoZ06aMxZJJ28mfd3POQ",
+    "stability": 0.40,
+    "similarity_boost": 0.85,
+    "speed": 1.18,
+    "description": "High-urgency deal drop or product launch"
+  }
+}

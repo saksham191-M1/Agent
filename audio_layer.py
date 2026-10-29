@@ -5,6 +5,7 @@ Per-scene ElevenLabs voice lines + SFX -> ONE timed mix track (wav), muxed by pr
 Env vars: ELEVENLABS_API_KEY, ELEVENLABS_VOICE_ID
 Requires: requests, ffmpeg + ffprobe on PATH.
 """
+import json
 import hashlib
 import os
 import subprocess
@@ -18,6 +19,7 @@ DURATION = 15
 PROJECT_ROOT = Path(__file__).resolve().parent
 SFX_DIR = PROJECT_ROOT / "assets" / "sfx"
 CACHE = PROJECT_ROOT / "output" / "audio_cache"
+VOICES_FILE = PROJECT_ROOT / "tools" / "video_pipeline" / "voices.json"
 WORDS_PER_SEC = 2.4      # comfortable ad pacing
 MAX_SPEEDUP = 1.15       # never speed a voice line up more than this
 VO_GAIN, SFX_GAIN = 1.0, 0.35
@@ -34,7 +36,30 @@ SFX_PROMPTS = {
     "whoosh": "short clean cinematic whoosh transition, under one second",
     "pop": "soft UI pop notification, very short, clean",
     "ding": "bright clean success chime, short",
+    "click": "crisp mechanical mouse click",
+    "tick": "minimal watch tick sound",
 }
+
+
+def load_voices() -> dict:
+    if VOICES_FILE.exists():
+        try:
+            with open(VOICES_FILE, "r", encoding="utf-8") as f:
+                return json.load(f)
+        except Exception:
+            pass
+    return {
+        "fast_confident": {"voice_id": "21m00Tcm4TlvDq8ikWAM", "stability": 0.45, "similarity_boost": 0.85, "speed": 1.15},
+        "confident_engineer": {"voice_id": "VR6AewLTigWG4xSOukaG", "stability": 0.60, "similarity_boost": 0.80, "speed": 1.05},
+        "calm_precise": {"voice_id": "EXAVITQu4vr4xnSDxMaL", "stability": 0.70, "similarity_boost": 0.85, "speed": 0.98},
+        "warm_conversational": {"voice_id": "AZnzlk1XvdvUeBnXmlld", "stability": 0.50, "similarity_boost": 0.75, "speed": 1.02},
+        "energetic": {"voice_id": "yoZ06aMxZJJ28mfd3POQ", "stability": 0.40, "similarity_boost": 0.85, "speed": 1.18}
+    }
+
+
+def resolve_voice(voice_style: str = "fast_confident") -> dict:
+    voices = load_voices()
+    return voices.get(voice_style) or voices.get("fast_confident")
 
 
 class VoiceTooLong(Exception):
@@ -65,15 +90,16 @@ def prompt_addendum(template: str) -> str:
 
 
 # ------------------------------------------------------------- audio sources
-def tts(text: str) -> Path:
-    voice = os.environ.get("ELEVENLABS_VOICE_ID", "21m00Tcm4TlvDq8ikWAM") # Fallback to default Rachel voice
+def tts(text: str, voice_style: str = "fast_confident", voice_id_override: str = None) -> Path:
+    voice_cfg = resolve_voice(voice_style)
+    voice = voice_id_override or os.environ.get("ELEVENLABS_VOICE_ID") or voice_cfg.get("voice_id", "21m00Tcm4TlvDq8ikWAM")
     api_key = os.environ.get("ELEVENLABS_API_KEY")
     
     if not api_key:
         print("[AudioLayer] Warning: ELEVENLABS_API_KEY missing. Skipping TTS generation.")
         return None
         
-    key = hashlib.sha1(f"{voice}|{TTS_MODEL}|{text}".encode()).hexdigest()[:16]
+    key = hashlib.sha1(f"{voice}|{TTS_MODEL}|{voice_style}|{text}".encode()).hexdigest()[:16]
     path = CACHE / f"{key}.mp3"
     if path.exists():
         return path
@@ -81,7 +107,10 @@ def tts(text: str) -> Path:
     r = requests.post(
         f"{API}/text-to-speech/{voice}", headers=_headers(), timeout=60,
         json={"text": text, "model_id": TTS_MODEL,
-              "voice_settings": {"stability": 0.45, "similarity_boost": 0.8}},
+              "voice_settings": {
+                  "stability": voice_cfg.get("stability", 0.45),
+                  "similarity_boost": voice_cfg.get("similarity_boost", 0.8)
+              }},
     )
     r.raise_for_status()
     path.write_bytes(r.content)
@@ -104,7 +133,7 @@ def sfx(name: str) -> Path:
     SFX_DIR.mkdir(parents=True, exist_ok=True)
     r = requests.post(
         f"{API}/sound-generation", headers=_headers(), timeout=60,
-        json={"text": SFX_PROMPTS[name], "duration_seconds": 1.0},
+        json={"text": SFX_PROMPTS.get(name, "clean cinematic sound effect"), "duration_seconds": 1.0},
     )
     r.raise_for_status()
     path.write_bytes(r.content)
@@ -120,8 +149,8 @@ def _duration(path: Path) -> float:
     return float(out)
 
 
-def _mix_items(items: list[tuple[Path, float, float, float]], out: Path) -> Path:
-    """Mix already-selected audio items into the fixed legacy timeline."""
+def _mix_items(items: list[tuple[Path, float, float, float]], out: Path, duration: float = DURATION) -> Path:
+    """Mix audio items into the timed timeline."""
     out.parent.mkdir(parents=True, exist_ok=True)
     if not items:
         return None
@@ -137,11 +166,71 @@ def _mix_items(items: list[tuple[Path, float, float, float]], out: Path) -> Path
     ins = "".join(f"[a{i}]" for i in range(len(items)))
     chains.append(
         f"{ins}amix=inputs={len(items)}:normalize=0:dropout_transition=0,apad,"
-        f"atrim=0:{DURATION},alimiter=limit=0.95[out]"
+        f"atrim=0:{duration},alimiter=limit=0.95[out]"
     )
     cmd += ["-filter_complex", ";".join(chains), "-map", "[out]", "-ar", "44100", str(out)]
     subprocess.run(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, check=True)
     return out
+
+
+def build_dynamic_cues(storyboard_spec: dict) -> dict:
+    """Builds per-scene voiceover windows and SFX cue timestamps dynamically from storyboard."""
+    scenes = storyboard_spec.get("scenes", [])
+    vo_cues = []
+    sfx_cues = []
+    elapsed = 0.0
+
+    for idx, scene in enumerate(scenes):
+        dur = float(scene.get("duration_seconds") or scene.get("duration") or 4.0)
+        vo_text = scene.get("voiceover", "").strip()
+        if vo_text:
+            vo_cues.append((f"VO_{idx+1}", round(elapsed + 0.15, 2), round(elapsed + dur - 0.15, 2), vo_text))
+
+        # Add transition / entry SFX
+        if idx == 0:
+            sfx_cues.append(("whoosh", round(elapsed, 2)))
+            sfx_cues.append(("pop", round(elapsed + dur * 0.7, 2)))
+        elif idx == len(scenes) - 1:
+            sfx_cues.append(("whoosh", round(elapsed, 2)))
+            sfx_cues.append(("ding", round(elapsed + dur * 0.5, 2)))
+        else:
+            sfx_cues.append(("pop", round(elapsed, 2)))
+            if dur > 3.0:
+                sfx_cues.append(("tick", round(elapsed + dur * 0.5, 2)))
+
+        elapsed += dur
+
+    return {
+        "total_duration": round(elapsed, 2),
+        "vo": vo_cues,
+        "sfx": sfx_cues
+    }
+
+
+def build_dynamic_track(storyboard_spec: dict, out: Path, voice_override: str = None) -> Path:
+    """Builds a dynamic voiceover and SFX audio track matching the flexible storyboard."""
+    voice_style = storyboard_spec.get("voice_style", "fast_confident")
+    cues = build_dynamic_cues(storyboard_spec)
+    items = []
+
+    for name, start, end, vo_text in cues["vo"]:
+        p = tts(vo_text, voice_style=voice_style, voice_id_override=voice_override)
+        if not p:
+            continue
+        d = _duration(p)
+        window = end - start
+        tempo = 1.0
+        if d > window:
+            tempo = min(d / window, MAX_SPEEDUP)
+        items.append((p, start, VO_GAIN, tempo))
+
+    for name, start in cues["sfx"]:
+        p = sfx(name)
+        if p:
+            items.append((p, start, SFX_GAIN, 1.0))
+
+    total_dur = cues.get("total_duration", DURATION)
+    return _mix_items(items, out, duration=total_dur)
 
 
 # ---------------------------------------------------------------- the mixer

@@ -1,0 +1,42 @@
+{
+  "snappy": {
+    "id": "snappy",
+    "name": "Snappy & Punchy",
+    "camera_push_scale": [1.04, 1.09],
+    "stagger_s": [0.02, 0.06],
+    "easing": "ease_out_expo",
+    "text_entry": "mask_letter_rise"
+  },
+  "smooth": {
+    "id": "smooth",
+    "name": "Smooth & Premium",
+    "camera_push_scale": [1.02, 1.05],
+    "stagger_s": [0.04, 0.10],
+    "easing": "ease_out_cubic",
+    "text_entry": "mask_line_rise"
+  },
+  "dramatic": {
+    "id": "dramatic",
+    "name": "Dramatic & Cinematic",
+    "camera_push_scale": [1.03, 1.08],
+    "stagger_s": [0.05, 0.12],
+    "easing": "ease_in_out_cubic",
+    "text_entry": "zoom_fade_rise"
+  },
+  "playful": {
+    "id": "playful",
+    "name": "Playful & Bouncy",
+    "camera_push_scale": [1.03, 1.07],
+    "stagger_s": [0.03, 0.08],
+    "easing": "spring_pop",
+    "text_entry": "letter_pop"
+  },
+  "technical": {
+    "id": "technical",
+    "name": "Technical & Precise",
+    "camera_push_scale": [1.02, 1.06],
+    "stagger_s": [0.02, 0.05],
+    "easing": "linear_or_gentle_ease",
+    "text_entry": "typing_cursor"
+  }
+}
