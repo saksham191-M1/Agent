@@ -9,8 +9,14 @@ Verifies Phase 4 acceptance criteria:
 4. Global rules verification: all arcs have scene counts in [3, 8] and durations in [10, 40]s.
 """
 
+import os
+import sys
 import unittest
 from pathlib import Path
+
+root_dir = str(Path(__file__).resolve().parent.parent.parent)
+if root_dir not in sys.path:
+    sys.path.insert(0, root_dir)
 
 from tools.video_pipeline.schemas import (
     NarrativeArc,

@@ -193,6 +193,8 @@ def _generate_mock_response(schema: Type[T], user_prompt: str) -> str:
         return json.dumps({
             "product_name": "Acme Cloud",
             "narrative_type": "technical_walkthrough",
+            "selected_template": "Technical Deep Dive",
+            "matched_opus_category": "MOTION",
             "scene_count": 4,
             "total_seconds": 16.0,
             "music_mood": "ambient_electronic",
@@ -243,6 +245,15 @@ def _generate_mock_response(schema: Type[T], user_prompt: str) -> str:
                     "requires_ui_image": False
                 }
             ]
+        })
+
+    if name == "CritiqueFeedback":
+        return json.dumps({
+            "passes_qa": True,
+            "invented_facts_detected": [],
+            "punctuation_violations": [],
+            "revision_notes": "All claims grounded in profile. Headlines adhere to punctuation ban.",
+            "revised_storyboard": None
         })
 
     # Default fallback using schema field defaults/constructors

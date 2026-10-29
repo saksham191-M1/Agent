@@ -6,7 +6,7 @@ Defines strict contracts for ProductProfile, Storyboard, Critique, and test sche
 """
 
 from enum import Enum
-from typing import List, Optional
+from typing import Any, Dict, List, Optional
 from pydantic import BaseModel, Field, ConfigDict
 
 
@@ -91,18 +91,25 @@ class SceneDirectorSpec(BaseModel):
     scene_id: int
     duration_seconds: float = Field(..., ge=1.5, le=10.0)
     layout: str = Field(..., description="hero-type | phone | split | browser | big-number | cta")
-    motion_profile: str = Field(default="smooth", description="playful | premium | technical | aggressive | minimal")
+    motion_profile: str = Field(default="smooth", description="playful | premium | technical | aggressive | minimal | punchy | smooth")
     voiceover: str = Field(..., description="Spoken voice line for this scene")
     kinetic_text: str = Field(..., description="1-4 bold on-screen headline words WITHOUT terminal punctuation")
     visual_fx: str = Field(default="carousel_glide")
     transition_out: str = Field(default="carousel_glide")
     requires_ui_image: bool = Field(default=False)
+    veo_prompt: Optional[str] = Field(default=None, description="Prompt for generative visual or B-roll")
+    description: Optional[str] = Field(default=None, description="Visual description of the scene")
+    ui_spec: Optional[Dict[str, Any]] = Field(default=None, description="Optional UI tree or layout spec")
 
 
 class StoryboardDirectorSpec(BaseModel):
     model_config = ConfigDict(extra="ignore")
     product_name: str
     narrative_type: str
+    selected_template: Optional[str] = Field(default=None, description="Template name or narrative title")
+    matched_opus_category: Optional[str] = Field(default="MOTION", description="Primary opus category")
+    aesthetic: Optional[Dict[str, Any]] = Field(default=None, description="Brand visual aesthetic parameters")
+    ml_match: Optional[Dict[str, Any]] = Field(default=None, description="ML matching metadata")
     scene_count: int = Field(..., ge=3, le=8)
     total_seconds: float = Field(..., ge=10.0, le=40.0)
     music_mood: str

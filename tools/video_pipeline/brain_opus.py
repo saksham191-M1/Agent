@@ -5,12 +5,27 @@ _curr_dir = os.path.dirname(os.path.abspath(__file__))
 if _curr_dir not in sys.path:
     sys.path.insert(0, _curr_dir)
 
+_root_dir = os.path.abspath(os.path.join(_curr_dir, "../.."))
+if _root_dir not in sys.path:
+    sys.path.insert(0, _root_dir)
+
 import json
 import re
 import requests
 from dotenv import load_dotenv
 from colorama import Fore, init
 from ml_prompt_matcher import OpusPromptMLMatcher
+
+from tools.video_pipeline.schemas import (
+    ProductProfile,
+    ToneEnum,
+    ProofPoint,
+    NarrativeArc,
+    StoryboardDirectorSpec,
+    SceneDirectorSpec
+)
+from tools.video_pipeline.narratives import select_narrative, load_narratives
+from tools.video_pipeline.storyboard_director import generate_storyboard, sanitize_storyboard
 
 sys.stdout.reconfigure(encoding='utf-8')
 load_dotenv(os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))), ".env"))
@@ -185,167 +200,148 @@ def load_global_motion_rules():
             pass
     return None
 
-def generate_multi_scene_blueprint(product_name, description="", return_match=False):
-    codecraft_key = os.getenv("CODECRAFT_API_KEY")
-    gemini_key = os.getenv("GEMINI_API_KEY")
-    
+def infer_tone_from_category(category: str, description: str = "") -> ToneEnum:
+    c = f"{category} {description}".lower()
+    if any(k in c for k in ["luxury", "exclusive", "fashion", "premium", "watch", "jewelry"]):
+        return ToneEnum.premium
+    if any(k in c for k in ["code", "dev", "database", "api", "infra", "cloud", "sdk"]):
+        return ToneEnum.technical
+    if any(k in c for k in ["sale", "deal", "discount", "urgency", "now", "black friday"]):
+        return ToneEnum.urgent
+    if any(k in c for k in ["social", "creator", "game", "snack", "food", "fun"]):
+        return ToneEnum.playful
+    if any(k in c for k in ["minimal", "clean", "zen", "simple", "calm"]):
+        return ToneEnum.minimal
+    if any(k in c for k in ["health", "care", "family", "community", "wellness"]):
+        return ToneEnum.warm
+    return ToneEnum.bold
+
+
+def build_arc_fallback_storyboard(product_name: str, arc: NarrativeArc, profile: ProductProfile, aesthetic: dict) -> dict:
+    """Builds a dynamic fallback storyboard adhering to the chosen arc blueprints without fake data."""
+    scenes = []
+    for idx, bp in enumerate(arc.scene_blueprints, start=1):
+        layout = bp.allowed_layouts[0] if bp.allowed_layouts else "hero-type"
+        motion = bp.allowed_motion[0] if bp.allowed_motion else "smooth"
+        requires_ui = layout in ["phone", "browser", "split"]
+        headline = product_name.upper() if idx == 1 else bp.role.upper().replace("_", " ")
+        headline = re.sub(r"[\.\:\;\!\?\,]+$", "", headline).strip()
+
+        scenes.append({
+            "scene_id": idx,
+            "duration_seconds": bp.target_duration,
+            "layout": layout,
+            "motion_profile": motion,
+            "voiceover": f"{bp.vo_instruction} for {product_name}.",
+            "kinetic_text": headline,
+            "visual_fx": "carousel_glide",
+            "transition_out": "carousel_glide",
+            "requires_ui_image": requires_ui,
+            "veo_prompt": f"Cinematic visual for {bp.role} scene of {product_name}"
+        })
+    total_sec = round(sum(s["duration_seconds"] for s in scenes), 2)
+    return {
+        "product_name": product_name,
+        "selected_template": arc.name,
+        "narrative_type": arc.id,
+        "matched_opus_category": "MOTION",
+        "aesthetic": aesthetic,
+        "scene_count": len(scenes),
+        "total_seconds": total_sec,
+        "music_mood": "ambient_electronic",
+        "voice_style": "confident_conversational",
+        "scenes": scenes
+    }
+
+
+def generate_multi_scene_blueprint(product_name, description="", return_match=False, output_json_path=None):
     global_rules = load_global_motion_rules()
 
-    # ML Prompt Matching against 703 curated Opus 5.5 viral videos
+    # ML Prompt Matching against curated Opus viral references
     matcher = OpusPromptMLMatcher()
     match_result = matcher.find_best_prompts(product_name, description, top_k=1)
     best_match = match_result["top_matches"][0] if match_result["top_matches"] else None
     
-    reference_inspiration = ""
+    category = best_match['category'] if best_match else "technology"
     if best_match:
         print(f"{Fore.CYAN}🎯 ML Matched Category: {best_match['category'].upper()} (Score: {best_match['score']:.4f}){Fore.RESET}")
         print(f"{Fore.CYAN}💡 Viral Inspiration: @{best_match['author']} ({', '.join(best_match['tech_tags'])}){Fore.RESET}")
         print(f"{Fore.CYAN}🔗 Reference: {best_match['skillry_url'] or best_match['post_url']}{Fore.RESET}")
         if best_match['score'] < LOW_MATCH_SCORE:
-            print(f"{Fore.YELLOW}⚠️ Low match score ({best_match['score']:.2f}): the reference may be topically close but stylistically off. Review the storyboard.{Fore.RESET}")
-        reference_inspiration = build_reference_inspiration(best_match)
+            print(f"{Fore.YELLOW}⚠️ Low match score ({best_match['score']:.2f}): review the storyboard.{Fore.RESET}")
 
-    motion_constraints = build_motion_constraints(global_rules)
-
-    prompt = f"""
-    You are an Opus-level Creative Director building an automated video pipeline for a product called '{product_name}'.
-    Description: '{description if description else product_name}'
-    {reference_inspiration}
-    {motion_constraints}
-    The user wants a highly persuasive 'Problem-Agitate-Solution' (PAS) business ad to gain trust.
-    You must autonomously break this down into exactly 4 distinct video scenes.
-    Scenes 2 and 3 MUST focus on showcasing the actual app UI workflow to build trust.
-    
-    Output a JSON object with this exact structure:
-    {{
-        "product_name": "{product_name}",
-        "matched_opus_category": "{best_match['category'].upper() if best_match else 'MOTION'}",
-        "selected_template": "Problem-Agitate-Solution (UI Showcase)",
-        "scenes": [
-            {{
-                "scene_id": 1,
-                "duration_seconds": 4,
-                "voiceover": "State the painful problem clearly.",
-                "veo_prompt": "Prompt for Veo to generate a cinematic stock video of the problem.",
-                "visual_fx": "fast_zoom",
-                "kinetic_text": "The main bold word (e.g. BROKEN)",
-                "requires_ui_image": false
-            }},
-            {{
-                "scene_id": 2,
-                "duration_seconds": 5,
-                "voiceover": "Introduce the product as the solution.",
-                "veo_prompt": "Prompt for Veo to take the uploaded UI image and map it onto a 3D floating glass card. Slow camera push-in.",
-                "visual_fx": "glass_ui",
-                "kinetic_text": "The solution word",
-                "requires_ui_image": true
-            }}
-            // Scene 3 (Deep dive UI workflow, requires_ui_image: true)
-            // Scene 4 (CTA/Logo, requires_ui_image: false)
-        ]
-    }}
-    Ensure valid JSON only. Do not use markdown blocks like ```json.
-    """
-    
-    response_text = None
-
-    # 1. Try CodeCraft API (OpenAI-compatible multi-model gateway)
-    if codecraft_key:
-        cc_model = os.getenv("CODECRAFT_MODEL", "claude-opus-4.8")
-        cc_base = os.getenv("CODECRAFT_BASE_URL", "https://codecraftapi.com/v1").rstrip("/")
-        cc_headers = {
-            "Authorization": f"Bearer {codecraft_key}",
-            "Content-Type": "application/json"
-        }
-        cc_data = {
-            "model": cc_model,
-            "messages": [{"role": "user", "content": prompt}],
-            "temperature": 0.7
-        }
-        try:
-            print(f"{Fore.CYAN}📡 Calling CodeCraft API ({cc_model})...{Fore.RESET}")
-            cc_res = requests.post(f"{cc_base}/chat/completions", headers=cc_headers, json=cc_data, timeout=45)
-            if cc_res.status_code == 200:
-                cc_json = cc_res.json()
-                response_text = cc_json["choices"][0]["message"]["content"]
-                print(f"{Fore.GREEN}✅ CodeCraft API successfully returned storyboard!{Fore.RESET}")
-            else:
-                print(f"{Fore.YELLOW}CodeCraft API returned status {cc_res.status_code}: {cc_res.text[:200]}{Fore.RESET}")
-        except Exception as err:
-            print(f"{Fore.YELLOW}CodeCraft API call error: {err}{Fore.RESET}")
-
-    # 2. Fallback to Gemini if CodeCraft did not return
-    if not response_text and gemini_key:
-        candidate_models = ["gemini-flash-latest", "gemini-3.5-flash", "gemini-3.7-flash"]
-        headers = {'Content-Type': 'application/json'}
-        data = {
-            "contents": [{"parts": [{"text": prompt}]}],
-            "generationConfig": {"temperature": 0.7}
-        }
-        for model_name in candidate_models:
-            url = f"https://generativelanguage.googleapis.com/v1beta/models/{model_name}:generateContent?key={gemini_key}"
-            try:
-                response = requests.post(url, headers=headers, json=data, timeout=30)
-                if response.status_code == 200:
-                    response_json = response.json()
-                    response_text = response_json['candidates'][0]['content']['parts'][0]['text']
-                    break
-                else:
-                    print(f"{Fore.YELLOW}Model {model_name} returned {response.status_code}. Trying fallback...{Fore.RESET}")
-            except Exception as err:
-                print(f"{Fore.YELLOW}Model {model_name} error: {err}. Trying fallback...{Fore.RESET}")
-            
     aesthetic = extract_opus_aesthetic(best_match['prompt'] if best_match else '', author=best_match.get('author', '') if best_match else '')
 
-    if not response_text:
-        print(f"{Fore.YELLOW}⚠️ Online AI endpoints busy (503). Using deterministic ML Opus blueprint generator.{Fore.RESET}")
-        cat = best_match['category'].upper() if best_match else 'MOTION'
-        author = best_match['author'] if best_match else 'Opus'
-        fallback_json = {
-            "product_name": product_name,
-            "matched_opus_category": cat,
-            "selected_template": f"Opus 5.5 Viral Blueprint (@{author})",
-            "aesthetic": aesthetic,
-            "scenes": [
-                {
-                    "scene_id": 1,
-                    "duration_seconds": 4,
-                    "voiceover": f"Experience what's next with {product_name}.",
-                    "veo_prompt": f"Cinematic dynamic opener for {product_name}",
-                    "visual_fx": "fast_zoom",
-                    "kinetic_text": product_name.upper(),
-                    "requires_ui_image": False
-                },
-                {
-                    "scene_id": 2,
-                    "duration_seconds": 5,
-                    "voiceover": f"Built specifically for speed and seamless everyday performance.",
-                    "veo_prompt": f"Interactive app showcase for {product_name}",
-                    "visual_fx": "glass_ui",
-                    "kinetic_text": "SEAMLESS",
-                    "requires_ui_image": True
-                },
-                {
-                    "scene_id": 3,
-                    "duration_seconds": 4,
-                    "voiceover": f"Designed to get you results faster than ever before.",
-                    "veo_prompt": f"Dense feature workflow in action for {product_name}",
-                    "visual_fx": "blur_slide",
-                    "kinetic_text": "FASTER",
-                    "requires_ui_image": True
-                },
-                {
-                    "scene_id": 4,
-                    "duration_seconds": 3,
-                    "voiceover": f"Get started with {product_name} today.",
-                    "veo_prompt": f"Brand lockup outro for {product_name}",
-                    "visual_fx": "fade_up",
-                    "kinetic_text": "START NOW",
-                    "requires_ui_image": False
-                }
-            ]
-        }
-        response_text = json.dumps(fallback_json)
+    # Try loading crawled brand.json if available from job dir
+    brand_data = None
+    if output_json_path:
+        candidate_brand = os.path.join(os.path.dirname(os.path.abspath(output_json_path)), "brand.json")
+        if os.path.exists(candidate_brand):
+            try:
+                with open(candidate_brand, "r", encoding="utf-8") as f:
+                    brand_data = json.load(f)
+                print(f"{Fore.CYAN}📁 Loaded crawled brand context from {candidate_brand}{Fore.RESET}")
+            except Exception:
+                pass
+
+    # Build ProductProfile
+    proof_points = []
+    missing_data = []
+    visual_assets = []
+
+    if brand_data:
+        for claim in brand_data.get("claims", []):
+            if claim.get("value"):
+                proof_points.append(ProofPoint(text=claim["value"], source=claim.get("sourceUrl", "brand.json")))
+        if not brand_data.get("price_info"):
+            missing_data.append("price")
+        if not brand_data.get("rating"):
+            missing_data.append("rating")
+        for img in brand_data.get("imagery", []):
+            if isinstance(img, dict) and img.get("src"):
+                visual_assets.append(os.path.basename(img["src"]))
+            elif isinstance(img, str):
+                visual_assets.append(os.path.basename(img))
+    else:
+        missing_data = ["price", "rating", "discount"]
+
+    visual_rules = aesthetic.get("motion_rules", []) if aesthetic else []
+    visual_hint = visual_rules[0] if visual_rules else "clean modern UI"
+
+    tone = infer_tone_from_category(category, description)
+    profile = ProductProfile(
+        name=product_name,
+        what_it_is=description or f"{product_name} modern solution",
+        audience="Users and decision makers seeking quality solutions",
+        core_differentiator=description.split(".")[0] if description else f"Fast modern {product_name}",
+        tone=tone,
+        category=category,
+        visual_style_hint=visual_hint,
+        proof_points=proof_points,
+        visual_assets_available=visual_assets,
+        missing_data=missing_data,
+        language="en"
+    )
+
+    # Intelligent Narrative Arc Selection
+    selected_arc = select_narrative(profile)
+    print(f"{Fore.MAGENTA}🎭 Selected Narrative Arc: {selected_arc.name} ({selected_arc.id}){Fore.RESET}")
+
+    response_text = None
+
+    # Execute Dynamic Storyboard Generation & Critique Gate via Director AI Gateway
+    try:
+        storyboard_spec = generate_storyboard(profile, selected_arc, run_id=f"run_{product_name.lower()[:8]}")
+        data = storyboard_spec.model_dump()
+        data["aesthetic"] = aesthetic
+        data["matched_opus_category"] = category.upper()
+        data["selected_template"] = selected_arc.name
+        response_text = json.dumps(data)
+        print(f"{Fore.GREEN}✅ Director AI Gateway successfully generated and validated storyboard!{Fore.RESET}")
+    except Exception as err:
+        print(f"{Fore.YELLOW}⚠️ Director AI Gateway error: {err}. Using arc-aligned dynamic fallback.{Fore.RESET}")
+        fallback_dict = build_arc_fallback_storyboard(product_name, selected_arc, profile, aesthetic)
+        response_text = json.dumps(fallback_dict)
         
     if return_match:
         return response_text, best_match
@@ -370,7 +366,7 @@ if __name__ == "__main__":
     print(f"{Fore.CYAN}=== OPUS DIRECTOR AI: AUTONOMOUS STORYBOARD FOR '{app.upper()}' ==={Fore.RESET}\n")
     
     try:
-        raw_result, best_match = generate_multi_scene_blueprint(app, desc, return_match=True)
+        raw_result, best_match = generate_multi_scene_blueprint(app, desc, return_match=True, output_json_path=output_json_path)
         cleaned_json = raw_result.replace('```json', '').replace('```', '').strip()
         data = json.loads(cleaned_json)
         
@@ -410,5 +406,7 @@ if __name__ == "__main__":
             print(f"{Fore.GREEN}📄 Storyboard JSON written to: {output_json_path}{Fore.RESET}")
         
     except Exception as e:
+        import traceback
+        traceback.print_exc()
         print(f"{Fore.RED}Error during dry run: {e}{Fore.RESET}")
         sys.exit(1)
