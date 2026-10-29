@@ -1,0 +1,79 @@
+{
+  "product_name": "Flipkart",
+  "matched_opus_category": "MOTION",
+  "selected_template": "Problem-Agitate-Solution (UI Showcase)",
+  "scenes": [
+    {
+      "scene_id": 1,
+      "duration_seconds": 4,
+      "voiceover": "Tired of weekend traffic, endless checkout queues, and shelves that are always out of stock?",
+      "veo_prompt": "Cinematic tracking shot pushing slowly through a chaotic crowded retail store aisle with flickering fluorescent overheads, frustrated shoppers waiting in long static lines, muted tones, shallow depth of field, continuous subtle camera push from scale 1.03 to 1.07 at 60fps",
+      "visual_fx": "cross_zoom",
+      "kinetic_text": "ENDLESS QUEUES",
+      "requires_ui_image": false
+    },
+    {
+      "scene_id": 2,
+      "duration_seconds": 5,
+      "voiceover": "Switch to Flipkart. Over a hundred million genuine products and verified reviews right at your fingertips.",
+      "veo_prompt": "Photorealistic 3D render of the Flipkart mobile app interface mapped onto a floating curved glass slate, gently floating with a 2-degree idle sway over a sleek ambient studio gradient, continuous camera push-in from scale 1.03 to 1.07 with soft volumetric edge glow at 60fps",
+      "visual_fx": "glass_ui",
+      "kinetic_text": "SMARTER SHOPPING",
+      "requires_ui_image": true
+    },
+    {
+      "scene_id": 3,
+      "duration_seconds": 4,
+      "voiceover": "Tap to purchase with instant payment options, zero-cost EMI, and live real-time dispatch tracking.",
+      "veo_prompt": "Isometric close-up of the Flipkart app cart and express checkout screen layered across three-dimensional frosted glass sheets, ease-out-cubic live counter ticking down delivery arrival time, horizontal carousel glide camera movement at 60fps",
+      "visual_fx": "carousel_glide",
+      "kinetic_text": "INSTANT CHECKOUT",
+      "requires_ui_image": true
+    },
+    {
+      "scene_id": 4,
+      "duration_seconds": 3,
+      "voiceover": "Superfast doorstep delivery across India. Download Flipkart and upgrade your shopping today.",
+      "veo_prompt": "Cinematic premium delivery handoff at a warm illuminated doorstep, smiling customer picking up a pristine Flipkart package, transition into an elegant floating 3D logo lockup with continuous subtle push scale 1.04 at 60fps",
+      "visual_fx": "cross_zoom",
+      "kinetic_text": "DELIVERED TO YOUR DOOR",
+      "requires_ui_image": false
+    }
+  ],
+  "aesthetic": {
+    "is_light_theme": false,
+    "background": "#0B1020",
+    "background2": "#151B33",
+    "surface": "#1E293B",
+    "surfaceText": "#F8FAFC",
+    "text": "#F8FAFC",
+    "muted": "#94A3B8",
+    "accent": "#6C5CE7",
+    "accentLight": "#B9B0FF",
+    "secondary": "#38BDF8",
+    "suggested_bpm": 120,
+    "motion_rules": []
+  },
+  "ml_match": {
+    "category": "MOTION",
+    "score": 0.2203,
+    "author": "uiNerd",
+    "tech_tags": [],
+    "prompt_snippet": "[attach character image] make a 15-second animation of it, built in code. topic: the last day of Oktoberfest. one last ‘Prost!’ as the Wiesn lights go out. find free public-domain sounds online, sync them to the animation, and mix everything with ffmpeg.",
+    "reference_url": "https://x.com/uiNerd/status/2106842274537635877",
+    "aesthetic": {
+      "is_light_theme": false,
+      "background": "#0B1020",
+      "background2": "#151B33",
+      "surface": "#1E293B",
+      "surfaceText": "#F8FAFC",
+      "text": "#F8FAFC",
+      "muted": "#94A3B8",
+      "accent": "#6C5CE7",
+      "accentLight": "#B9B0FF",
+      "secondary": "#38BDF8",
+      "suggested_bpm": 120,
+      "motion_rules": []
+    }
+  }
+}

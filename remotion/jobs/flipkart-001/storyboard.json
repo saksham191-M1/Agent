@@ -1,0 +1,133 @@
+{
+  "shots": [
+    {
+      "n": 1,
+      "t0": 0,
+      "t1": 4,
+      "role": "hook",
+      "source": "motion-graphic",
+      "visual": "hero-type",
+      "headline": "ENDLESS QUEUES",
+      "subline": "Tired of weekend traffic and shelves that are always out of stock",
+      "onScreenText": "Frustrated shoppers in retail queues",
+      "dialogue": "",
+      "sfx": [
+        {
+          "t": 0.1,
+          "type": "pop",
+          "gain": 0.85
+        },
+        {
+          "t": 2.88,
+          "type": "tick",
+          "gain": 0.6
+        }
+      ],
+      "transitionOut": "cross_zoom",
+      "camera": null
+    },
+    {
+      "n": 2,
+      "t0": 4,
+      "t1": 9,
+      "role": "feature",
+      "source": "motion-graphic",
+      "visual": "phone",
+      "headline": "SMARTER SHOPPING",
+      "subline": "Switch to Flipkart for millions of verified products right away",
+      "onScreenText": "Explore millions of genuine products",
+      "dialogue": "",
+      "sfx": [
+        {
+          "t": 0.1,
+          "type": "pop",
+          "gain": 0.85
+        },
+        {
+          "t": 1.75,
+          "type": "tick",
+          "gain": 0.55
+        },
+        {
+          "t": 3.25,
+          "type": "click",
+          "gain": 0.7
+        },
+        {
+          "t": 4.25,
+          "type": "tick",
+          "gain": 0.55
+        }
+      ],
+      "transitionOut": "wipe",
+      "camera": null
+    },
+    {
+      "n": 3,
+      "t0": 9,
+      "t1": 13,
+      "role": "feature",
+      "source": "motion-graphic",
+      "visual": "phone",
+      "headline": "INSTANT CHECKOUT",
+      "subline": "Tap to purchase with instant payment options and live tracking",
+      "onScreenText": "Instant checkout with live tracking",
+      "dialogue": "",
+      "sfx": [
+        {
+          "t": 0.1,
+          "type": "pop",
+          "gain": 0.85
+        },
+        {
+          "t": 1.4,
+          "type": "tick",
+          "gain": 0.55
+        },
+        {
+          "t": 2.6,
+          "type": "click",
+          "gain": 0.7
+        },
+        {
+          "t": 3.4,
+          "type": "tick",
+          "gain": 0.55
+        }
+      ],
+      "transitionOut": "carousel_glide",
+      "camera": null
+    },
+    {
+      "n": 4,
+      "t0": 13,
+      "t1": 16,
+      "role": "cta",
+      "source": "motion-graphic",
+      "visual": "cta",
+      "headline": "DELIVERED TO YOUR DOOR",
+      "subline": "Superfast doorstep delivery across India. Download Flipkart today.",
+      "onScreenText": "Superfast doorstep delivery across India",
+      "dialogue": "",
+      "sfx": [
+        {
+          "t": 0.1,
+          "type": "pop",
+          "gain": 0.85
+        },
+        {
+          "t": 1.35,
+          "type": "click",
+          "gain": 0.75
+        },
+        {
+          "t": 2.55,
+          "type": "pop",
+          "gain": 0.8
+        }
+      ],
+      "transitionOut": "none",
+      "camera": null
+    }
+  ]
+}

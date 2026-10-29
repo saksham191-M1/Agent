@@ -1,0 +1,518 @@
+{
+  "brand": "Flipkart",
+  "format": "16:9",
+  "fps": 60,
+  "durationSec": 16,
+  "bpm": 120,
+  "palette": {
+    "background": "#071026",
+    "background2": "#0F214D",
+    "surface": "#1E293B",
+    "surfaceText": "#F8FAFC",
+    "text": "#F8FAFC",
+    "muted": "#94A3B8",
+    "accent": "#2874F0",
+    "accentLight": "#FFE500",
+    "secondary": "#38BDF8",
+    "isLightTheme": false
+  },
+  "mlMatch": {
+    "category": "MOTION",
+    "score": 0.2203,
+    "template": "Problem-Agitate-Solution (UI Showcase)",
+    "author": "uiNerd",
+    "techTags": [],
+    "referenceUrl": "https://x.com/uiNerd/status/2106842274537635877",
+    "aesthetic": {
+      "is_light_theme": false,
+      "background": "#0B1020",
+      "background2": "#151B33",
+      "surface": "#1E293B",
+      "surfaceText": "#F8FAFC",
+      "text": "#F8FAFC",
+      "muted": "#94A3B8",
+      "accent": "#6C5CE7",
+      "accentLight": "#B9B0FF",
+      "secondary": "#38BDF8",
+      "suggested_bpm": 120,
+      "motion_rules": []
+    }
+  },
+  "scenes": [
+    {
+      "id": "scene_1",
+      "start": 0,
+      "duration": 4,
+      "layout": "hero-type",
+      "headline": "ENDLESS QUEUES",
+      "subline": "Tired of weekend traffic and shelves that are always out of stock",
+      "caption": "Frustrated shoppers in retail queues",
+      "captionWords": [
+        {
+          "word": "Tired",
+          "start": 6,
+          "end": 21
+        },
+        {
+          "word": "of",
+          "start": 21,
+          "end": 36
+        },
+        {
+          "word": "weekend",
+          "start": 36,
+          "end": 51
+        },
+        {
+          "word": "traffic,",
+          "start": 51,
+          "end": 66
+        },
+        {
+          "word": "endless",
+          "start": 66,
+          "end": 81
+        },
+        {
+          "word": "checkout",
+          "start": 81,
+          "end": 96
+        },
+        {
+          "word": "queues,",
+          "start": 96,
+          "end": 111
+        },
+        {
+          "word": "and",
+          "start": 111,
+          "end": 125
+        },
+        {
+          "word": "shelves",
+          "start": 125,
+          "end": 140
+        },
+        {
+          "word": "that",
+          "start": 140,
+          "end": 155
+        },
+        {
+          "word": "are",
+          "start": 155,
+          "end": 170
+        },
+        {
+          "word": "always",
+          "start": 170,
+          "end": 185
+        },
+        {
+          "word": "out",
+          "start": 185,
+          "end": 200
+        },
+        {
+          "word": "of",
+          "start": 200,
+          "end": 215
+        },
+        {
+          "word": "stock?",
+          "start": 215,
+          "end": 230
+        }
+      ],
+      "visual": {
+        "kicker": "Flipkart",
+        "pulseText": "cross_zoom"
+      },
+      "motion": {
+        "enter": "mask_line_rise",
+        "idle": "slow_sway",
+        "exit": "carousel_glide"
+      },
+      "vo": "",
+      "sfx": [
+        {
+          "t": 0.1,
+          "type": "pop",
+          "gain": 0.85
+        },
+        {
+          "t": 2.88,
+          "type": "tick",
+          "gain": 0.6
+        }
+      ],
+      "transitionOut": "cross_zoom"
+    },
+    {
+      "id": "scene_2",
+      "start": 4,
+      "duration": 5,
+      "layout": "phone",
+      "headline": "SMARTER SHOPPING",
+      "subline": "Switch to Flipkart for millions of verified products right away",
+      "caption": "Explore millions of genuine products",
+      "captionWords": [
+        {
+          "word": "Switch",
+          "start": 6,
+          "end": 24
+        },
+        {
+          "word": "to",
+          "start": 24,
+          "end": 42
+        },
+        {
+          "word": "Flipkart.",
+          "start": 42,
+          "end": 59
+        },
+        {
+          "word": "Over",
+          "start": 59,
+          "end": 77
+        },
+        {
+          "word": "a",
+          "start": 77,
+          "end": 95
+        },
+        {
+          "word": "hundred",
+          "start": 95,
+          "end": 113
+        },
+        {
+          "word": "million",
+          "start": 113,
+          "end": 130
+        },
+        {
+          "word": "genuine",
+          "start": 130,
+          "end": 148
+        },
+        {
+          "word": "products",
+          "start": 148,
+          "end": 166
+        },
+        {
+          "word": "and",
+          "start": 166,
+          "end": 184
+        },
+        {
+          "word": "verified",
+          "start": 184,
+          "end": 201
+        },
+        {
+          "word": "reviews",
+          "start": 201,
+          "end": 219
+        },
+        {
+          "word": "right",
+          "start": 219,
+          "end": 237
+        },
+        {
+          "word": "at",
+          "start": 237,
+          "end": 255
+        },
+        {
+          "word": "your",
+          "start": 255,
+          "end": 272
+        },
+        {
+          "word": "fingertips.",
+          "start": 272,
+          "end": 290
+        }
+      ],
+      "visual": {
+        "kicker": "Flipkart",
+        "pulseText": "glass_ui"
+      },
+      "motion": {
+        "enter": "mask_line_rise",
+        "idle": "slow_sway",
+        "exit": "carousel_glide"
+      },
+      "vo": "",
+      "sfx": [
+        {
+          "t": 0.1,
+          "type": "pop",
+          "gain": 0.85
+        },
+        {
+          "t": 1.75,
+          "type": "tick",
+          "gain": 0.55
+        },
+        {
+          "t": 3.25,
+          "type": "click",
+          "gain": 0.7
+        },
+        {
+          "t": 4.25,
+          "type": "tick",
+          "gain": 0.55
+        }
+      ],
+      "transitionOut": "wipe"
+    },
+    {
+      "id": "scene_3",
+      "start": 9,
+      "duration": 4,
+      "layout": "phone",
+      "headline": "INSTANT CHECKOUT",
+      "subline": "Tap to purchase with instant payment options and live tracking",
+      "caption": "Instant checkout with live tracking",
+      "captionWords": [
+        {
+          "word": "Tap",
+          "start": 6,
+          "end": 22
+        },
+        {
+          "word": "to",
+          "start": 22,
+          "end": 38
+        },
+        {
+          "word": "purchase",
+          "start": 38,
+          "end": 54
+        },
+        {
+          "word": "with",
+          "start": 54,
+          "end": 70
+        },
+        {
+          "word": "instant",
+          "start": 70,
+          "end": 86
+        },
+        {
+          "word": "payment",
+          "start": 86,
+          "end": 102
+        },
+        {
+          "word": "options,",
+          "start": 102,
+          "end": 118
+        },
+        {
+          "word": "zero-cost",
+          "start": 118,
+          "end": 134
+        },
+        {
+          "word": "EMI,",
+          "start": 134,
+          "end": 150
+        },
+        {
+          "word": "and",
+          "start": 150,
+          "end": 166
+        },
+        {
+          "word": "live",
+          "start": 166,
+          "end": 182
+        },
+        {
+          "word": "real-time",
+          "start": 182,
+          "end": 198
+        },
+        {
+          "word": "dispatch",
+          "start": 198,
+          "end": 214
+        },
+        {
+          "word": "tracking.",
+          "start": 214,
+          "end": 230
+        }
+      ],
+      "visual": {
+        "kicker": "Flipkart",
+        "pulseText": "carousel_glide"
+      },
+      "motion": {
+        "enter": "mask_line_rise",
+        "idle": "slow_sway",
+        "exit": "carousel_glide"
+      },
+      "vo": "",
+      "sfx": [
+        {
+          "t": 0.1,
+          "type": "pop",
+          "gain": 0.85
+        },
+        {
+          "t": 1.4,
+          "type": "tick",
+          "gain": 0.55
+        },
+        {
+          "t": 2.6,
+          "type": "click",
+          "gain": 0.7
+        },
+        {
+          "t": 3.4,
+          "type": "tick",
+          "gain": 0.55
+        }
+      ],
+      "transitionOut": "carousel_glide"
+    },
+    {
+      "id": "scene_4",
+      "start": 13,
+      "duration": 3,
+      "layout": "cta",
+      "headline": "DELIVERED TO YOUR DOOR",
+      "subline": "Superfast doorstep delivery across India. Download Flipkart today.",
+      "caption": "Superfast doorstep delivery across India",
+      "captionWords": [
+        {
+          "word": "Superfast",
+          "start": 6,
+          "end": 20
+        },
+        {
+          "word": "doorstep",
+          "start": 20,
+          "end": 33
+        },
+        {
+          "word": "delivery",
+          "start": 33,
+          "end": 47
+        },
+        {
+          "word": "across",
+          "start": 47,
+          "end": 61
+        },
+        {
+          "word": "India.",
+          "start": 61,
+          "end": 74
+        },
+        {
+          "word": "Download",
+          "start": 74,
+          "end": 88
+        },
+        {
+          "word": "Flipkart",
+          "start": 88,
+          "end": 102
+        },
+        {
+          "word": "and",
+          "start": 102,
+          "end": 115
+        },
+        {
+          "word": "upgrade",
+          "start": 115,
+          "end": 129
+        },
+        {
+          "word": "your",
+          "start": 129,
+          "end": 143
+        },
+        {
+          "word": "shopping",
+          "start": 143,
+          "end": 156
+        },
+        {
+          "word": "today.",
+          "start": 156,
+          "end": 170
+        }
+      ],
+      "visual": {
+        "kicker": "Flipkart",
+        "pulseText": "cross_zoom"
+      },
+      "motion": {
+        "enter": "mask_line_rise",
+        "idle": "slow_sway",
+        "exit": "carousel_glide"
+      },
+      "vo": "",
+      "sfx": [
+        {
+          "t": 0.1,
+          "type": "pop",
+          "gain": 0.85
+        },
+        {
+          "t": 1.35,
+          "type": "click",
+          "gain": 0.75
+        },
+        {
+          "t": 2.55,
+          "type": "pop",
+          "gain": 0.8
+        }
+      ],
+      "transitionOut": "none"
+    }
+  ],
+  "audio": {
+    "assetsRoot": "jobs/flipkart-001/assets",
+    "voice": {
+      "provider": "elevenlabs",
+      "voiceId": "EXAVITQu4vr4xnSDxMaL",
+      "model": "eleven_multilingual_v2",
+      "clips": {
+        "scene_1": "audio/vo-s1.mp3",
+        "scene_2": "audio/vo-s2.mp3",
+        "scene_3": "audio/vo-s3.mp3",
+        "scene_4": "audio/vo-s4.mp3"
+      }
+    },
+    "music": {
+      "file": "",
+      "mood": "electronic_upbeat",
+      "volume": 0
+    },
+    "room": {
+      "file": "audio/room-tone.wav",
+      "volume": 0.85
+    },
+    "sfxFiles": {
+      "click": "audio/click.wav",
+      "tick": "audio/tick.wav",
+      "pop": "audio/pop.wav"
+    },
+    "duck": 18
+  }
+}

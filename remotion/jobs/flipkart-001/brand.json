@@ -1,0 +1,54 @@
+{
+  "name": "Flipkart",
+  "domain": "flipkart.com",
+  "tagline": "India's Online Shopping Destination",
+  "description": "Shop electronics, fashion, home essentials, and groceries with fast doorstep delivery across India.",
+  "products": [
+    "Flipkart SuperCoins",
+    "Flipkart Minutes",
+    "Big Billion Days",
+    "Flipkart Plus"
+  ],
+  "logo": {
+    "src": "jobs/flipkart-001/assets/logo.svg",
+    "text": "Flipkart",
+    "alt": "Flipkart Logo",
+    "source": "https://flipkart.com"
+  },
+  "colors": {
+    "accent": "#2874F0",
+    "accentLight": "#FFE500",
+    "background": "#071026",
+    "background2": "#0F214D",
+    "surface": "#1E293B",
+    "surfaceText": "#F8FAFC",
+    "text": "#F8FAFC",
+    "muted": "#94A3B8",
+    "surfaceMuted": "#64748B"
+  },
+  "fonts": {
+    "display": {
+      "family": "Inter",
+      "source": "Google Fonts"
+    },
+    "body": {
+      "family": "Inter",
+      "source": "Google Fonts"
+    }
+  },
+  "imagery": [],
+  "claims": [
+    {
+      "id": "customers",
+      "label": "Registered Users",
+      "value": "500M+",
+      "sourceUrl": "https://flipkart.com/about-us"
+    },
+    {
+      "id": "pincodes",
+      "label": "Pincodes Covered",
+      "value": "19000+",
+      "sourceUrl": "https://flipkart.com/about-us"
+    }
+  ]
+}
