@@ -29,3 +29,5 @@ ai_content/output/
 **/output/audio/
 **/output/temp_ecproj/
 **/temp_ecproj/
+history.json
+**/history.json

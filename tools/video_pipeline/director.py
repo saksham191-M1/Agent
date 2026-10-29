@@ -250,9 +250,17 @@ def _generate_mock_response(schema: Type[T], user_prompt: str) -> str:
     if name == "CritiqueFeedback":
         return json.dumps({
             "passes_qa": True,
+            "scores": {
+                "specificity": 5,
+                "differentiator_use": 5,
+                "pacing": 5,
+                "copy_quality": 5
+            },
+            "problems": [],
             "invented_facts_detected": [],
             "punctuation_violations": [],
             "revision_notes": "All claims grounded in profile. Headlines adhere to punctuation ban.",
+            "revision_instructions": None,
             "revised_storyboard": None
         })
 

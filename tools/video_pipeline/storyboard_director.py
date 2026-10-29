@@ -26,8 +26,14 @@ from tools.video_pipeline.schemas import (
     StoryboardDirectorSpec,
     SceneDirectorSpec,
     CritiqueFeedback,
+    CritiqueScores,
 )
-from tools.video_pipeline.history import record_run_history
+from tools.video_pipeline.history import (
+    record_run_history,
+    append_history,
+    get_recent_history,
+    format_history_nudge
+)
 
 if sys.stdout and hasattr(sys.stdout, "reconfigure"):
     try:
@@ -134,10 +140,11 @@ def generate_storyboard(
     # ──────────────────────────────────────────────────────────────────────────
     storyboard_sys = load_storyboard_prompt()
 
-    # Build structured user instructions
+    # Build structured user instructions with recent history nudge
     proofs_str = "\n".join([f"- {p.text} (Source: {p.source})" for p in profile.proof_points]) or "None extracted"
     missing_str = ", ".join(profile.missing_data) or "None"
     blueprints_str = json.dumps([b.model_dump() for b in arc.scene_blueprints], indent=2)
+    history_nudge = format_history_nudge(get_recent_history(5))
 
     storyboard_user = f"""PRODUCT PROFILE:
 - Name: {profile.name}
@@ -158,7 +165,7 @@ SELECTED NARRATIVE ARC:
 - Target Duration: {arc.duration_seconds_range[0]}s - {arc.duration_seconds_range[1]}s ({arc.scene_count_range[0]}-{arc.scene_count_range[1]} scenes)
 - Scene Blueprints:
 {blueprints_str}
-
+{history_nudge}
 MANDATES:
 1. Every scene must follow the designated role from the scene blueprints.
 2. Headlines (kinetic_text) must NOT end with terminal punctuation (no periods, colons, or semicolons).
@@ -211,7 +218,15 @@ INSPECTION TASKS:
                 temperature=0.2
             )
 
+            # Audit specificity & differentiator scores
+            if critique.scores:
+                if critique.scores.specificity < 4 or critique.scores.differentiator_use < 4:
+                    print(f"[Critique Gate] [WARN] Generic script detected (specificity={critique.scores.specificity}, differentiator_use={critique.scores.differentiator_use})")
+                    critique.passes_qa = False
+
             print(f"[Critique Gate] Passed QA: {critique.passes_qa}")
+            if critique.problems:
+                print(f"[Critique Gate] Problems noted: {critique.problems}")
             if critique.invented_facts_detected:
                 print(f"[Critique Gate] [WARN] Invented facts caught: {critique.invented_facts_detected}")
             if critique.punctuation_violations:
@@ -229,9 +244,12 @@ INSPECTION TASKS:
                     step_name="critique",
                     metadata={
                         "passes_qa": critique.passes_qa,
+                        "scores": critique.scores.model_dump() if critique.scores else {},
+                        "problems": critique.problems,
                         "invented_facts": critique.invented_facts_detected,
                         "punctuation_violations": critique.punctuation_violations,
-                        "revision_notes": critique.revision_notes
+                        "revision_notes": critique.revision_notes,
+                        "revision_instructions": critique.revision_instructions
                     }
                 )
 
@@ -242,6 +260,19 @@ INSPECTION TASKS:
     # Deterministic Sanitization
     # ──────────────────────────────────────────────────────────────────────────
     final_storyboard = sanitize_storyboard(active_storyboard, arc=arc, profile=profile)
+
+    # Append creative signature to persistent history log
+    append_history({
+        "run_id": run_id or f"run_{profile.name.lower()[:8]}",
+        "product_name": profile.name,
+        "narrative_id": final_storyboard.narrative_type,
+        "scene_count": len(final_storyboard.scenes),
+        "total_duration_s": final_storyboard.total_seconds,
+        "primitive_sequence": [s.layout for s in final_storyboard.scenes],
+        "motion_profiles": [s.motion_profile for s in final_storyboard.scenes],
+        "music_mood": final_storyboard.music_mood,
+        "transitions": [s.transition_out for s in final_storyboard.scenes]
+    })
 
     if run_id:
         record_run_history(

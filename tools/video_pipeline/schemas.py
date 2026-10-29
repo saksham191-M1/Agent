@@ -118,13 +118,24 @@ class StoryboardDirectorSpec(BaseModel):
 
 
 # ──────────────────────────────────────────────────────────────────────────────
-# Phase 5: Critique Schema
+# Phase 8: Critique Schema & Rubrics
 # ──────────────────────────────────────────────────────────────────────────────
+
+class CritiqueScores(BaseModel):
+    model_config = ConfigDict(extra="ignore")
+    specificity: int = Field(default=5, ge=1, le=5, description="1-5, could this ad be for another product")
+    differentiator_use: int = Field(default=5, ge=1, le=5, description="1-5, how strongly the differentiator is featured")
+    pacing: int = Field(default=5, ge=1, le=5, description="1-5, narrative rhythm and timing")
+    copy_quality: int = Field(default=5, ge=1, le=5, description="1-5, voice and line quality")
+
 
 class CritiqueFeedback(BaseModel):
     model_config = ConfigDict(extra="ignore")
     passes_qa: bool
+    scores: Optional[CritiqueScores] = Field(default_factory=CritiqueScores)
+    problems: List[str] = Field(default_factory=list)
     invented_facts_detected: List[str] = Field(default_factory=list)
     punctuation_violations: List[str] = Field(default_factory=list)
     revision_notes: Optional[str] = None
+    revision_instructions: Optional[str] = None
     revised_storyboard: Optional[StoryboardDirectorSpec] = None
