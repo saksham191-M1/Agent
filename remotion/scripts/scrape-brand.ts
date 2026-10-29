@@ -723,7 +723,11 @@ export async function scrapeBrand(targetUrl: string, jobId: string): Promise<Bra
 
 if (process.argv[1]?.includes('scrape-brand')) {
   const target = process.argv[2] || 'https://www.flipkart.com';
-  const jobId = process.argv[3] || 'flipkart-001';
+  const jobId = process.argv[3];
+  if (!jobId) {
+    console.error('Error: Job ID argument is required. Usage: npx tsx scripts/scrape-brand.ts <url> <jobId>');
+    process.exit(1);
+  }
   scrapeBrand(target, jobId)
     .then(() => process.exit(0))
     .catch(err => {

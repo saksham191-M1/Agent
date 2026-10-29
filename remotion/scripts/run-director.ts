@@ -21,6 +21,15 @@ function parseArgs(): Record<string, string> {
 
 async function main() {
   const args = parseArgs();
+  if (args['legacy'] !== 'true' && !process.argv.includes('--legacy')) {
+    console.error(
+      '\n❌ [ERROR] scripts/run-director.ts is deprecated.\n' +
+      'Please use the primary orchestrator: npx tsx scripts/produce-ad.ts --url <product_url>\n' +
+      'To force run this legacy script, provide the --legacy flag.\n' +
+      'See docs/ENTRYPOINTS.md for details.\n'
+    );
+    process.exit(1);
+  }
   const url = args['url'] || 'https://linear.app';
   const mode = args['mode'] || 'launch_promo';
   const format = args['format'] || '16:9';

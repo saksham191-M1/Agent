@@ -20,7 +20,7 @@ _runtime_cache: dict = {}
 
 
 def remotion_root() -> Path:
-    root = Path(os.getenv("STUDIO_REMOTION_ROOT", "remotion-swiggy")).expanduser()
+    root = Path(os.getenv("STUDIO_REMOTION_ROOT", "remotion")).expanduser()
     return (root if root.is_absolute() else PROJECT_ROOT / root).resolve()
 
 
@@ -47,7 +47,7 @@ def remotion_status() -> dict:
     root = remotion_root()
     node = os.getenv("STUDIO_NODE_PATH") or shutil.which("node")
     if not node or not (root / "scripts" / "check-runtime.mjs").is_file():
-        return {"ready": False, "reason": "Install Node and run npm ci in remotion-swiggy."}
+        return {"ready": False, "reason": "Install Node and run npm ci in remotion."}
     env = _runtime_env()
     key = (str(root), node, env.get("REMOTION_BROWSER_EXECUTABLE"), env.get("LD_LIBRARY_PATH"), env.get("FFMPEG_PATH"), env.get("FFPROBE_PATH"))
     cached = _runtime_cache.get(key)

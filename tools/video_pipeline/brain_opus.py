@@ -360,7 +360,10 @@ if __name__ == "__main__":
             positional.append(sys.argv[i])
             i += 1
 
-    app = positional[0] if len(positional) > 0 else "Swiggy"
+    if len(positional) == 0:
+        print(f"{Fore.RED}Error: Product name argument is required.{Fore.RESET}")
+        sys.exit(1)
+    app = positional[0]
     desc = positional[1] if len(positional) > 1 else ""
 
     print(f"{Fore.CYAN}=== OPUS DIRECTOR AI: AUTONOMOUS STORYBOARD FOR '{app.upper()}' ==={Fore.RESET}\n")

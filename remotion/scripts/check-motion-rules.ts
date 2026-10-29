@@ -3,7 +3,11 @@ import {resolve, basename, dirname} from 'node:path';
 import {validateMotionRules, MOTION_RULES} from '../engine/motion/motion-rules';
 import type {AdSpec} from '../engine/types';
 
-const target = process.argv[2] || 'instagram-001';
+const target = process.argv[2];
+if (!target) {
+  console.error('Error: Job ID argument is required. Usage: npx tsx scripts/check-motion-rules.ts <jobId>');
+  process.exit(1);
+}
 
 const isJsonPath = target.endsWith('.json');
 const jobId = isJsonPath ? basename(dirname(resolve(process.cwd(), target))) : target;
