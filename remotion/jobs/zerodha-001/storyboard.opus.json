@@ -1,0 +1,106 @@
+{
+  "product_name": "Zerodha",
+  "narrative_type": "technical_deep_dive",
+  "selected_template": "Technical Deep Dive",
+  "matched_opus_category": "EXPLAINER",
+  "aesthetic": {
+    "is_light_theme": false,
+    "background": "#0B1020",
+    "background2": "#151B33",
+    "surface": "#1E293B",
+    "surfaceText": "#F8FAFC",
+    "text": "#F8FAFC",
+    "muted": "#94A3B8",
+    "accent": "#6C5CE7",
+    "accentLight": "#B9B0FF",
+    "secondary": "#38BDF8",
+    "suggested_bpm": 120,
+    "motion_rules": []
+  },
+  "ml_match": {
+    "category": "EXPLAINER",
+    "score": 0.2513,
+    "author": "_Tony_TT_",
+    "tech_tags": [
+      "canvas"
+    ],
+    "prompt_snippet": "Opus 5.5 on the Trading House\n\n❯ Using React/TypeScript (Remotion), every image drawn in SVG and Canvas, an open-source TTS voice, and a score synthesized in Python. No stock footage. No image generators.\n\n❯ Build a short 30-60s animation work about the Trading House",
+    "reference_url": "https://skillry.dev/ai-videos/opus-5-5/tony-tt-872147",
+    "aesthetic": {
+      "is_light_theme": false,
+      "background": "#0B1020",
+      "background2": "#151B33",
+      "surface": "#1E293B",
+      "surfaceText": "#F8FAFC",
+      "text": "#F8FAFC",
+      "muted": "#94A3B8",
+      "accent": "#6C5CE7",
+      "accentLight": "#B9B0FF",
+      "secondary": "#38BDF8",
+      "suggested_bpm": 120,
+      "motion_rules": []
+    }
+  },
+  "scene_count": 4,
+  "total_seconds": 15,
+  "music_mood": "ambient_minimal",
+  "voice_style": "calm_precise",
+  "scenes": [
+    {
+      "scene_id": 1,
+      "duration_seconds": 3,
+      "layout": "hero-type",
+      "motion_profile": "technical",
+      "voiceover": "See the markets in action. Experience the clarity of the Kite platform.",
+      "kinetic_text": "SEE THE MARKETS IN ACTION",
+      "visual_fx": "fast_zoom",
+      "transition_out": "carousel_glide",
+      "requires_ui_image": false,
+      "veo_prompt": "Clean minimalist studio background with soft blue lighting and floating geometric data lines.",
+      "description": null,
+      "ui_spec": null
+    },
+    {
+      "scene_id": 2,
+      "duration_seconds": 4.5,
+      "layout": "browser",
+      "motion_profile": "smooth",
+      "voiceover": "Navigate real-time charts and execute trades with the intuitive Kite interface.",
+      "kinetic_text": "KITE TRADING INTERFACE",
+      "visual_fx": "pan_right",
+      "transition_out": "wipe",
+      "requires_ui_image": true,
+      "veo_prompt": "High-fidelity screen recording of the Zerodha Kite dashboard showing real-time market charts and clean UI.",
+      "description": null,
+      "ui_spec": null
+    },
+    {
+      "scene_id": 3,
+      "duration_seconds": 4,
+      "layout": "big-number",
+      "motion_profile": "minimal",
+      "voiceover": "Designed for transparency, Kite provides the tools you need to track your portfolio.",
+      "kinetic_text": "TRANSPARENT TRADING TOOLS",
+      "visual_fx": "fade_in",
+      "transition_out": "cross_zoom",
+      "requires_ui_image": false,
+      "veo_prompt": "Abstract digital visualization of a growing equity graph with a clean, modern aesthetic.",
+      "description": null,
+      "ui_spec": null
+    },
+    {
+      "scene_id": 4,
+      "duration_seconds": 3.5,
+      "layout": "cta",
+      "motion_profile": "technical",
+      "voiceover": "See it in action for yourself. Get started on Zerodha today.",
+      "kinetic_text": "START TRADING NOW",
+      "visual_fx": "none",
+      "transition_out": "none",
+      "requires_ui_image": false,
+      "veo_prompt": "Minimalist end card featuring the Zerodha logo on a clean white background with a subtle call to action.",
+      "description": null,
+      "ui_spec": null
+    }
+  ]
+}

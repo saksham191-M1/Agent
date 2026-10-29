@@ -1,0 +1,99 @@
+{
+  "brandId": "zerodha.com",
+  "worldBounds": {
+    "width": 1920,
+    "height": 1080,
+    "depth": 2000
+  },
+  "nodes": [
+    {
+      "id": "node_hook_0",
+      "type": "kinetic_typography",
+      "position3D": [
+        0,
+        0,
+        0
+      ],
+      "effect": "phrase_flash",
+      "words": [
+        "SEE THE MARKETS IN ACTION",
+        "ONLINE STOCK BROKERAGE PLATFORM FOR TRADING AND INVESTING IN STOCKS, FUTURES, OPTIONS, COMMODITIES, CURRENCY, ETFS, MUTUAL FUNDS, AND BONDS"
+      ],
+      "text": "SEE THE MARKETS IN ACTION",
+      "subtext": "See the markets in action. Experience the clarity of the Kite platform.",
+      "fontSize": 96
+    },
+    {
+      "id": "node_phone_1",
+      "type": "phone_mockup",
+      "position3D": [
+        0,
+        0,
+        0
+      ],
+      "greeting": "Welcome to Zerodha",
+      "prompt": "Navigate real-time charts and execute trades with the intuit",
+      "search": "Search Zerodha...",
+      "items": [
+        {
+          "label": "Zerodha",
+          "icon": "🚀"
+        }
+      ],
+      "navTabs": [
+        "Home",
+        "Categories",
+        "Orders",
+        "Account"
+      ],
+      "headerBg": "hsl(152, 75%, 52%)",
+      "headerColor": "#FFFFFF",
+      "badges": []
+    },
+    {
+      "id": "node_phone_2",
+      "type": "phone_mockup",
+      "position3D": [
+        0,
+        0,
+        0
+      ],
+      "greeting": "Welcome to Zerodha",
+      "prompt": "Designed for transparency, Kite provides the tools you need ",
+      "search": "Search Zerodha...",
+      "items": [
+        {
+          "label": "Zerodha",
+          "icon": "🚀"
+        }
+      ],
+      "navTabs": [
+        "Home",
+        "Categories",
+        "Orders",
+        "Account"
+      ],
+      "headerBg": "hsl(152, 75%, 52%)",
+      "headerColor": "#FFFFFF",
+      "badges": []
+    },
+    {
+      "id": "node_cta_3",
+      "type": "kinetic_typography",
+      "position3D": [
+        0,
+        0,
+        0
+      ],
+      "effect": "word_carousel",
+      "words": [
+        "START TRADING NOW",
+        "ZERODHA",
+        "TRY FOR FREE"
+      ],
+      "text": "START TRADING NOW",
+      "subtext": "See it in action for yourself. Get started on Zerodha today.",
+      "fontSize": 88
+    }
+  ]
+}

@@ -5,7 +5,15 @@ import {listJobs} from '../jobs/registry';
 
 const root = process.cwd();
 const remotionPath = resolve(root, 'node_modules', '@remotion', 'cli', 'remotion-cli.js');
-const jobId = process.env.AD_JOB_ID ?? process.argv[2];
+let jobId = process.env.AD_JOB_ID;
+if (!jobId) {
+  const jobIdx = process.argv.indexOf('--job');
+  if (jobIdx !== -1 && process.argv[jobIdx + 1]) {
+    jobId = process.argv[jobIdx + 1];
+  } else {
+    jobId = process.argv[2];
+  }
+}
 if (!jobId) {
   console.error(`Error: Job ID is required.\nAvailable jobs: ${listJobs().join(', ')}`);
   process.exit(1);

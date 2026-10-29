@@ -1,0 +1,32 @@
+{
+  "header": {
+    "bg": "hsl(152, 75%, 52%)",
+    "navLinks": [
+      "Home",
+      "Categories",
+      "Orders",
+      "Account"
+    ]
+  },
+  "searchBar": {
+    "placeholder": "Search Zerodha...",
+    "bg": "#FFFFFF"
+  },
+  "card_style": {
+    "bg": "#FFFFFF",
+    "radius": 8,
+    "shadow": "0 2px 8px rgba(0,0,0,0.08)"
+  },
+  "price_style": {
+    "color": "#111827",
+    "discountColor": "#16A34A",
+    "originalColor": "#9CA3AF"
+  },
+  "price_info": null,
+  "rating": null,
+  "trust_badges": [],
+  "layout_type": "generic",
+  "brand_distinguishers": [],
+  "cta_buttons": [],
+  "_source": "dom"
+}
