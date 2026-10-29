@@ -22,6 +22,7 @@ import {spawnSync} from 'node:child_process';
 import {scrapeBrand} from './scrape-brand';
 import {assembleScenes} from './scene-assembler';
 import {generateJobRegistry} from './job-discovery';
+import {getCachedBrand, saveBrandToCache} from './brand-cache';
 import type {BrandJson} from '../engine/types';
 
 // ──────────────────────────────────────────────────────────────────────────────
@@ -93,7 +94,7 @@ function writeSceneEntry(jobId: string) {
   // This TSX is intentionally minimal and generic — it delegates all rendering
   // to VectorRenderer which reads ui_tree.json. No brand literals here.
   const tsx = `import React from 'react';
-import {useCurrentFrame, useVideoConfig, interpolate} from 'remotion';
+import {useCurrentFrame, useVideoConfig} from 'remotion';
 import type {SceneRendererProps} from '../../../engine';
 import {VectorRenderer} from '../../../engine/semantic-ui/VectorRenderer';
 import type {UITree, VectorNode} from '../../../engine/semantic-ui/types';
@@ -146,12 +147,12 @@ const Scene: React.FC<SceneRendererProps> = ({scene, tokens}) => {
         fontFamily: SANS,
       }}
     >
-      {/* Subtle grid overlay */}
+      {/* Subtle grid overlay adapted to theme */}
       <div
         style={{
           position: 'absolute',
           inset: 0,
-          backgroundImage: 'linear-gradient(to right, rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.03) 1px, transparent 1px)',
+          backgroundImage: \`linear-gradient(to right, \${tokens.colors.hairline || 'rgba(255,255,255,0.05)'} 1px, transparent 1px), linear-gradient(to bottom, \${tokens.colors.hairline || 'rgba(255,255,255,0.05)'} 1px, transparent 1px)\`,
           backgroundSize: '48px 48px',
           pointerEvents: 'none',
         }}
@@ -236,9 +237,18 @@ async function main() {
   fs.mkdirSync(path.join(jobDir, 'scenes'), {recursive: true});
   fs.mkdirSync(path.join(jobDir, 'out', 'stills'), {recursive: true});
 
-  // Copy standard SFX assets
-  const sfxSrc = path.resolve(process.cwd(), 'jobs', 'swiggy-001', 'assets', 'audio');
-  if (fs.existsSync(sfxSrc)) {
+  // Copy standard SFX assets from any existing audio source
+  const jobsRoot = path.resolve(process.cwd(), 'jobs');
+  const candidateAudioDirs = [
+    path.resolve(process.cwd(), 'public', 'audio'),
+    ...(fs.existsSync(jobsRoot)
+      ? fs.readdirSync(jobsRoot, {withFileTypes: true})
+          .filter(d => d.isDirectory())
+          .map(d => path.join(jobsRoot, d.name, 'assets', 'audio'))
+      : [])
+  ];
+  const sfxSrc = candidateAudioDirs.find(d => fs.existsSync(d) && fs.existsSync(path.join(d, 'room-tone.wav')));
+  if (sfxSrc) {
     for (const f of ['room-tone.wav', 'click.wav', 'tick.wav', 'pop.wav', 'pop2.wav', 'swipe.wav', 'whoosh.wav', 'riser.wav', 'success.wav', 'logo-sting.wav', 'music-bed.mp3']) {
       const src = path.join(sfxSrc, f);
       const dst = path.join(jobDir, 'assets', 'audio', f);
@@ -256,25 +266,31 @@ async function main() {
     step(1, `Scrape skipped — loading existing brand.json`);
     brand = JSON.parse(fs.readFileSync(brandPath, 'utf8'));
   } else {
-    step(1, `Scraping brand from ${url || 'no URL — building from name only'}`);
+    step(1, `Resolving brand tokens for ${url || name}`);
     if (url) {
       brand = await scrapeBrand(url, jobId);
     } else {
-      // No URL: build minimal brand from --name and --desc
-      brand = {
-        name,
-        domain: `${name.toLowerCase().replace(/\s+/g, '')}.com`,
-        tagline: desc.split('.')[0] || `${name} — built for what's next.`,
-        description: desc || `${name} is a modern product.`,
-        products: [name],
-        logo: {src: `jobs/${jobId}/assets/logo.png`, text: name, alt: `${name} Logo`, source: ''},
-        colors: {accent: '#6366F1', accentLight: '#818CF8', background: '#09090B', background2: '#18181B', text: '#F9FAFB', muted: '#9CA3AF', surface: '#18181B', surfaceText: '#FFFFFF', surfaceMuted: '#6B7280'},
-        fonts: {display: {family: 'Inter, sans-serif', source: 'Google Fonts'}, body: {family: 'Inter, sans-serif', source: 'Google Fonts'}},
-        imagery: [],
-        claims: [{id: 'main', label: name, value: 'See it in action', sourceUrl: ''}],
-      };
+      const cached = getCachedBrand(name);
+      if (cached) {
+        console.log(`[produce-ad] ⚡ Found existing saved brand tokens for "${name}" in cache.`);
+        brand = {...cached};
+      } else {
+        brand = {
+          name,
+          domain: `${name.toLowerCase().replace(/\s+/g, '')}.com`,
+          tagline: desc.split('.')[0] || `${name} — built for what's next.`,
+          description: desc || `${name} is a modern product.`,
+          products: [name],
+          logo: {src: `jobs/${jobId}/assets/logo.png`, text: name, alt: `${name} Logo`, source: ''},
+          colors: {accent: '#6366F1', accentLight: '#818CF8', background: '#09090B', background2: '#18181B', text: '#F9FAFB', muted: '#9CA3AF', surface: '#18181B', surfaceText: '#FFFFFF', surfaceMuted: '#6B7280'},
+          fonts: {display: {family: 'Inter, sans-serif', source: 'Google Fonts'}, body: {family: 'Inter, sans-serif', source: 'Google Fonts'}},
+          imagery: [],
+          claims: [{id: 'main', label: name, value: 'See it in action', sourceUrl: ''}],
+        };
+        saveBrandToCache(name, brand);
+      }
       fs.writeFileSync(brandPath, JSON.stringify(brand, null, 2), 'utf8');
-      console.log(`[produce-ad] ✅ brand.json built from --name + --desc`);
+      console.log(`[produce-ad] ✅ brand.json dynamically configured for ${brand.name}`);
     }
   }
   console.log(`[produce-ad] Brand: ${brand.name} (${brand.domain}) accent=${brand.colors.accent}`);
@@ -330,7 +346,7 @@ async function main() {
   // Step 3: Assemble scenes → ui_tree.json + spec.json
   // ─────────────────────────────────────────────────────────────────────
   step(3, `Assembling scenes for: ${brand.name} (${storyboard.scenes?.length} scenes)`);
-  assembleScenes({storyboard, brand, jobId});
+  assembleScenes({storyboard, brand, jobId, fps: 60});
 
   // ─────────────────────────────────────────────────────────────────────
   // Step 4: Write scenes/index.tsx (generic, brand-driven)

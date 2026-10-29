@@ -1,4 +1,4 @@
-import {mkdirSync, writeFileSync, readFileSync, existsSync, cpSync} from 'node:fs';
+import {mkdirSync, writeFileSync, readFileSync, existsSync, cpSync, readdirSync} from 'node:fs';
 import {resolve} from 'node:path';
 import {generateJobRegistry} from './job-discovery';
 
@@ -46,24 +46,40 @@ export function ingestTemplate(options: IngestTemplateOptions): {jobId: string; 
   mkdirSync(jobDir, {recursive: true});
   mkdirSync(resolve(jobDir, 'scenes'), {recursive: true});
   mkdirSync(resolve(jobDir, 'assets'), {recursive: true});
-  const fallbackLogo = resolve(root, 'jobs', 'promo-linear-final', 'assets', 'logo.png');
   const targetLogo = resolve(jobDir, 'assets', 'logo.png');
-  if (existsSync(fallbackLogo) && !existsSync(targetLogo)) {
-    try {
-      const {copyFileSync} = require('node:fs');
-      copyFileSync(fallbackLogo, targetLogo);
-    } catch {
-      // ignore
+  if (!existsSync(targetLogo)) {
+    const candidateLogos = [
+      resolve(root, 'public', 'logo.png'),
+      ...readdirSync(resolve(root, 'jobs'), {withFileTypes: true})
+        .filter((d: any) => d.isDirectory())
+        .map((d: any) => resolve(root, 'jobs', d.name, 'assets', 'logo.png'))
+    ];
+    const foundLogo = candidateLogos.find(existsSync);
+    if (foundLogo) {
+      try {
+        const {copyFileSync} = require('node:fs');
+        copyFileSync(foundLogo, targetLogo);
+      } catch (_err) {
+        void _err;
+      }
     }
   }
 
-  const fallbackAudio = resolve(root, 'jobs', 'motion-swell-clone', 'assets', 'audio');
   const targetAudio = resolve(jobDir, 'assets', 'audio');
-  if (existsSync(fallbackAudio) && !existsSync(targetAudio)) {
-    try {
-      cpSync(fallbackAudio, targetAudio, {recursive: true});
-    } catch {
-      // ignore
+  if (!existsSync(targetAudio)) {
+    const candidateAudio = [
+      resolve(root, 'public', 'audio'),
+      ...readdirSync(resolve(root, 'jobs'), {withFileTypes: true})
+        .filter((d: any) => d.isDirectory())
+        .map((d: any) => resolve(root, 'jobs', d.name, 'assets', 'audio'))
+    ];
+    const foundAudio = candidateAudio.find(d => existsSync(d) && existsSync(resolve(d, 'room-tone.wav')));
+    if (foundAudio) {
+      try {
+        cpSync(foundAudio, targetAudio, {recursive: true});
+      } catch (_err) {
+        void _err;
+      }
     }
   }
 

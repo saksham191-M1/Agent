@@ -22,6 +22,11 @@ try {
   const spec: AdSpec = JSON.parse(readFileSync(actualFile, 'utf8'));
   const result = validateMotionRules(spec);
 
+  if (result.warnings.length) {
+    console.warn(`\n⚠️  ${result.warnings.length} warning(s):`);
+    result.warnings.forEach((w, i) => console.warn(`   ${i + 1}. ${w}`));
+  }
+
   if (!result.valid) {
     console.error(`\n❌ Motion rules validation FAILED with ${result.violations.length} violations:`);
     result.violations.forEach((violation, i) => {

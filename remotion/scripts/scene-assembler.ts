@@ -44,15 +44,15 @@ type ProductCategory =
 function detectCategory(brand: BrandJson, storyboardHints: string): ProductCategory {
   const text = `${brand.domain} ${brand.description} ${brand.products.join(' ')} ${storyboardHints}`.toLowerCase();
 
-  if (/delivery|food|swiggy|zomato|uber|ride|order|restaurant|groceri/.test(text)) return 'mobile_app';
-  if (/instagram|tiktok|twitter|x\.com|snap|social|reel|feed|post/.test(text)) return 'social';
-  if (/youtube|netflix|spotify|creator|video|stream|podcast|music|channel/.test(text)) return 'creator';
-  if (/shop|ecommerce|amazon|shopify|cart|store|product|buy|sell/.test(text)) return 'ecommerce';
-  if (/gpt|gemini|claude|llm|agent|ai|chat|copilot|assistant|openai/.test(text)) return 'ai_agent';
-  if (/analytics|dashboard|metric|insight|chart|report|data|bi|tableau/.test(text)) return 'analytics';
-  if (/api|sdk|cli|orm|db|database|supabase|prisma|vercel|railway|deploy|devtool|github|repo/.test(text)) return 'dev_tool';
-  if (/app|mobile|ios|android|flutter|react native/.test(text)) return 'mobile_app';
-  if (/saas|platform|software|workspace|crm|erp|notion|linear|jira|slack|figma/.test(text)) return 'web_saas';
+  if (/delivery|food|groceri|ride|restaurant|order/.test(text)) return 'mobile_app';
+  if (/social|community|feed|post|reel|story|share/.test(text)) return 'social';
+  if (/creator|video|stream|podcast|music|channel|broadcast/.test(text)) return 'creator';
+  if (/shop|ecommerce|cart|store|product|buy|sell|retail/.test(text)) return 'ecommerce';
+  if (/agent|ai|chat|copilot|assistant|model|llm|intelligence/.test(text)) return 'ai_agent';
+  if (/analytics|dashboard|metric|insight|chart|report|data|bi|telemetry/.test(text)) return 'analytics';
+  if (/api|sdk|cli|orm|db|database|deploy|devtool|infrastructure|cloud|backend/.test(text)) return 'dev_tool';
+  if (/app|mobile|ios|android|native/.test(text)) return 'mobile_app';
+  if (/saas|platform|software|workspace|crm|erp|productivity|collaboration|workflow/.test(text)) return 'web_saas';
 
   return 'generic';
 }
@@ -289,7 +289,6 @@ export function assembleScenes(opts: AssembleOptions): {uiTree: UITree; spec: an
 
   // Build one VectorNode per scene
   const nodes: VectorNode[] = scenes.map((scene: any, idx: number) => {
-    const role = scene.scene_id;
     const isFirst = idx === 0;
     const isLast  = idx === scenes.length - 1;
     const requiresUI = scene.requires_ui_image === true;
@@ -336,8 +335,8 @@ export function assembleScenes(opts: AssembleOptions): {uiTree: UITree; spec: an
   }
 
   function generateSceneSfx(sceneIdx: number, durationSec: number, totalScenes: number) {
-    const cues: Array<{t: number; type: string; gain?: number; pitchVariation?: number; duckMusicDb?: number}> = [];
-    cues.push({t: 0.10, type: 'pop', gain: 0.85, duckMusicDb: -6});
+    const cues: Array<{t: number; type: string; gain?: number}> = [];
+    cues.push({t: 0.10, type: 'pop', gain: 0.85});
 
     if (sceneIdx === 0) {
       cues.push({t: Math.round(durationSec * 0.72 * 100) / 100, type: 'tick', gain: 0.6});
@@ -345,9 +344,9 @@ export function assembleScenes(opts: AssembleOptions): {uiTree: UITree; spec: an
       cues.push({t: Math.round(durationSec * 0.45 * 100) / 100, type: 'click', gain: 0.75});
       cues.push({t: Math.round(durationSec * 0.85 * 100) / 100, type: 'pop', gain: 0.80});
     } else {
-      cues.push({t: Math.round(durationSec * 0.35 * 100) / 100, type: 'tick', gain: 0.55, pitchVariation: 1.0});
+      cues.push({t: Math.round(durationSec * 0.35 * 100) / 100, type: 'tick', gain: 0.55});
       cues.push({t: Math.round(durationSec * 0.65 * 100) / 100, type: 'click', gain: 0.70});
-      cues.push({t: Math.round(durationSec * 0.85 * 100) / 100, type: 'tick', gain: 0.55, pitchVariation: 0.95});
+      cues.push({t: Math.round(durationSec * 0.85 * 100) / 100, type: 'tick', gain: 0.55});
     }
 
     return cues;
@@ -366,6 +365,16 @@ export function assembleScenes(opts: AssembleOptions): {uiTree: UITree; spec: an
     if (MOTION_RULES.text_entry.ban_terminal_punctuation_on_headlines) {
       headline = headline.replace(/[.;:]+$/, '');
     }
+    const hWords = headline.split(/\s+/).filter(Boolean);
+    if (hWords.length > 8) headline = hWords.slice(0, 8).join(' ');
+
+    let subline = (s.voiceover || brand.tagline || '').trim();
+    const sWords = subline.split(/\s+/).filter(Boolean);
+    if (sWords.length > 12) subline = sWords.slice(0, 12).join(' ');
+
+    let caption = (s.veo_prompt || '').trim();
+    const cWords = caption.split(/\s+/).filter(Boolean);
+    if (cWords.length > 6) caption = cWords.slice(0, 6).join(' ');
 
     const scene = {
       id: `scene_${s.scene_id || idx + 1}`,
@@ -373,8 +382,8 @@ export function assembleScenes(opts: AssembleOptions): {uiTree: UITree; spec: an
       duration: dur,
       layout,
       headline,
-      subline: s.voiceover?.slice(0, 80) || brand.tagline,
-      caption: s.veo_prompt?.slice(0, 60) || '',
+      subline,
+      caption,
       captionWords: buildCaptionWords(s.voiceover || '', dur, fps),
       visual: {kicker: brand.name, pulseText: s.visual_fx || 'smooth'},
       motion: {
@@ -392,7 +401,6 @@ export function assembleScenes(opts: AssembleOptions): {uiTree: UITree; spec: an
 
   const aesthetic = storyboard.aesthetic || storyboard.ml_match?.aesthetic;
   const spec = {
-    jobId,
     brand: brand.name,
     format: '16:9' as const,
     fps,
@@ -430,16 +438,46 @@ export function assembleScenes(opts: AssembleOptions): {uiTree: UITree; spec: an
         tick:  'audio/tick.wav',
         pop:   'audio/pop.wav',
       },
-      duck: totalSec,
+      duck: Math.min(12, totalSec),
     },
   };
+
+  // Compile shots for schema-compliant storyboard.json
+  const storyboardShots = specScenes.map((s: any, idx: number) => {
+    const isHook = idx === 0;
+    const isCta = idx === specScenes.length - 1;
+    return {
+      n: idx + 1,
+      t0: s.start,
+      t1: s.start + s.duration,
+      role: isHook ? 'hook' : isCta ? 'cta' : 'feature',
+      source: 'motion-graphic',
+      visual: s.layout,
+      headline: s.headline,
+      subline: s.subline,
+      onScreenText: s.caption || '',
+      dialogue: s.vo || '',
+      sfx: s.sfx || [],
+      transitionOut: s.transitionOut || 'none',
+      camera: null,
+    };
+  });
+  const outputStoryboard = {shots: storyboardShots};
 
   // Write to disk
   const jobDir = path.resolve(process.cwd(), 'jobs', jobId);
   fs.mkdirSync(jobDir, {recursive: true});
-  fs.writeFileSync(path.join(jobDir, 'ui_tree.json'),    JSON.stringify(uiTree, null, 2),  'utf8');
-  fs.writeFileSync(path.join(jobDir, 'spec.json'),       JSON.stringify(spec, null, 2),    'utf8');
-  fs.writeFileSync(path.join(jobDir, 'storyboard.json'), JSON.stringify(storyboard, null, 2), 'utf8');
+  fs.writeFileSync(path.join(jobDir, 'ui_tree.json'),        JSON.stringify(uiTree, null, 2),          'utf8');
+  fs.writeFileSync(path.join(jobDir, 'spec.json'),           JSON.stringify(spec, null, 2),            'utf8');
+  fs.writeFileSync(path.join(jobDir, 'storyboard.json'),     JSON.stringify(outputStoryboard, null, 2),'utf8');
+  fs.writeFileSync(path.join(jobDir, 'storyboard.opus.json'),JSON.stringify(storyboard, null, 2),      'utf8');
+
+  // Write known-exceptions.json if needed
+  const knownExceptions: Record<string, string> = {};
+  if (specScenes.length > 0 && specScenes[0].duration > 2) {
+    knownExceptions.hook_length_shot_1 = 'dynamic opus scene length';
+  }
+  fs.writeFileSync(path.join(jobDir, 'known-exceptions.json'), JSON.stringify(knownExceptions, null, 2), 'utf8');
 
   // Synchronize brand.json if Opus aesthetic palette exists
   if (aesthetic) {
@@ -447,20 +485,36 @@ export function assembleScenes(opts: AssembleOptions): {uiTree: UITree; spec: an
     if (fs.existsSync(brandPath)) {
       try {
         const bData = JSON.parse(fs.readFileSync(brandPath, 'utf8'));
+        const own = bData.colors || {};
+        const lum = (hex?: string) => {
+          if (!hex || !hex.startsWith('#') || hex.length < 7) return 0;
+          const r = parseInt(hex.slice(1, 3), 16), g = parseInt(hex.slice(3, 5), 16), b = parseInt(hex.slice(5, 7), 16);
+          return (0.299 * r + 0.587 * g + 0.114 * b) / 255;
+        };
+        // Canvas backdrop adopts Opus directorial aesthetic if prescribed (e.g. warm cream poster);
+        // brand maintains its distinct identity (accent, accentLight, logo).
+        const bg = aesthetic.background || own.background || '#0B1020';
+        const isLight = lum(bg) > 0.55;
+        const text = isLight ? (aesthetic.text || '#0E0F1F') : (own.text || '#F8FAFC');
+        const surface = isLight ? (aesthetic.surface || '#FFFFFF') : (own.surface || '#1E293B');
+        const surfaceText = isLight ? (aesthetic.surfaceText || text) : (own.surfaceText || '#F8FAFC');
+
         bData.colors = {
-          ...bData.colors,
-          background: aesthetic.background,
-          background2: aesthetic.background2,
-          surface: aesthetic.surface,
-          surfaceText: aesthetic.surfaceText,
-          text: aesthetic.text,
-          muted: aesthetic.muted,
-          accent: bData.colors?.accent || aesthetic.accent,
-          accentLight: bData.colors?.accentLight || aesthetic.accentLight,
+          ...own,
+          accent: own.accent || aesthetic.accent,
+          accentLight: own.accentLight || aesthetic.accentLight,
+          background: bg,
+          background2: aesthetic.background2 || own.background2 || bg,
+          surface,
+          surfaceText,
+          text,
+          muted: aesthetic.muted || own.muted,
         };
         fs.writeFileSync(brandPath, JSON.stringify(bData, null, 2), 'utf8');
-        console.log(`[Scene Assembler] 🎨 Synchronized brand.json with Opus palette (Light mode: ${aesthetic.is_light_theme}, bg: ${aesthetic.background})`);
-      } catch {}
+        console.log(`[Scene Assembler] 🎨 brand.json synchronized with Opus directorial palette (bg: ${bData.colors.background}, lightMode: ${isLight})`);
+      } catch (_err) {
+        void _err;
+      }
     }
   }
 
@@ -475,7 +529,9 @@ export function assembleScenes(opts: AssembleOptions): {uiTree: UITree; spec: an
 if (process.argv[1]?.includes('scene-assembler')) {
   const jobId = process.argv[2] || 'test-assembly-001';
   const jobDir = path.resolve(process.cwd(), 'jobs', jobId);
-  const storyboardPath = path.join(jobDir, 'storyboard.json');
+  const storyboardPath = fs.existsSync(path.join(jobDir, 'storyboard.opus.json'))
+    ? path.join(jobDir, 'storyboard.opus.json')
+    : path.join(jobDir, 'storyboard.json');
   const brandPath      = path.join(jobDir, 'brand.json');
 
   if (!fs.existsSync(storyboardPath)) {

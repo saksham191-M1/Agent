@@ -1,7 +1,9 @@
 const cp = require('child_process');
 const fs = require('fs');
 
-const jobs = ['swiggy-001', 'skillme-003', 'test-brand-002'];
+const jobs = process.argv.slice(2).length > 0
+  ? process.argv.slice(2)
+  : fs.readdirSync('./jobs', {withFileTypes: true}).filter(d => d.isDirectory() && !d.name.startsWith('_')).map(d => d.name);
 
 for (const j of jobs) {
   try {
