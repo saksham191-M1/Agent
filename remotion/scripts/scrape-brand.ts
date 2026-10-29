@@ -85,6 +85,7 @@ interface DOMHints {
   ctaButtons: Array<{text: string; bg: string; color: string}>;
   prices: Array<{text: string; color: string}>;
   badges: Array<{text: string; bg: string; color: string}>;
+  stats?: Array<{label: string; value: string}>;
 }
 
 // ──────────────────────────────────────────────────────────────────────────────

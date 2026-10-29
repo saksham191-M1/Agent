@@ -75,9 +75,15 @@ import {default as scene23} from './walkthrough-demo-001/scenes';
 import brand24 from './zerodha-001/brand.json';
 import spec24 from './zerodha-001/spec.json';
 import {default as scene24} from './zerodha-001/scenes';
-import brand25 from './zomato-001/brand.json';
-import spec25 from './zomato-001/spec.json';
-import {default as scene25} from './zomato-001/scenes';
+import brand25 from './zerodha-002/brand.json';
+import spec25 from './zerodha-002/spec.json';
+import {default as scene25} from './zerodha-002/scenes';
+import brand26 from './zomato-001/brand.json';
+import spec26 from './zomato-001/spec.json';
+import {default as scene26} from './zomato-001/scenes';
+import brand27 from './zomato-002/brand.json';
+import spec27 from './zomato-002/spec.json';
+import {default as scene27} from './zomato-002/scenes';
 
 type GeneratedJobDefinition = {id: string; brand: BrandJson; spec: AdSpec; renderScene: SceneRenderer};
 
@@ -107,5 +113,7 @@ export const generatedJobs: Record<string, GeneratedJobDefinition> = {
   'vercel-001': {id: 'vercel-001', brand: brand22 as BrandJson, spec: spec22 as AdSpec, renderScene: scene22},
   'walkthrough-demo-001': {id: 'walkthrough-demo-001', brand: brand23 as BrandJson, spec: spec23 as AdSpec, renderScene: scene23},
   'zerodha-001': {id: 'zerodha-001', brand: brand24 as BrandJson, spec: spec24 as AdSpec, renderScene: scene24},
-  'zomato-001': {id: 'zomato-001', brand: brand25 as BrandJson, spec: spec25 as AdSpec, renderScene: scene25},
+  'zerodha-002': {id: 'zerodha-002', brand: brand25 as BrandJson, spec: spec25 as AdSpec, renderScene: scene25},
+  'zomato-001': {id: 'zomato-001', brand: brand26 as BrandJson, spec: spec26 as AdSpec, renderScene: scene26},
+  'zomato-002': {id: 'zomato-002', brand: brand27 as BrandJson, spec: spec27 as AdSpec, renderScene: scene27},
 };

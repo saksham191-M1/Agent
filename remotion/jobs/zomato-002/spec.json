@@ -1,0 +1,445 @@
+{
+  "brand": "Zomato",
+  "format": "16:9",
+  "fps": 60,
+  "durationSec": 16,
+  "bpm": 120,
+  "palette": {
+    "background": "#0a1118",
+    "background2": "#111c25",
+    "surface": "#f7f8fa",
+    "surfaceText": "#182530",
+    "text": "#f7f8fa",
+    "muted": "#9eacb8",
+    "accent": "#E23744",
+    "accentLight": "#F06D76",
+    "secondary": "#FF5A1F",
+    "isLightTheme": false
+  },
+  "mlMatch": {
+    "category": "MOTION",
+    "score": 0.2475,
+    "template": "Social Proof First",
+    "author": "techhalla",
+    "techTags": [
+      "canvas"
+    ],
+    "referenceUrl": "https://skillry.dev/ai-videos/opus-5-5/techhalla-498547",
+    "aesthetic": {
+      "is_light_theme": true,
+      "background": "#F6E4C6",
+      "background2": "#EDE0CA",
+      "surface": "#FFFFFF",
+      "surfaceText": "#0E0F1F",
+      "text": "#0E0F1F",
+      "muted": "#6B7280",
+      "accent": "#2B3BFF",
+      "accentLight": "#FF7DC7",
+      "secondary": "#FF5A1F",
+      "suggested_bpm": 120,
+      "motion_rules": []
+    }
+  },
+  "scenes": [
+    {
+      "id": "scene_1",
+      "start": 0,
+      "duration": 3.5,
+      "layout": "hero-type",
+      "headline": "DELIVERED IN MINUTES",
+      "subline": "Hungry? Don't wait. Get your favorite meals delivered in minutes.",
+      "caption": "Cinematic close-up of a diverse group",
+      "captionWords": [
+        {
+          "word": "Hungry?",
+          "start": 6,
+          "end": 25
+        },
+        {
+          "word": "Don't",
+          "start": 25,
+          "end": 45
+        },
+        {
+          "word": "wait.",
+          "start": 45,
+          "end": 64
+        },
+        {
+          "word": "Get",
+          "start": 64,
+          "end": 84
+        },
+        {
+          "word": "your",
+          "start": 84,
+          "end": 103
+        },
+        {
+          "word": "favorite",
+          "start": 103,
+          "end": 122
+        },
+        {
+          "word": "meals",
+          "start": 122,
+          "end": 142
+        },
+        {
+          "word": "delivered",
+          "start": 142,
+          "end": 161
+        },
+        {
+          "word": "in",
+          "start": 161,
+          "end": 181
+        },
+        {
+          "word": "minutes.",
+          "start": 181,
+          "end": 200
+        }
+      ],
+      "visual": {
+        "kicker": "Zomato",
+        "pulseText": "fast_zoom"
+      },
+      "motion": {
+        "enter": "mask_line_rise",
+        "idle": "slow_sway",
+        "exit": "carousel_glide"
+      },
+      "vo": "",
+      "sfx": [
+        {
+          "t": 0.1,
+          "type": "pop",
+          "gain": 0.85
+        },
+        {
+          "t": 2.52,
+          "type": "tick",
+          "gain": 0.6
+        }
+      ],
+      "transitionOut": "carousel_glide"
+    },
+    {
+      "id": "scene_2",
+      "start": 3.5,
+      "duration": 4.5,
+      "layout": "phone",
+      "headline": "TRACK YOUR CRAVINGS",
+      "subline": "Browse top-rated local restaurants and track your order in real-time.",
+      "caption": "Clean modern smartphone screen showing the",
+      "captionWords": [
+        {
+          "word": "Browse",
+          "start": 6,
+          "end": 31
+        },
+        {
+          "word": "top-rated",
+          "start": 31,
+          "end": 57
+        },
+        {
+          "word": "local",
+          "start": 57,
+          "end": 82
+        },
+        {
+          "word": "restaurants",
+          "start": 82,
+          "end": 108
+        },
+        {
+          "word": "and",
+          "start": 108,
+          "end": 133
+        },
+        {
+          "word": "track",
+          "start": 133,
+          "end": 158
+        },
+        {
+          "word": "your",
+          "start": 158,
+          "end": 184
+        },
+        {
+          "word": "order",
+          "start": 184,
+          "end": 209
+        },
+        {
+          "word": "in",
+          "start": 209,
+          "end": 235
+        },
+        {
+          "word": "real-time.",
+          "start": 235,
+          "end": 260
+        }
+      ],
+      "visual": {
+        "kicker": "Zomato",
+        "pulseText": "slide_up"
+      },
+      "motion": {
+        "enter": "mask_line_rise",
+        "idle": "slow_sway",
+        "exit": "carousel_glide"
+      },
+      "vo": "",
+      "sfx": [
+        {
+          "t": 0.1,
+          "type": "pop",
+          "gain": 0.85
+        },
+        {
+          "t": 1.58,
+          "type": "tick",
+          "gain": 0.55
+        },
+        {
+          "t": 2.93,
+          "type": "click",
+          "gain": 0.7
+        },
+        {
+          "t": 3.83,
+          "type": "tick",
+          "gain": 0.55
+        }
+      ],
+      "transitionOut": "wipe"
+    },
+    {
+      "id": "scene_3",
+      "start": 8,
+      "duration": 4,
+      "layout": "split",
+      "headline": "SPEED IS OUR PROMISE",
+      "subline": "Our delivery network is optimized to get your food to you faster",
+      "caption": "Split screen layout with a Zomato",
+      "captionWords": [
+        {
+          "word": "Our",
+          "start": 6,
+          "end": 22
+        },
+        {
+          "word": "delivery",
+          "start": 22,
+          "end": 38
+        },
+        {
+          "word": "network",
+          "start": 38,
+          "end": 54
+        },
+        {
+          "word": "is",
+          "start": 54,
+          "end": 70
+        },
+        {
+          "word": "optimized",
+          "start": 70,
+          "end": 86
+        },
+        {
+          "word": "to",
+          "start": 86,
+          "end": 102
+        },
+        {
+          "word": "get",
+          "start": 102,
+          "end": 118
+        },
+        {
+          "word": "your",
+          "start": 118,
+          "end": 134
+        },
+        {
+          "word": "food",
+          "start": 134,
+          "end": 150
+        },
+        {
+          "word": "to",
+          "start": 150,
+          "end": 166
+        },
+        {
+          "word": "you",
+          "start": 166,
+          "end": 182
+        },
+        {
+          "word": "faster",
+          "start": 182,
+          "end": 198
+        },
+        {
+          "word": "than",
+          "start": 198,
+          "end": 214
+        },
+        {
+          "word": "ever.",
+          "start": 214,
+          "end": 230
+        }
+      ],
+      "visual": {
+        "kicker": "Zomato",
+        "pulseText": "fade_in"
+      },
+      "motion": {
+        "enter": "mask_line_rise",
+        "idle": "slow_sway",
+        "exit": "carousel_glide"
+      },
+      "vo": "",
+      "sfx": [
+        {
+          "t": 0.1,
+          "type": "pop",
+          "gain": 0.85
+        },
+        {
+          "t": 1.4,
+          "type": "tick",
+          "gain": 0.55
+        },
+        {
+          "t": 2.6,
+          "type": "click",
+          "gain": 0.7
+        },
+        {
+          "t": 3.4,
+          "type": "tick",
+          "gain": 0.55
+        }
+      ],
+      "transitionOut": "cross_zoom"
+    },
+    {
+      "id": "scene_4",
+      "start": 12,
+      "duration": 4,
+      "layout": "cta",
+      "headline": "ORDER ON ZOMATO",
+      "subline": "Download Zomato and get your next meal in minutes.",
+      "caption": "Minimalist background with the Zomato logo",
+      "captionWords": [
+        {
+          "word": "Download",
+          "start": 6,
+          "end": 31
+        },
+        {
+          "word": "Zomato",
+          "start": 31,
+          "end": 56
+        },
+        {
+          "word": "and",
+          "start": 56,
+          "end": 81
+        },
+        {
+          "word": "get",
+          "start": 81,
+          "end": 106
+        },
+        {
+          "word": "your",
+          "start": 106,
+          "end": 130
+        },
+        {
+          "word": "next",
+          "start": 130,
+          "end": 155
+        },
+        {
+          "word": "meal",
+          "start": 155,
+          "end": 180
+        },
+        {
+          "word": "in",
+          "start": 180,
+          "end": 205
+        },
+        {
+          "word": "minutes.",
+          "start": 205,
+          "end": 230
+        }
+      ],
+      "visual": {
+        "kicker": "Zomato",
+        "pulseText": "bounce"
+      },
+      "motion": {
+        "enter": "mask_line_rise",
+        "idle": "slow_sway",
+        "exit": "carousel_glide"
+      },
+      "vo": "",
+      "sfx": [
+        {
+          "t": 0.1,
+          "type": "pop",
+          "gain": 0.85
+        },
+        {
+          "t": 1.8,
+          "type": "click",
+          "gain": 0.75
+        },
+        {
+          "t": 3.4,
+          "type": "pop",
+          "gain": 0.8
+        }
+      ],
+      "transitionOut": "none"
+    }
+  ],
+  "audio": {
+    "assetsRoot": "jobs/zomato-002/assets",
+    "voice": {
+      "provider": "none",
+      "voiceId": "none",
+      "model": "none",
+      "clips": {}
+    },
+    "music": {
+      "file": "audio/music-bed.mp3",
+      "mood": "high_energy_electronic",
+      "volume": 0.18
+    },
+    "room": {
+      "file": "audio/room-tone.wav",
+      "volume": 0.05
+    },
+    "sfxFiles": {
+      "click": "audio/click.wav",
+      "tick": "audio/tick.wav",
+      "pop": "audio/pop.wav"
+    },
+    "duck": 12
+  }
+}

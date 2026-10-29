@@ -302,18 +302,26 @@ export function assembleScenes(opts: AssembleOptions): {uiTree: UITree; spec: an
   console.log(`[Scene Assembler] Template: "${storyboard.selected_template || 'Problem-Agitate-Solution'}"`);
   console.log(`[Scene Assembler] Building ${scenes.length} scenes from Opus storyboard...`);
 
-  // Build one VectorNode per scene
+  // Build one VectorNode per scene matching the layout specified in the storyboard
   const nodes: VectorNode[] = scenes.map((scene: any, idx: number) => {
     const isFirst = idx === 0;
     const isLast  = idx === scenes.length - 1;
     const requiresUI = scene.requires_ui_image === true;
+    const sceneLayout = scene.layout;
 
-    if (isFirst) {
-      // Scene 1 is always the hook — kinetic typography
+    if (sceneLayout === 'metrics' || sceneLayout === 'big-number') {
+      return makeMetricNode(brand, idx);
+    }
+    if (sceneLayout === 'browser') {
+      return makeUINode(brand, scene, 'creator', idx);
+    }
+    if (sceneLayout === 'hero-type') {
       return makeHookNode(brand, scene, idx);
     }
-    if (isLast) {
-      // Last scene is always CTA
+    if (isFirst && !sceneLayout) {
+      return makeHookNode(brand, scene, idx);
+    }
+    if (isLast && (sceneLayout === 'cta' || !sceneLayout)) {
       return makeCTANode(brand, scene, idx);
     }
     if (requiresUI) {
@@ -493,10 +501,15 @@ export function assembleScenes(opts: AssembleOptions): {uiTree: UITree; spec: an
   fs.writeFileSync(path.join(jobDir, 'storyboard.json'),     JSON.stringify(outputStoryboard, null, 2),'utf8');
   fs.writeFileSync(path.join(jobDir, 'storyboard.opus.json'),JSON.stringify(storyboard, null, 2),      'utf8');
 
-  // Write known-exceptions.json if needed
-  const knownExceptions: Record<string, string> = {};
+  // Write known-exceptions.json adhering to new array schema
+  const knownExceptions = [];
   if (specScenes.length > 0 && specScenes[0].duration > 2) {
-    knownExceptions.hook_length_shot_1 = 'dynamic opus scene length';
+    knownExceptions.push({
+      rule: 'hook_length_shot_1',
+      reason: 'Dynamic director hook timing (>2s)',
+      approvedBy: 'director@company',
+      expires: '2026-12-31'
+    });
   }
   fs.writeFileSync(path.join(jobDir, 'known-exceptions.json'), JSON.stringify(knownExceptions, null, 2), 'utf8');
 

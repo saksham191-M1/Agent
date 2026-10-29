@@ -1,0 +1,133 @@
+{
+  "shots": [
+    {
+      "n": 1,
+      "t0": 0,
+      "t1": 3.5,
+      "role": "hook",
+      "source": "motion-graphic",
+      "visual": "hero-type",
+      "headline": "DIRECT MARKET ACCESS",
+      "subline": "Direct market access, designed for the modern trader.",
+      "onScreenText": "Abstract digital aesthetic showing clean geometric",
+      "dialogue": "",
+      "sfx": [
+        {
+          "t": 0.1,
+          "type": "pop",
+          "gain": 0.85
+        },
+        {
+          "t": 2.52,
+          "type": "tick",
+          "gain": 0.6
+        }
+      ],
+      "transitionOut": "wipe",
+      "camera": null
+    },
+    {
+      "n": 2,
+      "t0": 3.5,
+      "t1": 7.5,
+      "role": "feature",
+      "source": "motion-graphic",
+      "visual": "browser",
+      "headline": "KITE UI FLOW",
+      "subline": "Execute orders instantly with the Kite interface, built for speed and clarity.",
+      "onScreenText": "High-fidelity screen capture of the Zerodha",
+      "dialogue": "",
+      "sfx": [
+        {
+          "t": 0.1,
+          "type": "pop",
+          "gain": 0.85
+        },
+        {
+          "t": 1.4,
+          "type": "tick",
+          "gain": 0.55
+        },
+        {
+          "t": 2.6,
+          "type": "click",
+          "gain": 0.7
+        },
+        {
+          "t": 3.4,
+          "type": "tick",
+          "gain": 0.55
+        }
+      ],
+      "transitionOut": "carousel_glide",
+      "camera": null
+    },
+    {
+      "n": 3,
+      "t0": 7.5,
+      "t1": 11.5,
+      "role": "feature",
+      "source": "motion-graphic",
+      "visual": "browser",
+      "headline": "REAL TIME DATA",
+      "subline": "See your trades in action with real-time data streaming directly to your",
+      "onScreenText": "Top-down cinematic shot of a clean,",
+      "dialogue": "",
+      "sfx": [
+        {
+          "t": 0.1,
+          "type": "pop",
+          "gain": 0.85
+        },
+        {
+          "t": 1.4,
+          "type": "tick",
+          "gain": 0.55
+        },
+        {
+          "t": 2.6,
+          "type": "click",
+          "gain": 0.7
+        },
+        {
+          "t": 3.4,
+          "type": "tick",
+          "gain": 0.55
+        }
+      ],
+      "transitionOut": "wipe",
+      "camera": null
+    },
+    {
+      "n": 4,
+      "t0": 11.5,
+      "t1": 15,
+      "role": "cta",
+      "source": "motion-graphic",
+      "visual": "cta",
+      "headline": "TRADE ON KITE",
+      "subline": "Experience the platform. Visit zerodha.com to get started.",
+      "onScreenText": "Professional outro screen with the Zerodha",
+      "dialogue": "",
+      "sfx": [
+        {
+          "t": 0.1,
+          "type": "pop",
+          "gain": 0.85
+        },
+        {
+          "t": 1.58,
+          "type": "click",
+          "gain": 0.75
+        },
+        {
+          "t": 2.98,
+          "type": "pop",
+          "gain": 0.8
+        }
+      ],
+      "transitionOut": "none",
+      "camera": null
+    }
+  ]
+}

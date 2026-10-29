@@ -1,0 +1,133 @@
+{
+  "shots": [
+    {
+      "n": 1,
+      "t0": 0,
+      "t1": 3.5,
+      "role": "hook",
+      "source": "motion-graphic",
+      "visual": "hero-type",
+      "headline": "DELIVERED IN MINUTES",
+      "subline": "Hungry? Don't wait. Get your favorite meals delivered in minutes.",
+      "onScreenText": "Cinematic close-up of a diverse group",
+      "dialogue": "",
+      "sfx": [
+        {
+          "t": 0.1,
+          "type": "pop",
+          "gain": 0.85
+        },
+        {
+          "t": 2.52,
+          "type": "tick",
+          "gain": 0.6
+        }
+      ],
+      "transitionOut": "carousel_glide",
+      "camera": null
+    },
+    {
+      "n": 2,
+      "t0": 3.5,
+      "t1": 8,
+      "role": "feature",
+      "source": "motion-graphic",
+      "visual": "phone",
+      "headline": "TRACK YOUR CRAVINGS",
+      "subline": "Browse top-rated local restaurants and track your order in real-time.",
+      "onScreenText": "Clean modern smartphone screen showing the",
+      "dialogue": "",
+      "sfx": [
+        {
+          "t": 0.1,
+          "type": "pop",
+          "gain": 0.85
+        },
+        {
+          "t": 1.58,
+          "type": "tick",
+          "gain": 0.55
+        },
+        {
+          "t": 2.93,
+          "type": "click",
+          "gain": 0.7
+        },
+        {
+          "t": 3.83,
+          "type": "tick",
+          "gain": 0.55
+        }
+      ],
+      "transitionOut": "wipe",
+      "camera": null
+    },
+    {
+      "n": 3,
+      "t0": 8,
+      "t1": 12,
+      "role": "feature",
+      "source": "motion-graphic",
+      "visual": "split",
+      "headline": "SPEED IS OUR PROMISE",
+      "subline": "Our delivery network is optimized to get your food to you faster",
+      "onScreenText": "Split screen layout with a Zomato",
+      "dialogue": "",
+      "sfx": [
+        {
+          "t": 0.1,
+          "type": "pop",
+          "gain": 0.85
+        },
+        {
+          "t": 1.4,
+          "type": "tick",
+          "gain": 0.55
+        },
+        {
+          "t": 2.6,
+          "type": "click",
+          "gain": 0.7
+        },
+        {
+          "t": 3.4,
+          "type": "tick",
+          "gain": 0.55
+        }
+      ],
+      "transitionOut": "cross_zoom",
+      "camera": null
+    },
+    {
+      "n": 4,
+      "t0": 12,
+      "t1": 16,
+      "role": "cta",
+      "source": "motion-graphic",
+      "visual": "cta",
+      "headline": "ORDER ON ZOMATO",
+      "subline": "Download Zomato and get your next meal in minutes.",
+      "onScreenText": "Minimalist background with the Zomato logo",
+      "dialogue": "",
+      "sfx": [
+        {
+          "t": 0.1,
+          "type": "pop",
+          "gain": 0.85
+        },
+        {
+          "t": 1.8,
+          "type": "click",
+          "gain": 0.75
+        },
+        {
+          "t": 3.4,
+          "type": "pop",
+          "gain": 0.8
+        }
+      ],
+      "transitionOut": "none",
+      "camera": null
+    }
+  ]
+}

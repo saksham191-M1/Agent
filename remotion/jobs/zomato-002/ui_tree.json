@@ -1,0 +1,105 @@
+{
+  "brandId": "zomato.com",
+  "worldBounds": {
+    "width": 1920,
+    "height": 1080,
+    "depth": 2000
+  },
+  "nodes": [
+    {
+      "id": "node_hook_0",
+      "type": "kinetic_typography",
+      "position3D": [
+        0,
+        0,
+        0
+      ],
+      "effect": "phrase_flash",
+      "words": [
+        "DELIVERED IN MINUTES",
+        "DISCOVER THE BEST FOOD & DRINKS"
+      ],
+      "text": "DELIVERED IN MINUTES",
+      "subtext": "Hungry? Don't wait. Get your favorite meals delivered in minutes.",
+      "fontSize": 96
+    },
+    {
+      "id": "node_phone_1",
+      "type": "phone_mockup",
+      "position3D": [
+        0,
+        0,
+        0
+      ],
+      "greeting": "Welcome to Zomato",
+      "prompt": "Browse top-rated local restaurants and track your order in r",
+      "search": "Search Zomato...",
+      "items": [
+        {
+          "label": "Food delivery",
+          "icon": "🚀"
+        },
+        {
+          "label": "Dining out",
+          "icon": "⚡"
+        },
+        {
+          "label": "Discover",
+          "icon": "🎯"
+        },
+        {
+          "label": "Orders",
+          "icon": "✨"
+        }
+      ]
+    },
+    {
+      "id": "node_phone_2",
+      "type": "phone_mockup",
+      "position3D": [
+        0,
+        0,
+        0
+      ],
+      "greeting": "Welcome to Zomato",
+      "prompt": "Our delivery network is optimized to get your food to you fa",
+      "search": "Search Zomato...",
+      "items": [
+        {
+          "label": "Food delivery",
+          "icon": "🚀"
+        },
+        {
+          "label": "Dining out",
+          "icon": "⚡"
+        },
+        {
+          "label": "Discover",
+          "icon": "🎯"
+        },
+        {
+          "label": "Orders",
+          "icon": "✨"
+        }
+      ]
+    },
+    {
+      "id": "node_cta_3",
+      "type": "kinetic_typography",
+      "position3D": [
+        0,
+        0,
+        0
+      ],
+      "effect": "word_carousel",
+      "words": [
+        "ORDER ON ZOMATO",
+        "ZOMATO",
+        "TRY FOR FREE"
+      ],
+      "text": "ORDER ON ZOMATO",
+      "subtext": "Download Zomato and get your next meal in minutes.",
+      "fontSize": 88
+    }
+  ]
+}

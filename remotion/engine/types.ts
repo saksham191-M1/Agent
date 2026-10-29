@@ -13,6 +13,10 @@ export type BrandJson = {
   fonts: {display: {family: string; source: string}; body: {family: string; source: string}};
   imagery: Array<{src: string; alt: string; source: string}>;
   claims: Array<{id: string; label: string; value: string; sourceUrl: string}>;
+  meta?: {
+    paletteSource?: 'extracted' | 'override' | 'hash';
+    [key: string]: unknown;
+  };
 };
 
 export type SceneSpec = {

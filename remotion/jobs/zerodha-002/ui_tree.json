@@ -1,0 +1,87 @@
+{
+  "brandId": "zerodha.com",
+  "worldBounds": {
+    "width": 1920,
+    "height": 1080,
+    "depth": 2000
+  },
+  "nodes": [
+    {
+      "id": "node_hook_0",
+      "type": "kinetic_typography",
+      "position3D": [
+        0,
+        0,
+        0
+      ],
+      "effect": "phrase_flash",
+      "words": [
+        "DIRECT MARKET ACCESS",
+        "ONLINE STOCK BROKERAGE PLATFORM FOR TRADING AND INVESTING IN STOCKS, FUTURES, OPTIONS, COMMODITIES, CURRENCY, ETFS, MUTUAL FUNDS, AND BONDS"
+      ],
+      "text": "DIRECT MARKET ACCESS",
+      "subtext": "Direct market access, designed for the modern trader.",
+      "fontSize": 96
+    },
+    {
+      "id": "node_browser_1",
+      "type": "browser_mockup",
+      "position3D": [
+        0,
+        0,
+        0
+      ],
+      "title": "Execute orders instantly with the Kite interface, built for speed and clarity",
+      "detail": "Online stock brokerage platform for trading and investing in stocks, futures, options, commodities, currency, ETFs, mutual funds, and bonds",
+      "location": "zerodha.com",
+      "cards": [
+        {
+          "label": "Zerodha",
+          "detail": "Online stock brokerage platform for trading and investing in stocks, futures, options, commodities, currency, ETFs, mutual funds, and bonds",
+          "action": "Open →",
+          "icon": "▶"
+        }
+      ],
+      "showCursor": true
+    },
+    {
+      "id": "node_browser_2",
+      "type": "browser_mockup",
+      "position3D": [
+        0,
+        0,
+        0
+      ],
+      "title": "See your trades in action with real-time data streaming directly to your dashboard",
+      "detail": "Online stock brokerage platform for trading and investing in stocks, futures, options, commodities, currency, ETFs, mutual funds, and bonds",
+      "location": "zerodha.com",
+      "cards": [
+        {
+          "label": "Zerodha",
+          "detail": "Online stock brokerage platform for trading and investing in stocks, futures, options, commodities, currency, ETFs, mutual funds, and bonds",
+          "action": "Open →",
+          "icon": "▶"
+        }
+      ],
+      "showCursor": true
+    },
+    {
+      "id": "node_cta_3",
+      "type": "kinetic_typography",
+      "position3D": [
+        0,
+        0,
+        0
+      ],
+      "effect": "word_carousel",
+      "words": [
+        "TRADE ON KITE",
+        "ZERODHA",
+        "TRY FOR FREE"
+      ],
+      "text": "TRADE ON KITE",
+      "subtext": "Experience the platform. Visit zerodha.com to get started.",
+      "fontSize": 88
+    }
+  ]
+}

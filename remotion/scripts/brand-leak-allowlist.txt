@@ -1,0 +1,4 @@
+# Brand-leak allowlist
+# Format: <relative_path>:<term> # <reason>
+remotion/scripts/scrape-brand.ts:knownColors # Reference color fallback dictionary
+remotion/scripts/scene-assembler.ts:swiggy # Default template category mapping comments

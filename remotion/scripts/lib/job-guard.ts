@@ -184,7 +184,7 @@ export function validateJob(jobsRoot: string, jobId: string): ValidationResult {
       const sc = spec.scenes[i];
       const treeNode = uiNodes[i];
       if (sc.layout === 'browser') {
-        const hasBrowser = treeNode?.type === 'browser' || treeNode?.type === 'browser_frame' || treeNode?.type === 'screenshot';
+        const hasBrowser = treeNode?.type === 'browser' || treeNode?.type === 'browser_frame' || treeNode?.type === 'browser_mockup' || treeNode?.type === 'screenshot';
         if (!hasBrowser) {
           errors.push({
             code: 'LAYOUT_NODE_MISMATCH',
@@ -193,7 +193,7 @@ export function validateJob(jobsRoot: string, jobId: string): ValidationResult {
         }
       }
       if (sc.layout === 'big-number' || sc.layout === 'metrics') {
-        const hasMetric = treeNode?.type === 'metric' || treeNode?.type === 'metric_counter';
+        const hasMetric = treeNode?.type === 'metric' || treeNode?.type === 'metric_card' || treeNode?.type === 'metric_counter';
         if (!hasMetric) {
           errors.push({
             code: 'LAYOUT_NODE_MISMATCH',

@@ -1,0 +1,106 @@
+{
+  "product_name": "Zomato",
+  "narrative_type": "social_proof_first",
+  "selected_template": "Social Proof First",
+  "matched_opus_category": "MOTION",
+  "aesthetic": {
+    "is_light_theme": true,
+    "background": "#F6E4C6",
+    "background2": "#EDE0CA",
+    "surface": "#FFFFFF",
+    "surfaceText": "#0E0F1F",
+    "text": "#0E0F1F",
+    "muted": "#6B7280",
+    "accent": "#2B3BFF",
+    "accentLight": "#FF7DC7",
+    "secondary": "#FF5A1F",
+    "suggested_bpm": 120,
+    "motion_rules": []
+  },
+  "ml_match": {
+    "category": "MOTION",
+    "score": 0.2475,
+    "author": "techhalla",
+    "tech_tags": [
+      "canvas"
+    ],
+    "prompt_snippet": "You are a world-class motion designer doing a 20.00s kinetic identity bumper for TechHalla — an AI creator known for stealable workflows, not vibes. This piece must feel like the best designer in the room made a street-poster that moves. Showreel stakes: if this is weak, you don’t get hired.\n\nDURATION: exactly 20.00 seconds. LOOPABLE: frame 0 == fr",
+    "reference_url": "https://skillry.dev/ai-videos/opus-5-5/techhalla-498547",
+    "aesthetic": {
+      "is_light_theme": true,
+      "background": "#F6E4C6",
+      "background2": "#EDE0CA",
+      "surface": "#FFFFFF",
+      "surfaceText": "#0E0F1F",
+      "text": "#0E0F1F",
+      "muted": "#6B7280",
+      "accent": "#2B3BFF",
+      "accentLight": "#FF7DC7",
+      "secondary": "#FF5A1F",
+      "suggested_bpm": 120,
+      "motion_rules": []
+    }
+  },
+  "scene_count": 4,
+  "total_seconds": 16,
+  "music_mood": "high_energy_electronic",
+  "voice_style": "fast_confident",
+  "scenes": [
+    {
+      "scene_id": 1,
+      "duration_seconds": 3.5,
+      "layout": "hero-type",
+      "motion_profile": "punchy",
+      "voiceover": "Hungry? Don't wait. Get your favorite meals delivered in minutes.",
+      "kinetic_text": "DELIVERED IN MINUTES",
+      "visual_fx": "fast_zoom",
+      "transition_out": "carousel_glide",
+      "requires_ui_image": false,
+      "veo_prompt": "Cinematic close-up of a diverse group of friends laughing and sharing a feast, vibrant food photography, high energy, modern aesthetic.",
+      "description": null,
+      "ui_spec": null
+    },
+    {
+      "scene_id": 2,
+      "duration_seconds": 4.5,
+      "layout": "phone",
+      "motion_profile": "playful",
+      "voiceover": "Browse top-rated local restaurants and track your order in real-time.",
+      "kinetic_text": "TRACK YOUR CRAVINGS",
+      "visual_fx": "slide_up",
+      "transition_out": "wipe",
+      "requires_ui_image": true,
+      "veo_prompt": "Clean modern smartphone screen showing the Zomato app interface scrolling through delicious food images, smooth UI animation.",
+      "description": null,
+      "ui_spec": null
+    },
+    {
+      "scene_id": 3,
+      "duration_seconds": 4,
+      "layout": "split",
+      "motion_profile": "smooth",
+      "voiceover": "Our delivery network is optimized to get your food to you faster than ever.",
+      "kinetic_text": "SPEED IS OUR PROMISE",
+      "visual_fx": "fade_in",
+      "transition_out": "cross_zoom",
+      "requires_ui_image": true,
+      "veo_prompt": "Split screen layout with a Zomato delivery partner riding through a sunny city street on one side and a steaming gourmet dish on the other.",
+      "description": null,
+      "ui_spec": null
+    },
+    {
+      "scene_id": 4,
+      "duration_seconds": 4,
+      "layout": "cta",
+      "motion_profile": "punchy",
+      "voiceover": "Download Zomato and get your next meal in minutes.",
+      "kinetic_text": "ORDER ON ZOMATO",
+      "visual_fx": "bounce",
+      "transition_out": "flip",
+      "requires_ui_image": false,
+      "veo_prompt": "Minimalist background with the Zomato logo centered, bold call to action buttons for App Store and Google Play.",
+      "description": null,
+      "ui_spec": null
+    }
+  ]
+}

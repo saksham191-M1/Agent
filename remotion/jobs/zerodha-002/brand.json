@@ -1,0 +1,51 @@
+{
+  "name": "Zerodha",
+  "domain": "zerodha.com",
+  "tagline": "Online stock brokerage platform for trading and investing in stocks, futures, options, commodities, currency, ETFs, mutual funds, and bonds",
+  "description": "Online stock brokerage platform for trading and investing in stocks, futures, options, commodities, currency, ETFs, mutual funds, and bonds.",
+  "products": [
+    "Zerodha"
+  ],
+  "logo": {
+    "src": "jobs/zerodha-002/assets/logo.svg",
+    "text": "Zerodha",
+    "alt": "Zerodha Logo",
+    "source": "https://zerodha.com"
+  },
+  "colors": {
+    "accent": "hsl(152, 75%, 52%)",
+    "accentLight": "hsl(152, 75%, 52%)",
+    "background": "#FAFAFA",
+    "background2": "#F4F4F5",
+    "text": "#F8FAFC",
+    "muted": "#94A3B8",
+    "surface": "#1E293B",
+    "surfaceText": "#F8FAFC",
+    "surfaceMuted": "#6B7280"
+  },
+  "fonts": {
+    "display": {
+      "family": "Inter, system-ui, -apple-system, sans-serif",
+      "source": "Google Fonts"
+    },
+    "body": {
+      "family": "Inter, system-ui, -apple-system, sans-serif",
+      "source": "Google Fonts"
+    }
+  },
+  "imagery": [
+    {
+      "src": "jobs/zerodha-001/assets/studio-hero.png",
+      "alt": "Zerodha product screenshot",
+      "source": "https://zerodha.com"
+    }
+  ],
+  "claims": [
+    {
+      "id": "product",
+      "label": "Kite Trading Platform",
+      "value": "See it in action",
+      "sourceUrl": "https://zerodha.com"
+    }
+  ]
+}

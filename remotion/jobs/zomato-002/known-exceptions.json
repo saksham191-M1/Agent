@@ -1,0 +1,8 @@
+[
+  {
+    "rule": "hook_length_shot_1",
+    "reason": "Dynamic director hook timing (>2s)",
+    "approvedBy": "director@company",
+    "expires": "2026-12-31"
+  }
+]

@@ -1,0 +1,435 @@
+{
+  "brand": "Zerodha",
+  "format": "16:9",
+  "fps": 60,
+  "durationSec": 15,
+  "bpm": 120,
+  "palette": {
+    "background": "#FAFAFA",
+    "background2": "#F4F4F5",
+    "surface": "#F4F4F5",
+    "surfaceText": "#09090B",
+    "text": "#09090B",
+    "muted": "#71717A",
+    "accent": "hsl(152, 75%, 52%)",
+    "accentLight": "hsl(152, 75%, 52%)",
+    "secondary": "#38BDF8",
+    "isLightTheme": true
+  },
+  "mlMatch": {
+    "category": "EXPLAINER",
+    "score": 0.2641,
+    "template": "Technical Deep Dive",
+    "author": "_Tony_TT_",
+    "techTags": [
+      "canvas"
+    ],
+    "referenceUrl": "https://skillry.dev/ai-videos/opus-5-5/tony-tt-872147",
+    "aesthetic": {
+      "is_light_theme": false,
+      "background": "#0B1020",
+      "background2": "#151B33",
+      "surface": "#1E293B",
+      "surfaceText": "#F8FAFC",
+      "text": "#F8FAFC",
+      "muted": "#94A3B8",
+      "accent": "#6C5CE7",
+      "accentLight": "#B9B0FF",
+      "secondary": "#38BDF8",
+      "suggested_bpm": 120,
+      "motion_rules": []
+    }
+  },
+  "scenes": [
+    {
+      "id": "scene_1",
+      "start": 0,
+      "duration": 3.5,
+      "layout": "hero-type",
+      "headline": "DIRECT MARKET ACCESS",
+      "subline": "Direct market access, designed for the modern trader.",
+      "caption": "Abstract digital aesthetic showing clean geometric",
+      "captionWords": [
+        {
+          "word": "Direct",
+          "start": 6,
+          "end": 30
+        },
+        {
+          "word": "market",
+          "start": 30,
+          "end": 55
+        },
+        {
+          "word": "access,",
+          "start": 55,
+          "end": 79
+        },
+        {
+          "word": "designed",
+          "start": 79,
+          "end": 103
+        },
+        {
+          "word": "for",
+          "start": 103,
+          "end": 127
+        },
+        {
+          "word": "the",
+          "start": 127,
+          "end": 152
+        },
+        {
+          "word": "modern",
+          "start": 152,
+          "end": 176
+        },
+        {
+          "word": "trader.",
+          "start": 176,
+          "end": 200
+        }
+      ],
+      "visual": {
+        "kicker": "Zerodha",
+        "pulseText": "fast_zoom"
+      },
+      "motion": {
+        "enter": "mask_line_rise",
+        "idle": "slow_sway",
+        "exit": "carousel_glide"
+      },
+      "vo": "",
+      "sfx": [
+        {
+          "t": 0.1,
+          "type": "pop",
+          "gain": 0.85
+        },
+        {
+          "t": 2.52,
+          "type": "tick",
+          "gain": 0.6
+        }
+      ],
+      "transitionOut": "wipe"
+    },
+    {
+      "id": "scene_2",
+      "start": 3.5,
+      "duration": 4,
+      "layout": "browser",
+      "headline": "KITE UI FLOW",
+      "subline": "Execute orders instantly with the Kite interface, built for speed and clarity.",
+      "caption": "High-fidelity screen capture of the Zerodha",
+      "captionWords": [
+        {
+          "word": "Execute",
+          "start": 6,
+          "end": 25
+        },
+        {
+          "word": "orders",
+          "start": 25,
+          "end": 43
+        },
+        {
+          "word": "instantly",
+          "start": 43,
+          "end": 62
+        },
+        {
+          "word": "with",
+          "start": 62,
+          "end": 81
+        },
+        {
+          "word": "the",
+          "start": 81,
+          "end": 99
+        },
+        {
+          "word": "Kite",
+          "start": 99,
+          "end": 118
+        },
+        {
+          "word": "interface,",
+          "start": 118,
+          "end": 137
+        },
+        {
+          "word": "built",
+          "start": 137,
+          "end": 155
+        },
+        {
+          "word": "for",
+          "start": 155,
+          "end": 174
+        },
+        {
+          "word": "speed",
+          "start": 174,
+          "end": 193
+        },
+        {
+          "word": "and",
+          "start": 193,
+          "end": 211
+        },
+        {
+          "word": "clarity.",
+          "start": 211,
+          "end": 230
+        }
+      ],
+      "visual": {
+        "kicker": "Zerodha",
+        "pulseText": "pan_right"
+      },
+      "motion": {
+        "enter": "mask_line_rise",
+        "idle": "slow_sway",
+        "exit": "carousel_glide"
+      },
+      "vo": "",
+      "sfx": [
+        {
+          "t": 0.1,
+          "type": "pop",
+          "gain": 0.85
+        },
+        {
+          "t": 1.4,
+          "type": "tick",
+          "gain": 0.55
+        },
+        {
+          "t": 2.6,
+          "type": "click",
+          "gain": 0.7
+        },
+        {
+          "t": 3.4,
+          "type": "tick",
+          "gain": 0.55
+        }
+      ],
+      "transitionOut": "carousel_glide"
+    },
+    {
+      "id": "scene_3",
+      "start": 7.5,
+      "duration": 4,
+      "layout": "browser",
+      "headline": "REAL TIME DATA",
+      "subline": "See your trades in action with real-time data streaming directly to your",
+      "caption": "Top-down cinematic shot of a clean,",
+      "captionWords": [
+        {
+          "word": "See",
+          "start": 6,
+          "end": 23
+        },
+        {
+          "word": "your",
+          "start": 23,
+          "end": 40
+        },
+        {
+          "word": "trades",
+          "start": 40,
+          "end": 58
+        },
+        {
+          "word": "in",
+          "start": 58,
+          "end": 75
+        },
+        {
+          "word": "action",
+          "start": 75,
+          "end": 92
+        },
+        {
+          "word": "with",
+          "start": 92,
+          "end": 109
+        },
+        {
+          "word": "real-time",
+          "start": 109,
+          "end": 127
+        },
+        {
+          "word": "data",
+          "start": 127,
+          "end": 144
+        },
+        {
+          "word": "streaming",
+          "start": 144,
+          "end": 161
+        },
+        {
+          "word": "directly",
+          "start": 161,
+          "end": 178
+        },
+        {
+          "word": "to",
+          "start": 178,
+          "end": 196
+        },
+        {
+          "word": "your",
+          "start": 196,
+          "end": 213
+        },
+        {
+          "word": "dashboard.",
+          "start": 213,
+          "end": 230
+        }
+      ],
+      "visual": {
+        "kicker": "Zerodha",
+        "pulseText": "cross_zoom"
+      },
+      "motion": {
+        "enter": "mask_line_rise",
+        "idle": "slow_sway",
+        "exit": "carousel_glide"
+      },
+      "vo": "",
+      "sfx": [
+        {
+          "t": 0.1,
+          "type": "pop",
+          "gain": 0.85
+        },
+        {
+          "t": 1.4,
+          "type": "tick",
+          "gain": 0.55
+        },
+        {
+          "t": 2.6,
+          "type": "click",
+          "gain": 0.7
+        },
+        {
+          "t": 3.4,
+          "type": "tick",
+          "gain": 0.55
+        }
+      ],
+      "transitionOut": "wipe"
+    },
+    {
+      "id": "scene_4",
+      "start": 11.5,
+      "duration": 3.5,
+      "layout": "cta",
+      "headline": "TRADE ON KITE",
+      "subline": "Experience the platform. Visit zerodha.com to get started.",
+      "caption": "Professional outro screen with the Zerodha",
+      "captionWords": [
+        {
+          "word": "Experience",
+          "start": 6,
+          "end": 30
+        },
+        {
+          "word": "the",
+          "start": 30,
+          "end": 55
+        },
+        {
+          "word": "platform.",
+          "start": 55,
+          "end": 79
+        },
+        {
+          "word": "Visit",
+          "start": 79,
+          "end": 103
+        },
+        {
+          "word": "zerodha.com",
+          "start": 103,
+          "end": 127
+        },
+        {
+          "word": "to",
+          "start": 127,
+          "end": 152
+        },
+        {
+          "word": "get",
+          "start": 152,
+          "end": 176
+        },
+        {
+          "word": "started.",
+          "start": 176,
+          "end": 200
+        }
+      ],
+      "visual": {
+        "kicker": "Zerodha",
+        "pulseText": "fade_in"
+      },
+      "motion": {
+        "enter": "mask_line_rise",
+        "idle": "slow_sway",
+        "exit": "carousel_glide"
+      },
+      "vo": "",
+      "sfx": [
+        {
+          "t": 0.1,
+          "type": "pop",
+          "gain": 0.85
+        },
+        {
+          "t": 1.58,
+          "type": "click",
+          "gain": 0.75
+        },
+        {
+          "t": 2.98,
+          "type": "pop",
+          "gain": 0.8
+        }
+      ],
+      "transitionOut": "none"
+    }
+  ],
+  "audio": {
+    "assetsRoot": "jobs/zerodha-002/assets",
+    "voice": {
+      "provider": "none",
+      "voiceId": "none",
+      "model": "none",
+      "clips": {}
+    },
+    "music": {
+      "file": "audio/music-bed.mp3",
+      "mood": "ambient_minimal",
+      "volume": 0.18
+    },
+    "room": {
+      "file": "audio/room-tone.wav",
+      "volume": 0.05
+    },
+    "sfxFiles": {
+      "click": "audio/click.wav",
+      "tick": "audio/tick.wav",
+      "pop": "audio/pop.wav"
+    },
+    "duck": 12
+  }
+}
