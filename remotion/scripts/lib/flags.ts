@@ -6,6 +6,6 @@
 
 export const FLAGS = {
   get PIPELINE_V2(): boolean {
-    return process.env.PIPELINE_V2 === '1' || process.env.PIPELINE_V2 === 'true';
+    return (process.env.PIPELINE_V2 === '1' || process.env.PIPELINE_V2 === 'true') as boolean;
   },
 };

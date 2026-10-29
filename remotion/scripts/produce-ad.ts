@@ -23,6 +23,7 @@ import {scrapeBrand} from './scrape-brand';
 import {assembleScenes} from './scene-assembler';
 import {generateJobRegistry} from './job-discovery';
 import {getCachedBrand, saveBrandToCache} from './brand-cache';
+import {validateJob} from './lib/job-guard';
 import type {BrandJson} from '../engine/types';
 
 // ──────────────────────────────────────────────────────────────────────────────
@@ -350,6 +351,23 @@ async function main() {
   // ─────────────────────────────────────────────────────────────────────
   step(3, `Assembling scenes for: ${brand.name} (${storyboard.scenes?.length} scenes)`);
   assembleScenes({storyboard, brand, jobId, fps: 60});
+
+  // Validate job right after spec is written
+  const guardAfterSpec = validateJob(path.resolve(process.cwd(), 'jobs'), jobId);
+  if (!guardAfterSpec.valid) {
+    if (args['force'] === 'true') {
+      console.warn(`\n⚠️  [JOB GUARD WARNING] Proceeding after spec creation due to --force flag:`);
+      for (const err of guardAfterSpec.errors) {
+        console.warn(`  - [${err.code}] ${err.message}`);
+      }
+    } else {
+      console.error(`\n❌ [JOB GUARD FAILED] Spec validation failed for ${jobId}:`);
+      for (const err of guardAfterSpec.errors) {
+        console.error(`  - [${err.code}] ${err.message}`);
+      }
+      process.exit(1);
+    }
+  }
 
   // ─────────────────────────────────────────────────────────────────────
   // Step 4: Write scenes/index.tsx (generic, brand-driven)

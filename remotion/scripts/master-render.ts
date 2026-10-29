@@ -6,11 +6,32 @@ import {getJob, listJobs} from '../jobs/registry';
 
 const root = process.cwd();
 import {mediaTools} from './media-tools.mjs';
+import {validateJob} from './lib/job-guard';
+
 const {ffmpeg} = mediaTools();
-const jobId = process.env.AD_JOB_ID ?? process.argv[2];
+const isForce = process.argv.includes('--force');
+const jobId = process.env.AD_JOB_ID ?? process.argv.find(a => !a.startsWith('--') && a !== process.argv[0] && a !== process.argv[1]);
 if (!jobId) {
   console.error(`Error: Job ID is required.\nAvailable jobs: ${listJobs().join(', ')}`);
   process.exit(1);
+}
+
+// Job Guard check
+const guardResult = validateJob(resolve(root, 'jobs'), jobId);
+if (!guardResult.valid) {
+  if (isForce) {
+    console.warn(`\n⚠️  [JOB GUARD WARNING] Proceeding due to --force flag:`);
+    for (const err of guardResult.errors) {
+      console.warn(`  - [${err.code}] ${err.message}`);
+    }
+  } else {
+    console.error(`\n❌ [JOB GUARD FAILED] Cannot master ${jobId}:`);
+    for (const err of guardResult.errors) {
+      console.error(`  - [${err.code}] ${err.message}`);
+    }
+    console.error(`Use --force to downgrade errors to warnings (debugging only).\n`);
+    process.exit(1);
+  }
 }
 const job = getJob(jobId);
 const raw = resolve(root, 'jobs', jobId, 'out', 'raw.mp4');
