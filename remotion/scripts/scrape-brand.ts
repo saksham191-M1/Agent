@@ -591,19 +591,22 @@ export async function scrapeBrand(targetUrl: string, jobId: string): Promise<Bra
     'flipkart.com':  {accent: '#2874F0', accentLight: '#FFE11B', bg: '#071026', bg2: '#0F214D'},
   };
 
+  let paletteSource: 'extracted' | 'override' | 'hash' = 'extracted';
   let finalAccent = extractedAccent || (extractedThemeColor && extractedThemeColor.startsWith('#') ? extractedThemeColor.toUpperCase() : '');
   if (!finalAccent) {
     if (knownColors[domain]) {
       finalAccent = knownColors[domain].accent;
+      paletteSource = 'override';
     } else {
       let hash = 0;
       for (let c = 0; c < domain.length; c++) hash = domain.charCodeAt(c) + ((hash << 5) - hash);
       const hue = Math.abs(hash) % 360;
       finalAccent = `hsl(${hue}, 75%, 52%)`;
+      paletteSource = 'hash';
     }
   }
 
-  const colorKit = knownColors[domain] ?? {
+  const colorKit = (paletteSource === 'override' && knownColors[domain]) ? knownColors[domain] : {
     accent: finalAccent,
     accentLight: finalAccent,
     bg: isSiteDark ? '#09090B' : '#FAFAFA',
@@ -677,18 +680,41 @@ export async function scrapeBrand(targetUrl: string, jobId: string): Promise<Bra
     : 'Inter';
   const resolvedFontFamily = `${cleanFont}, system-ui, -apple-system, sans-serif`;
 
+  // Format tagline: first sentence only, max 90 characters
+  const rawTagline = (extractedDesc.split('.')[0] || '').trim();
+  const trimmedTagline = rawTagline.length > 90 ? rawTagline.slice(0, 87) + '...' : rawTagline;
+
+  // Extract products from nav or headings; leave empty if none
+  const distinctProducts = uiDesc.brand_distinguishers.filter(p => p.toLowerCase() !== inferredName.toLowerCase());
+
+  // Claims must be concrete statements from page with source URL, never label=brandName
+  const claimsList = [];
+  if (domHints.stats && domHints.stats.length > 0) {
+    for (const stat of domHints.stats) {
+      claimsList.push({
+        id: `stat-${claimsList.length + 1}`,
+        label: stat.label || 'Feature',
+        value: stat.value,
+        sourceUrl: targetUrl
+      });
+    }
+  }
+
   const brand: BrandJson = {
     name: inferredName,
     domain,
-    tagline: extractedDesc.split('.')[0].trim() || `${inferredName} — built for what's next.`,
+    tagline: trimmedTagline || `${inferredName} — built for what's next.`,
     description: extractedDesc || `${inferredName} is a modern product trusted by millions.`,
-    products: uiDesc.brand_distinguishers.length > 0 ? uiDesc.brand_distinguishers : [inferredName],
+    products: distinctProducts,
     logo: {
       src: `jobs/${jobId}/assets/logo.svg`,
       text: inferredName,
       alt: `${inferredName} Logo`,
       source: targetUrl,
     },
+    meta: {
+      paletteSource,
+    } as any,
     colors: {
       accent:      colorKit.accent,
       accentLight: colorKit.accentLight,
@@ -707,9 +733,7 @@ export async function scrapeBrand(targetUrl: string, jobId: string): Promise<Bra
     imagery: fs.existsSync(screenshotPath)
       ? [{src: `jobs/${jobId}/assets/studio-hero.png`, alt: `${inferredName} product screenshot`, source: targetUrl}]
       : [],
-    claims: [
-      {id: 'product', label: inferredName, value: 'See it in action', sourceUrl: targetUrl},
-    ],
+    claims: claimsList,
   };
 
   saveBrandToCache(domain, brand);
