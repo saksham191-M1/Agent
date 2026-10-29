@@ -114,6 +114,28 @@ export interface PhoneMockupNode extends BaseVectorNode {
   prompt: string;
   search: string;
   items: { label: string; icon: string }[];
+  navTabs?: string[];
+  headerBg?: string;
+  headerColor?: string;
+  badges?: string[];
+  priceInfo?: {currentPrice: string; originalPrice?: string; discount?: string};
+  screenType?: 'grid' | 'product_detail' | 'checkout' | 'feed';
+}
+
+export interface EcommerceProductCardNode extends BaseVectorNode {
+  type: 'ecommerce_product_card';
+  title: string;
+  category?: string;
+  currentPrice: string;
+  originalPrice?: string;
+  discountPct?: string;
+  rating?: number;
+  ratingCount?: string;
+  trustBadge?: string;
+  deliveryTag?: string;
+  accentColor?: string;
+  cardBg?: string;
+  features?: string[];
 }
 
 export interface BrowserMockupNode extends BaseVectorNode {
@@ -162,7 +184,8 @@ export type VectorNode =
   | BrowserMockupNode
   | SmartCursorNode
   | CTAButtonNode
-  | StatCounterNode;
+  | StatCounterNode
+  | EcommerceProductCardNode;
 
 export interface UITree {
   brandId: string;

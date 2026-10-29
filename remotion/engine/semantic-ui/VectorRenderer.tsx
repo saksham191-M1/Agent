@@ -14,6 +14,7 @@ import type {
   SmartCursorNode,
   CTAButtonNode,
   StatCounterNode,
+  EcommerceProductCardNode,
 } from './types';
 import type {Tokens} from '../types';
 import {AnimatedChartView} from './skills/AnimatedChart';
@@ -25,6 +26,7 @@ import {PhoneMockup} from '../components/PhoneMockup';
 import {BrowserMockup} from '../components/BrowserMockup';
 import {CTAButton} from '../components/CTAButton';
 import {StatCounter} from '../components/StatCounter';
+import {EcommerceProductCard} from '../components/EcommerceProductCard';
 
 const SANS_FONT_STACK = 'Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif';
 const getFontFamily = (tokens: Tokens) => (tokens?.fontFamily ? `${tokens.fontFamily}, ${SANS_FONT_STACK}` : SANS_FONT_STACK);
@@ -623,6 +625,34 @@ export const VectorRenderer: React.FC<VectorRendererProps> = ({
             greeting={phonNode.greeting}
             prompt={phonNode.prompt}
             search={phonNode.search}
+            navTabs={phonNode.navTabs}
+            headerBg={phonNode.headerBg}
+            headerColor={phonNode.headerColor}
+            badges={phonNode.badges}
+            priceInfo={phonNode.priceInfo}
+            screenType={phonNode.screenType}
+          />
+        </div>
+      );
+    }
+    case 'ecommerce_product_card': {
+      const cardNode = node as EcommerceProductCardNode;
+      return (
+        <div style={{filter: dofFilter}}>
+          <EcommerceProductCard
+            tokens={tokens}
+            title={cardNode.title}
+            category={cardNode.category}
+            currentPrice={cardNode.currentPrice}
+            originalPrice={cardNode.originalPrice}
+            discountPct={cardNode.discountPct}
+            rating={cardNode.rating}
+            ratingCount={cardNode.ratingCount}
+            trustBadge={cardNode.trustBadge}
+            deliveryTag={cardNode.deliveryTag}
+            accentColor={cardNode.accentColor}
+            cardBg={cardNode.cardBg}
+            features={cardNode.features}
           />
         </div>
       );
