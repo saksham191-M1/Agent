@@ -27,7 +27,7 @@ export const PhoneMockup: React.FC<PhoneMockupProps> = ({
   greeting,
   prompt,
   search,
-  navTabs = ['Home', 'Orders', 'Account'],
+  navTabs,
   headerBg,
   headerColor,
   badges = [],
@@ -42,7 +42,7 @@ export const PhoneMockup: React.FC<PhoneMockupProps> = ({
 
   const activeHeaderBg = headerBg || tokens.colors.surface;
   const activeHeaderColor = headerColor || tokens.colors.accent;
-  const activeTabs = navTabs.length > 0 ? navTabs.slice(0, 4) : ['Home', 'Orders', 'Account'];
+  const activeTabs = navTabs && navTabs.length > 0 ? navTabs.slice(0, 4) : [];
 
   return (
     <div
@@ -191,7 +191,7 @@ export const PhoneMockup: React.FC<PhoneMockupProps> = ({
                       justifyContent: 'space-between',
                     }}
                   >
-                    <Glyph label={item.icon} tokens={tokens} size={30} />
+                    {item.icon ? <Glyph label={item.icon} tokens={tokens} size={30} /> : null}
                     <div style={{fontWeight: 700, fontSize: 13, lineHeight: 1.2}}>{item.label}</div>
                   </div>
                 ))}
@@ -200,37 +200,39 @@ export const PhoneMockup: React.FC<PhoneMockupProps> = ({
           )}
         </div>
 
-        {/* Bottom Nav Bar with Brand Nav Tabs */}
-        <div
-          style={{
-            position: 'absolute',
-            width: 341,
-            marginLeft: 12,
-            bottom: 12,
-            height: 54,
-            borderRadius: 20,
-            background: tokens.colors.surface,
-            borderTop: `1px solid ${tokens.colors.surfaceMuted}26`,
-            display: 'flex',
-            justifyContent: 'space-around',
-            alignItems: 'center',
-            color: tokens.colors.surfaceMuted,
-            fontSize: 11,
-            fontWeight: 600,
-          }}
-        >
-          {activeTabs.map((tab, idx) => (
-            <span
-              key={tab}
-              style={{
-                color: idx === 0 ? tokens.colors.accent : tokens.colors.surfaceMuted,
-                fontWeight: idx === 0 ? 800 : 500,
-              }}
-            >
-              {tab}
-            </span>
-          ))}
-        </div>
+        {/* Bottom Nav Bar with Brand Nav Tabs (only when navTabs provided) */}
+        {activeTabs.length > 0 && (
+          <div
+            style={{
+              position: 'absolute',
+              width: 341,
+              marginLeft: 12,
+              bottom: 12,
+              height: 54,
+              borderRadius: 20,
+              background: tokens.colors.surface,
+              borderTop: `1px solid ${tokens.colors.surfaceMuted}26`,
+              display: 'flex',
+              justifyContent: 'space-around',
+              alignItems: 'center',
+              color: tokens.colors.surfaceMuted,
+              fontSize: 11,
+              fontWeight: 600,
+            }}
+          >
+            {activeTabs.map((tab, idx) => (
+              <span
+                key={tab}
+                style={{
+                  color: idx === 0 ? tokens.colors.accent : tokens.colors.surfaceMuted,
+                  fontWeight: idx === 0 ? 800 : 500,
+                }}
+              >
+                {tab}
+              </span>
+            ))}
+          </div>
+        )}
       </div>
     </div>
   );

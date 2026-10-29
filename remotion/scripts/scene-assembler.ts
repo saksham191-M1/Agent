@@ -26,6 +26,7 @@ import type {UITree, VectorNode} from '../engine/semantic-ui/types';
 import type {BrandJson} from '../engine/types';
 import {MOTION_RULES} from '../engine/motion/motion-rules';
 import {loadUIDescription, buildNodeFromUIDescription} from './ui-description-to-node';
+import {validateStoryboardSpec} from './spec-schema';
 
 // ──────────────────────────────────────────────────────────────────────────────
 // Product category detection
@@ -276,6 +277,13 @@ function resolveSceneTransition(visualFx: string, idx: number): string {
 export function assembleScenes(opts: AssembleOptions): {uiTree: UITree; spec: any} {
   const {storyboard, brand, jobId, fps = MOTION_RULES.render.fps || 60} = opts;
 
+  // Validate incoming storyboard schema via Zod mirror
+  try {
+    validateStoryboardSpec(storyboard);
+  } catch (err: any) {
+    console.warn(`[Scene Assembler] Storyboard validation: ${err.message}`);
+  }
+
   const scenes: any[] = storyboard.scenes || [];
   const mlCat = storyboard.ml_match?.category || storyboard.matched_opus_category;
   const mlTags: string[] = storyboard.ml_match?.tech_tags || [];
@@ -372,8 +380,9 @@ export function assembleScenes(opts: AssembleOptions): {uiTree: UITree; spec: an
   const specScenes = scenes.map((s: any, idx: number) => {
     const dur = s.duration_seconds || 4;
     const activeNode = nodes[idx] || nodes[0];
-    const layout = resolveSceneLayout(activeNode.type, idx, scenes.length);
-    const transition = idx < scenes.length - 1 ? resolveSceneTransition(s.visual_fx, idx) : 'none';
+    const isV2 = process.env.PIPELINE_V2 === '1' || Boolean(s.layout);
+    const layout = (isV2 && s.layout) ? s.layout : resolveSceneLayout(activeNode.type, idx, scenes.length);
+    const transition = idx < scenes.length - 1 ? ((isV2 && s.transition_out) ? s.transition_out : resolveSceneTransition(s.visual_fx, idx)) : 'none';
 
     let headline = (s.kinetic_text || brand.name || '').trim();
     if (MOTION_RULES.text_entry.ban_terminal_punctuation_on_headlines) {

@@ -52,3 +52,6 @@ export * from './walkthrough/motor-physics';
 export * from './walkthrough/voice-aligner';
 export * from './walkthrough/WalkthroughViewport';
 export * from './walkthrough/walkthrough-ecproj-builder';
+
+// Composable Primitives Engine
+export * from './primitives';
