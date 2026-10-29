@@ -6,34 +6,34 @@ import {enterSpring, scaleIn} from '../motion/presets';
 interface EcommerceProductCardProps {
   tokens: Tokens;
   title: string;
-  category?: string;
-  currentPrice: string;
-  originalPrice?: string;
-  discountPct?: string;
-  rating?: number;
-  ratingCount?: string;
-  trustBadge?: string;
-  deliveryTag?: string;
+  category?: string | null;
+  currentPrice?: string | null;
+  originalPrice?: string | null;
+  discountPct?: string | null;
+  rating?: number | null;
+  ratingCount?: string | null;
+  trustBadge?: string | null;
+  deliveryTag?: string | null;
   accentColor?: string;
   cardBg?: string;
-  features?: string[];
+  features?: string[] | null;
   style?: React.CSSProperties;
 }
 
 export const EcommerceProductCard: React.FC<EcommerceProductCardProps> = ({
   tokens,
   title,
-  category = 'Featured Deal',
+  category,
   currentPrice,
   originalPrice,
   discountPct,
-  rating = 4.8,
-  ratingCount = '24,580 ratings',
-  trustBadge = 'Assured Quality',
-  deliveryTag = 'Free Delivery',
+  rating,
+  ratingCount,
+  trustBadge,
+  deliveryTag,
   accentColor,
   cardBg,
-  features = ['Fast doorstep delivery', 'Genuine warranty included', 'Top rated by buyers'],
+  features,
   style,
 }) => {
   const frame = useCurrentFrame();
@@ -75,47 +75,51 @@ export const EcommerceProductCard: React.FC<EcommerceProductCardProps> = ({
       />
 
       {/* Header tags row */}
-      <div style={{display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 18}}>
-        <div style={{display: 'flex', gap: 8, alignItems: 'center'}}>
-          <span
-            style={{
-              fontSize: 12,
-              fontWeight: 700,
-              letterSpacing: '0.06em',
-              textTransform: 'uppercase',
-              color: accent,
-              background: `${accent}18`,
-              padding: '4px 12px',
-              borderRadius: 20,
-            }}
-          >
-            {category}
-          </span>
-          {trustBadge && (
-            <span
-              style={{
-                fontSize: 12,
-                fontWeight: 600,
-                color: '#16A34A',
-                background: '#16A34A18',
-                padding: '4px 10px',
-                borderRadius: 20,
-                display: 'flex',
-                alignItems: 'center',
-                gap: 4,
-              }}
-            >
-              ✓ {trustBadge}
+      {(category || trustBadge || deliveryTag) && (
+        <div style={{display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 18}}>
+          <div style={{display: 'flex', gap: 8, alignItems: 'center'}}>
+            {category && (
+              <span
+                style={{
+                  fontSize: 12,
+                  fontWeight: 700,
+                  letterSpacing: '0.06em',
+                  textTransform: 'uppercase',
+                  color: accent,
+                  background: `${accent}18`,
+                  padding: '4px 12px',
+                  borderRadius: 20,
+                }}
+              >
+                {category}
+              </span>
+            )}
+            {trustBadge && (
+              <span
+                style={{
+                  fontSize: 12,
+                  fontWeight: 600,
+                  color: '#16A34A',
+                  background: '#16A34A18',
+                  padding: '4px 10px',
+                  borderRadius: 20,
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: 4,
+                }}
+              >
+                ✓ {trustBadge}
+              </span>
+            )}
+          </div>
+
+          {deliveryTag && (
+            <span style={{fontSize: 12, color: tokens.colors.surfaceMuted, fontWeight: 500}}>
+              ⚡ {deliveryTag}
             </span>
           )}
         </div>
-
-        {deliveryTag && (
-          <span style={{fontSize: 12, color: tokens.colors.surfaceMuted, fontWeight: 500}}>
-            ⚡ {deliveryTag}
-          </span>
-        )}
-      </div>
+      )}
 
       {/* Product Title */}
       <div
@@ -131,106 +135,114 @@ export const EcommerceProductCard: React.FC<EcommerceProductCardProps> = ({
         {title}
       </div>
 
-      {/* Ratings Row */}
-      <div style={{display: 'flex', alignItems: 'center', gap: 10, marginBottom: 20}}>
+      {/* Ratings Row (only rendered if rating is provided) */}
+      {typeof rating === 'number' && (
+        <div style={{display: 'flex', alignItems: 'center', gap: 10, marginBottom: 20}}>
+          <div
+            style={{
+              background: '#16A34A',
+              color: '#FFFFFF',
+              fontSize: 13,
+              fontWeight: 700,
+              padding: '2px 8px',
+              borderRadius: 6,
+              display: 'flex',
+              alignItems: 'center',
+              gap: 3,
+            }}
+          >
+            <span>{rating}</span>
+            <span style={{fontSize: 11}}>★</span>
+          </div>
+          {ratingCount && (
+            <span style={{fontSize: 13, color: tokens.colors.surfaceMuted}}>
+              ({ratingCount})
+            </span>
+          )}
+        </div>
+      )}
+
+      {/* Price Block (only rendered if currentPrice is provided) */}
+      {currentPrice && (
         <div
           style={{
-            background: '#16A34A',
-            color: '#FFFFFF',
-            fontSize: 13,
-            fontWeight: 700,
-            padding: '2px 8px',
-            borderRadius: 6,
             display: 'flex',
-            alignItems: 'center',
-            gap: 3,
+            alignItems: 'baseline',
+            gap: 14,
+            padding: '16px 20px',
+            borderRadius: 16,
+            background: `${tokens.colors.surfaceMuted}0d`,
+            border: `1px solid ${tokens.colors.surfaceMuted}1a`,
+            marginBottom: 22,
           }}
         >
-          <span>{rating}</span>
-          <span style={{fontSize: 11}}>★</span>
-        </div>
-        <span style={{fontSize: 13, color: tokens.colors.surfaceMuted}}>
-          ({ratingCount})
-        </span>
-      </div>
-
-      {/* Price Block */}
-      <div
-        style={{
-          display: 'flex',
-          alignItems: 'baseline',
-          gap: 14,
-          padding: '16px 20px',
-          borderRadius: 16,
-          background: `${tokens.colors.surfaceMuted}0d`,
-          border: `1px solid ${tokens.colors.surfaceMuted}1a`,
-          marginBottom: 22,
-        }}
-      >
-        <span
-          style={{
-            fontSize: 38,
-            fontWeight: 900,
-            color: tokens.colors.surfaceText,
-            letterSpacing: '-0.03em',
-          }}
-        >
-          {currentPrice}
-        </span>
-        {originalPrice && (
           <span
             style={{
-              fontSize: 18,
-              color: tokens.colors.surfaceMuted,
-              textDecoration: 'line-through',
-              fontWeight: 500,
+              fontSize: 38,
+              fontWeight: 900,
+              color: tokens.colors.surfaceText,
+              letterSpacing: '-0.03em',
             }}
           >
-            {originalPrice}
+            {currentPrice}
           </span>
-        )}
-        {discountPct && (
-          <span
-            style={{
-              fontSize: 15,
-              fontWeight: 800,
-              color: '#16A34A',
-              background: '#16A34A1c',
-              padding: '3px 10px',
-              borderRadius: 8,
-              marginLeft: 'auto',
-            }}
-          >
-            {discountPct} OFF
-          </span>
-        )}
-      </div>
-
-      {/* Feature bullets */}
-      <div style={{display: 'flex', flexDirection: 'column', gap: 9, marginBottom: 26}}>
-        {features.slice(0, 3).map((feat, i) => (
-          <div key={i} style={{display: 'flex', alignItems: 'center', gap: 10, fontSize: 14}}>
-            <div
+          {originalPrice && (
+            <span
               style={{
-                width: 18,
-                height: 18,
-                borderRadius: '50%',
-                background: `${accent}22`,
-                color: accent,
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                fontSize: 11,
-                fontWeight: 800,
-                flexShrink: 0,
+                fontSize: 18,
+                color: tokens.colors.surfaceMuted,
+                textDecoration: 'line-through',
+                fontWeight: 500,
               }}
             >
-              ✓
+              {originalPrice}
+            </span>
+          )}
+          {discountPct && (
+            <span
+              style={{
+                fontSize: 15,
+                fontWeight: 800,
+                color: '#16A34A',
+                background: '#16A34A1c',
+                padding: '3px 10px',
+                borderRadius: 8,
+                marginLeft: 'auto',
+              }}
+            >
+              {discountPct} OFF
+            </span>
+          )}
+        </div>
+      )}
+
+      {/* Feature bullets (only rendered if features exist) */}
+      {features && features.length > 0 && (
+        <div style={{display: 'flex', flexDirection: 'column', gap: 9, marginBottom: 26}}>
+          {features.slice(0, 3).map((feat, i) => (
+            <div key={i} style={{display: 'flex', alignItems: 'center', gap: 10, fontSize: 14}}>
+              <div
+                style={{
+                  width: 18,
+                  height: 18,
+                  borderRadius: '50%',
+                  background: `${accent}22`,
+                  color: accent,
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  fontSize: 11,
+                  fontWeight: 800,
+                  flexShrink: 0,
+                }}
+              >
+                ✓
+              </div>
+              <span style={{color: tokens.colors.surfaceText, opacity: 0.88}}>{feat}</span>
             </div>
-            <span style={{color: tokens.colors.surfaceText, opacity: 0.88}}>{feat}</span>
-          </div>
-        ))}
-      </div>
+          ))}
+        </div>
+      )}
 
       {/* Buy Button */}
       <div

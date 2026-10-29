@@ -109,12 +109,7 @@
         "Free Delivery",
         "Top Rated"
       ],
-      "screenType": "checkout",
-      "priceInfo": {
-        "currentPrice": "₹1,499",
-        "originalPrice": "₹4,999",
-        "discount": "70% OFF"
-      }
+      "screenType": "checkout"
     },
     {
       "id": "node_cta_3",

@@ -52,31 +52,31 @@ export function buildNodeFromUIDescription(
     const isProductHighlightScene = sceneIdx === 2 || /deal|price|discount|offer|save|assured|quality|choice|50%|off|rupee|₹|\$/.test(vo);
 
     if (isProductHighlightScene && !isCheckoutOrCart && sceneIdx !== 1) {
-      const topBadge = desc.trust_badges?.[0] || '100% Genuine';
-      const currentPrice = desc.price_style?.color ? '₹1,499' : '₹2,499';
-      const originalPrice = '₹4,999';
-      const discountPct = '70%';
+      const topBadge = desc.trust_badges?.[0] || null;
+      const currentPrice = desc.price_info?.current || null;
+      const originalPrice = desc.price_info?.original || null;
+      const discountPct = desc.price_info?.discount_pct || null;
+      const rating = desc.rating?.value ?? null;
+      const ratingCount = desc.rating?.count_text || null;
 
       const productNode: EcommerceProductCardNode = {
         id: `node_ecommerce_card_${sceneIdx}`,
         type: 'ecommerce_product_card',
         position3D: [0, 0, 0],
-        title: brand.products?.[0] || `${brand.name} Top Pick`,
-        category: desc.brand_distinguishers?.[0] || 'Trending Now',
+        title: brand.products?.[0] || `${brand.name}`,
+        category: desc.brand_distinguishers?.[0] || null,
         currentPrice,
         originalPrice,
         discountPct,
-        rating: 4.8,
-        ratingCount: '48,200+ verified ratings',
+        rating,
+        ratingCount,
         trustBadge: topBadge,
-        deliveryTag: 'Free Express Delivery',
+        deliveryTag: null,
         accentColor: brand.colors.accent,
         cardBg: desc.card_style?.bg || brand.colors.surface,
-        features: [
-          `${topBadge} guaranteed`,
-          '7 Days easy replacement policy',
-          'Fast doorstep delivery & secure checkout',
-        ],
+        features: desc.trust_badges && desc.trust_badges.length > 0
+          ? desc.trust_badges.slice(0, 3)
+          : null,
       };
       return productNode;
     }
@@ -109,7 +109,11 @@ export function buildNodeFromUIDescription(
       headerColor: '#FFFFFF',
       badges: desc.trust_badges,
       screenType: isCheckoutOrCart ? 'checkout' : 'grid',
-      priceInfo: isCheckoutOrCart ? {currentPrice: '₹1,499', originalPrice: '₹4,999', discount: '70% OFF'} : undefined,
+      priceInfo: isCheckoutOrCart && desc.price_info?.current ? {
+        currentPrice: desc.price_info.current,
+        originalPrice: desc.price_info.original || undefined,
+        discount: desc.price_info.discount_pct || undefined,
+      } : undefined,
     };
     return phoneNode;
   }

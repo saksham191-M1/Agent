@@ -118,24 +118,24 @@ export interface PhoneMockupNode extends BaseVectorNode {
   headerBg?: string;
   headerColor?: string;
   badges?: string[];
-  priceInfo?: {currentPrice: string; originalPrice?: string; discount?: string};
+  priceInfo?: {currentPrice?: string | null; originalPrice?: string | null; discount?: string | null};
   screenType?: 'grid' | 'product_detail' | 'checkout' | 'feed';
 }
 
 export interface EcommerceProductCardNode extends BaseVectorNode {
   type: 'ecommerce_product_card';
   title: string;
-  category?: string;
-  currentPrice: string;
-  originalPrice?: string;
-  discountPct?: string;
-  rating?: number;
-  ratingCount?: string;
-  trustBadge?: string;
-  deliveryTag?: string;
+  category?: string | null;
+  currentPrice?: string | null;
+  originalPrice?: string | null;
+  discountPct?: string | null;
+  rating?: number | null;
+  ratingCount?: string | null;
+  trustBadge?: string | null;
+  deliveryTag?: string | null;
   accentColor?: string;
   cardBg?: string;
-  features?: string[];
+  features?: string[] | null;
 }
 
 export interface BrowserMockupNode extends BaseVectorNode {

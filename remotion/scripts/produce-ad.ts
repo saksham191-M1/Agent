@@ -307,17 +307,18 @@ async function main() {
     step(2, `Running Opus AI brain for: ${brand.name}`);
 
     if (!fs.existsSync(VENV_PYTHON)) {
-      console.warn(`[produce-ad] ⚠️  Python venv not found at ${VENV_PYTHON}`);
-      console.warn(`[produce-ad] ⚠️  Writing fallback storyboard.json`);
+      console.warn(`\n[produce-ad] ⚠️⚠️⚠️ LOUD WARNING: Python venv not found at ${VENV_PYTHON}`);
+      console.warn(`[produce-ad] ⚠️⚠️⚠️ FALLBACK STORYBOARD USED FOR ${brand.name} — NO AI CREATIVE DIRECTION WAS RUN!`);
+      const pageTitle = brand.tagline || brand.name;
       const fallback = {
         product_name: brand.name,
         matched_opus_category: 'MOTION',
-        selected_template: 'Problem-Agitate-Solution (UI Showcase)',
+        selected_template: 'Minimal Title Fallback',
         scenes: [
-          {scene_id: 1, duration_seconds: 4, voiceover: `The problem ${brand.name} solves.`, veo_prompt: 'Cinematic opener', visual_fx: 'fast_zoom',  kinetic_text: 'BROKEN',  requires_ui_image: false},
-          {scene_id: 2, duration_seconds: 5, voiceover: `Introducing ${brand.name}.`,       veo_prompt: 'App UI reveal',   visual_fx: 'glass_ui',   kinetic_text: 'SOLVED',  requires_ui_image: true},
-          {scene_id: 3, duration_seconds: 4, voiceover: `See ${brand.name} in action.`,     veo_prompt: 'Workflow demo',   visual_fx: 'push_right',  kinetic_text: 'FASTER',  requires_ui_image: true},
-          {scene_id: 4, duration_seconds: 3, voiceover: `Start with ${brand.name} today.`,  veo_prompt: 'Logo outro',      visual_fx: 'fade_up',    kinetic_text: 'START NOW', requires_ui_image: false},
+          {scene_id: 1, duration_seconds: 4, voiceover: `${brand.name}: ${pageTitle}`, veo_prompt: 'Product title overview', visual_fx: 'fast_zoom',  kinetic_text: brand.name.toUpperCase(),  requires_ui_image: false},
+          {scene_id: 2, duration_seconds: 5, voiceover: `Explore ${brand.name}.`,       veo_prompt: 'App interface reveal',   visual_fx: 'glass_ui',   kinetic_text: brand.name.toUpperCase(),  requires_ui_image: true},
+          {scene_id: 3, duration_seconds: 4, voiceover: `${brand.name} interface walkthrough.`, veo_prompt: 'Interface demo', visual_fx: 'push_right', kinetic_text: brand.name.toUpperCase(), requires_ui_image: true},
+          {scene_id: 4, duration_seconds: 3, voiceover: `Visit ${brand.domain}.`,       veo_prompt: 'Logo outro',      visual_fx: 'fade_up',    kinetic_text: brand.name.toUpperCase(), requires_ui_image: false},
         ],
       };
       fs.writeFileSync(storyboardPath, JSON.stringify(fallback, null, 2), 'utf8');

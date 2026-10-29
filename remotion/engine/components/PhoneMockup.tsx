@@ -16,7 +16,7 @@ interface PhoneMockupProps {
   headerBg?: string;
   headerColor?: string;
   badges?: string[];
-  priceInfo?: {currentPrice: string; originalPrice?: string; discount?: string};
+  priceInfo?: {currentPrice?: string | null; originalPrice?: string | null; discount?: string | null};
   screenType?: 'grid' | 'product_detail' | 'checkout' | 'feed';
   style?: React.CSSProperties;
 }
@@ -105,7 +105,7 @@ export const PhoneMockup: React.FC<PhoneMockupProps> = ({
                 }}
               >
                 <div style={{fontWeight: 700, fontSize: 14}}>{greeting}</div>
-                {priceInfo && (
+                {priceInfo && priceInfo.currentPrice && (
                   <div style={{display: 'flex', alignItems: 'baseline', gap: 8, marginTop: 8}}>
                     <span style={{fontSize: 20, fontWeight: 900}}>{priceInfo.currentPrice}</span>
                     {priceInfo.originalPrice && (

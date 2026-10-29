@@ -62,6 +62,15 @@ export interface UIDescription {
     discountColor: string;
     originalColor: string;
   };
+  price_info?: {
+    current?: string | null;
+    original?: string | null;
+    discount_pct?: string | null;
+  } | null;
+  rating?: {
+    value?: number | null;
+    count_text?: string | null;
+  } | null;
   trust_badges: string[];
   layout_type: 'ecommerce_grid' | 'feed' | 'dashboard' | 'landing' | 'generic';
   brand_distinguishers: string[];
@@ -221,6 +230,12 @@ Return ONLY valid JSON matching this exact structure (no markdown, no backticks,
         discountColor: result.price_style?.discountColor || '#16A34A',
         originalColor: result.price_style?.originalColor || '#9CA3AF',
       },
+      price_info: result.price_info || (domHints.prices.length > 0 ? {
+        current: domHints.prices[0]?.text || null,
+        original: domHints.prices[1]?.text || null,
+        discount_pct: null,
+      } : null),
+      rating: result.rating || null,
       trust_badges: Array.isArray(result.trust_badges) ? result.trust_badges : [],
       layout_type: result.layout_type || 'generic',
       brand_distinguishers: Array.isArray(result.brand_distinguishers) ? result.brand_distinguishers : [],
@@ -262,6 +277,12 @@ function buildFallbackUIDescription(
       discountColor: '#16A34A',
       originalColor: '#9CA3AF',
     },
+    price_info: domHints.prices.length > 0 ? {
+      current: domHints.prices[0]?.text || null,
+      original: domHints.prices[1]?.text || null,
+      discount_pct: null,
+    } : null,
+    rating: null,
     trust_badges: domHints.badges.slice(0, 4).map(b => b.text).filter(Boolean),
     layout_type: 'generic',
     brand_distinguishers: [],
