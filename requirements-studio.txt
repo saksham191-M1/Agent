@@ -1,0 +1,7 @@
+# Video-first studio only. FFmpeg/ffprobe and Playwright Chromium are installed separately.
+# Match the UI/browser API versions exercised by the local end-to-end tests.
+gradio==6.28.0
+playwright==1.63.0
+Pillow>=10,<13
+requests>=2.31,<3
+python-dotenv>=1.0,<2
