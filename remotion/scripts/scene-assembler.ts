@@ -25,6 +25,7 @@ import path from 'node:path';
 import type {UITree, VectorNode} from '../engine/semantic-ui/types';
 import type {BrandJson} from '../engine/types';
 import {MOTION_RULES} from '../engine/motion/motion-rules';
+import {loadUIDescription, buildNodeFromUIDescription} from './ui-description-to-node';
 
 // ──────────────────────────────────────────────────────────────────────────────
 // Product category detection
@@ -250,6 +251,7 @@ function resolveSceneLayout(nodeType: string, sceneIdx: number, totalScenes: num
     case 'stat_counter':
       return 'big-number';
     case 'bento_grid':
+    case 'ecommerce_product_card':
       return 'split';
     case 'browser_mockup':
     case 'app_frame':
@@ -282,8 +284,14 @@ export function assembleScenes(opts: AssembleOptions): {uiTree: UITree; spec: an
   const hints = scenes.map((s: any) => `${s.voiceover || ''} ${s.visual_fx || ''} ${s.veo_prompt || ''}`).join(' ');
   const category = mlResolved || detectCategory(brand, hints);
 
+  const jobDir = path.resolve(process.cwd(), 'jobs', jobId);
+  const uiDesc = loadUIDescription(jobDir);
+
   console.log(`[Scene Assembler] Product: ${brand.name} | Domain: ${brand.domain}`);
   console.log(`[Scene Assembler] Category Source: ${mlResolved ? `ML Predictor (${mlCat})` : 'Keyword Detection'} -> ${category}`);
+  if (uiDesc) {
+    console.log(`[Scene Assembler] 🎨 Brand authentic UI loaded (${uiDesc._source}) with ${uiDesc.header.navLinks.length} nav links`);
+  }
   console.log(`[Scene Assembler] Template: "${storyboard.selected_template || 'Problem-Agitate-Solution'}"`);
   console.log(`[Scene Assembler] Building ${scenes.length} scenes from Opus storyboard...`);
 
@@ -303,11 +311,17 @@ export function assembleScenes(opts: AssembleOptions): {uiTree: UITree; spec: an
     }
     if (requiresUI) {
       // UI showcase scene — pick based on product category
+      if (uiDesc) {
+        return buildNodeFromUIDescription(uiDesc, brand, scene, idx, scenes.length);
+      }
       return makeUINode(brand, scene, category, idx);
     }
     // Middle scene without ui requirement → metric card or chart depending on category
     if (category === 'analytics' || category === 'dev_tool' || category === 'web_saas') {
       return makeMetricNode(brand, idx);
+    }
+    if (uiDesc) {
+      return buildNodeFromUIDescription(uiDesc, brand, scene, idx, scenes.length);
     }
     return makeUINode(brand, scene, category, idx);
   });
@@ -465,7 +479,6 @@ export function assembleScenes(opts: AssembleOptions): {uiTree: UITree; spec: an
   const outputStoryboard = {shots: storyboardShots};
 
   // Write to disk
-  const jobDir = path.resolve(process.cwd(), 'jobs', jobId);
   fs.mkdirSync(jobDir, {recursive: true});
   fs.writeFileSync(path.join(jobDir, 'ui_tree.json'),        JSON.stringify(uiTree, null, 2),          'utf8');
   fs.writeFileSync(path.join(jobDir, 'spec.json'),           JSON.stringify(spec, null, 2),            'utf8');
@@ -491,9 +504,14 @@ export function assembleScenes(opts: AssembleOptions): {uiTree: UITree; spec: an
           const r = parseInt(hex.slice(1, 3), 16), g = parseInt(hex.slice(3, 5), 16), b = parseInt(hex.slice(5, 7), 16);
           return (0.299 * r + 0.587 * g + 0.114 * b) / 255;
         };
-        // Canvas backdrop adopts Opus directorial aesthetic if prescribed (e.g. warm cream poster);
-        // brand maintains its distinct identity (accent, accentLight, logo).
-        const bg = aesthetic.background || own.background || '#0B1020';
+        const avoidCollision = (color: string) => {
+          const lower = (color || '').toLowerCase();
+          if (lower === '#0b1020') return '#071026';
+          if (lower === '#151b33') return '#0F214D';
+          return color;
+        };
+        const bg = avoidCollision(own.background || aesthetic.background || '#071026');
+        const bg2 = avoidCollision(own.background2 || aesthetic.background2 || bg);
         const isLight = lum(bg) > 0.55;
         const text = isLight ? (aesthetic.text || '#0E0F1F') : (own.text || '#F8FAFC');
         const surface = isLight ? (aesthetic.surface || '#FFFFFF') : (own.surface || '#1E293B');
@@ -504,7 +522,7 @@ export function assembleScenes(opts: AssembleOptions): {uiTree: UITree; spec: an
           accent: own.accent || aesthetic.accent,
           accentLight: own.accentLight || aesthetic.accentLight,
           background: bg,
-          background2: aesthetic.background2 || own.background2 || bg,
+          background2: bg2,
           surface,
           surfaceText,
           text,

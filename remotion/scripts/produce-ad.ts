@@ -299,9 +299,10 @@ async function main() {
   // Step 2: Run AI brain → storyboard.json
   // ─────────────────────────────────────────────────────────────────────
   const storyboardPath = path.join(jobDir, 'storyboard.json');
+  const opusStoryboardPath = path.join(jobDir, 'storyboard.opus.json');
 
-  if (skipBrain && fs.existsSync(storyboardPath)) {
-    step(2, `Brain skipped — using existing storyboard.json`);
+  if (skipBrain && (fs.existsSync(opusStoryboardPath) || fs.existsSync(storyboardPath))) {
+    step(2, `Brain skipped — using existing storyboard blueprint`);
   } else {
     step(2, `Running Opus AI brain for: ${brand.name}`);
 
@@ -339,7 +340,8 @@ async function main() {
     process.exit(1);
   }
 
-  const storyboard = JSON.parse(fs.readFileSync(storyboardPath, 'utf8'));
+  const actualStoryboardPath = (skipBrain && fs.existsSync(opusStoryboardPath)) ? opusStoryboardPath : storyboardPath;
+  const storyboard = JSON.parse(fs.readFileSync(actualStoryboardPath, 'utf8'));
   console.log(`[produce-ad] ✅ Storyboard: ${storyboard.scenes?.length} scenes, template="${storyboard.selected_template}"`);
 
   // ─────────────────────────────────────────────────────────────────────
