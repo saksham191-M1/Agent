@@ -16,11 +16,17 @@ export type {PhoneItem} from './components/PhoneMockup';
 export {SceneFrame} from './components/SceneFrame';
 export {StatCounter} from './components/StatCounter';
 export {NoiseTexture} from './components/NoiseTexture';
+export type {NoiseTextureProps} from './components/NoiseTexture';
 export {ShapeAccents} from './components/ShapeAccents';
+export type {ShapeAccentsProps} from './components/ShapeAccents';
 export {PathReveal} from './components/PathReveal';
+export type {PathRevealProps} from './components/PathReveal';
 export {MotionBlurWrap} from './components/MotionBlurWrap';
+export type {MotionBlurWrapProps} from './components/MotionBlurWrap';
 export {LottieOverlay} from './components/LottieOverlay';
+export type {LottieOverlayProps} from './components/LottieOverlay';
 export {resolveTransition} from './transitions/resolver';
+export type {ResolvedTransition} from './transitions/resolver';
 export {ProjectAdComposition} from './ProjectAdComposition';
 export * from './project-types';
 

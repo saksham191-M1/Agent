@@ -248,8 +248,10 @@ export function getCounterProgress(
 export function validateMotionRules(spec: AdSpec): {
   valid: boolean;
   violations: string[];
+  warnings: string[];
 } {
   const violations: string[] = [];
+  const warnings: string[] = [];
   const banned = new Set(MOTION_RULES.banned);
 
   // 1. Check FPS
@@ -284,6 +286,14 @@ export function validateMotionRules(spec: AdSpec): {
       }
     }
 
+    // 2b. Warn on entry/exit styles the rules ban (slam / pop / bounce). Warning only: existing jobs use these names.
+    const motion = (scene as any).motion || {};
+    [motion.enter, motion.exit].forEach((name: unknown) => {
+      if (typeof name === 'string' && /(slam|pop|bounce)/i.test(name)) {
+        warnings.push(`Scene ${scene.id} uses motion style '${name}', which conflicts with the banned pop_in_or_scale_slam rule.`);
+      }
+    });
+
     // 3. Check headline terminal punctuation rule
     if (
       MOTION_RULES.text_entry.ban_terminal_punctuation_on_headlines &&
@@ -301,5 +311,6 @@ export function validateMotionRules(spec: AdSpec): {
   return {
     valid: violations.length === 0,
     violations,
+    warnings,
   };
 }

@@ -5,7 +5,7 @@ export * from './bezier-velocity';
 export * from './physics';
 export * from './motion-rules';
 
-export const enterSpring = (frame: number, fps: number, delay = 0) => spring({frame: frame - delay, fps, config: {damping: 15, stiffness: 135}});
+export const enterSpring = (frame: number, fps: number, delay = 0) => spring({frame: frame - delay, fps, config: {damping: 15, stiffness: 135, overshootClamping: true}});
 
 export const staggerSpring = (frame: number, fps: number, index: number, step = 5) => enterSpring(frame, fps, 12 + index * step);
 

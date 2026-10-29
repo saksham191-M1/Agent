@@ -1,6 +1,6 @@
 import gsap from 'gsap';
 import {useCurrentFrame, useVideoConfig} from 'remotion';
-import {useEffect, useMemo, useRef} from 'react';
+import {useRef} from 'react';
 
 export interface UseGsapTimelineOptions {
   durationInFrames?: number;
@@ -17,7 +17,7 @@ export function useGsapTimeline(options: UseGsapTimelineOptions): {
   timeline: gsap.core.Timeline;
 } {
   const frame = useCurrentFrame();
-  const {fps, durationInFrames: compDuration} = useVideoConfig();
+  const {durationInFrames: compDuration} = useVideoConfig();
   const duration = options.durationInFrames || compDuration;
 
   const tlRef = useRef<gsap.core.Timeline | null>(null);

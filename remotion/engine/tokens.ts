@@ -44,7 +44,7 @@ export const loadTokens = (brand: BrandJson, format: AdSpec['format'] = '9:16'):
     domain: brand.domain,
     tagline: brand.tagline,
     logo: brand.logo,
-    colors: {...defaults, ...themeOverrides, ...brand.colors},
+    colors: {...defaults, ...brand.colors, ...themeOverrides},
     fontFamily: loadFontForBrand(brand.fonts.body.family),
     displayFontFamily: loadFontForBrand(brand.fonts.display.family),
     safe: Math.round(Math.min(size.width, size.height) * .067),

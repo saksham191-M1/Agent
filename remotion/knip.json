@@ -14,14 +14,8 @@
   ],
   "ignoreDependencies": [
     "@remotion/three",
-    "@remotion/lottie",
-    "@remotion/noise",
-    "@remotion/motion-blur",
-    "@remotion/shapes",
-    "@remotion/paths",
     "@remotion/captions",
     "@remotion/media",
-    "@remotion/google-fonts",
     "@remotion/cli"
   ],
   "ignoreBinaries": [
