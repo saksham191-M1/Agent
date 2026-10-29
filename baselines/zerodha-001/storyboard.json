@@ -1,0 +1,133 @@
+{
+  "shots": [
+    {
+      "n": 1,
+      "t0": 0,
+      "t1": 3,
+      "role": "hook",
+      "source": "motion-graphic",
+      "visual": "hero-type",
+      "headline": "SEE THE MARKETS IN ACTION",
+      "subline": "See the markets in action. Experience the clarity of the Kite platform.",
+      "onScreenText": "Clean minimalist studio background with soft",
+      "dialogue": "",
+      "sfx": [
+        {
+          "t": 0.1,
+          "type": "pop",
+          "gain": 0.85
+        },
+        {
+          "t": 2.16,
+          "type": "tick",
+          "gain": 0.6
+        }
+      ],
+      "transitionOut": "carousel_glide",
+      "camera": null
+    },
+    {
+      "n": 2,
+      "t0": 3,
+      "t1": 7.5,
+      "role": "feature",
+      "source": "motion-graphic",
+      "visual": "browser",
+      "headline": "KITE TRADING INTERFACE",
+      "subline": "Navigate real-time charts and execute trades with the intuitive Kite interface.",
+      "onScreenText": "High-fidelity screen recording of the Zerodha",
+      "dialogue": "",
+      "sfx": [
+        {
+          "t": 0.1,
+          "type": "pop",
+          "gain": 0.85
+        },
+        {
+          "t": 1.58,
+          "type": "tick",
+          "gain": 0.55
+        },
+        {
+          "t": 2.93,
+          "type": "click",
+          "gain": 0.7
+        },
+        {
+          "t": 3.83,
+          "type": "tick",
+          "gain": 0.55
+        }
+      ],
+      "transitionOut": "wipe",
+      "camera": null
+    },
+    {
+      "n": 3,
+      "t0": 7.5,
+      "t1": 11.5,
+      "role": "feature",
+      "source": "motion-graphic",
+      "visual": "big-number",
+      "headline": "TRANSPARENT TRADING TOOLS",
+      "subline": "Designed for transparency, Kite provides the tools you need to track your",
+      "onScreenText": "Abstract digital visualization of a growing",
+      "dialogue": "",
+      "sfx": [
+        {
+          "t": 0.1,
+          "type": "pop",
+          "gain": 0.85
+        },
+        {
+          "t": 1.4,
+          "type": "tick",
+          "gain": 0.55
+        },
+        {
+          "t": 2.6,
+          "type": "click",
+          "gain": 0.7
+        },
+        {
+          "t": 3.4,
+          "type": "tick",
+          "gain": 0.55
+        }
+      ],
+      "transitionOut": "cross_zoom",
+      "camera": null
+    },
+    {
+      "n": 4,
+      "t0": 11.5,
+      "t1": 15,
+      "role": "cta",
+      "source": "motion-graphic",
+      "visual": "cta",
+      "headline": "START TRADING NOW",
+      "subline": "See it in action for yourself. Get started on Zerodha today.",
+      "onScreenText": "Minimalist end card featuring the Zerodha",
+      "dialogue": "",
+      "sfx": [
+        {
+          "t": 0.1,
+          "type": "pop",
+          "gain": 0.85
+        },
+        {
+          "t": 1.58,
+          "type": "click",
+          "gain": 0.75
+        },
+        {
+          "t": 2.98,
+          "type": "pop",
+          "gain": 0.8
+        }
+      ],
+      "transitionOut": "none",
+      "camera": null
+    }
+  ]
+}

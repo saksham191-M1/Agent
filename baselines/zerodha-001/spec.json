@@ -1,0 +1,465 @@
+{
+  "brand": "Zerodha",
+  "format": "16:9",
+  "fps": 60,
+  "durationSec": 15,
+  "bpm": 120,
+  "palette": {
+    "background": "#0B1020",
+    "background2": "#151B33",
+    "surface": "#1E293B",
+    "surfaceText": "#F8FAFC",
+    "text": "#F8FAFC",
+    "muted": "#94A3B8",
+    "accent": "#6C5CE7",
+    "accentLight": "#B9B0FF",
+    "secondary": "#38BDF8",
+    "isLightTheme": false
+  },
+  "mlMatch": {
+    "category": "EXPLAINER",
+    "score": 0.2513,
+    "template": "Technical Deep Dive",
+    "author": "_Tony_TT_",
+    "techTags": [
+      "canvas"
+    ],
+    "referenceUrl": "https://skillry.dev/ai-videos/opus-5-5/tony-tt-872147",
+    "aesthetic": {
+      "is_light_theme": false,
+      "background": "#0B1020",
+      "background2": "#151B33",
+      "surface": "#1E293B",
+      "surfaceText": "#F8FAFC",
+      "text": "#F8FAFC",
+      "muted": "#94A3B8",
+      "accent": "#6C5CE7",
+      "accentLight": "#B9B0FF",
+      "secondary": "#38BDF8",
+      "suggested_bpm": 120,
+      "motion_rules": []
+    }
+  },
+  "scenes": [
+    {
+      "id": "scene_1",
+      "start": 0,
+      "duration": 3,
+      "layout": "hero-type",
+      "headline": "SEE THE MARKETS IN ACTION",
+      "subline": "See the markets in action. Experience the clarity of the Kite platform.",
+      "caption": "Clean minimalist studio background with soft",
+      "captionWords": [
+        {
+          "word": "See",
+          "start": 6,
+          "end": 20
+        },
+        {
+          "word": "the",
+          "start": 20,
+          "end": 33
+        },
+        {
+          "word": "markets",
+          "start": 33,
+          "end": 47
+        },
+        {
+          "word": "in",
+          "start": 47,
+          "end": 61
+        },
+        {
+          "word": "action.",
+          "start": 61,
+          "end": 74
+        },
+        {
+          "word": "Experience",
+          "start": 74,
+          "end": 88
+        },
+        {
+          "word": "the",
+          "start": 88,
+          "end": 102
+        },
+        {
+          "word": "clarity",
+          "start": 102,
+          "end": 115
+        },
+        {
+          "word": "of",
+          "start": 115,
+          "end": 129
+        },
+        {
+          "word": "the",
+          "start": 129,
+          "end": 143
+        },
+        {
+          "word": "Kite",
+          "start": 143,
+          "end": 156
+        },
+        {
+          "word": "platform.",
+          "start": 156,
+          "end": 170
+        }
+      ],
+      "visual": {
+        "kicker": "Zerodha",
+        "pulseText": "fast_zoom"
+      },
+      "motion": {
+        "enter": "mask_line_rise",
+        "idle": "slow_sway",
+        "exit": "carousel_glide"
+      },
+      "vo": "",
+      "sfx": [
+        {
+          "t": 0.1,
+          "type": "pop",
+          "gain": 0.85
+        },
+        {
+          "t": 2.16,
+          "type": "tick",
+          "gain": 0.6
+        }
+      ],
+      "transitionOut": "carousel_glide"
+    },
+    {
+      "id": "scene_2",
+      "start": 3,
+      "duration": 4.5,
+      "layout": "browser",
+      "headline": "KITE TRADING INTERFACE",
+      "subline": "Navigate real-time charts and execute trades with the intuitive Kite interface.",
+      "caption": "High-fidelity screen recording of the Zerodha",
+      "captionWords": [
+        {
+          "word": "Navigate",
+          "start": 6,
+          "end": 29
+        },
+        {
+          "word": "real-time",
+          "start": 29,
+          "end": 52
+        },
+        {
+          "word": "charts",
+          "start": 52,
+          "end": 75
+        },
+        {
+          "word": "and",
+          "start": 75,
+          "end": 98
+        },
+        {
+          "word": "execute",
+          "start": 98,
+          "end": 121
+        },
+        {
+          "word": "trades",
+          "start": 121,
+          "end": 145
+        },
+        {
+          "word": "with",
+          "start": 145,
+          "end": 168
+        },
+        {
+          "word": "the",
+          "start": 168,
+          "end": 191
+        },
+        {
+          "word": "intuitive",
+          "start": 191,
+          "end": 214
+        },
+        {
+          "word": "Kite",
+          "start": 214,
+          "end": 237
+        },
+        {
+          "word": "interface.",
+          "start": 237,
+          "end": 260
+        }
+      ],
+      "visual": {
+        "kicker": "Zerodha",
+        "pulseText": "pan_right"
+      },
+      "motion": {
+        "enter": "mask_line_rise",
+        "idle": "slow_sway",
+        "exit": "carousel_glide"
+      },
+      "vo": "",
+      "sfx": [
+        {
+          "t": 0.1,
+          "type": "pop",
+          "gain": 0.85
+        },
+        {
+          "t": 1.58,
+          "type": "tick",
+          "gain": 0.55
+        },
+        {
+          "t": 2.93,
+          "type": "click",
+          "gain": 0.7
+        },
+        {
+          "t": 3.83,
+          "type": "tick",
+          "gain": 0.55
+        }
+      ],
+      "transitionOut": "wipe"
+    },
+    {
+      "id": "scene_3",
+      "start": 7.5,
+      "duration": 4,
+      "layout": "big-number",
+      "headline": "TRANSPARENT TRADING TOOLS",
+      "subline": "Designed for transparency, Kite provides the tools you need to track your",
+      "caption": "Abstract digital visualization of a growing",
+      "captionWords": [
+        {
+          "word": "Designed",
+          "start": 6,
+          "end": 23
+        },
+        {
+          "word": "for",
+          "start": 23,
+          "end": 40
+        },
+        {
+          "word": "transparency,",
+          "start": 40,
+          "end": 58
+        },
+        {
+          "word": "Kite",
+          "start": 58,
+          "end": 75
+        },
+        {
+          "word": "provides",
+          "start": 75,
+          "end": 92
+        },
+        {
+          "word": "the",
+          "start": 92,
+          "end": 109
+        },
+        {
+          "word": "tools",
+          "start": 109,
+          "end": 127
+        },
+        {
+          "word": "you",
+          "start": 127,
+          "end": 144
+        },
+        {
+          "word": "need",
+          "start": 144,
+          "end": 161
+        },
+        {
+          "word": "to",
+          "start": 161,
+          "end": 178
+        },
+        {
+          "word": "track",
+          "start": 178,
+          "end": 196
+        },
+        {
+          "word": "your",
+          "start": 196,
+          "end": 213
+        },
+        {
+          "word": "portfolio.",
+          "start": 213,
+          "end": 230
+        }
+      ],
+      "visual": {
+        "kicker": "Zerodha",
+        "pulseText": "fade_in"
+      },
+      "motion": {
+        "enter": "mask_line_rise",
+        "idle": "slow_sway",
+        "exit": "carousel_glide"
+      },
+      "vo": "",
+      "sfx": [
+        {
+          "t": 0.1,
+          "type": "pop",
+          "gain": 0.85
+        },
+        {
+          "t": 1.4,
+          "type": "tick",
+          "gain": 0.55
+        },
+        {
+          "t": 2.6,
+          "type": "click",
+          "gain": 0.7
+        },
+        {
+          "t": 3.4,
+          "type": "tick",
+          "gain": 0.55
+        }
+      ],
+      "transitionOut": "cross_zoom"
+    },
+    {
+      "id": "scene_4",
+      "start": 11.5,
+      "duration": 3.5,
+      "layout": "cta",
+      "headline": "START TRADING NOW",
+      "subline": "See it in action for yourself. Get started on Zerodha today.",
+      "caption": "Minimalist end card featuring the Zerodha",
+      "captionWords": [
+        {
+          "word": "See",
+          "start": 6,
+          "end": 24
+        },
+        {
+          "word": "it",
+          "start": 24,
+          "end": 41
+        },
+        {
+          "word": "in",
+          "start": 41,
+          "end": 59
+        },
+        {
+          "word": "action",
+          "start": 59,
+          "end": 77
+        },
+        {
+          "word": "for",
+          "start": 77,
+          "end": 94
+        },
+        {
+          "word": "yourself.",
+          "start": 94,
+          "end": 112
+        },
+        {
+          "word": "Get",
+          "start": 112,
+          "end": 129
+        },
+        {
+          "word": "started",
+          "start": 129,
+          "end": 147
+        },
+        {
+          "word": "on",
+          "start": 147,
+          "end": 165
+        },
+        {
+          "word": "Zerodha",
+          "start": 165,
+          "end": 182
+        },
+        {
+          "word": "today.",
+          "start": 182,
+          "end": 200
+        }
+      ],
+      "visual": {
+        "kicker": "Zerodha",
+        "pulseText": "none"
+      },
+      "motion": {
+        "enter": "mask_line_rise",
+        "idle": "slow_sway",
+        "exit": "carousel_glide"
+      },
+      "vo": "",
+      "sfx": [
+        {
+          "t": 0.1,
+          "type": "pop",
+          "gain": 0.85
+        },
+        {
+          "t": 1.58,
+          "type": "click",
+          "gain": 0.75
+        },
+        {
+          "t": 2.98,
+          "type": "pop",
+          "gain": 0.8
+        }
+      ],
+      "transitionOut": "none"
+    }
+  ],
+  "audio": {
+    "assetsRoot": "jobs/zerodha-001/assets",
+    "voice": {
+      "provider": "none",
+      "voiceId": "none",
+      "model": "none",
+      "clips": {}
+    },
+    "music": {
+      "file": "",
+      "mood": "none",
+      "volume": 0
+    },
+    "room": {
+      "file": "audio/room-tone.wav",
+      "volume": 0.85
+    },
+    "sfxFiles": {
+      "click": "audio/click.wav",
+      "tick": "audio/tick.wav",
+      "pop": "audio/pop.wav"
+    },
+    "duck": 12
+  }
+}
