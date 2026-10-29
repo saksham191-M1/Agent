@@ -47,7 +47,7 @@ execFileSync(ffmpeg, [
   '-vf', 'colorspace=range=tv:irange=pc:all=bt709:iall=bt709:fast=1',
   '-color_primaries', 'bt709', '-color_trc', 'bt709', '-colorspace', 'bt709', '-color_range', 'tv',
   '-bsf:v', 'h264_metadata=colour_primaries=1:transfer_characteristics=1:matrix_coefficients=1',
-  '-af', 'loudnorm=I=-14:TP=-1.5:LRA=7',
+  '-af', 'loudnorm=I=-14:TP=-2.0:LRA=7:linear=true',
   '-c:a', 'aac', '-b:a', '256k', '-ar', '48000', '-ac', '2',
    '-t', String(job.spec.durationSec),
   '-movflags', '+faststart', '-y', final,

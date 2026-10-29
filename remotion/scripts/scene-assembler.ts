@@ -453,8 +453,8 @@ export function assembleScenes(opts: AssembleOptions): {uiTree: UITree; spec: an
     audio: {
       assetsRoot: `jobs/${jobId}/assets`,
       voice:  {provider: 'none', voiceId: 'none', model: 'none', clips: {}},
-      music:  {file: '', mood: 'none', volume: 0},
-      room:   {file: 'audio/room-tone.wav', volume: 0.85},
+      music:  {file: 'audio/music-bed.mp3', mood: storyboard.music_mood || 'cinematic_beat', volume: 0.18},
+      room:   {file: 'audio/room-tone.wav', volume: 0.05},
       sfxFiles: {
         click: 'audio/click.wav',
         tick:  'audio/tick.wav',

@@ -48,10 +48,12 @@ async function main() {
   fs.mkdirSync(path.join(jobDir, 'scenes'), {recursive: true});
   fs.mkdirSync(path.join(jobDir, 'out', 'stills'), {recursive: true});
 
-  // Copy standard audio assets
-  const sourceAudioDir = path.resolve(process.cwd(), 'jobs', 'swiggy-001', 'assets', 'audio');
-  fs.copyFileSync(path.join(sourceAudioDir, 'music-bed.mp3'), path.join(jobDir, 'assets', 'audio', 'music-bed.mp3'));
-  fs.copyFileSync(path.join(sourceAudioDir, 'room-tone.wav'), path.join(jobDir, 'assets', 'audio', 'room-tone.wav'));
+  // Copy standard audio assets from neutral default pack
+  const sourceAudioDir = path.resolve(process.cwd(), '..', 'assets', 'default', 'audio');
+  if (fs.existsSync(sourceAudioDir)) {
+    fs.copyFileSync(path.join(sourceAudioDir, 'music-bed.mp3'), path.join(jobDir, 'assets', 'audio', 'music-bed.mp3'));
+    fs.copyFileSync(path.join(sourceAudioDir, 'room-tone.wav'), path.join(jobDir, 'assets', 'audio', 'room-tone.wav'));
+  }
   const voSrc = path.join(sourceAudioDir, 'vo-s1.mp3');
   if (fs.existsSync(voSrc)) {
     fs.copyFileSync(voSrc, path.join(jobDir, 'assets', 'audio', 'vo-s1.mp3'));
