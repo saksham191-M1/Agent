@@ -16,6 +16,85 @@ sys.stdout.reconfigure(encoding='utf-8')
 load_dotenv(os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))), ".env"))
 init(autoreset=True)
 
+
+REFERENCE_MAX_CHARS = 3500
+LOW_MATCH_SCORE = 0.25
+REFERENCE_BLOCKS = ("direction", "gotchas", "structure")
+
+DEFAULT_MOTION_CONSTRAINTS = """
+    STRICT MOTION RULES (v1.0):
+    - Camera: Never fully stops; continuous subtle push scale (1.03 to 1.07).
+    - Text Entry: Mask line rise with per-letter stagger (no terminal periods/punctuation on headlines).
+    - Transitions: Use 'carousel_glide' or 'cross_zoom'. NEVER use hard cuts, white flashes, or crossfades between scenes.
+    - Objects: Slow sway idle (1-3 degrees, 4-7s period). Never appear instantly.
+    - Counters: Count up using ease_out_cubic over 1.5-3.0s.
+    - Frame Rate: 60 fps pure function of time render(t).
+    """
+
+
+def _prompt_blocks(prompt):
+    """Split an Opus prompt into its tagged blocks, e.g. <direction>...</direction>."""
+    return {name.lower(): body.strip() for name, body in re.findall(r"<(\w+)>(.*?)</\1>", prompt or "", re.S)}
+
+
+def build_reference_inspiration(best_match):
+    """
+    Give the model the reference's look, motion and structure, not just its first
+    350 characters. The <inputs>/<start> blocks are skipped on purpose: they hold the
+    reference product's own defaults, which must not leak into this product's ad.
+    """
+    if not best_match:
+        return ""
+    prompt = best_match.get("prompt") or ""
+    blocks = _prompt_blocks(prompt)
+    parts, used = [], 0
+    for name in REFERENCE_BLOCKS:
+        body = blocks.get(name)
+        room = REFERENCE_MAX_CHARS - used
+        if not body or room < 200:
+            continue
+        body = body[:room]
+        parts.append(f"[{name.upper()}]\n{body}")
+        used += len(body)
+    if not parts:
+        parts.append(prompt[:1500])
+    excerpt = "\n\n".join(parts)
+    return f"""
+    VIRAL OPUS 5.5 INSPIRATION (Inherited from @{best_match['author']}, Category: {best_match['category'].upper()}):
+    Tech tags: {', '.join(best_match['tech_tags'])}
+    Reference prompt excerpt (use for motion pacing, visual language and structure only):
+    {excerpt}
+
+    Emulate this motion pacing, visual metaphor, and kinetic elegance in the scene breakdown!
+    Use the reference for HOW the ad moves and looks. Do NOT reuse its product name, copy lines, characters or story: the ad is about the product above.
+    """
+
+
+def build_motion_constraints(rules):
+    """Build the motion-rule text from motion_rules.json so the file is the single source."""
+    if not rules:
+        return DEFAULT_MOTION_CONSTRAINTS
+    try:
+        push = rules["camera"]["push_scale_per_scene"]
+        te = rules["text_entry"]
+        sw = rules["transitions"]["scene_swap"]
+        ob = rules["objects"]
+        ct = rules["counters"]
+        banned = ", ".join(b.replace("_", " ") for b in rules["banned"])
+        return f"""
+    STRICT MOTION RULES (v{rules.get('version', '1.0')}):
+    - Camera: Never fully stops; continuous subtle push scale ({push[0]} to {push[1]}).
+    - Text Entry: {te['method'].replace('_', ' ')} with per-letter stagger (no terminal periods/punctuation on headlines).
+    - Transitions: Use '{sw['type']}' or 'cross_zoom'. NEVER use hard cuts, white flashes, or crossfades between scenes.
+    - Objects: Slow sway idle ({ob['sway_degrees'][0]}-{ob['sway_degrees'][1]} degrees, {ob['sway_period_seconds'][0]}-{ob['sway_period_seconds'][1]}s period). Never appear instantly.
+    - Counters: Count up using {ct['easing']} over {ct['duration_seconds'][0]}-{ct['duration_seconds'][1]}s.
+    - Frame Rate: {rules['render']['fps']} fps pure function of time render(t).
+    - Banned: {banned}.
+    """
+    except (KeyError, IndexError, TypeError):
+        return DEFAULT_MOTION_CONSTRAINTS
+
+
 def extract_opus_aesthetic(prompt, author=""):
     """
     Autonomously extracts the color palette, light/dark theme intent,
@@ -107,11 +186,9 @@ def load_global_motion_rules():
     return None
 
 def generate_multi_scene_blueprint(product_name, description="", return_match=False):
-    api_key = os.getenv("GEMINI_API_KEY")
-    if not api_key:
-        print(f"{Fore.RED}Error: GEMINI_API_KEY missing from .env{Fore.RESET}")
-        sys.exit(1)
-        
+    codecraft_key = os.getenv("CODECRAFT_API_KEY")
+    gemini_key = os.getenv("GEMINI_API_KEY")
+    
     global_rules = load_global_motion_rules()
 
     # ML Prompt Matching against 703 curated Opus 5.5 viral videos
@@ -124,23 +201,11 @@ def generate_multi_scene_blueprint(product_name, description="", return_match=Fa
         print(f"{Fore.CYAN}🎯 ML Matched Category: {best_match['category'].upper()} (Score: {best_match['score']:.4f}){Fore.RESET}")
         print(f"{Fore.CYAN}💡 Viral Inspiration: @{best_match['author']} ({', '.join(best_match['tech_tags'])}){Fore.RESET}")
         print(f"{Fore.CYAN}🔗 Reference: {best_match['skillry_url'] or best_match['post_url']}{Fore.RESET}")
-        reference_inspiration = f"""
-    VIRAL OPUS 5.5 INSPIRATION (Inherited from @{best_match['author']}, Category: {best_match['category'].upper()}):
-    Tech tags: {', '.join(best_match['tech_tags'])}
-    Reference Prompt snippet: {best_match['prompt'][:350]}
-    
-    Emulate this motion pacing, visual metaphor, and kinetic elegance in the scene breakdown!
-    """
+        if best_match['score'] < LOW_MATCH_SCORE:
+            print(f"{Fore.YELLOW}⚠️ Low match score ({best_match['score']:.2f}): the reference may be topically close but stylistically off. Review the storyboard.{Fore.RESET}")
+        reference_inspiration = build_reference_inspiration(best_match)
 
-    motion_constraints = """
-    STRICT MOTION RULES (v1.0):
-    - Camera: Never fully stops; continuous subtle push scale (1.03 to 1.07).
-    - Text Entry: Mask line rise with per-letter stagger (no terminal periods/punctuation on headlines).
-    - Transitions: Use 'carousel_glide' or 'cross_zoom'. NEVER use hard cuts, white flashes, or crossfades between scenes.
-    - Objects: Slow sway idle (1-3 degrees, 4-7s period). Never appear instantly.
-    - Counters: Count up using ease_out_cubic over 1.5-3.0s.
-    - Frame Rate: 60 fps pure function of time render(t).
-    """
+    motion_constraints = build_motion_constraints(global_rules)
 
     prompt = f"""
     You are an Opus-level Creative Director building an automated video pipeline for a product called '{product_name}'.
@@ -182,26 +247,53 @@ def generate_multi_scene_blueprint(product_name, description="", return_match=Fa
     Ensure valid JSON only. Do not use markdown blocks like ```json.
     """
     
-    candidate_models = ["gemini-flash-latest", "gemini-3.5-flash", "gemini-3.7-flash"]
-    headers = {'Content-Type': 'application/json'}
-    data = {
-        "contents": [{"parts": [{"text": prompt}]}],
-        "generationConfig": {"temperature": 0.7}
-    }
-    
     response_text = None
-    for model_name in candidate_models:
-        url = f"https://generativelanguage.googleapis.com/v1beta/models/{model_name}:generateContent?key={api_key}"
+
+    # 1. Try CodeCraft API (OpenAI-compatible multi-model gateway)
+    if codecraft_key:
+        cc_model = os.getenv("CODECRAFT_MODEL", "claude-opus-4.8")
+        cc_base = os.getenv("CODECRAFT_BASE_URL", "https://codecraftapi.com/v1").rstrip("/")
+        cc_headers = {
+            "Authorization": f"Bearer {codecraft_key}",
+            "Content-Type": "application/json"
+        }
+        cc_data = {
+            "model": cc_model,
+            "messages": [{"role": "user", "content": prompt}],
+            "temperature": 0.7
+        }
         try:
-            response = requests.post(url, headers=headers, json=data, timeout=30)
-            if response.status_code == 200:
-                response_json = response.json()
-                response_text = response_json['candidates'][0]['content']['parts'][0]['text']
-                break
+            print(f"{Fore.CYAN}📡 Calling CodeCraft API ({cc_model})...{Fore.RESET}")
+            cc_res = requests.post(f"{cc_base}/chat/completions", headers=cc_headers, json=cc_data, timeout=45)
+            if cc_res.status_code == 200:
+                cc_json = cc_res.json()
+                response_text = cc_json["choices"][0]["message"]["content"]
+                print(f"{Fore.GREEN}✅ CodeCraft API successfully returned storyboard!{Fore.RESET}")
             else:
-                print(f"{Fore.YELLOW}Model {model_name} returned {response.status_code}. Trying fallback...{Fore.RESET}")
+                print(f"{Fore.YELLOW}CodeCraft API returned status {cc_res.status_code}: {cc_res.text[:200]}{Fore.RESET}")
         except Exception as err:
-            print(f"{Fore.YELLOW}Model {model_name} error: {err}. Trying fallback...{Fore.RESET}")
+            print(f"{Fore.YELLOW}CodeCraft API call error: {err}{Fore.RESET}")
+
+    # 2. Fallback to Gemini if CodeCraft did not return
+    if not response_text and gemini_key:
+        candidate_models = ["gemini-flash-latest", "gemini-3.5-flash", "gemini-3.7-flash"]
+        headers = {'Content-Type': 'application/json'}
+        data = {
+            "contents": [{"parts": [{"text": prompt}]}],
+            "generationConfig": {"temperature": 0.7}
+        }
+        for model_name in candidate_models:
+            url = f"https://generativelanguage.googleapis.com/v1beta/models/{model_name}:generateContent?key={gemini_key}"
+            try:
+                response = requests.post(url, headers=headers, json=data, timeout=30)
+                if response.status_code == 200:
+                    response_json = response.json()
+                    response_text = response_json['candidates'][0]['content']['parts'][0]['text']
+                    break
+                else:
+                    print(f"{Fore.YELLOW}Model {model_name} returned {response.status_code}. Trying fallback...{Fore.RESET}")
+            except Exception as err:
+                print(f"{Fore.YELLOW}Model {model_name} error: {err}. Trying fallback...{Fore.RESET}")
             
     aesthetic = extract_opus_aesthetic(best_match['prompt'] if best_match else '', author=best_match.get('author', '') if best_match else '')
 
