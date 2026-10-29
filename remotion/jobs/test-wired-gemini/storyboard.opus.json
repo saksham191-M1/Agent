@@ -1,0 +1,51 @@
+{
+  "product_name": "Swiggy",
+  "matched_opus_category": "MOTION",
+  "selected_template": "Opus 5.5 Viral Blueprint (@q970270495)",
+  "scenes": [
+    {
+      "scene_id": 1,
+      "duration_seconds": 4,
+      "voiceover": "Experience what's next with Swiggy.",
+      "veo_prompt": "Cinematic dynamic opener for Swiggy",
+      "visual_fx": "fast_zoom",
+      "kinetic_text": "SWIGGY",
+      "requires_ui_image": false
+    },
+    {
+      "scene_id": 2,
+      "duration_seconds": 5,
+      "voiceover": "Built specifically for speed and seamless everyday performance.",
+      "veo_prompt": "Interactive app showcase for Swiggy",
+      "visual_fx": "glass_ui",
+      "kinetic_text": "SEAMLESS",
+      "requires_ui_image": true
+    },
+    {
+      "scene_id": 3,
+      "duration_seconds": 4,
+      "voiceover": "Designed to get you results faster than ever before.",
+      "veo_prompt": "Dense feature workflow in action for Swiggy",
+      "visual_fx": "blur_slide",
+      "kinetic_text": "FASTER",
+      "requires_ui_image": true
+    },
+    {
+      "scene_id": 4,
+      "duration_seconds": 3,
+      "voiceover": "Get started with Swiggy today.",
+      "veo_prompt": "Brand lockup outro for Swiggy",
+      "visual_fx": "fade_up",
+      "kinetic_text": "START NOW",
+      "requires_ui_image": false
+    }
+  ],
+  "ml_match": {
+    "category": "MOTION",
+    "score": 0.2956,
+    "author": "q970270495",
+    "tech_tags": [],
+    "prompt_snippet": "make a modern slick and punchy video for a modern startup that works on inference",
+    "reference_url": "https://x.com/q970270495/status/2105233470574497923"
+  }
+}

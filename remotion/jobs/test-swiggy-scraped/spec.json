@@ -12,8 +12,8 @@
       "duration": 4,
       "layout": "hero-type",
       "headline": "EMPTY?",
-      "subline": "Empty fridge, zero energy, and hours wasted wondering what to eat after an exhau",
-      "caption": "Cinematic moody tracking shot of an exhausted professional s",
+      "subline": "Empty fridge, zero energy, and hours wasted wondering what to eat after",
+      "caption": "Cinematic moody tracking shot of an",
       "captionWords": [
         {
           "word": "Empty",
@@ -113,7 +113,7 @@
           "gain": 0.6
         }
       ],
-      "transitionOut": "fade"
+      "transitionOut": "carousel_glide"
     },
     {
       "id": "scene_2",
@@ -121,8 +121,8 @@
       "duration": 5,
       "layout": "browser",
       "headline": "SWIGGY IT",
-      "subline": "Enter Swiggy. Trusted by millions to bring top restaurants directly to your fing",
-      "caption": "Slick 3D floating glass card displaying the Swiggy feed UI, ",
+      "subline": "Enter Swiggy. Trusted by millions to bring top restaurants directly to your",
+      "caption": "Slick 3D floating glass card displaying",
       "captionWords": [
         {
           "word": "Enter",
@@ -237,7 +237,7 @@
           "gain": 0.7
         }
       ],
-      "transitionOut": "fade"
+      "transitionOut": "wipe"
     },
     {
       "id": "scene_3",
@@ -246,7 +246,7 @@
       "layout": "browser",
       "headline": "LIVE TRACKING",
       "subline": "One-tap reordering, real-time GPS tracking, and seamless live updates from kitch",
-      "caption": "Macro dynamic glide across the Swiggy live delivery tracking",
+      "caption": "Macro dynamic glide across the Swiggy",
       "captionWords": [
         {
           "word": "One-tap",
@@ -346,7 +346,7 @@
           "gain": 0.6
         }
       ],
-      "transitionOut": "fade"
+      "transitionOut": "cross_zoom"
     },
     {
       "id": "scene_4",
@@ -355,7 +355,7 @@
       "layout": "cta",
       "headline": "ORDER NOW",
       "subline": "Cravings satisfied, effortlessly. Download Swiggy and get your first meal delive",
-      "caption": "Bold minimalist studio backdrop with signature energetic ora",
+      "caption": "Bold minimalist studio backdrop with signature",
       "captionWords": [
         {
           "word": "Cravings",
@@ -445,7 +445,7 @@
           "gain": 0.5
         }
       ],
-      "transitionOut": "fade"
+      "transitionOut": "none"
     }
   ],
   "audio": {
@@ -470,6 +470,6 @@
       "tick": "audio/tick.wav",
       "pop": "audio/pop.wav"
     },
-    "duck": 18
+    "duck": 12
   }
 }

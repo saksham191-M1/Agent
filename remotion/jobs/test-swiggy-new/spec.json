@@ -12,8 +12,8 @@
       "duration": 4,
       "layout": "hero-type",
       "headline": "EXHAUSTED",
-      "subline": "It's 9 PM, you're utterly exhausted, the fridge is empty, and cooking feels impo",
-      "caption": "Cinematic close-up of an exhausted young urban professional ",
+      "subline": "It's 9 PM, you're utterly exhausted, the fridge is empty, and cooking",
+      "caption": "Cinematic close-up of an exhausted young",
       "visual": {
         "kicker": "Swiggy",
         "pulseText": "fast_zoom"
@@ -25,7 +25,7 @@
       },
       "vo": "",
       "sfx": [],
-      "transitionOut": "fade"
+      "transitionOut": "carousel_glide"
     },
     {
       "id": "scene_2",
@@ -34,7 +34,7 @@
       "layout": "browser",
       "headline": "SWIGGY IT",
       "subline": "Enter Swiggy. Thousands of top-rated neighborhood restaurants and cravings unloc",
-      "caption": "The uploaded Swiggy food menu UI floating seamlessly on a cu",
+      "caption": "The uploaded Swiggy food menu UI",
       "visual": {
         "kicker": "Swiggy",
         "pulseText": "glass_ui"
@@ -46,7 +46,7 @@
       },
       "vo": "",
       "sfx": [],
-      "transitionOut": "fade"
+      "transitionOut": "wipe"
     },
     {
       "id": "scene_3",
@@ -54,8 +54,8 @@
       "duration": 5,
       "layout": "browser",
       "headline": "LIVE TRACKING",
-      "subline": "One tap checkout, live real-time GPS tracking, and steaming hot food straight to",
-      "caption": "High-angle kinetic tracking shot moving across the uploaded ",
+      "subline": "One tap checkout, live real-time GPS tracking, and steaming hot food straight",
+      "caption": "High-angle kinetic tracking shot moving across",
       "visual": {
         "kicker": "Swiggy",
         "pulseText": "parallax_tilt"
@@ -67,7 +67,7 @@
       },
       "vo": "",
       "sfx": [],
-      "transitionOut": "fade"
+      "transitionOut": "cross_zoom"
     },
     {
       "id": "scene_4",
@@ -75,8 +75,8 @@
       "duration": 4,
       "layout": "cta",
       "headline": "ORDER NOW",
-      "subline": "Why stay hungry? Download Swiggy and get your favorite meal delivered right now.",
-      "caption": "Fast kinetic burst of warm studio lighting resolving smoothl",
+      "subline": "Why stay hungry? Download Swiggy and get your favorite meal delivered right",
+      "caption": "Fast kinetic burst of warm studio",
       "visual": {
         "kicker": "Swiggy",
         "pulseText": "logo_resolve"
@@ -88,7 +88,7 @@
       },
       "vo": "",
       "sfx": [],
-      "transitionOut": "fade"
+      "transitionOut": "none"
     }
   ],
   "audio": {
@@ -113,6 +113,6 @@
       "tick": "audio/tick.wav",
       "pop": "audio/pop.wav"
     },
-    "duck": 18
+    "duck": 12
   }
 }

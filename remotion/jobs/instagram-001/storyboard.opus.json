@@ -1,0 +1,87 @@
+{
+  "product_name": "Instagram",
+  "matched_opus_category": "MOTION",
+  "selected_template": "Problem-Agitate-Solution (UI Showcase)",
+  "scenes": [
+    {
+      "scene_id": 1,
+      "duration_seconds": 4,
+      "voiceover": "Your best creative moments and stories are buried in static, silent feeds.",
+      "veo_prompt": "Cinematic mood shot of a creator staring at a shadowy, dim smartphone screen in an isolated room, cool moody tones, dramatic side lighting, slow camera tracking.",
+      "visual_fx": "fast_zoom",
+      "kinetic_text": "BURIED VOICE",
+      "requires_ui_image": false
+    },
+    {
+      "scene_id": 2,
+      "duration_seconds": 5,
+      "voiceover": "Enter Instagram. Elevate your narrative with rich short-form Reels and immersive daily Stories.",
+      "veo_prompt": "A sleek 3D floating glass mobile UI displaying a vibrant Instagram Reels video feed, glowing interaction light particles emitting from heart buttons, soft ambient neon gradient background, dynamic camera push-in.",
+      "visual_fx": "glass_ui",
+      "kinetic_text": "CREATE REELS",
+      "requires_ui_image": true
+    },
+    {
+      "scene_id": 3,
+      "duration_seconds": 5,
+      "voiceover": "Connect instantly across a global network of over 2.5B active creators.",
+      "veo_prompt": "An elegant multi-layered glass card display showcasing Instagram DM workflow and Creator Profiles, holographic notification badges gently pulsing with light, smooth kinetic tilt shift camera motion.",
+      "visual_fx": "hologram_tilt",
+      "kinetic_text": "2.5B CREATORS",
+      "requires_ui_image": true
+    },
+    {
+      "scene_id": 4,
+      "duration_seconds": 4,
+      "voiceover": "Capture and share what you love. Download Instagram today.",
+      "veo_prompt": "Iconic Instagram camera logo rendering in glowing iridescent gradient lines over a dark cinematic surface, clean aesthetic finish, dynamic camera pull back.",
+      "visual_fx": "logo_burst",
+      "kinetic_text": "SHARE WHAT YOU LOVE",
+      "requires_ui_image": false
+    }
+  ],
+  "aesthetic": {
+    "is_light_theme": true,
+    "background": "#F6E4C6",
+    "background2": "#EDE0CA",
+    "surface": "#FFFFFF",
+    "surfaceText": "#0E0F1F",
+    "text": "#0E0F1F",
+    "muted": "#6B7280",
+    "accent": "#2B3BFF",
+    "accentLight": "#FF7DC7",
+    "secondary": "#FF5A1F",
+    "suggested_bpm": 130,
+    "motion_rules": [
+      "continuous_camera_push",
+      "film_grain",
+      "die_cut_accents"
+    ]
+  },
+  "ml_match": {
+    "category": "MOTION",
+    "score": 0.2805,
+    "author": "twoclipping",
+    "tech_tags": [],
+    "prompt_snippet": "<inputs>\nAsk me for: my product's name (one lowercase word), a 4-word tagline, the 3-step story of what it does, a launch date and domain, a royalty-free song with a clear drop, 4 vertical talking-to-camera clips and 12 portrait photos. If I skip any, use the defaults: \"castr\", \"ugc ads, cast by ai\", write a brief → scan 1,000 creators → cast 4, Mi",
+    "reference_url": "https://x.com/twoclipping/status/2106101258834551116",
+    "aesthetic": {
+      "is_light_theme": true,
+      "background": "#F6E4C6",
+      "background2": "#EDE0CA",
+      "surface": "#FFFFFF",
+      "surfaceText": "#0E0F1F",
+      "text": "#0E0F1F",
+      "muted": "#6B7280",
+      "accent": "#2B3BFF",
+      "accentLight": "#FF7DC7",
+      "secondary": "#FF5A1F",
+      "suggested_bpm": 130,
+      "motion_rules": [
+        "continuous_camera_push",
+        "film_grain",
+        "die_cut_accents"
+      ]
+    }
+  }
+}

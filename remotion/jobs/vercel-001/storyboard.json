@@ -1,53 +1,141 @@
 {
-  "product_name": "Vercel",
-  "matched_opus_category": "INTERACTIVE",
-  "selected_template": "Opus 5.5 Viral Blueprint (@redpersongpt)",
-  "scenes": [
+  "shots": [
     {
-      "scene_id": 1,
-      "duration_seconds": 4,
-      "voiceover": "Experience what's next with Vercel.",
-      "veo_prompt": "Cinematic dynamic opener for Vercel",
-      "visual_fx": "fast_zoom",
-      "kinetic_text": "VERCEL",
-      "requires_ui_image": false
+      "n": 1,
+      "t0": 0,
+      "t1": 4,
+      "role": "hook",
+      "source": "motion-graphic",
+      "visual": "hero-type",
+      "headline": "VERCEL",
+      "subline": "Experience what's next with Vercel.",
+      "onScreenText": "Cinematic dynamic opener for Vercel",
+      "dialogue": "",
+      "sfx": [
+        {
+          "t": 0.1,
+          "type": "pop",
+          "gain": 0.85,
+          "duckMusicDb": -6
+        },
+        {
+          "t": 2.88,
+          "type": "tick",
+          "gain": 0.6
+        }
+      ],
+      "transitionOut": "carousel_glide",
+      "camera": null
     },
     {
-      "scene_id": 2,
-      "duration_seconds": 5,
-      "voiceover": "Built specifically for speed and seamless everyday performance.",
-      "veo_prompt": "Interactive app showcase for Vercel",
-      "visual_fx": "glass_ui",
-      "kinetic_text": "SEAMLESS",
-      "requires_ui_image": true
+      "n": 2,
+      "t0": 4,
+      "t1": 9,
+      "role": "feature",
+      "source": "motion-graphic",
+      "visual": "browser",
+      "headline": "SEAMLESS",
+      "subline": "Built specifically for speed and seamless everyday performance.",
+      "onScreenText": "Interactive app showcase for Vercel",
+      "dialogue": "",
+      "sfx": [
+        {
+          "t": 0.1,
+          "type": "pop",
+          "gain": 0.85,
+          "duckMusicDb": -6
+        },
+        {
+          "t": 1.75,
+          "type": "tick",
+          "gain": 0.55,
+          "pitchVariation": 1
+        },
+        {
+          "t": 3.25,
+          "type": "click",
+          "gain": 0.7
+        },
+        {
+          "t": 4.25,
+          "type": "tick",
+          "gain": 0.55,
+          "pitchVariation": 0.95
+        }
+      ],
+      "transitionOut": "wipe",
+      "camera": null
     },
     {
-      "scene_id": 3,
-      "duration_seconds": 4,
-      "voiceover": "Designed to get you results faster than ever before.",
-      "veo_prompt": "Dense feature workflow in action for Vercel",
-      "visual_fx": "blur_slide",
-      "kinetic_text": "FASTER",
-      "requires_ui_image": true
+      "n": 3,
+      "t0": 9,
+      "t1": 13,
+      "role": "feature",
+      "source": "motion-graphic",
+      "visual": "browser",
+      "headline": "FASTER",
+      "subline": "Designed to get you results faster than ever before.",
+      "onScreenText": "Dense feature workflow in action for",
+      "dialogue": "",
+      "sfx": [
+        {
+          "t": 0.1,
+          "type": "pop",
+          "gain": 0.85,
+          "duckMusicDb": -6
+        },
+        {
+          "t": 1.4,
+          "type": "tick",
+          "gain": 0.55,
+          "pitchVariation": 1
+        },
+        {
+          "t": 2.6,
+          "type": "click",
+          "gain": 0.7
+        },
+        {
+          "t": 3.4,
+          "type": "tick",
+          "gain": 0.55,
+          "pitchVariation": 0.95
+        }
+      ],
+      "transitionOut": "cross_zoom",
+      "camera": null
     },
     {
-      "scene_id": 4,
-      "duration_seconds": 3,
-      "voiceover": "Get started with Vercel today.",
-      "veo_prompt": "Brand lockup outro for Vercel",
-      "visual_fx": "fade_up",
-      "kinetic_text": "START NOW",
-      "requires_ui_image": false
+      "n": 4,
+      "t0": 13,
+      "t1": 16,
+      "role": "cta",
+      "source": "motion-graphic",
+      "visual": "cta",
+      "headline": "START NOW",
+      "subline": "Get started with Vercel today.",
+      "onScreenText": "Brand lockup outro for Vercel",
+      "dialogue": "",
+      "sfx": [
+        {
+          "t": 0.1,
+          "type": "pop",
+          "gain": 0.85,
+          "duckMusicDb": -6
+        },
+        {
+          "t": 1.35,
+          "type": "click",
+          "gain": 0.75
+        },
+        {
+          "t": 2.55,
+          "type": "pop",
+          "gain": 0.8
+        }
+      ],
+      "transitionOut": "none",
+      "camera": null
     }
-  ],
-  "ml_match": {
-    "category": "INTERACTIVE",
-    "score": 0.2254,
-    "author": "redpersongpt",
-    "tech_tags": [
-      "svg"
-    ],
-    "prompt_snippet": "Create a studio level motion design ad for my app mimicly. Show me the best you got.\n\nYou are the lead creative strategist, product marketer, direct-response ad writer, and hands-on growth operator for Mimicly.\n\nYour job is to deeply understand Mimicly’s real product experience, then turn that understanding into high-quality ad concepts, ad assets,",
-    "reference_url": "https://skillry.dev/ai-videos/opus-5-5/redpersongpt-284430"
-  }
+  ]
 }

@@ -1,43 +1,64 @@
 {
-  "product_name": "Swiggy",
-  "matched_opus_category": "MOTION",
-  "selected_template": "Problem-Agitate-Solution (UI Showcase)",
-  "scenes": [
+  "shots": [
     {
-      "scene_id": 1,
-      "duration_seconds": 4,
-      "voiceover": "It's 9 PM, you're utterly exhausted, the fridge is empty, and cooking feels impossible.",
-      "veo_prompt": "Cinematic close-up of an exhausted young urban professional staring into an empty refrigerator illuminated by cold blue light, rapid kinetic cut to heavy rain and gridlock traffic outside, moody hyper-realistic commercial lighting, 35mm lens.",
-      "visual_fx": "fast_zoom",
-      "kinetic_text": "EXHAUSTED",
-      "requires_ui_image": false
+      "n": 1,
+      "t0": 0,
+      "t1": 4,
+      "role": "hook",
+      "source": "motion-graphic",
+      "visual": "hero-type",
+      "headline": "EXHAUSTED",
+      "subline": "It's 9 PM, you're utterly exhausted, the fridge is empty, and cooking",
+      "onScreenText": "Cinematic close-up of an exhausted young",
+      "dialogue": "",
+      "sfx": [],
+      "transitionOut": "carousel_glide",
+      "camera": null
     },
     {
-      "scene_id": 2,
-      "duration_seconds": 5,
-      "voiceover": "Enter Swiggy. Thousands of top-rated neighborhood restaurants and cravings unlocked in seconds.",
-      "veo_prompt": "The uploaded Swiggy food menu UI floating seamlessly on a curved 3D glass card with refractive edges, glowing warm orange rim light, smooth GSAP-inspired camera push-in and subtle levitation dynamics, ultra-clean commercial aesthetic, 8k render.",
-      "visual_fx": "glass_ui",
-      "kinetic_text": "SWIGGY IT",
-      "requires_ui_image": true
+      "n": 2,
+      "t0": 4,
+      "t1": 9,
+      "role": "feature",
+      "source": "motion-graphic",
+      "visual": "browser",
+      "headline": "SWIGGY IT",
+      "subline": "Enter Swiggy. Thousands of top-rated neighborhood restaurants and cravings unloc",
+      "onScreenText": "The uploaded Swiggy food menu UI",
+      "dialogue": "",
+      "sfx": [],
+      "transitionOut": "wipe",
+      "camera": null
     },
     {
-      "scene_id": 3,
-      "duration_seconds": 5,
-      "voiceover": "One tap checkout, live real-time GPS tracking, and steaming hot food straight to your door.",
-      "veo_prompt": "High-angle kinetic tracking shot moving across the uploaded Swiggy live delivery map interface, showing interactive GPS pulse animations, 3D floating delivery status cards with micro-interactions, silky smooth parallax motion, crisp high-tech UI finish.",
-      "visual_fx": "parallax_tilt",
-      "kinetic_text": "LIVE TRACKING",
-      "requires_ui_image": true
+      "n": 3,
+      "t0": 9,
+      "t1": 14,
+      "role": "feature",
+      "source": "motion-graphic",
+      "visual": "browser",
+      "headline": "LIVE TRACKING",
+      "subline": "One tap checkout, live real-time GPS tracking, and steaming hot food straight",
+      "onScreenText": "High-angle kinetic tracking shot moving across",
+      "dialogue": "",
+      "sfx": [],
+      "transitionOut": "cross_zoom",
+      "camera": null
     },
     {
-      "scene_id": 4,
-      "duration_seconds": 4,
-      "voiceover": "Why stay hungry? Download Swiggy and get your favorite meal delivered right now.",
-      "veo_prompt": "Fast kinetic burst of warm studio lighting resolving smoothly into the iconic Swiggy orange logo centered on a dark obsidian background, stylized delivery icon swooshing across frame leaving an orange light trail, high production value outro.",
-      "visual_fx": "logo_resolve",
-      "kinetic_text": "ORDER NOW",
-      "requires_ui_image": false
+      "n": 4,
+      "t0": 14,
+      "t1": 18,
+      "role": "cta",
+      "source": "motion-graphic",
+      "visual": "cta",
+      "headline": "ORDER NOW",
+      "subline": "Why stay hungry? Download Swiggy and get your favorite meal delivered right",
+      "onScreenText": "Fast kinetic burst of warm studio",
+      "dialogue": "",
+      "sfx": [],
+      "transitionOut": "none",
+      "camera": null
     }
   ]
 }

@@ -1,51 +1,141 @@
 {
-  "product_name": "Swiggy",
-  "matched_opus_category": "MOTION",
-  "selected_template": "Opus 5.5 Viral Blueprint (@q970270495)",
-  "scenes": [
+  "shots": [
     {
-      "scene_id": 1,
-      "duration_seconds": 4,
-      "voiceover": "Experience what's next with Swiggy.",
-      "veo_prompt": "Cinematic dynamic opener for Swiggy",
-      "visual_fx": "fast_zoom",
-      "kinetic_text": "SWIGGY",
-      "requires_ui_image": false
+      "n": 1,
+      "t0": 0,
+      "t1": 4,
+      "role": "hook",
+      "source": "motion-graphic",
+      "visual": "hero-type",
+      "headline": "SWIGGY",
+      "subline": "Experience what's next with Swiggy.",
+      "onScreenText": "Cinematic dynamic opener for Swiggy",
+      "dialogue": "",
+      "sfx": [
+        {
+          "t": 0.1,
+          "type": "pop",
+          "gain": 0.85,
+          "duckMusicDb": -6
+        },
+        {
+          "t": 2.88,
+          "type": "tick",
+          "gain": 0.6
+        }
+      ],
+      "transitionOut": "carousel_glide",
+      "camera": null
     },
     {
-      "scene_id": 2,
-      "duration_seconds": 5,
-      "voiceover": "Built specifically for speed and seamless everyday performance.",
-      "veo_prompt": "Interactive app showcase for Swiggy",
-      "visual_fx": "glass_ui",
-      "kinetic_text": "SEAMLESS",
-      "requires_ui_image": true
+      "n": 2,
+      "t0": 4,
+      "t1": 9,
+      "role": "feature",
+      "source": "motion-graphic",
+      "visual": "phone",
+      "headline": "SEAMLESS",
+      "subline": "Built specifically for speed and seamless everyday performance.",
+      "onScreenText": "Interactive app showcase for Swiggy",
+      "dialogue": "",
+      "sfx": [
+        {
+          "t": 0.1,
+          "type": "pop",
+          "gain": 0.85,
+          "duckMusicDb": -6
+        },
+        {
+          "t": 1.75,
+          "type": "tick",
+          "gain": 0.55,
+          "pitchVariation": 1
+        },
+        {
+          "t": 3.25,
+          "type": "click",
+          "gain": 0.7
+        },
+        {
+          "t": 4.25,
+          "type": "tick",
+          "gain": 0.55,
+          "pitchVariation": 0.95
+        }
+      ],
+      "transitionOut": "wipe",
+      "camera": null
     },
     {
-      "scene_id": 3,
-      "duration_seconds": 4,
-      "voiceover": "Designed to get you results faster than ever before.",
-      "veo_prompt": "Dense feature workflow in action for Swiggy",
-      "visual_fx": "blur_slide",
-      "kinetic_text": "FASTER",
-      "requires_ui_image": true
+      "n": 3,
+      "t0": 9,
+      "t1": 13,
+      "role": "feature",
+      "source": "motion-graphic",
+      "visual": "phone",
+      "headline": "FASTER",
+      "subline": "Designed to get you results faster than ever before.",
+      "onScreenText": "Dense feature workflow in action for",
+      "dialogue": "",
+      "sfx": [
+        {
+          "t": 0.1,
+          "type": "pop",
+          "gain": 0.85,
+          "duckMusicDb": -6
+        },
+        {
+          "t": 1.4,
+          "type": "tick",
+          "gain": 0.55,
+          "pitchVariation": 1
+        },
+        {
+          "t": 2.6,
+          "type": "click",
+          "gain": 0.7
+        },
+        {
+          "t": 3.4,
+          "type": "tick",
+          "gain": 0.55,
+          "pitchVariation": 0.95
+        }
+      ],
+      "transitionOut": "cross_zoom",
+      "camera": null
     },
     {
-      "scene_id": 4,
-      "duration_seconds": 3,
-      "voiceover": "Get started with Swiggy today.",
-      "veo_prompt": "Brand lockup outro for Swiggy",
-      "visual_fx": "fade_up",
-      "kinetic_text": "START NOW",
-      "requires_ui_image": false
+      "n": 4,
+      "t0": 13,
+      "t1": 16,
+      "role": "cta",
+      "source": "motion-graphic",
+      "visual": "cta",
+      "headline": "START NOW",
+      "subline": "Get started with Swiggy today.",
+      "onScreenText": "Brand lockup outro for Swiggy",
+      "dialogue": "",
+      "sfx": [
+        {
+          "t": 0.1,
+          "type": "pop",
+          "gain": 0.85,
+          "duckMusicDb": -6
+        },
+        {
+          "t": 1.35,
+          "type": "click",
+          "gain": 0.75
+        },
+        {
+          "t": 2.55,
+          "type": "pop",
+          "gain": 0.8
+        }
+      ],
+      "transitionOut": "none",
+      "camera": null
     }
-  ],
-  "ml_match": {
-    "category": "MOTION",
-    "score": 0.2956,
-    "author": "q970270495",
-    "tech_tags": [],
-    "prompt_snippet": "make a modern slick and punchy video for a modern startup that works on inference",
-    "reference_url": "https://x.com/q970270495/status/2105233470574497923"
-  }
+  ]
 }

@@ -7,7 +7,7 @@
     "Swiggy"
   ],
   "logo": {
-    "src": "jobs/test-swiggy-new/assets/logo.png",
+    "src": "jobs/test-swiggy-new/assets/logo.svg",
     "text": "Swiggy",
     "alt": "Swiggy Logo",
     "source": ""
@@ -39,7 +39,7 @@
       "id": "main",
       "label": "Swiggy",
       "value": "See it in action",
-      "sourceUrl": ""
+      "sourceUrl": "https://swiggy.com"
     }
   ]
 }

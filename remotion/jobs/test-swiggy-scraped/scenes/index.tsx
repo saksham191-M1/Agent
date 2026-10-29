@@ -1,5 +1,5 @@
 import React from 'react';
-import {useCurrentFrame, useVideoConfig, interpolate} from 'remotion';
+import {useCurrentFrame, useVideoConfig} from 'remotion';
 import type {SceneRendererProps} from '../../../engine';
 import {VectorRenderer} from '../../../engine/semantic-ui/VectorRenderer';
 import type {UITree, VectorNode} from '../../../engine/semantic-ui/types';

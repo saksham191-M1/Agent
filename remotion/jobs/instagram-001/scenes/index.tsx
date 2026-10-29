@@ -1,9 +1,9 @@
 import React from 'react';
-import {useCurrentFrame, useVideoConfig, interpolate} from 'remotion';
+import {useCurrentFrame, useVideoConfig} from 'remotion';
 import type {SceneRendererProps} from '../../../engine';
 import {VectorRenderer} from '../../../engine/semantic-ui/VectorRenderer';
 import type {UITree, VectorNode} from '../../../engine/semantic-ui/types';
-import {enterSpring, scaleIn} from '../../../engine/motion/presets';
+import {enterSpring, scaleIn, getCameraPushScale} from '../../../engine/motion/presets';
 import {Captions} from '../../../engine/components/Captions';
 import {NoiseTexture} from '../../../engine/components/NoiseTexture';
 import {ShapeAccents} from '../../../engine/components/ShapeAccents';
@@ -24,21 +24,18 @@ const Scene: React.FC<SceneRendererProps> = ({scene, tokens}) => {
   const entrance = enterSpring(frame, fps);
   const progress = frame / durationInFrames;
 
-  // Continuous subtle camera push (1.00 to 1.05) inspired by twoclipping Opus prompt
-  const cameraPush = interpolate(frame, [0, durationInFrames], [1, 1.05], {
-    extrapolateLeft: 'clamp',
-    extrapolateRight: 'clamp',
-  });
+  // Continuous subtle camera push (1.03 to 1.07) compliant with motion_rules.json
+  const cameraPush = getCameraPushScale(frame, durationInFrames);
 
   // Match active node to current scene (e.g. "scene_1" -> index 0)
   const matchIdx = scene?.id ? parseInt(scene.id.replace('scene_', ''), 10) - 1 : 0;
   const active = (matchIdx >= 0 && matchIdx < nodes.length ? nodes[matchIdx] : nodes[0]) as VectorNode;
 
-  // Merge brand colors into tokens so every node gets real brand identity
+  // Merge brand colors into tokens preserving dynamic theme overrides (hairline, glass, surfaces)
   const mergedTokens = {
     ...tokens,
     name: brand.name,
-    colors: {...tokens.colors, ...brand.colors},
+    colors: {...brand.colors, ...tokens.colors},
     fontFamily: brand.fonts?.display?.family || tokens.fontFamily,
     displayFontFamily: brand.fonts?.display?.family || tokens.fontFamily,
   };
@@ -68,12 +65,12 @@ const Scene: React.FC<SceneRendererProps> = ({scene, tokens}) => {
       {/* Floating vector shape accents from @remotion/shapes */}
       <ShapeAccents accent={brand.colors?.accentLight || tokens.colors.accent} count={5} />
 
-      {/* Modern poster grid lines adapted to light cream background */}
+      {/* Modern poster grid lines adapted to brand theme */}
       <div
         style={{
           position: 'absolute',
           inset: 0,
-          backgroundImage: 'linear-gradient(to right, rgba(14,15,31,0.04) 1px, transparent 1px), linear-gradient(to bottom, rgba(14,15,31,0.04) 1px, transparent 1px)',
+          backgroundImage: `linear-gradient(to right, ${tokens.colors.hairline || 'rgba(255,255,255,0.05)'} 1px, transparent 1px), linear-gradient(to bottom, ${tokens.colors.hairline || 'rgba(255,255,255,0.05)'} 1px, transparent 1px)`,
           backgroundSize: '48px 48px',
           pointerEvents: 'none',
         }}

@@ -74,7 +74,7 @@
           "gain": 0.6
         }
       ],
-      "transitionOut": "cross_zoom"
+      "transitionOut": "carousel_glide"
     },
     {
       "id": "scene_2",
@@ -170,7 +170,7 @@
       "layout": "browser",
       "headline": "FASTER",
       "subline": "Designed to get you results faster than ever before.",
-      "caption": "Dense feature workflow in action for Vercel",
+      "caption": "Dense feature workflow in action for",
       "captionWords": [
         {
           "word": "Designed",
@@ -253,7 +253,7 @@
           "pitchVariation": 0.95
         }
       ],
-      "transitionOut": "blur_slide"
+      "transitionOut": "cross_zoom"
     },
     {
       "id": "scene_4",
@@ -343,6 +343,6 @@
       "tick": "audio/tick.wav",
       "pop": "audio/pop.wav"
     },
-    "duck": 16
+    "duck": 12
   }
 }

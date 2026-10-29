@@ -1,43 +1,133 @@
 {
-  "product_name": "Swiggy",
-  "matched_opus_category": "MOTION",
-  "selected_template": "Problem-Agitate-Solution (UI Showcase)",
-  "scenes": [
+  "shots": [
     {
-      "scene_id": 1,
-      "duration_seconds": 4,
-      "voiceover": "Empty fridge, zero energy, and hours wasted wondering what to eat after an exhausting day.",
-      "veo_prompt": "Cinematic moody tracking shot of an exhausted professional staring into an empty glowing refrigerator, neon city rain reflected on window, high contrast, fast snap zoom into frustration.",
-      "visual_fx": "fast_zoom",
-      "kinetic_text": "EMPTY?",
-      "requires_ui_image": false
+      "n": 1,
+      "t0": 0,
+      "t1": 4,
+      "role": "hook",
+      "source": "motion-graphic",
+      "visual": "hero-type",
+      "headline": "EMPTY?",
+      "subline": "Empty fridge, zero energy, and hours wasted wondering what to eat after",
+      "onScreenText": "Cinematic moody tracking shot of an",
+      "dialogue": "",
+      "sfx": [
+        {
+          "t": 0.12,
+          "type": "pop",
+          "gain": 0.85
+        },
+        {
+          "t": 2.88,
+          "type": "tick",
+          "gain": 0.6
+        }
+      ],
+      "transitionOut": "carousel_glide",
+      "camera": null
     },
     {
-      "scene_id": 2,
-      "duration_seconds": 5,
-      "voiceover": "Enter Swiggy. Trusted by millions to bring top restaurants directly to your fingertips in seconds.",
-      "veo_prompt": "Slick 3D floating glass card displaying the Swiggy feed UI, warm ambient orange backlighting, isometric slow camera push-in with floating interactive restaurant cards and clean kinetic depth.",
-      "visual_fx": "glass_ui",
-      "kinetic_text": "SWIGGY IT",
-      "requires_ui_image": true
+      "n": 2,
+      "t0": 4,
+      "t1": 9,
+      "role": "feature",
+      "source": "motion-graphic",
+      "visual": "browser",
+      "headline": "SWIGGY IT",
+      "subline": "Enter Swiggy. Trusted by millions to bring top restaurants directly to your",
+      "onScreenText": "Slick 3D floating glass card displaying",
+      "dialogue": "",
+      "sfx": [
+        {
+          "t": 0.12,
+          "type": "pop",
+          "gain": 0.85
+        },
+        {
+          "t": 0.45,
+          "type": "tick",
+          "gain": 0.55
+        },
+        {
+          "t": 0.65,
+          "type": "tick",
+          "gain": 0.55
+        },
+        {
+          "t": 0.85,
+          "type": "tick",
+          "gain": 0.55
+        },
+        {
+          "t": 3,
+          "type": "click",
+          "gain": 0.7
+        }
+      ],
+      "transitionOut": "wipe",
+      "camera": null
     },
     {
-      "scene_id": 3,
-      "duration_seconds": 5,
-      "voiceover": "One-tap reordering, real-time GPS tracking, and seamless live updates from kitchen to your door.",
-      "veo_prompt": "Macro dynamic glide across the Swiggy live delivery tracking UI screen, pulsing GPS route line, smooth kinetic wipe transitioning into a delicious steaming meal delivered hot.",
-      "visual_fx": "ui_parallax_track",
-      "kinetic_text": "LIVE TRACKING",
-      "requires_ui_image": true
+      "n": 3,
+      "t0": 9,
+      "t1": 14,
+      "role": "feature",
+      "source": "motion-graphic",
+      "visual": "browser",
+      "headline": "LIVE TRACKING",
+      "subline": "One-tap reordering, real-time GPS tracking, and seamless live updates from kitch",
+      "onScreenText": "Macro dynamic glide across the Swiggy",
+      "dialogue": "",
+      "sfx": [
+        {
+          "t": 0.12,
+          "type": "pop",
+          "gain": 0.85
+        },
+        {
+          "t": 2.25,
+          "type": "click",
+          "gain": 0.7
+        },
+        {
+          "t": 4,
+          "type": "tick",
+          "gain": 0.6
+        }
+      ],
+      "transitionOut": "cross_zoom",
+      "camera": null
     },
     {
-      "scene_id": 4,
-      "duration_seconds": 4,
-      "voiceover": "Cravings satisfied, effortlessly. Download Swiggy and get your first meal delivered now.",
-      "veo_prompt": "Bold minimalist studio backdrop with signature energetic orange lighting, 3D smartphone smoothly locking into center frame beside bold typography, premium motion design finish.",
-      "visual_fx": "glow_resolve",
-      "kinetic_text": "ORDER NOW",
-      "requires_ui_image": false
+      "n": 4,
+      "t0": 14,
+      "t1": 18,
+      "role": "cta",
+      "source": "motion-graphic",
+      "visual": "cta",
+      "headline": "ORDER NOW",
+      "subline": "Cravings satisfied, effortlessly. Download Swiggy and get your first meal delive",
+      "onScreenText": "Bold minimalist studio backdrop with signature",
+      "dialogue": "",
+      "sfx": [
+        {
+          "t": 0.12,
+          "type": "pop",
+          "gain": 0.85
+        },
+        {
+          "t": 2.2,
+          "type": "pop",
+          "gain": 0.75
+        },
+        {
+          "t": 3.4,
+          "type": "tick",
+          "gain": 0.5
+        }
+      ],
+      "transitionOut": "none",
+      "camera": null
     }
   ]
 }
