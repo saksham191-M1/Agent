@@ -346,6 +346,7 @@ export async function scrapeBrand(targetUrl: string, jobId: string): Promise<Bra
   let extractedThemeColor = '';
   let extractedAccent = '';
   let extractedLogoSvg = '';
+  let extractedFont = '';
   let isSiteDark = false;
   const screenshotPath = path.join(assetsDir, 'studio-hero.png');
   const mobileScreenshotPath = path.join(assetsDir, 'studio-mobile.png');
@@ -427,6 +428,12 @@ export async function scrapeBrand(targetUrl: string, jobId: string): Promise<Bra
           dark = lum < 0.5;
         }
 
+        // Primary Font detection
+        let primaryFont = '';
+        if (document.body) {
+          primaryFont = window.getComputedStyle(document.body).fontFamily || '';
+        }
+
         // Header logo SVG
         let svgHtml = '';
         const headerSvg = document.querySelector('header svg, nav svg, a[class*="logo"] svg, a[id*="logo"] svg');
@@ -502,6 +509,7 @@ export async function scrapeBrand(targetUrl: string, jobId: string): Promise<Bra
         return {
           foundAccent,
           isDark: dark,
+          primaryFont,
           svgHtml,
           navLinks,
           searchPlaceholder,
@@ -515,6 +523,7 @@ export async function scrapeBrand(targetUrl: string, jobId: string): Promise<Bra
       if (evaluated) {
         if (evaluated.foundAccent) extractedAccent = evaluated.foundAccent;
         if (evaluated.svgHtml) extractedLogoSvg = evaluated.svgHtml;
+        if (evaluated.primaryFont) extractedFont = evaluated.primaryFont;
         isSiteDark = evaluated.isDark;
         domHints = {
           navLinks: evaluated.navLinks,
@@ -636,6 +645,38 @@ export async function scrapeBrand(targetUrl: string, jobId: string): Promise<Bra
   }
   console.log(`[Brand Ingest] 📑 Structured ui_description.json written for ${inferredName} (source: ${uiDesc._source})`);
 
+  // ── Contrast & Font Extraction (Phase 9) ─────────────────────────────────
+  function getLuminance(hex: string): number {
+    const clean = hex.replace('#', '');
+    const r = (parseInt(clean.slice(0, 2), 16) || 0) / 255;
+    const g = (parseInt(clean.slice(2, 4), 16) || 0) / 255;
+    const b = (parseInt(clean.slice(4, 6), 16) || 0) / 255;
+    const [rs, gs, bs] = [r, g, b].map(c => c <= 0.03928 ? c / 12.92 : Math.pow((c + 0.055) / 1.055, 2.4));
+    return 0.2126 * rs + 0.7152 * gs + 0.0722 * bs;
+  }
+
+  function getContrastRatio(hex1: string, hex2: string): number {
+    const l1 = getLuminance(hex1);
+    const l2 = getLuminance(hex2);
+    const lighter = Math.max(l1, l2);
+    const darker = Math.min(l1, l2);
+    return (lighter + 0.05) / (darker + 0.05);
+  }
+
+  let textCol = isSiteDark ? '#F9FAFB' : '#09090B';
+  if (colorKit.bg.startsWith('#') && textCol.startsWith('#')) {
+    const ratio = getContrastRatio(textCol, colorKit.bg);
+    if (ratio < 4.5) {
+      textCol = isSiteDark ? '#FFFFFF' : '#000000';
+      console.log(`[Brand Ingest] ⚠️ Adjusted text color for WCAG 4.5:1 contrast compliance against ${colorKit.bg}`);
+    }
+  }
+
+  const cleanFont = extractedFont
+    ? extractedFont.split(',')[0].replace(/['"]/g, '').trim()
+    : 'Inter';
+  const resolvedFontFamily = `${cleanFont}, system-ui, -apple-system, sans-serif`;
+
   const brand: BrandJson = {
     name: inferredName,
     domain,
@@ -653,15 +694,15 @@ export async function scrapeBrand(targetUrl: string, jobId: string): Promise<Bra
       accentLight: colorKit.accentLight,
       background:  colorKit.bg,
       background2: colorKit.bg2,
-      text:        isSiteDark ? '#F9FAFB' : '#09090B',
+      text:        textCol,
       muted:       isSiteDark ? '#9CA3AF' : '#71717A',
       surface:     colorKit.bg2,
-      surfaceText: '#FFFFFF',
+      surfaceText: isSiteDark ? '#FFFFFF' : '#09090B',
       surfaceMuted:'#6B7280',
     },
     fonts: {
-      display: {family: 'Inter, system-ui, sans-serif', source: 'Google Fonts'},
-      body:    {family: 'Inter, system-ui, sans-serif', source: 'Google Fonts'},
+      display: {family: resolvedFontFamily, source: extractedFont ? 'Site Extracted' : 'Google Fonts'},
+      body:    {family: resolvedFontFamily, source: extractedFont ? 'Site Extracted' : 'Google Fonts'},
     },
     imagery: fs.existsSync(screenshotPath)
       ? [{src: `jobs/${jobId}/assets/studio-hero.png`, alt: `${inferredName} product screenshot`, source: targetUrl}]
