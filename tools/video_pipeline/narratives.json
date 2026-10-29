@@ -1,0 +1,243 @@
+[
+  {
+    "id": "urgent_deal_drop",
+    "name": "Urgent Deal Drop",
+    "description": "High-velocity retail and ecommerce flash drops emphasizing exclusive value and rapid checkout.",
+    "suitable_tones": ["urgent", "bold"],
+    "suitable_categories": ["ecommerce", "marketplace", "retail", "fashion", "food_delivery"],
+    "scene_count_range": [4, 5],
+    "duration_seconds_range": [14.0, 18.0],
+    "scene_blueprints": [
+      {
+        "role": "hook",
+        "target_duration": 3.0,
+        "allowed_layouts": ["hero-type"],
+        "allowed_motion": ["aggressive", "punchy"],
+        "vo_instruction": "Call out the high cost of waiting or state an irresistible limited-time hook."
+      },
+      {
+        "role": "pricing",
+        "target_duration": 4.0,
+        "allowed_layouts": ["big-number", "split"],
+        "allowed_motion": ["punchy", "aggressive"],
+        "vo_instruction": "Highlight the core offer, massive catalog size, or headline price point."
+      },
+      {
+        "role": "demo",
+        "target_duration": 4.0,
+        "allowed_layouts": ["phone", "split"],
+        "allowed_motion": ["smooth", "punchy"],
+        "vo_instruction": "Showcase mobile app browsing, instant delivery, or seamless one-tap selection."
+      },
+      {
+        "role": "proof",
+        "target_duration": 3.5,
+        "allowed_layouts": ["split", "big-number"],
+        "allowed_motion": ["smooth", "premium"],
+        "vo_instruction": "Reassure with verified quality, customer ratings, or hassle-free doorstep guarantee."
+      },
+      {
+        "role": "cta",
+        "target_duration": 3.0,
+        "allowed_layouts": ["cta"],
+        "allowed_motion": ["punchy", "aggressive"],
+        "vo_instruction": "Urgent call to buy now or download before the event or stock concludes."
+      }
+    ]
+  },
+  {
+    "id": "technical_deep_dive",
+    "name": "Technical Deep Dive",
+    "description": "Developer-centric narrative focused on developer experience, low latency, and zero-config deployment.",
+    "suitable_tones": ["technical", "minimal", "bold"],
+    "suitable_categories": ["dev_tool", "api", "infrastructure", "cloud", "database", "ai_agent"],
+    "scene_count_range": [3, 4],
+    "duration_seconds_range": [12.0, 16.0],
+    "scene_blueprints": [
+      {
+        "role": "hook",
+        "target_duration": 3.0,
+        "allowed_layouts": ["hero-type"],
+        "allowed_motion": ["technical", "minimal"],
+        "vo_instruction": "State developer frustration or benchmark latency problem with surgical precision."
+      },
+      {
+        "role": "demo",
+        "target_duration": 4.5,
+        "allowed_layouts": ["browser", "split"],
+        "allowed_motion": ["technical", "smooth"],
+        "vo_instruction": "Walk through the CLI command, API snippet, or terminal deployment workflow."
+      },
+      {
+        "role": "proof",
+        "target_duration": 4.0,
+        "allowed_layouts": ["big-number", "browser"],
+        "allowed_motion": ["minimal", "punchy"],
+        "vo_instruction": "State concrete performance metric, global edge count, or active production scale."
+      },
+      {
+        "role": "cta",
+        "target_duration": 3.5,
+        "allowed_layouts": ["cta"],
+        "allowed_motion": ["minimal", "technical"],
+        "vo_instruction": "Direct developer call to action: install via npm/brew or read the documentation."
+      }
+    ]
+  },
+  {
+    "id": "saas_workflow_reveal",
+    "name": "SaaS Workflow Reveal",
+    "description": "B2B software narrative demonstrating transformed workflows, collaboration, and measurable productivity.",
+    "suitable_tones": ["premium", "minimal", "warm"],
+    "suitable_categories": ["web_saas", "productivity", "analytics", "crm", "collaboration"],
+    "scene_count_range": [4, 5],
+    "duration_seconds_range": [16.0, 22.0],
+    "scene_blueprints": [
+      {
+        "role": "hook",
+        "target_duration": 3.5,
+        "allowed_layouts": ["hero-type"],
+        "allowed_motion": ["minimal", "smooth"],
+        "vo_instruction": "Contrast messy legacy workflows with the clarity of unified software."
+      },
+      {
+        "role": "feature",
+        "target_duration": 4.5,
+        "allowed_layouts": ["browser", "split"],
+        "allowed_motion": ["smooth", "premium"],
+        "vo_instruction": "Introduce the unified workspace dashboard and core capability."
+      },
+      {
+        "role": "demo",
+        "target_duration": 4.5,
+        "allowed_layouts": ["browser", "phone"],
+        "allowed_motion": ["smooth"],
+        "vo_instruction": "Demonstrate real-time collaboration or automated pipeline in action."
+      },
+      {
+        "role": "proof",
+        "target_duration": 4.0,
+        "allowed_layouts": ["big-number", "split"],
+        "allowed_motion": ["punchy", "premium"],
+        "vo_instruction": "Highlight hours saved, ROI percentage, or verified enterprise adoption."
+      },
+      {
+        "role": "cta",
+        "target_duration": 3.5,
+        "allowed_layouts": ["cta"],
+        "allowed_motion": ["smooth", "punchy"],
+        "vo_instruction": "Invite teams to start their free workspace trial or request a demo."
+      }
+    ]
+  },
+  {
+    "id": "social_proof_first",
+    "name": "Social Proof First",
+    "description": "Community-led narrative starting with massive user adoption, viral creator momentum, or high ratings.",
+    "suitable_tones": ["playful", "warm", "bold"],
+    "suitable_categories": ["consumer_app", "social", "creator", "entertainment", "mobile_app"],
+    "scene_count_range": [4, 5],
+    "duration_seconds_range": [15.0, 20.0],
+    "scene_blueprints": [
+      {
+        "role": "proof",
+        "target_duration": 3.5,
+        "allowed_layouts": ["big-number", "hero-type"],
+        "allowed_motion": ["punchy", "playful"],
+        "vo_instruction": "Lead with a staggering community number or user satisfaction rating."
+      },
+      {
+        "role": "demo",
+        "target_duration": 4.5,
+        "allowed_layouts": ["phone", "split"],
+        "allowed_motion": ["playful", "smooth"],
+        "vo_instruction": "Show how fun, effortless, or joyful the app feed and interaction feels."
+      },
+      {
+        "role": "feature",
+        "target_duration": 4.0,
+        "allowed_layouts": ["phone", "split"],
+        "allowed_motion": ["smooth", "punchy"],
+        "vo_instruction": "Spotlight the signature feature that makes users share it with friends."
+      },
+      {
+        "role": "cta",
+        "target_duration": 3.5,
+        "allowed_layouts": ["cta"],
+        "allowed_motion": ["playful", "punchy"],
+        "vo_instruction": "Call to download on iOS and Android to join the movement today."
+      }
+    ]
+  },
+  {
+    "id": "minimal_aesthetic_reveal",
+    "name": "Minimal Aesthetic Reveal",
+    "description": "Understated design-first presentation with quiet confidence, spacious motion, and focus on craftsmanship.",
+    "suitable_tones": ["minimal", "premium"],
+    "suitable_categories": ["design", "hardware", "luxury", "lifestyle", "generic"],
+    "scene_count_range": [3, 4],
+    "duration_seconds_range": [10.0, 15.0],
+    "scene_blueprints": [
+      {
+        "role": "hook",
+        "target_duration": 3.0,
+        "allowed_layouts": ["hero-type"],
+        "allowed_motion": ["minimal"],
+        "vo_instruction": "State a timeless design philosophy in one clean, unadorned sentence."
+      },
+      {
+        "role": "feature",
+        "target_duration": 4.5,
+        "allowed_layouts": ["split", "browser"],
+        "allowed_motion": ["minimal", "premium"],
+        "vo_instruction": "Reveal the core detail, craftsmanship, or refined digital finish."
+      },
+      {
+        "role": "cta",
+        "target_duration": 3.5,
+        "allowed_layouts": ["cta"],
+        "allowed_motion": ["minimal"],
+        "vo_instruction": "Quiet, confident invitation to explore the collection."
+      }
+    ]
+  },
+  {
+    "id": "problem_agitate_solution",
+    "name": "Problem-Agitate-Solution",
+    "description": "Classic high-conversion direct response format suitable for any product with a clear problem and resolution.",
+    "suitable_tones": ["urgent", "bold", "playful", "technical", "warm", "premium", "minimal"],
+    "suitable_categories": ["generic"],
+    "scene_count_range": [4, 4],
+    "duration_seconds_range": [14.0, 18.0],
+    "scene_blueprints": [
+      {
+        "role": "hook",
+        "target_duration": 3.5,
+        "allowed_layouts": ["hero-type"],
+        "allowed_motion": ["punchy", "aggressive"],
+        "vo_instruction": "State the painful daily problem or friction point directly."
+      },
+      {
+        "role": "problem",
+        "target_duration": 4.5,
+        "allowed_layouts": ["split", "hero-type"],
+        "allowed_motion": ["punchy", "smooth"],
+        "vo_instruction": "Agitate the cost of continuing with broken workarounds."
+      },
+      {
+        "role": "demo",
+        "target_duration": 4.5,
+        "allowed_layouts": ["phone", "browser"],
+        "allowed_motion": ["smooth"],
+        "vo_instruction": "Reveal the product solving the bottleneck effortlessly."
+      },
+      {
+        "role": "cta",
+        "target_duration": 3.5,
+        "allowed_layouts": ["cta"],
+        "allowed_motion": ["punchy", "smooth"],
+        "vo_instruction": "Clear call to get started today."
+      }
+    ]
+  }
+]

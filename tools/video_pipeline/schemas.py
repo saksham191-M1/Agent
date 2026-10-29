@@ -58,6 +58,31 @@ class ProductProfile(BaseModel):
 
 
 # ──────────────────────────────────────────────────────────────────────────────
+# Phase 4: Narrative Arc Schema
+# ──────────────────────────────────────────────────────────────────────────────
+
+class SceneBlueprint(BaseModel):
+    model_config = ConfigDict(extra="ignore")
+    role: str = Field(..., description="hook | problem | feature | demo | proof | cta | pricing")
+    target_duration: float = Field(..., ge=1.5, le=10.0)
+    allowed_layouts: List[str] = Field(default_factory=list)
+    allowed_motion: List[str] = Field(default_factory=list)
+    vo_instruction: str = Field(...)
+
+
+class NarrativeArc(BaseModel):
+    model_config = ConfigDict(extra="ignore")
+    id: str
+    name: str
+    description: str
+    suitable_tones: List[ToneEnum]
+    suitable_categories: List[str]
+    scene_count_range: List[int] = Field(..., description="[min_scenes, max_scenes]")
+    duration_seconds_range: List[float] = Field(..., description="[min_sec, max_sec]")
+    scene_blueprints: List[SceneBlueprint]
+
+
+# ──────────────────────────────────────────────────────────────────────────────
 # Phase 5: Storyboard Schema
 # ──────────────────────────────────────────────────────────────────────────────
 
