@@ -17,7 +17,7 @@
       "effect": "phrase_flash",
       "words": [
         "ENDLESS QUEUES",
-        "INDIA'S ONLINE SHOPPING DESTINATION"
+        "INDIA KA APNA NAYA SHOPPING DESTINATION"
       ],
       "text": "ENDLESS QUEUES",
       "subtext": "Tired of weekend traffic, endless checkout queues, and shelves that are always o",
@@ -33,25 +33,39 @@
       ],
       "greeting": "Welcome to Flipkart",
       "prompt": "Switch to Flipkart. Over a hundred million genuine products ",
-      "search": "Search Flipkart...",
+      "search": "Search for products, brands and more",
       "items": [
         {
-          "label": "Flipkart SuperCoins",
-          "icon": "🚀"
-        },
-        {
-          "label": "Flipkart Minutes",
+          "label": "SuperCoins",
           "icon": "⚡"
         },
         {
-          "label": "Big Billion Days",
+          "label": "Minutes",
           "icon": "🎯"
         },
         {
           "label": "Flipkart Plus",
           "icon": "✨"
+        },
+        {
+          "label": "Big Billion Deals",
+          "icon": "🔥"
         }
-      ]
+      ],
+      "navTabs": [
+        "Home",
+        "Categories",
+        "Notifications",
+        "Account"
+      ],
+      "headerBg": "#2874F0",
+      "headerColor": "#FFFFFF",
+      "badges": [
+        "Flipkart Assured",
+        "Free Delivery",
+        "Top Rated"
+      ],
+      "screenType": "grid"
     },
     {
       "id": "node_phone_2",
@@ -61,27 +75,46 @@
         0,
         0
       ],
-      "greeting": "Welcome to Flipkart",
+      "greeting": "Checkout • Flipkart",
       "prompt": "Tap to purchase with instant payment options, zero-cost EMI,",
-      "search": "Search Flipkart...",
+      "search": "Search for products, brands and more",
       "items": [
         {
-          "label": "Flipkart SuperCoins",
-          "icon": "🚀"
-        },
-        {
-          "label": "Flipkart Minutes",
+          "label": "SuperCoins",
           "icon": "⚡"
         },
         {
-          "label": "Big Billion Days",
+          "label": "Minutes",
           "icon": "🎯"
         },
         {
           "label": "Flipkart Plus",
           "icon": "✨"
+        },
+        {
+          "label": "Big Billion Deals",
+          "icon": "🔥"
         }
-      ]
+      ],
+      "navTabs": [
+        "Home",
+        "Categories",
+        "Notifications",
+        "Account"
+      ],
+      "headerBg": "#2874F0",
+      "headerColor": "#FFFFFF",
+      "badges": [
+        "Flipkart Assured",
+        "Free Delivery",
+        "Top Rated"
+      ],
+      "screenType": "checkout",
+      "priceInfo": {
+        "currentPrice": "₹1,499",
+        "originalPrice": "₹4,999",
+        "discount": "70% OFF"
+      }
     },
     {
       "id": "node_cta_3",

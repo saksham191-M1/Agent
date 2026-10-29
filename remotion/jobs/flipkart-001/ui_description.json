@@ -1,0 +1,45 @@
+{
+  "header": {
+    "bg": "#2874F0",
+    "navLinks": [
+      "Home",
+      "Categories",
+      "Notifications",
+      "Account"
+    ]
+  },
+  "searchBar": {
+    "placeholder": "Search for products, brands and more",
+    "bg": "#FFFFFF"
+  },
+  "card_style": {
+    "bg": "#FFFFFF",
+    "radius": 8,
+    "shadow": "0 2px 8px rgba(0,0,0,0.08)"
+  },
+  "price_style": {
+    "color": "#212121",
+    "discountColor": "#388E3C",
+    "originalColor": "#878787"
+  },
+  "trust_badges": [
+    "Flipkart Assured",
+    "Free Delivery",
+    "Top Rated"
+  ],
+  "layout_type": "ecommerce_grid",
+  "brand_distinguishers": [
+    "SuperCoins",
+    "Minutes",
+    "Flipkart Plus",
+    "Big Billion Deals"
+  ],
+  "cta_buttons": [
+    {
+      "text": "Buy Now",
+      "bg": "#FB641B",
+      "color": "#FFFFFF"
+    }
+  ],
+  "_source": "dom"
+}

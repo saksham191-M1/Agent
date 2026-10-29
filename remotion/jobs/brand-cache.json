@@ -1007,5 +1007,56 @@
         "sourceUrl": "https://stripe.com"
       }
     ]
+  },
+  "flipkart.com": {
+    "name": "Online Shopping Site for Mobiles, Electronics, Furniture, Grocery, Lifestyle, Books & More. Best Offers!",
+    "domain": "flipkart.com",
+    "tagline": "Online Shopping Site for Mobiles, Electronics, Furniture, Grocery, Lifestyle, Books & More. Best Offers! — built for what's next.",
+    "description": "Online Shopping Site for Mobiles, Electronics, Furniture, Grocery, Lifestyle, Books & More. Best Offers! is a modern product trusted by millions.",
+    "products": [
+      "Online Shopping Site for Mobiles, Electronics, Furniture, Grocery, Lifestyle, Books & More. Best Offers!"
+    ],
+    "logo": {
+      "src": "jobs/flipkart-001/assets/logo.svg",
+      "text": "Online Shopping Site for Mobiles, Electronics, Furniture, Grocery, Lifestyle, Books & More. Best Offers!",
+      "alt": "Online Shopping Site for Mobiles, Electronics, Furniture, Grocery, Lifestyle, Books & More. Best Offers! Logo",
+      "source": "https://www.flipkart.com"
+    },
+    "colors": {
+      "accent": "#2874F0",
+      "accentLight": "#FFE11B",
+      "background": "#071026",
+      "background2": "#0F214D",
+      "text": "#09090B",
+      "muted": "#71717A",
+      "surface": "#0F214D",
+      "surfaceText": "#FFFFFF",
+      "surfaceMuted": "#6B7280"
+    },
+    "fonts": {
+      "display": {
+        "family": "Inter, system-ui, sans-serif",
+        "source": "Google Fonts"
+      },
+      "body": {
+        "family": "Inter, system-ui, sans-serif",
+        "source": "Google Fonts"
+      }
+    },
+    "imagery": [
+      {
+        "src": "jobs/flipkart-001/assets/studio-hero.png",
+        "alt": "Online Shopping Site for Mobiles, Electronics, Furniture, Grocery, Lifestyle, Books & More. Best Offers! product screenshot",
+        "source": "https://www.flipkart.com"
+      }
+    ],
+    "claims": [
+      {
+        "id": "product",
+        "label": "Online Shopping Site for Mobiles, Electronics, Furniture, Grocery, Lifestyle, Books & More. Best Offers!",
+        "value": "See it in action",
+        "sourceUrl": "https://www.flipkart.com"
+      }
+    ]
   }
 }

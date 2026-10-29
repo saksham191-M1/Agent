@@ -1,54 +1,54 @@
 {
   "name": "Flipkart",
   "domain": "flipkart.com",
-  "tagline": "India's Online Shopping Destination",
-  "description": "Shop electronics, fashion, home essentials, and groceries with fast doorstep delivery across India.",
+  "tagline": "India ka Apna Naya Shopping Destination",
+  "description": "Flipkart is India's leading online shopping destination offering millions of products with assured quality and fast delivery.",
   "products": [
-    "Flipkart SuperCoins",
-    "Flipkart Minutes",
-    "Big Billion Days",
-    "Flipkart Plus"
+    "SuperCoins",
+    "Minutes",
+    "Flipkart Plus",
+    "Big Billion Deals"
   ],
   "logo": {
     "src": "jobs/flipkart-001/assets/logo.svg",
     "text": "Flipkart",
     "alt": "Flipkart Logo",
-    "source": "https://flipkart.com"
+    "source": "https://www.flipkart.com"
   },
   "colors": {
     "accent": "#2874F0",
-    "accentLight": "#FFE500",
+    "accentLight": "#FFE11B",
     "background": "#071026",
     "background2": "#0F214D",
-    "surface": "#1E293B",
-    "surfaceText": "#F8FAFC",
-    "text": "#F8FAFC",
+    "text": "#F9FAFB",
     "muted": "#94A3B8",
-    "surfaceMuted": "#64748B"
+    "surface": "#0F214D",
+    "surfaceText": "#FFFFFF",
+    "surfaceMuted": "#6B7280"
   },
   "fonts": {
     "display": {
-      "family": "Inter",
+      "family": "Inter, system-ui, sans-serif",
       "source": "Google Fonts"
     },
     "body": {
-      "family": "Inter",
+      "family": "Inter, system-ui, sans-serif",
       "source": "Google Fonts"
     }
   },
-  "imagery": [],
+  "imagery": [
+    {
+      "src": "jobs/flipkart-001/assets/studio-hero.png",
+      "alt": "Flipkart product screenshot",
+      "source": "https://www.flipkart.com"
+    }
+  ],
   "claims": [
     {
-      "id": "customers",
-      "label": "Registered Users",
-      "value": "500M+",
-      "sourceUrl": "https://flipkart.com/about-us"
-    },
-    {
-      "id": "pincodes",
-      "label": "Pincodes Covered",
-      "value": "19000+",
-      "sourceUrl": "https://flipkart.com/about-us"
+      "id": "product",
+      "label": "Flipkart",
+      "value": "India's Best Deals",
+      "sourceUrl": "https://www.flipkart.com"
     }
   ]
 }

@@ -5,14 +5,14 @@
   "durationSec": 16,
   "bpm": 120,
   "palette": {
-    "background": "#071026",
-    "background2": "#0F214D",
+    "background": "#0B1020",
+    "background2": "#151B33",
     "surface": "#1E293B",
     "surfaceText": "#F8FAFC",
     "text": "#F8FAFC",
     "muted": "#94A3B8",
-    "accent": "#2874F0",
-    "accentLight": "#FFE500",
+    "accent": "#6C5CE7",
+    "accentLight": "#B9B0FF",
     "secondary": "#38BDF8",
     "isLightTheme": false
   },
@@ -45,8 +45,8 @@
       "duration": 4,
       "layout": "hero-type",
       "headline": "ENDLESS QUEUES",
-      "subline": "Tired of weekend traffic and shelves that are always out of stock",
-      "caption": "Frustrated shoppers in retail queues",
+      "subline": "Tired of weekend traffic, endless checkout queues, and shelves that are always",
+      "caption": "Cinematic tracking shot pushing slowly through",
       "captionWords": [
         {
           "word": "Tired",
@@ -154,8 +154,8 @@
       "duration": 5,
       "layout": "phone",
       "headline": "SMARTER SHOPPING",
-      "subline": "Switch to Flipkart for millions of verified products right away",
-      "caption": "Explore millions of genuine products",
+      "subline": "Switch to Flipkart. Over a hundred million genuine products and verified reviews",
+      "caption": "Photorealistic 3D render of the Flipkart",
       "captionWords": [
         {
           "word": "Switch",
@@ -278,8 +278,8 @@
       "duration": 4,
       "layout": "phone",
       "headline": "INSTANT CHECKOUT",
-      "subline": "Tap to purchase with instant payment options and live tracking",
-      "caption": "Instant checkout with live tracking",
+      "subline": "Tap to purchase with instant payment options, zero-cost EMI, and live real-time",
+      "caption": "Isometric close-up of the Flipkart app",
       "captionWords": [
         {
           "word": "Tap",
@@ -392,8 +392,8 @@
       "duration": 3,
       "layout": "cta",
       "headline": "DELIVERED TO YOUR DOOR",
-      "subline": "Superfast doorstep delivery across India. Download Flipkart today.",
-      "caption": "Superfast doorstep delivery across India",
+      "subline": "Superfast doorstep delivery across India. Download Flipkart and upgrade your shopping today.",
+      "caption": "Cinematic premium delivery handoff at a",
       "captionWords": [
         {
           "word": "Superfast",
@@ -489,19 +489,14 @@
   "audio": {
     "assetsRoot": "jobs/flipkart-001/assets",
     "voice": {
-      "provider": "elevenlabs",
-      "voiceId": "EXAVITQu4vr4xnSDxMaL",
-      "model": "eleven_multilingual_v2",
-      "clips": {
-        "scene_1": "audio/vo-s1.mp3",
-        "scene_2": "audio/vo-s2.mp3",
-        "scene_3": "audio/vo-s3.mp3",
-        "scene_4": "audio/vo-s4.mp3"
-      }
+      "provider": "none",
+      "voiceId": "none",
+      "model": "none",
+      "clips": {}
     },
     "music": {
       "file": "",
-      "mood": "electronic_upbeat",
+      "mood": "none",
       "volume": 0
     },
     "room": {
@@ -513,6 +508,6 @@
       "tick": "audio/tick.wav",
       "pop": "audio/pop.wav"
     },
-    "duck": 18
+    "duck": 12
   }
 }
