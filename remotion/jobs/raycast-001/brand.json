@@ -1,0 +1,53 @@
+{
+  "name": "Raycast",
+  "domain": "raycast.com",
+  "tagline": "Supercharged Productivity",
+  "description": "Raycast is a blazingly fast, totally extensible launcher. It keeps you focused and streamlines your workflow with AI, scripts, and hotkeys in milliseconds.",
+  "products": [
+    "AI Commands",
+    "Clipboard History",
+    "Developer Extensions"
+  ],
+  "logo": {
+    "src": "jobs/raycast-001/assets/logo.png",
+    "text": "Raycast",
+    "alt": "Raycast Logo",
+    "source": "https://raycast.com"
+  },
+  "colors": {
+    "accent": "#FF6363",
+    "accentLight": "#FF8787",
+    "background": "#0A0C10",
+    "background2": "#141820",
+    "surface": "#161922",
+    "surfaceText": "#FFFFFF",
+    "text": "#F8FAFC",
+    "muted": "#94A3B8",
+    "surfaceMuted": "#64748B"
+  },
+  "fonts": {
+    "display": {
+      "family": "Inter, sans-serif",
+      "source": "Google Fonts"
+    },
+    "body": {
+      "family": "Inter, sans-serif",
+      "source": "Google Fonts"
+    }
+  },
+  "imagery": [],
+  "claims": [
+    {
+      "id": "speed",
+      "label": "Execution Velocity",
+      "value": "Launch tools in under 12 milliseconds",
+      "sourceUrl": "https://raycast.com"
+    },
+    {
+      "id": "extensibility",
+      "label": "Developer Ecosystem",
+      "value": "Over 1,000 community extensions",
+      "sourceUrl": "https://raycast.com"
+    }
+  ]
+}

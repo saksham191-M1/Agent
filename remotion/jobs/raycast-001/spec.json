@@ -1,0 +1,85 @@
+{
+  "brand": "Raycast",
+  "format": "9:16",
+  "fps": 60,
+  "durationSec": 12,
+  "bpm": 128,
+  "palette": {
+    "background": "#0A0C10",
+    "background2": "#141820",
+    "surface": "#161922",
+    "surfaceText": "#FFFFFF",
+    "text": "#F8FAFC",
+    "muted": "#94A3B8",
+    "accent": "#FF6363",
+    "accentLight": "#FF8787",
+    "secondary": "#38BDF8",
+    "isLightTheme": false
+  },
+  "scenes": [
+    {
+      "id": "scene_1",
+      "start": 0,
+      "duration": 12,
+      "layout": "hero-type",
+      "headline": "SUPERCHARGED PRODUCTIVITY",
+      "subline": "Launch tools in under 12 milliseconds with AI and hotkeys.",
+      "caption": "Lightning-fast launcher built for speed",
+      "captionWords": [
+        {"word": "Supercharged", "start": 0, "end": 20},
+        {"word": "productivity", "start": 20, "end": 45},
+        {"word": "in", "start": 45, "end": 60},
+        {"word": "milliseconds", "start": 60, "end": 90}
+      ],
+      "visual": {
+        "kicker": "Raycast",
+        "pulseText": "fast_zoom"
+      },
+      "motion": {
+        "enter": "type-slam",
+        "idle": "slow_sway",
+        "exit": "fade_up"
+      },
+      "vo": "",
+      "sfx": [
+        {"t": 0.05, "type": "whoosh", "gain": 0.7},
+        {"t": 0.3, "type": "pop", "gain": 0.8},
+        {"t": 2.2, "type": "click", "gain": 0.7},
+        {"t": 2.5, "type": "click", "gain": 0.7},
+        {"t": 2.8, "type": "click", "gain": 0.7},
+        {"t": 3.2, "type": "pop", "gain": 0.85},
+        {"t": 4.8, "type": "whoosh", "gain": 0.75},
+        {"t": 5.4, "type": "click", "gain": 0.9},
+        {"t": 7.2, "type": "tick", "gain": 0.8},
+        {"t": 9.8, "type": "logo-sting", "gain": 0.9}
+      ],
+      "transitionOut": "cross_zoom"
+    }
+  ],
+  "audio": {
+    "assetsRoot": "jobs/raycast-001/assets",
+    "voice": {
+      "provider": "none",
+      "voiceId": "none",
+      "model": "none",
+      "clips": {}
+    },
+    "music": {
+      "file": "audio/music-bed.mp3",
+      "mood": "fast kinetic electronic",
+      "volume": 0.9
+    },
+    "room": {
+      "file": "audio/room-tone.wav",
+      "volume": 0.1
+    },
+    "sfxFiles": {
+      "whoosh": "audio/whoosh.wav",
+      "pop": "audio/pop.wav",
+      "click": "audio/click.wav",
+      "tick": "audio/tick.wav",
+      "logo-sting": "audio/logo-sting.wav"
+    },
+    "duck": 0.3
+  }
+}
