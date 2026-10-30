@@ -7,10 +7,10 @@
   "palette": {
     "background": "#FAFAFA",
     "background2": "#F4F4F5",
-    "surface": "#F4F4F5",
-    "surfaceText": "#09090B",
-    "text": "#09090B",
-    "muted": "#71717A",
+    "surface": "#1E293B",
+    "surfaceText": "#F8FAFC",
+    "text": "#F8FAFC",
+    "muted": "#94A3B8",
     "accent": "hsl(152, 75%, 52%)",
     "accentLight": "hsl(152, 75%, 52%)",
     "secondary": "#38BDF8",
@@ -103,14 +103,14 @@
       "vo": "",
       "sfx": [
         {
-          "t": 0.1,
-          "type": "pop",
-          "gain": 0.85
+          "t": 0.04,
+          "type": "whoosh",
+          "gain": 0.45
         },
         {
-          "t": 2.52,
+          "t": 2.8,
           "type": "tick",
-          "gain": 0.6
+          "gain": 0.45
         }
       ],
       "transitionOut": "wipe"
@@ -197,24 +197,14 @@
       "vo": "",
       "sfx": [
         {
-          "t": 0.1,
-          "type": "pop",
-          "gain": 0.85
+          "t": 0.04,
+          "type": "whoosh",
+          "gain": 0.45
         },
         {
-          "t": 1.4,
-          "type": "tick",
-          "gain": 0.55
-        },
-        {
-          "t": 2.6,
+          "t": 0.9,
           "type": "click",
-          "gain": 0.7
-        },
-        {
-          "t": 3.4,
-          "type": "tick",
-          "gain": 0.55
+          "gain": 0.8
         }
       ],
       "transitionOut": "carousel_glide"
@@ -306,24 +296,14 @@
       "vo": "",
       "sfx": [
         {
-          "t": 0.1,
-          "type": "pop",
-          "gain": 0.85
+          "t": 0.04,
+          "type": "whoosh",
+          "gain": 0.45
         },
         {
-          "t": 1.4,
-          "type": "tick",
-          "gain": 0.55
-        },
-        {
-          "t": 2.6,
+          "t": 0.9,
           "type": "click",
-          "gain": 0.7
-        },
-        {
-          "t": 3.4,
-          "type": "tick",
-          "gain": 0.55
+          "gain": 0.8
         }
       ],
       "transitionOut": "wipe"
@@ -390,26 +370,26 @@
       "vo": "",
       "sfx": [
         {
-          "t": 0.1,
+          "t": 0.16,
           "type": "pop",
-          "gain": 0.85
+          "gain": 0.55
         },
         {
-          "t": 1.58,
-          "type": "click",
-          "gain": 0.75
+          "t": 0.2,
+          "type": "riser",
+          "gain": 0.45
         },
         {
-          "t": 2.98,
-          "type": "pop",
-          "gain": 0.8
+          "t": 2.8,
+          "type": "logo-sting",
+          "gain": 0.6
         }
       ],
       "transitionOut": "none"
     }
   ],
   "audio": {
-    "assetsRoot": "jobs/zerodha-002/assets",
+    "assetsRoot": "jobs//assets",
     "voice": {
       "provider": "none",
       "voiceId": "none",
@@ -428,7 +408,13 @@
     "sfxFiles": {
       "click": "audio/click.wav",
       "tick": "audio/tick.wav",
-      "pop": "audio/pop.wav"
+      "pop": "audio/pop.wav",
+      "pop2": "audio/pop2.wav",
+      "whoosh": "audio/whoosh.wav",
+      "swipe": "audio/swipe.wav",
+      "riser": "audio/riser.wav",
+      "success": "audio/success.wav",
+      "logo-sting": "audio/logo-sting.wav"
     },
     "duck": 12
   }

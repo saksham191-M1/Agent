@@ -13,14 +13,14 @@
       "dialogue": "",
       "sfx": [
         {
-          "t": 0.1,
-          "type": "pop",
-          "gain": 0.85
+          "t": 0.04,
+          "type": "whoosh",
+          "gain": 0.45
         },
         {
-          "t": 2.52,
+          "t": 2.8,
           "type": "tick",
-          "gain": 0.6
+          "gain": 0.45
         }
       ],
       "transitionOut": "wipe",
@@ -39,24 +39,14 @@
       "dialogue": "",
       "sfx": [
         {
-          "t": 0.1,
-          "type": "pop",
-          "gain": 0.85
+          "t": 0.04,
+          "type": "whoosh",
+          "gain": 0.45
         },
         {
-          "t": 1.4,
-          "type": "tick",
-          "gain": 0.55
-        },
-        {
-          "t": 2.6,
+          "t": 0.9,
           "type": "click",
-          "gain": 0.7
-        },
-        {
-          "t": 3.4,
-          "type": "tick",
-          "gain": 0.55
+          "gain": 0.8
         }
       ],
       "transitionOut": "carousel_glide",
@@ -75,24 +65,14 @@
       "dialogue": "",
       "sfx": [
         {
-          "t": 0.1,
-          "type": "pop",
-          "gain": 0.85
+          "t": 0.04,
+          "type": "whoosh",
+          "gain": 0.45
         },
         {
-          "t": 1.4,
-          "type": "tick",
-          "gain": 0.55
-        },
-        {
-          "t": 2.6,
+          "t": 0.9,
           "type": "click",
-          "gain": 0.7
-        },
-        {
-          "t": 3.4,
-          "type": "tick",
-          "gain": 0.55
+          "gain": 0.8
         }
       ],
       "transitionOut": "wipe",
@@ -111,19 +91,19 @@
       "dialogue": "",
       "sfx": [
         {
-          "t": 0.1,
+          "t": 0.16,
           "type": "pop",
-          "gain": 0.85
+          "gain": 0.55
         },
         {
-          "t": 1.58,
-          "type": "click",
-          "gain": 0.75
+          "t": 0.2,
+          "type": "riser",
+          "gain": 0.45
         },
         {
-          "t": 2.98,
-          "type": "pop",
-          "gain": 0.8
+          "t": 2.8,
+          "type": "logo-sting",
+          "gain": 0.6
         }
       ],
       "transitionOut": "none",

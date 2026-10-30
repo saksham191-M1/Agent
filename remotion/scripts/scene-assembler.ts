@@ -27,6 +27,7 @@ import type {BrandJson} from '../engine/types';
 import {MOTION_RULES} from '../engine/motion/motion-rules';
 import {loadUIDescription, buildNodeFromUIDescription} from './ui-description-to-node';
 import {validateStoryboardSpec} from './spec-schema';
+import {buildAudioSpec} from './lib/audio-spec';
 
 // ─────────────────────────────────────────────────────────────────────────────
 // Luminance-based light/dark detection (handles hex + hsl)
@@ -519,43 +520,56 @@ export function assembleScenes(opts: AssembleOptions): {uiTree: UITree; spec: an
     });
   }
 
-  function generateSceneSfx(sceneIdx: number, durationSec: number, totalScenes: number, musicMood: string) {
+  function generateSceneSfx(
+    node: VectorNode,
+    sceneIdx: number,
+    durationSec: number,
+    totalScenes: number,
+    musicMood: string,
+    transition: string,
+    fps: number
+  ) {
     const cues: Array<{t: number; type: string; gain?: number}> = [];
 
     // Determine energy tier from storyboard music mood
     const isHighEnergy = /high_energy|upbeat|energetic|intense|hype|fast/.test(musicMood);
     const isCalm       = /calm|ambient|minimal|serene|gentle|slow|precise/.test(musicMood);
 
-    // High-energy: snappier, earlier, louder cues; Calm: sparse, delayed, softer
-    const openGain  = isHighEnergy ? 0.90 : isCalm ? 0.55 : 0.85;
-    const midGain   = isHighEnergy ? 0.80 : isCalm ? 0.50 : 0.70;
-    const closeGain = isHighEnergy ? 0.85 : isCalm ? 0.45 : 0.80;
-
-    const openT     = isHighEnergy ? 0.05 : isCalm ? 0.18 : 0.10;
-
-    cues.push({t: openT, type: 'pop', gain: openGain});
-
-    if (sceneIdx === 0) {
-      const tickT = isHighEnergy ? 0.60 : isCalm ? 0.80 : 0.72;
-      cues.push({t: Math.round(durationSec * tickT * 100) / 100, type: 'tick', gain: midGain});
-    } else if (sceneIdx === totalScenes - 1) {
-      const click1T = isHighEnergy ? 0.35 : isCalm ? 0.55 : 0.45;
-      const pop2T   = isHighEnergy ? 0.75 : isCalm ? 0.90 : 0.85;
-      cues.push({t: Math.round(durationSec * click1T * 100) / 100, type: 'click', gain: midGain});
-      cues.push({t: Math.round(durationSec * pop2T   * 100) / 100, type: 'pop',   gain: closeGain});
+    // 1. Entry Sound: transitions like wipe/carousel get whoosh/swipe; others get an entry pop
+    if (transition === 'wipe' || transition === 'carousel_glide') {
+      cues.push({t: 0.04, type: 'whoosh', gain: isHighEnergy ? 0.70 : 0.45});
     } else {
-      const t1 = isHighEnergy ? 0.25 : isCalm ? 0.45 : 0.35;
-      const t2 = isHighEnergy ? 0.55 : isCalm ? 0.75 : 0.65;
-      // High-energy scenes get a third cue; calm scenes only get two
-      if (!isCalm) {
-        const t3 = isHighEnergy ? 0.80 : 0.85;
-        cues.push({t: Math.round(durationSec * t1 * 100) / 100, type: 'tick',  gain: midGain});
-        cues.push({t: Math.round(durationSec * t2 * 100) / 100, type: 'click', gain: midGain});
-        cues.push({t: Math.round(durationSec * t3 * 100) / 100, type: 'tick',  gain: closeGain});
-      } else {
-        cues.push({t: Math.round(durationSec * t1 * 100) / 100, type: 'tick',  gain: midGain});
-        cues.push({t: Math.round(durationSec * t2 * 100) / 100, type: 'click', gain: closeGain});
-      }
+      const openGain = isHighEnergy ? 0.90 : isCalm ? 0.55 : 0.85;
+      const openT    = isHighEnergy ? 0.05 : isCalm ? 0.16 : 0.10;
+      cues.push({t: openT, type: 'pop', gain: openGain});
+    }
+
+    // 2. Action-Synchronized SFX: Browser Mockup with interactive cursor click
+    if (node.type === 'browser_mockup' && (node as any).showCursor) {
+      // Cursor click fires at frame 54 in BrowserMockup.tsx (54 / 60 = 0.90s)
+      const clickSec = Math.round((54 / fps) * 100) / 100;
+      cues.push({t: clickSec, type: 'click', gain: 0.80});
+    }
+
+    // 3. Action-Synchronized SFX: Phone Mockup search input typing
+    if (node.type === 'phone_mockup' && (node as any).search) {
+      cues.push({t: Math.round(durationSec * 0.35 * 100) / 100, type: 'tick', gain: 0.40});
+      cues.push({t: Math.round(durationSec * 0.50 * 100) / 100, type: 'tick', gain: 0.45});
+    }
+
+    // 4. Action-Synchronized SFX: Metric Reveal
+    if (node.type === 'metric_card' || node.type === 'chart') {
+      cues.push({t: Math.round(durationSec * 0.40 * 100) / 100, type: 'pop2', gain: 0.75});
+      cues.push({t: Math.round(durationSec * 0.85 * 100) / 100, type: 'success', gain: 0.55});
+    }
+
+    // 5. Final CTA Climax (Riser into Logo Sting)
+    if (sceneIdx === totalScenes - 1) {
+      cues.push({t: 0.20, type: 'riser', gain: isCalm ? 0.45 : 0.65});
+      cues.push({t: Math.round(Math.max(0.6, durationSec - 0.7) * 100) / 100, type: 'logo-sting', gain: isCalm ? 0.60 : 0.85});
+    } else if (sceneIdx === 0) {
+      const tickT = isHighEnergy ? 0.60 : isCalm ? 0.80 : 0.72;
+      cues.push({t: Math.round(durationSec * tickT * 100) / 100, type: 'tick', gain: isCalm ? 0.45 : 0.60});
     }
 
     return cues;
@@ -604,7 +618,7 @@ export function assembleScenes(opts: AssembleOptions): {uiTree: UITree; spec: an
         exit: 'carousel_glide',
       },
       vo: '',
-      sfx: generateSceneSfx(idx, dur, scenes.length, musicMood),
+      sfx: generateSceneSfx(activeNode, idx, dur, scenes.length, musicMood, transition, fps),
       transitionOut: transition,
     };
     elapsed += dur;
@@ -640,18 +654,31 @@ export function assembleScenes(opts: AssembleOptions): {uiTree: UITree; spec: an
       aesthetic,
     },
     scenes: specScenes,
-    audio: {
-      assetsRoot: `jobs/${jobId}/assets`,
-      voice:  {provider: 'none', voiceId: 'none', model: 'none', clips: {}},
-      music:  {file: 'audio/music-bed.mp3', mood: storyboard.music_mood || 'cinematic_beat', volume: 0.18},
-      room:   {file: 'audio/room-tone.wav', volume: 0.05},
-      sfxFiles: {
-        click: 'audio/click.wav',
-        tick:  'audio/tick.wav',
-        pop:   'audio/pop.wav',
-      },
-      duck: Math.min(12, totalSec),
-    },
+    audio: (() => {
+      buildAudioSpec({
+        jobId,
+        musicMood: storyboard.music_mood,
+        category,
+      });
+      return {
+        assetsRoot: `jobs/${jobId}/assets`,
+        voice:  {provider: 'none', voiceId: 'none', model: 'none', clips: {}},
+        music:  {file: 'audio/music-bed.mp3', mood: storyboard.music_mood || 'cinematic_beat', volume: 0.18},
+        room:   {file: 'audio/room-tone.wav', volume: 0.05},
+        sfxFiles: {
+          click: 'audio/click.wav',
+          tick:  'audio/tick.wav',
+          pop:   'audio/pop.wav',
+          pop2:  'audio/pop2.wav',
+          whoosh: 'audio/whoosh.wav',
+          swipe: 'audio/swipe.wav',
+          riser: 'audio/riser.wav',
+          success: 'audio/success.wav',
+          'logo-sting': 'audio/logo-sting.wav',
+        },
+        duck: Math.min(12, totalSec),
+      };
+    })(),
   };
 
   // Compile shots for schema-compliant storyboard.json

@@ -36,50 +36,46 @@
       "search": "Search Zomato...",
       "items": [
         {
+          "label": "Account",
+          "icon": "📦"
+        },
+        {
+          "label": "Offers",
+          "icon": "📍"
+        },
+        {
           "label": "Food delivery",
-          "icon": "🚀"
+          "icon": "🔔"
         },
         {
           "label": "Dining out",
-          "icon": "⚡"
-        },
-        {
-          "label": "Discover",
-          "icon": "🎯"
-        },
-        {
-          "label": "Orders",
-          "icon": "✨"
+          "icon": "⭐"
         }
       ]
     },
     {
-      "id": "node_phone_2",
-      "type": "phone_mockup",
+      "id": "node_bento_2",
+      "type": "bento_grid",
       "position3D": [
         0,
         0,
         0
       ],
-      "greeting": "Welcome to Zomato",
-      "prompt": "Our delivery network is optimized to get your food to you fa",
-      "search": "Search Zomato...",
-      "items": [
+      "columns": 2,
+      "cards": [
         {
-          "label": "Food delivery",
-          "icon": "🚀"
+          "id": "bento_0",
+          "title": "Food delivery",
+          "subtitle": "Our delivery network is optimized to get",
+          "icon": "📦",
+          "colSpan": 2
         },
         {
-          "label": "Dining out",
-          "icon": "⚡"
-        },
-        {
-          "label": "Discover",
-          "icon": "🎯"
-        },
-        {
-          "label": "Orders",
-          "icon": "✨"
+          "id": "bento_1",
+          "title": "Dining out",
+          "subtitle": "Our delivery network is optimized to get",
+          "icon": "📍",
+          "colSpan": 1
         }
       ]
     },
@@ -95,7 +91,7 @@
       "words": [
         "ORDER ON ZOMATO",
         "ZOMATO",
-        "TRY FOR FREE"
+        "ORDER ON ZOMATO"
       ],
       "text": "ORDER ON ZOMATO",
       "subtext": "Download Zomato and get your next meal in minutes.",

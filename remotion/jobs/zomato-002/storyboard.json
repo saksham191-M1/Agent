@@ -13,12 +13,12 @@
       "dialogue": "",
       "sfx": [
         {
-          "t": 0.1,
-          "type": "pop",
-          "gain": 0.85
+          "t": 0.04,
+          "type": "whoosh",
+          "gain": 0.7
         },
         {
-          "t": 2.52,
+          "t": 2.1,
           "type": "tick",
           "gain": 0.6
         }
@@ -39,24 +39,19 @@
       "dialogue": "",
       "sfx": [
         {
-          "t": 0.1,
-          "type": "pop",
-          "gain": 0.85
+          "t": 0.04,
+          "type": "whoosh",
+          "gain": 0.7
         },
         {
           "t": 1.58,
           "type": "tick",
-          "gain": 0.55
+          "gain": 0.4
         },
         {
-          "t": 2.93,
-          "type": "click",
-          "gain": 0.7
-        },
-        {
-          "t": 3.83,
+          "t": 2.25,
           "type": "tick",
-          "gain": 0.55
+          "gain": 0.45
         }
       ],
       "transitionOut": "wipe",
@@ -75,24 +70,9 @@
       "dialogue": "",
       "sfx": [
         {
-          "t": 0.1,
+          "t": 0.05,
           "type": "pop",
-          "gain": 0.85
-        },
-        {
-          "t": 1.4,
-          "type": "tick",
-          "gain": 0.55
-        },
-        {
-          "t": 2.6,
-          "type": "click",
-          "gain": 0.7
-        },
-        {
-          "t": 3.4,
-          "type": "tick",
-          "gain": 0.55
+          "gain": 0.9
         }
       ],
       "transitionOut": "cross_zoom",
@@ -111,19 +91,19 @@
       "dialogue": "",
       "sfx": [
         {
-          "t": 0.1,
+          "t": 0.05,
           "type": "pop",
+          "gain": 0.9
+        },
+        {
+          "t": 0.2,
+          "type": "riser",
+          "gain": 0.65
+        },
+        {
+          "t": 3.3,
+          "type": "logo-sting",
           "gain": 0.85
-        },
-        {
-          "t": 1.8,
-          "type": "click",
-          "gain": 0.75
-        },
-        {
-          "t": 3.4,
-          "type": "pop",
-          "gain": 0.8
         }
       ],
       "transitionOut": "none",

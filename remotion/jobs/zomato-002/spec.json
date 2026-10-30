@@ -10,11 +10,11 @@
     "surface": "#f7f8fa",
     "surfaceText": "#182530",
     "text": "#f7f8fa",
-    "muted": "#9eacb8",
+    "muted": "#6B7280",
     "accent": "#E23744",
     "accentLight": "#F06D76",
     "secondary": "#FF5A1F",
-    "isLightTheme": false
+    "isLightTheme": true
   },
   "mlMatch": {
     "category": "MOTION",
@@ -113,12 +113,12 @@
       "vo": "",
       "sfx": [
         {
-          "t": 0.1,
-          "type": "pop",
-          "gain": 0.85
+          "t": 0.04,
+          "type": "whoosh",
+          "gain": 0.7
         },
         {
-          "t": 2.52,
+          "t": 2.1,
           "type": "tick",
           "gain": 0.6
         }
@@ -197,24 +197,19 @@
       "vo": "",
       "sfx": [
         {
-          "t": 0.1,
-          "type": "pop",
-          "gain": 0.85
+          "t": 0.04,
+          "type": "whoosh",
+          "gain": 0.7
         },
         {
           "t": 1.58,
           "type": "tick",
-          "gain": 0.55
+          "gain": 0.4
         },
         {
-          "t": 2.93,
-          "type": "click",
-          "gain": 0.7
-        },
-        {
-          "t": 3.83,
+          "t": 2.25,
           "type": "tick",
-          "gain": 0.55
+          "gain": 0.45
         }
       ],
       "transitionOut": "wipe"
@@ -311,24 +306,9 @@
       "vo": "",
       "sfx": [
         {
-          "t": 0.1,
+          "t": 0.05,
           "type": "pop",
-          "gain": 0.85
-        },
-        {
-          "t": 1.4,
-          "type": "tick",
-          "gain": 0.55
-        },
-        {
-          "t": 2.6,
-          "type": "click",
-          "gain": 0.7
-        },
-        {
-          "t": 3.4,
-          "type": "tick",
-          "gain": 0.55
+          "gain": 0.9
         }
       ],
       "transitionOut": "cross_zoom"
@@ -400,26 +380,26 @@
       "vo": "",
       "sfx": [
         {
-          "t": 0.1,
+          "t": 0.05,
           "type": "pop",
+          "gain": 0.9
+        },
+        {
+          "t": 0.2,
+          "type": "riser",
+          "gain": 0.65
+        },
+        {
+          "t": 3.3,
+          "type": "logo-sting",
           "gain": 0.85
-        },
-        {
-          "t": 1.8,
-          "type": "click",
-          "gain": 0.75
-        },
-        {
-          "t": 3.4,
-          "type": "pop",
-          "gain": 0.8
         }
       ],
       "transitionOut": "none"
     }
   ],
   "audio": {
-    "assetsRoot": "jobs/zomato-002/assets",
+    "assetsRoot": "jobs//assets",
     "voice": {
       "provider": "none",
       "voiceId": "none",
@@ -438,7 +418,13 @@
     "sfxFiles": {
       "click": "audio/click.wav",
       "tick": "audio/tick.wav",
-      "pop": "audio/pop.wav"
+      "pop": "audio/pop.wav",
+      "pop2": "audio/pop2.wav",
+      "whoosh": "audio/whoosh.wav",
+      "swipe": "audio/swipe.wav",
+      "riser": "audio/riser.wav",
+      "success": "audio/success.wav",
+      "logo-sting": "audio/logo-sting.wav"
     },
     "duck": 12
   }
