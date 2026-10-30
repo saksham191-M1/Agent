@@ -28,6 +28,31 @@ import {MOTION_RULES} from '../engine/motion/motion-rules';
 import {loadUIDescription, buildNodeFromUIDescription} from './ui-description-to-node';
 import {validateStoryboardSpec} from './spec-schema';
 
+// ─────────────────────────────────────────────────────────────────────────────
+// Luminance-based light/dark detection (handles hex + hsl)
+// ─────────────────────────────────────────────────────────────────────────────
+
+function isLightBackground(color?: string): boolean {
+  if (!color) return false;
+  const c = color.trim().toLowerCase();
+
+  // HSL: hsl(H, S%, L%)
+  const hslMatch = c.match(/hsl\s*\(\s*[\d.]+\s*,\s*[\d.]+%?\s*,\s*([\d.]+)%?\s*\)/);
+  if (hslMatch) {
+    return parseFloat(hslMatch[1]) > 55;
+  }
+
+  // Hex
+  if (c.startsWith('#') && c.length >= 7) {
+    const r = parseInt(c.slice(1, 3), 16);
+    const g = parseInt(c.slice(3, 5), 16);
+    const b = parseInt(c.slice(5, 7), 16);
+    return (0.299 * r + 0.587 * g + 0.114 * b) / 255 > 0.55;
+  }
+
+  return false;
+}
+
 // ──────────────────────────────────────────────────────────────────────────────
 // Product category detection
 // ──────────────────────────────────────────────────────────────────────────────
@@ -42,6 +67,38 @@ type ProductCategory =
   | 'ecommerce'
   | 'social'
   | 'generic';
+
+// ──────────────────────────────────────────────────────────────────────────────
+// Category-specific helpers: nav fallbacks + emoji icon sets
+// ──────────────────────────────────────────────────────────────────────────────
+
+function categoryFallbackNav(category: ProductCategory): string[] {
+  switch (category) {
+    case 'mobile_app':   return ['Browse', 'Track', 'Account', 'Offers'];
+    case 'ecommerce':    return ['Shop', 'Wishlist', 'Orders', 'Account'];
+    case 'social':       return ['Feed', 'Explore', 'Messages', 'Profile'];
+    case 'web_saas':     return ['Dashboard', 'Features', 'Team', 'Settings'];
+    case 'dev_tool':     return ['Overview', 'API', 'Deploy', 'Docs'];
+    case 'ai_agent':     return ['Chat', 'Projects', 'Integrations', 'Settings'];
+    case 'analytics':    return ['Insights', 'Reports', 'Goals', 'Settings'];
+    case 'creator':      return ['Trending', 'For You', 'Collections', 'Upload'];
+    default:             return ['Home', 'Features', 'About', 'Contact'];
+  }
+}
+
+function categoryIcons(category: ProductCategory): string[] {
+  switch (category) {
+    case 'mobile_app':   return ['📦', '📍', '🔔', '⭐'];
+    case 'ecommerce':    return ['🛍', '❤️', '🎁', '🏷'];
+    case 'social':       return ['💬', '♥️', '🔖', '👥'];
+    case 'fintech' as any:
+    case 'analytics':    return ['📊', '📈', '🔒', '💼'];
+    case 'dev_tool':     return ['⌨', '🔧', '📡', '📁'];
+    case 'ai_agent':     return ['🤖', '💡', '🔮', '⚡'];
+    case 'creator':      return ['▶', '🎬', '⭐', '📡'];
+    default:             return ['✦', '◈', '▸', '●'];
+  }
+}
 
 function detectCategory(brand: BrandJson, storyboardHints: string): ProductCategory {
   const text = `${brand.domain} ${brand.description} ${brand.products.join(' ')} ${storyboardHints}`.toLowerCase();
@@ -82,7 +139,11 @@ function makeHookNode(brand: BrandJson, scene: any, idx: number): VectorNode {
 function makeUINode(brand: BrandJson, scene: any, category: ProductCategory, idx: number): VectorNode {
   if (category === 'mobile_app' || category === 'social' || category === 'ecommerce') {
     // Phone mockup
-    const products = brand.products.length >= 4 ? brand.products : [...brand.products, 'Discover', 'Orders', 'Profile'];
+    const fallbackNav = categoryFallbackNav(category);
+    const icons = categoryIcons(category);
+    const products = brand.products.length >= 4
+      ? brand.products
+      : [...brand.products, ...fallbackNav].slice(0, 4);
     return {
       id: `node_phone_${idx}`,
       type: 'phone_mockup',
@@ -92,7 +153,7 @@ function makeUINode(brand: BrandJson, scene: any, category: ProductCategory, idx
       search: `Search ${brand.name}...`,
       items: products.slice(0, 4).map((p, i) => ({
         label: p,
-        icon: ['🚀', '⚡', '🎯', '✨'][i] || '•',
+        icon: icons[i] || '●',
       })),
     } as VectorNode;
   }
@@ -186,7 +247,32 @@ function makeMetricNode(brand: BrandJson, idx: number): VectorNode {
   } as VectorNode;
 }
 
-function makeCTANode(brand: BrandJson, scene: any, idx: number): VectorNode {
+function ctaCallToAction(brand: BrandJson, scene: any, category: ProductCategory): string {
+  // 1. Use storyboard kinetic_text if it looks like a CTA
+  const kineticUpper = (scene.kinetic_text || '').toUpperCase().trim();
+  if (kineticUpper && kineticUpper.split(' ').length <= 4) return kineticUpper;
+
+  // 2. Use the first short sentence from voiceover if it's imperative
+  const voiceover = (scene.voiceover || '').trim();
+  const imperativeMatch = voiceover.match(/^(Start|Get|Try|Join|Open|Build|Launch|Sign|Download)\b[^.!?]{0,30}/i);
+  if (imperativeMatch) return imperativeMatch[0].toUpperCase();
+
+  // 3. Category-appropriate default
+  switch (category) {
+    case 'mobile_app':   return 'DOWNLOAD FREE';
+    case 'ecommerce':    return 'SHOP NOW';
+    case 'social':       return 'JOIN TODAY';
+    case 'web_saas':     return 'START FREE TRIAL';
+    case 'dev_tool':     return 'GET STARTED FREE';
+    case 'ai_agent':     return 'TRY FOR FREE';
+    case 'analytics':    return 'SEE YOUR DATA';
+    case 'creator':      return 'START CREATING';
+    default:             return 'GET STARTED';
+  }
+}
+
+function makeCTANode(brand: BrandJson, scene: any, category: ProductCategory, idx: number): VectorNode {
+  const cta = ctaCallToAction(brand, scene, category);
   return {
     id: `node_cta_${idx}`,
     type: 'kinetic_typography',
@@ -195,7 +281,7 @@ function makeCTANode(brand: BrandJson, scene: any, idx: number): VectorNode {
     words: [
       scene.kinetic_text?.toUpperCase() || 'START NOW',
       brand.name.toUpperCase(),
-      'TRY FOR FREE',
+      cta,
     ],
     text: scene.kinetic_text || `Try ${brand.name}`,
     subtext: scene.voiceover?.slice(0, 80) || brand.tagline,
@@ -313,7 +399,7 @@ export function assembleScenes(opts: AssembleOptions): {uiTree: UITree; spec: an
       return makeMetricNode(brand, idx);
     }
     if (sceneLayout === 'browser') {
-      return makeUINode(brand, scene, 'creator', idx);
+      return makeUINode(brand, scene, category, idx);
     }
     if (sceneLayout === 'hero-type') {
       return makeHookNode(brand, scene, idx);
@@ -322,7 +408,7 @@ export function assembleScenes(opts: AssembleOptions): {uiTree: UITree; spec: an
       return makeHookNode(brand, scene, idx);
     }
     if (isLast && (sceneLayout === 'cta' || !sceneLayout)) {
-      return makeCTANode(brand, scene, idx);
+      return makeCTANode(brand, scene, category, idx);
     }
     if (requiresUI) {
       // UI showcase scene — pick based on product category
@@ -363,23 +449,49 @@ export function assembleScenes(opts: AssembleOptions): {uiTree: UITree; spec: an
     });
   }
 
-  function generateSceneSfx(sceneIdx: number, durationSec: number, totalScenes: number) {
+  function generateSceneSfx(sceneIdx: number, durationSec: number, totalScenes: number, musicMood: string) {
     const cues: Array<{t: number; type: string; gain?: number}> = [];
-    cues.push({t: 0.10, type: 'pop', gain: 0.85});
+
+    // Determine energy tier from storyboard music mood
+    const isHighEnergy = /high_energy|upbeat|energetic|intense|hype|fast/.test(musicMood);
+    const isCalm       = /calm|ambient|minimal|serene|gentle|slow|precise/.test(musicMood);
+
+    // High-energy: snappier, earlier, louder cues; Calm: sparse, delayed, softer
+    const openGain  = isHighEnergy ? 0.90 : isCalm ? 0.55 : 0.85;
+    const midGain   = isHighEnergy ? 0.80 : isCalm ? 0.50 : 0.70;
+    const closeGain = isHighEnergy ? 0.85 : isCalm ? 0.45 : 0.80;
+
+    const openT     = isHighEnergy ? 0.05 : isCalm ? 0.18 : 0.10;
+
+    cues.push({t: openT, type: 'pop', gain: openGain});
 
     if (sceneIdx === 0) {
-      cues.push({t: Math.round(durationSec * 0.72 * 100) / 100, type: 'tick', gain: 0.6});
+      const tickT = isHighEnergy ? 0.60 : isCalm ? 0.80 : 0.72;
+      cues.push({t: Math.round(durationSec * tickT * 100) / 100, type: 'tick', gain: midGain});
     } else if (sceneIdx === totalScenes - 1) {
-      cues.push({t: Math.round(durationSec * 0.45 * 100) / 100, type: 'click', gain: 0.75});
-      cues.push({t: Math.round(durationSec * 0.85 * 100) / 100, type: 'pop', gain: 0.80});
+      const click1T = isHighEnergy ? 0.35 : isCalm ? 0.55 : 0.45;
+      const pop2T   = isHighEnergy ? 0.75 : isCalm ? 0.90 : 0.85;
+      cues.push({t: Math.round(durationSec * click1T * 100) / 100, type: 'click', gain: midGain});
+      cues.push({t: Math.round(durationSec * pop2T   * 100) / 100, type: 'pop',   gain: closeGain});
     } else {
-      cues.push({t: Math.round(durationSec * 0.35 * 100) / 100, type: 'tick', gain: 0.55});
-      cues.push({t: Math.round(durationSec * 0.65 * 100) / 100, type: 'click', gain: 0.70});
-      cues.push({t: Math.round(durationSec * 0.85 * 100) / 100, type: 'tick', gain: 0.55});
+      const t1 = isHighEnergy ? 0.25 : isCalm ? 0.45 : 0.35;
+      const t2 = isHighEnergy ? 0.55 : isCalm ? 0.75 : 0.65;
+      // High-energy scenes get a third cue; calm scenes only get two
+      if (!isCalm) {
+        const t3 = isHighEnergy ? 0.80 : 0.85;
+        cues.push({t: Math.round(durationSec * t1 * 100) / 100, type: 'tick',  gain: midGain});
+        cues.push({t: Math.round(durationSec * t2 * 100) / 100, type: 'click', gain: midGain});
+        cues.push({t: Math.round(durationSec * t3 * 100) / 100, type: 'tick',  gain: closeGain});
+      } else {
+        cues.push({t: Math.round(durationSec * t1 * 100) / 100, type: 'tick',  gain: midGain});
+        cues.push({t: Math.round(durationSec * t2 * 100) / 100, type: 'click', gain: closeGain});
+      }
     }
 
     return cues;
   }
+
+  const musicMood: string = storyboard.music_mood || storyboard.audio?.music?.mood || 'cinematic_beat';
 
   // Build spec.json
   const totalSec = scenes.reduce((sum: number, s: any) => sum + (s.duration_seconds || 4), 0);
@@ -422,7 +534,7 @@ export function assembleScenes(opts: AssembleOptions): {uiTree: UITree; spec: an
         exit: 'carousel_glide',
       },
       vo: '',
-      sfx: generateSceneSfx(idx, dur, scenes.length),
+      sfx: generateSceneSfx(idx, dur, scenes.length, musicMood),
       transitionOut: transition,
     };
     elapsed += dur;
@@ -446,7 +558,7 @@ export function assembleScenes(opts: AssembleOptions): {uiTree: UITree; spec: an
       accent: brand.colors?.accent || aesthetic?.accent || '#6C5CE7',
       accentLight: brand.colors?.accentLight || aesthetic?.accentLight || '#B9B0FF',
       secondary: aesthetic?.secondary || '#38BDF8',
-      isLightTheme: brand.colors?.background ? brand.colors.background.toLowerCase().startsWith('#f') : Boolean(aesthetic?.is_light_theme),
+      isLightTheme: isLightBackground(brand.colors?.background) || Boolean(aesthetic?.is_light_theme),
     },
     mlMatch: {
       category: storyboard.ml_match?.category || storyboard.matched_opus_category || 'MOTION',
