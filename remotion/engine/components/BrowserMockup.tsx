@@ -5,10 +5,12 @@ import {GlassCard} from './GlassCard';
 import {Cursor} from './Cursor';
 import {Glyph} from './Glyph';
 import {enterSpring, scaleIn} from '../motion/presets';
+import type {InteractionSpec} from '../interactions';
+import {getTypedText, InteractiveToast} from '../interactions';
 
 export type BrowserCard = {label: string; detail: string; action: string; icon: string};
 
-export const BrowserMockup: React.FC<{
+export interface BrowserMockupProps {
   tokens: Tokens;
   title: string;
   detail: string;
@@ -16,35 +18,71 @@ export const BrowserMockup: React.FC<{
   cards: BrowserCard[];
   navTabs?: string[];
   showCursor?: boolean;
+  interactions?: InteractionSpec;
   style?: React.CSSProperties;
-}> = ({tokens, title, detail, location = '', cards, navTabs, showCursor = false, style}) => {
+}
+
+export const BrowserMockup: React.FC<BrowserMockupProps> = ({
+  tokens,
+  title,
+  detail,
+  location = '',
+  cards,
+  navTabs,
+  showCursor = false,
+  interactions,
+  style,
+}) => {
   const frame = useCurrentFrame();
   const {fps} = useVideoConfig();
   const enter = enterSpring(frame, fps);
   const push = interpolate(Math.min(1, frame / 120), [0, 1], [1, 1.03]);
   const activeTabs = navTabs && navTabs.length > 0 ? navTabs.slice(0, 4) : [];
 
-  // ── Dynamic Micro-Choreography: Typewriter Search ─────────────────────────
-  const searchPrompt = `Search ${tokens.name}...`;
-  const typeStart = 16;
-  const charsTyped = Math.floor(
-    interpolate(frame - typeStart, [0, 24], [0, searchPrompt.length], {
-      extrapolateLeft: 'clamp',
-      extrapolateRight: 'clamp',
-    })
+  // ── 1. Composable Typewriter Search ───────────────────────────────────────
+  const typewriterConfig = interactions?.typewriter ?? (showCursor ? {} : false);
+  const {text: typedSearch, cursor: cursorBlink} = getTypedText(
+    frame,
+    typewriterConfig,
+    `Search ${tokens.name}...`
   );
-  const typedSearch = searchPrompt.slice(0, charsTyped);
-  const cursorBlink = frame >= typeStart && Math.floor(frame / 14) % 2 === 0 ? '|' : '';
 
-  // ── Dynamic Micro-Choreography: Cursor Click & Card 1 Reaction ─────────────
-  const clickFrame = 54;
-  const isTargetClicked = showCursor && frame >= clickFrame;
+  // ── 2. Composable Cursor Glide ────────────────────────────────────────────
+  const cursorConfig = interactions?.cursor;
+  const shouldShowCursor = showCursor || Boolean(cursorConfig);
+  const resolvedCursor = typeof cursorConfig === 'object' ? cursorConfig : {};
+  const cursorFrom = resolvedCursor.from ?? [12, 85];
+  const cursorTo = resolvedCursor.to ?? [22, 58];
+  const cursorStart = resolvedCursor.startFrame ?? 10;
+  const clickFrame = resolvedCursor.clickFrame ?? 54;
+
+  // ── 3. Composable Reactive Target (Card reaction) ─────────────────────────
+  const reactiveConfig = interactions?.reactiveTarget ?? (shouldShowCursor ? {
+    targetIndex: 0,
+    triggerFrame: clickFrame,
+    activeLabel: 'Opening →',
+    badgeText: '● ACTIVE',
+    glow: true,
+  } : undefined);
+
+  const targetIdx = reactiveConfig?.targetIndex ?? 0;
+  const triggerAt = reactiveConfig?.triggerFrame ?? clickFrame;
+  const isTargetClicked = Boolean(reactiveConfig) && frame >= triggerAt;
   const clickCompression = isTargetClicked
-    ? interpolate(frame - clickFrame, [0, 6, 16], [0.95, 0.98, 1.0], {extrapolateRight: 'clamp'})
+    ? interpolate(frame - triggerAt, [0, 6, 16], [0.95, 0.98, 1.0], {extrapolateRight: 'clamp'})
     : 1.0;
 
   return (
-    <div style={{position: 'relative', width: 930, height: 780, transform: `translateY(${(1 - enter) * 60}px) scale(${scaleIn(enter)}) scale(${push})`, opacity: enter, ...style}}>
+    <div
+      style={{
+        position: 'relative',
+        width: 930,
+        height: 780,
+        transform: `translateY(${(1 - enter) * 60}px) scale(${scaleIn(enter)}) scale(${push})`,
+        opacity: enter,
+        ...style,
+      }}
+    >
       <GlassCard tokens={tokens} style={{width: '100%', height: '100%', overflow: 'hidden', padding: 0, background: tokens.colors.surface}}>
         <div style={{height: 60, display: 'flex', alignItems: 'center', padding: '0 25px', background: tokens.colors.surface, borderBottom: `1px solid ${tokens.colors.surfaceMuted}26`, color: tokens.colors.surfaceText, fontFamily: tokens.fontFamily}}>
           <div style={{fontSize: 23, fontWeight: 800, color: tokens.colors.accent}}>{tokens.name}</div>
@@ -74,9 +112,9 @@ export const BrowserMockup: React.FC<{
           </div>
           <div style={{marginTop: 28, display: 'grid', gridTemplateColumns: `repeat(${Math.min(cards.length, 3)}, 1fr)`, gap: 18}}>
             {cards.map((card, index) => {
-              const isFirstCard = index === 0;
-              const cardScale = isFirstCard ? clickCompression : 1.0;
-              const isHighlight = isFirstCard && isTargetClicked;
+              const isTargetCard = index === targetIdx;
+              const cardScale = isTargetCard ? clickCompression : 1.0;
+              const isHighlight = isTargetCard && isTargetClicked;
 
               return (
                 <div
@@ -98,9 +136,9 @@ export const BrowserMockup: React.FC<{
                 >
                   <div style={{height: 150, background: `linear-gradient(135deg, ${tokens.colors.accent}, ${tokens.colors.accentLight})`, display: 'grid', placeItems: 'center', position: 'relative'}}>
                     {card.icon ? <Glyph label={card.icon} tokens={tokens} accent={tokens.colors.surfaceText} size={62} /> : null}
-                    {isHighlight && (
+                    {isHighlight && reactiveConfig?.badgeText && (
                       <div style={{position: 'absolute', top: 12, right: 12, background: 'rgba(0,0,0,0.5)', color: '#FFF', fontSize: 10, padding: '3px 8px', borderRadius: 12, fontWeight: 700}}>
-                        ● ACTIVE
+                        {reactiveConfig.badgeText}
                       </div>
                     )}
                   </div>
@@ -108,7 +146,7 @@ export const BrowserMockup: React.FC<{
                     <div style={{fontSize: 17, fontWeight: 800}}>{card.label}</div>
                     <div style={{marginTop: 8, color: tokens.colors.surfaceMuted, fontSize: 13}}>{card.detail}</div>
                     <div style={{marginTop: 14, color: tokens.colors.accent, fontSize: 13, fontWeight: 800}}>
-                      {isHighlight ? 'Opening →' : card.action}
+                      {isHighlight && reactiveConfig?.activeLabel ? reactiveConfig.activeLabel : card.action}
                     </div>
                   </div>
                 </div>
@@ -117,8 +155,22 @@ export const BrowserMockup: React.FC<{
           </div>
         </div>
       </GlassCard>
-      {/* Cursor targets Card 1: glides from bottom-left to Card 1 center [22, 58] and clicks at frame 54 */}
-      {showCursor && <Cursor tokens={tokens} from={[12, 85]} to={[22, 58]} start={10} clickAt={clickFrame} />}
+
+      {/* 4. Action Consequence: Floating Toast Notification */}
+      {interactions?.toast && (
+        <InteractiveToast tokens={tokens} config={interactions.toast} />
+      )}
+
+      {/* 5. Composable Cursor Component */}
+      {shouldShowCursor && (
+        <Cursor
+          tokens={tokens}
+          from={cursorFrom}
+          to={cursorTo}
+          start={cursorStart}
+          clickAt={clickFrame}
+        />
+      )}
     </div>
   );
 };

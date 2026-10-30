@@ -1,0 +1,85 @@
+{
+  "brandId": "reddit.com",
+  "worldBounds": {
+    "width": 1920,
+    "height": 1080,
+    "depth": 2000
+  },
+  "nodes": [
+    {
+      "id": "node_hook_0",
+      "type": "kinetic_typography",
+      "position3D": [
+        0,
+        0,
+        0
+      ],
+      "effect": "phrase_flash",
+      "words": [
+        "SEE IT IN ACTION",
+        "DIVE INTO ANYTHING WITH REDDIT"
+      ],
+      "text": "SEE IT IN ACTION",
+      "subtext": "Stop guessing. Find real people discussing exactly what you are looking for.",
+      "fontSize": 96
+    },
+    {
+      "id": "node_bento_1",
+      "type": "bento_grid",
+      "position3D": [
+        0,
+        0,
+        0
+      ],
+      "columns": 2,
+      "cards": [
+        {
+          "id": "bento_0",
+          "title": "Reddit",
+          "subtitle": "Navigate millions of communities where e",
+          "icon": "▶",
+          "colSpan": 2
+        }
+      ]
+    },
+    {
+      "id": "node_browser_2",
+      "type": "browser_mockup",
+      "position3D": [
+        0,
+        0,
+        0
+      ],
+      "title": "From niche hobbies to breaking news, see the conversation unfold in real time",
+      "detail": "Dive into anything with Reddit",
+      "location": "reddit.com",
+      "cards": [
+        {
+          "label": "Reddit",
+          "detail": "Dive into anything with Reddit",
+          "action": "Open →",
+          "icon": "▶"
+        }
+      ],
+      "showCursor": true
+    },
+    {
+      "id": "node_cta_3",
+      "type": "kinetic_typography",
+      "position3D": [
+        0,
+        0,
+        0
+      ],
+      "effect": "word_carousel",
+      "words": [
+        "JOIN THE COMMUNITY",
+        "REDDIT",
+        "JOIN THE COMMUNITY"
+      ],
+      "text": "JOIN THE COMMUNITY",
+      "subtext": "Join the conversation. Download Reddit and start exploring today.",
+      "fontSize": 88
+    }
+  ]
+}

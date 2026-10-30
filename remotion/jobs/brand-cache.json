@@ -1109,5 +1109,95 @@
         "sourceUrl": "https://zerodha.com"
       }
     ]
+  },
+  "reddit": {
+    "name": "Reddit",
+    "domain": "reddit.com",
+    "tagline": "Dive into anything with Reddit",
+    "description": "Dive into anything with Reddit. Millions of communities, authentic discussions, breaking news, viral memes, and expert advice for every curiosity.",
+    "products": [
+      "Reddit"
+    ],
+    "logo": {
+      "src": "jobs/reddit-001/assets/logo.png",
+      "text": "Reddit",
+      "alt": "Reddit Logo",
+      "source": ""
+    },
+    "colors": {
+      "accent": "#6366F1",
+      "accentLight": "#818CF8",
+      "background": "#09090B",
+      "background2": "#18181B",
+      "text": "#F9FAFB",
+      "muted": "#9CA3AF",
+      "surface": "#18181B",
+      "surfaceText": "#FFFFFF",
+      "surfaceMuted": "#6B7280"
+    },
+    "fonts": {
+      "display": {
+        "family": "Inter, sans-serif",
+        "source": "Google Fonts"
+      },
+      "body": {
+        "family": "Inter, sans-serif",
+        "source": "Google Fonts"
+      }
+    },
+    "imagery": [],
+    "claims": [
+      {
+        "id": "main",
+        "label": "Reddit",
+        "value": "See it in action",
+        "sourceUrl": ""
+      }
+    ]
+  },
+  "reddit.com": {
+    "name": "Reddit",
+    "domain": "reddit.com",
+    "tagline": "Dive into anything with Reddit",
+    "description": "Dive into anything with Reddit. Millions of communities, authentic discussions, breaking news, viral memes, and expert advice for every curiosity.",
+    "products": [
+      "Reddit"
+    ],
+    "logo": {
+      "src": "jobs/reddit-001/assets/logo.png",
+      "text": "Reddit",
+      "alt": "Reddit Logo",
+      "source": ""
+    },
+    "colors": {
+      "accent": "#6366F1",
+      "accentLight": "#818CF8",
+      "background": "#09090B",
+      "background2": "#18181B",
+      "text": "#F9FAFB",
+      "muted": "#9CA3AF",
+      "surface": "#18181B",
+      "surfaceText": "#FFFFFF",
+      "surfaceMuted": "#6B7280"
+    },
+    "fonts": {
+      "display": {
+        "family": "Inter, sans-serif",
+        "source": "Google Fonts"
+      },
+      "body": {
+        "family": "Inter, sans-serif",
+        "source": "Google Fonts"
+      }
+    },
+    "imagery": [],
+    "claims": [
+      {
+        "id": "main",
+        "label": "Reddit",
+        "value": "See it in action",
+        "sourceUrl": ""
+      }
+    ]
   }
 }

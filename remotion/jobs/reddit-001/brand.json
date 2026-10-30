@@ -1,0 +1,54 @@
+{
+  "name": "Reddit",
+  "domain": "reddit.com",
+  "tagline": "Dive into anything with Reddit",
+  "description": "Dive into anything with Reddit. Millions of passionate communities, authentic discussions, breaking news, and expert advice for every curiosity.",
+  "products": [
+    "r/technology",
+    "r/programming",
+    "r/AskReddit",
+    "r/science"
+  ],
+  "logo": {
+    "src": "jobs/reddit-001/assets/logo.png",
+    "text": "Reddit",
+    "alt": "Reddit Logo",
+    "source": "https://reddit.com"
+  },
+  "colors": {
+    "accent": "#FF4500",
+    "accentLight": "#FF6A33",
+    "background": "#0E1113",
+    "background2": "#1A1A1B",
+    "text": "#F8FAFC",
+    "muted": "#94A3B8",
+    "surface": "#1A1A1B",
+    "surfaceText": "#F8FAFC",
+    "surfaceMuted": "#878A8C"
+  },
+  "fonts": {
+    "display": {
+      "family": "Plus Jakarta Sans, sans-serif",
+      "source": "Google Fonts"
+    },
+    "body": {
+      "family": "Inter, sans-serif",
+      "source": "Google Fonts"
+    }
+  },
+  "imagery": [],
+  "claims": [
+    {
+      "id": "scale",
+      "label": "Global Community Scale",
+      "value": "Millions of passionate communities and expert discussions",
+      "sourceUrl": "https://www.redditinc.com"
+    },
+    {
+      "id": "conversations",
+      "label": "Real-Time Discussions",
+      "value": "Real people discussing breaking news, tech, and hobbies",
+      "sourceUrl": "https://www.redditinc.com"
+    }
+  ]
+}

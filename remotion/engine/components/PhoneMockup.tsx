@@ -3,6 +3,8 @@ import {interpolate, useCurrentFrame, useVideoConfig} from 'remotion';
 import type {Tokens} from '../types';
 import {Glyph} from './Glyph';
 import {enterSpring, scaleIn} from '../motion/presets';
+import type {InteractionSpec} from '../interactions';
+import {getTypedText, InteractiveToast} from '../interactions';
 
 export type PhoneItem = {label: string; icon: string};
 
@@ -18,6 +20,7 @@ interface PhoneMockupProps {
   badges?: string[];
   priceInfo?: {currentPrice?: string | null; originalPrice?: string | null; discount?: string | null};
   screenType?: 'grid' | 'product_detail' | 'checkout' | 'feed';
+  interactions?: InteractionSpec;
   style?: React.CSSProperties;
 }
 
@@ -33,6 +36,7 @@ export const PhoneMockup: React.FC<PhoneMockupProps> = ({
   badges = [],
   priceInfo,
   screenType = 'grid',
+  interactions,
   style,
 }) => {
   const frame = useCurrentFrame();
@@ -44,21 +48,25 @@ export const PhoneMockup: React.FC<PhoneMockupProps> = ({
   const activeHeaderColor = headerColor || tokens.colors.accent;
   const activeTabs = navTabs && navTabs.length > 0 ? navTabs.slice(0, 4) : [];
 
-  // Dynamic typewriter for search bar
-  const searchPrompt = search || `Search ${tokens.name}...`;
-  const typeStart = 14;
-  const charsTyped = Math.floor(
-    interpolate(frame - typeStart, [0, 24], [0, searchPrompt.length], {
-      extrapolateLeft: 'clamp',
-      extrapolateRight: 'clamp',
-    })
+  // 1. Composable Typewriter for mobile search bar
+  const typewriterConfig = interactions?.typewriter ?? (search ? {text: search} : {});
+  const {text: typedSearch, cursor: cursorBlink} = getTypedText(
+    frame,
+    typewriterConfig,
+    search || `Search ${tokens.name}...`
   );
-  const typedSearch = searchPrompt.slice(0, charsTyped);
-  const cursorBlink = frame >= typeStart && Math.floor(frame / 14) % 2 === 0 ? '|' : '';
 
-  // Interactive tap micro-choreography on first grid item at frame 48
-  const tapFrame = 48;
-  const isTapped = frame >= tapFrame;
+  // 2. Composable Reactive Target for mobile tap
+  const reactiveConfig = interactions?.reactiveTarget ?? {
+    targetIndex: 0,
+    triggerFrame: 48,
+    activeLabel: '✓',
+    badgeText: '✓',
+    glow: true,
+  };
+  const targetIdx = reactiveConfig?.targetIndex ?? 0;
+  const tapFrame = reactiveConfig?.triggerFrame ?? 48;
+  const isTapped = Boolean(reactiveConfig) && frame >= tapFrame;
   const tapCompression = isTapped
     ? interpolate(frame - tapFrame, [0, 5, 15], [0.94, 0.97, 1.0], {
         extrapolateLeft: 'clamp',
@@ -215,9 +223,9 @@ export const PhoneMockup: React.FC<PhoneMockupProps> = ({
               {/* Items Grid */}
               <div style={{display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 10, marginTop: 16}}>
                 {items.slice(0, 4).map((item, idx) => {
-                  const isFirstItem = idx === 0;
-                  const itemScale = isFirstItem ? tapCompression : 1.0;
-                  const isHighlight = isFirstItem && isTapped;
+                  const isTargetItem = idx === targetIdx;
+                  const itemScale = isTargetItem ? tapCompression : 1.0;
+                  const isHighlight = isTargetItem && isTapped;
 
                   return (
                     <div
@@ -238,7 +246,7 @@ export const PhoneMockup: React.FC<PhoneMockupProps> = ({
                       }}
                     >
                       {/* Ripple effect on tap */}
-                      {isFirstItem && showRipple && (
+                      {isTargetItem && showRipple && (
                         <div
                           style={{
                             position: 'absolute',
@@ -262,7 +270,7 @@ export const PhoneMockup: React.FC<PhoneMockupProps> = ({
                         {item.label}
                         {isHighlight && (
                           <span style={{marginLeft: 4, fontSize: 10, color: tokens.colors.accent, fontWeight: 800}}>
-                            ✓
+                            {reactiveConfig?.badgeText || '✓'}
                           </span>
                         )}
                       </div>
@@ -306,6 +314,15 @@ export const PhoneMockup: React.FC<PhoneMockupProps> = ({
               </span>
             ))}
           </div>
+        )}
+
+        {/* Action Consequence: Mobile Toast Notification */}
+        {interactions?.toast && (
+          <InteractiveToast
+            tokens={tokens}
+            config={interactions.toast}
+            style={{bottom: 74, right: 18, fontSize: 11, padding: '7px 14px'}}
+          />
         )}
       </div>
     </div>

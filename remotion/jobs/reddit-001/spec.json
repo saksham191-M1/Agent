@@ -1,0 +1,434 @@
+{
+  "brand": "Reddit",
+  "format": "16:9",
+  "fps": 60,
+  "durationSec": 15,
+  "bpm": 120,
+  "palette": {
+    "background": "#0E1113",
+    "background2": "#1A1A1B",
+    "surface": "#1A1A1B",
+    "surfaceText": "#F8FAFC",
+    "text": "#F8FAFC",
+    "muted": "#94A3B8",
+    "accent": "#FF4500",
+    "accentLight": "#FF6A33",
+    "secondary": "#38BDF8",
+    "isLightTheme": false
+  },
+  "mlMatch": {
+    "category": "EXPLAINER",
+    "score": 0.2525,
+    "template": "Technical Deep Dive",
+    "author": "king1818888",
+    "techTags": [],
+    "referenceUrl": "https://x.com/king1818888/status/2104764925478642123",
+    "aesthetic": {
+      "is_light_theme": false,
+      "background": "#0B1020",
+      "background2": "#151B33",
+      "surface": "#1E293B",
+      "surfaceText": "#F8FAFC",
+      "text": "#F8FAFC",
+      "muted": "#94A3B8",
+      "accent": "#6C5CE7",
+      "accentLight": "#B9B0FF",
+      "secondary": "#38BDF8",
+      "suggested_bpm": 120,
+      "motion_rules": []
+    }
+  },
+  "scenes": [
+    {
+      "id": "scene_1",
+      "start": 0,
+      "duration": 3,
+      "layout": "hero-type",
+      "headline": "SEE IT IN ACTION",
+      "subline": "Stop guessing. Find real people discussing exactly what you are looking for.",
+      "caption": "Abstract high-tech data nodes connecting in",
+      "captionWords": [
+        {
+          "word": "Stop",
+          "start": 6,
+          "end": 20
+        },
+        {
+          "word": "guessing.",
+          "start": 20,
+          "end": 33
+        },
+        {
+          "word": "Find",
+          "start": 33,
+          "end": 47
+        },
+        {
+          "word": "real",
+          "start": 47,
+          "end": 61
+        },
+        {
+          "word": "people",
+          "start": 61,
+          "end": 74
+        },
+        {
+          "word": "discussing",
+          "start": 74,
+          "end": 88
+        },
+        {
+          "word": "exactly",
+          "start": 88,
+          "end": 102
+        },
+        {
+          "word": "what",
+          "start": 102,
+          "end": 115
+        },
+        {
+          "word": "you",
+          "start": 115,
+          "end": 129
+        },
+        {
+          "word": "are",
+          "start": 129,
+          "end": 143
+        },
+        {
+          "word": "looking",
+          "start": 143,
+          "end": 156
+        },
+        {
+          "word": "for.",
+          "start": 156,
+          "end": 170
+        }
+      ],
+      "visual": {
+        "kicker": "Reddit",
+        "pulseText": "fast_zoom"
+      },
+      "motion": {
+        "enter": "mask_line_rise",
+        "idle": "slow_sway",
+        "exit": "carousel_glide"
+      },
+      "vo": "",
+      "sfx": [
+        {
+          "t": 0.04,
+          "type": "whoosh",
+          "gain": 0.45
+        },
+        {
+          "t": 2.4,
+          "type": "tick",
+          "gain": 0.45
+        }
+      ],
+      "transitionOut": "wipe"
+    },
+    {
+      "id": "scene_2",
+      "start": 3,
+      "duration": 4.5,
+      "layout": "split",
+      "headline": "REAL HUMAN DISCOURSE",
+      "subline": "Navigate millions of communities where experts and enthusiasts share real-world experience.",
+      "caption": "Clean modern UI showing a split",
+      "captionWords": [
+        {
+          "word": "Navigate",
+          "start": 6,
+          "end": 29
+        },
+        {
+          "word": "millions",
+          "start": 29,
+          "end": 52
+        },
+        {
+          "word": "of",
+          "start": 52,
+          "end": 75
+        },
+        {
+          "word": "communities",
+          "start": 75,
+          "end": 98
+        },
+        {
+          "word": "where",
+          "start": 98,
+          "end": 121
+        },
+        {
+          "word": "experts",
+          "start": 121,
+          "end": 145
+        },
+        {
+          "word": "and",
+          "start": 145,
+          "end": 168
+        },
+        {
+          "word": "enthusiasts",
+          "start": 168,
+          "end": 191
+        },
+        {
+          "word": "share",
+          "start": 191,
+          "end": 214
+        },
+        {
+          "word": "real-world",
+          "start": 214,
+          "end": 237
+        },
+        {
+          "word": "experience.",
+          "start": 237,
+          "end": 260
+        }
+      ],
+      "visual": {
+        "kicker": "Reddit",
+        "pulseText": "cross_zoom"
+      },
+      "motion": {
+        "enter": "mask_line_rise",
+        "idle": "slow_sway",
+        "exit": "carousel_glide"
+      },
+      "vo": "",
+      "sfx": [
+        {
+          "t": 0.04,
+          "type": "whoosh",
+          "gain": 0.45
+        }
+      ],
+      "transitionOut": "carousel_glide"
+    },
+    {
+      "id": "scene_3",
+      "start": 7.5,
+      "duration": 4,
+      "layout": "browser",
+      "headline": "COMMUNITY DRIVEN KNOWLEDGE",
+      "subline": "From niche hobbies to breaking news, see the conversation unfold in real",
+      "caption": "Desktop browser interface displaying a high-density",
+      "captionWords": [
+        {
+          "word": "From",
+          "start": 6,
+          "end": 23
+        },
+        {
+          "word": "niche",
+          "start": 23,
+          "end": 40
+        },
+        {
+          "word": "hobbies",
+          "start": 40,
+          "end": 58
+        },
+        {
+          "word": "to",
+          "start": 58,
+          "end": 75
+        },
+        {
+          "word": "breaking",
+          "start": 75,
+          "end": 92
+        },
+        {
+          "word": "news,",
+          "start": 92,
+          "end": 109
+        },
+        {
+          "word": "see",
+          "start": 109,
+          "end": 127
+        },
+        {
+          "word": "the",
+          "start": 127,
+          "end": 144
+        },
+        {
+          "word": "conversation",
+          "start": 144,
+          "end": 161
+        },
+        {
+          "word": "unfold",
+          "start": 161,
+          "end": 178
+        },
+        {
+          "word": "in",
+          "start": 178,
+          "end": 196
+        },
+        {
+          "word": "real",
+          "start": 196,
+          "end": 213
+        },
+        {
+          "word": "time.",
+          "start": 213,
+          "end": 230
+        }
+      ],
+      "visual": {
+        "kicker": "Reddit",
+        "pulseText": "fade_in"
+      },
+      "motion": {
+        "enter": "mask_line_rise",
+        "idle": "slow_sway",
+        "exit": "carousel_glide"
+      },
+      "vo": "",
+      "sfx": [
+        {
+          "t": 0.16,
+          "type": "pop",
+          "gain": 0.55
+        },
+        {
+          "t": 0.9,
+          "type": "click",
+          "gain": 0.8
+        }
+      ],
+      "transitionOut": "flip"
+    },
+    {
+      "id": "scene_4",
+      "start": 11.5,
+      "duration": 3.5,
+      "layout": "cta",
+      "headline": "JOIN THE COMMUNITY",
+      "subline": "Join the conversation. Download Reddit and start exploring today.",
+      "caption": "Minimalist end card featuring the Reddit",
+      "captionWords": [
+        {
+          "word": "Join",
+          "start": 6,
+          "end": 28
+        },
+        {
+          "word": "the",
+          "start": 28,
+          "end": 49
+        },
+        {
+          "word": "conversation.",
+          "start": 49,
+          "end": 71
+        },
+        {
+          "word": "Download",
+          "start": 71,
+          "end": 92
+        },
+        {
+          "word": "Reddit",
+          "start": 92,
+          "end": 114
+        },
+        {
+          "word": "and",
+          "start": 114,
+          "end": 135
+        },
+        {
+          "word": "start",
+          "start": 135,
+          "end": 157
+        },
+        {
+          "word": "exploring",
+          "start": 157,
+          "end": 178
+        },
+        {
+          "word": "today.",
+          "start": 178,
+          "end": 200
+        }
+      ],
+      "visual": {
+        "kicker": "Reddit",
+        "pulseText": "zoom_out"
+      },
+      "motion": {
+        "enter": "mask_line_rise",
+        "idle": "slow_sway",
+        "exit": "carousel_glide"
+      },
+      "vo": "",
+      "sfx": [
+        {
+          "t": 0.16,
+          "type": "pop",
+          "gain": 0.55
+        },
+        {
+          "t": 0.2,
+          "type": "riser",
+          "gain": 0.45
+        },
+        {
+          "t": 2.8,
+          "type": "logo-sting",
+          "gain": 0.6
+        }
+      ],
+      "transitionOut": "none"
+    }
+  ],
+  "audio": {
+    "assetsRoot": "jobs/reddit-001/assets",
+    "voice": {
+      "provider": "none",
+      "voiceId": "none",
+      "model": "none",
+      "clips": {}
+    },
+    "music": {
+      "file": "audio/music-bed.mp3",
+      "mood": "ambient_minimal",
+      "volume": 0.18
+    },
+    "room": {
+      "file": "audio/room-tone.wav",
+      "volume": 0.05
+    },
+    "sfxFiles": {
+      "click": "audio/click.wav",
+      "tick": "audio/tick.wav",
+      "pop": "audio/pop.wav",
+      "pop2": "audio/pop2.wav",
+      "whoosh": "audio/whoosh.wav",
+      "swipe": "audio/swipe.wav",
+      "riser": "audio/riser.wav",
+      "success": "audio/success.wav",
+      "logo-sting": "audio/logo-sting.wav"
+    },
+    "duck": 12
+  }
+}
