@@ -676,9 +676,43 @@ export async function scrapeBrand(targetUrl: string, jobId: string): Promise<Bra
     }
   }
 
-  const cleanFont = extractedFont
+  // ── Font resolution with allowlist + category-aware fallback ──────────────
+  const SAFE_GOOGLE_FONTS = new Set([
+    'Inter', 'Roboto', 'Poppins', 'DM Sans', 'Manrope', 'Plus Jakarta Sans',
+    'Nunito', 'Open Sans', 'Lato', 'Raleway', 'Montserrat', 'Source Sans Pro',
+    'Noto Sans', 'Ubuntu', 'Outfit', 'Figtree', 'Space Grotesk',
+    'JetBrains Mono', 'Fira Code', 'Source Code Pro', 'Inconsolata',
+  ]);
+
+  function categoryFontFallback(text: string): string {
+    const t = text.toLowerCase();
+    if (/delivery|food|groceri|ride|restaurant/.test(t))              return 'Nunito';
+    if (/invest|stock|trade|finance|fintech|zerodha|banking/.test(t)) return 'DM Sans';
+    if (/api|sdk|cli|deploy|devtool|backend|infra/.test(t))           return 'JetBrains Mono';
+    if (/ai|agent|copilot|llm|ml|model/.test(t))                      return 'Manrope';
+    if (/analytics|dashboard|metric|bi|insight/.test(t))              return 'Space Grotesk';
+    if (/social|community|creator|video|stream/.test(t))              return 'Poppins';
+    if (/shop|ecommerce|cart|store|retail/.test(t))                   return 'Outfit';
+    return 'Inter';
+  }
+
+  const rawCleanFont = extractedFont
     ? extractedFont.split(',')[0].replace(/['"]/g, '').trim()
-    : 'Inter';
+    : '';
+
+  let cleanFont: string;
+  if (rawCleanFont && SAFE_GOOGLE_FONTS.has(rawCleanFont)) {
+    cleanFont = rawCleanFont;
+    console.log(`[Brand Ingest] 🔤 Font "${cleanFont}" matched safe list — using as-is`);
+  } else {
+    const descText = `${inferredName} ${extractedDesc}`;
+    cleanFont = categoryFontFallback(descText);
+    if (rawCleanFont) {
+      console.log(`[Brand Ingest] ⚠️ Font "${rawCleanFont}" not in safe list, using category fallback "${cleanFont}"`);
+    } else {
+      console.log(`[Brand Ingest] ⚠️ No font extracted from page, using category fallback "${cleanFont}"`);
+    }
+  }
   const resolvedFontFamily = `${cleanFont}, system-ui, -apple-system, sans-serif`;
 
   // Format tagline: first sentence only, max 90 characters
