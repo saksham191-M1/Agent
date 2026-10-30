@@ -48,9 +48,12 @@ async function main() {
   fs.mkdirSync(path.join(jobDir, 'scenes'), {recursive: true});
   fs.mkdirSync(path.join(jobDir, 'out', 'stills'), {recursive: true});
 
-  // Copy standard audio assets from neutral default pack
-  const sourceAudioDir = path.resolve(process.cwd(), '..', 'assets', 'default', 'audio');
-  if (fs.existsSync(sourceAudioDir)) {
+  // Copy standard audio assets from modern central default pack
+  const sourceAudioDir = [
+    path.resolve(process.cwd(), 'assets', 'default', 'audio'),
+    path.resolve(process.cwd(), '..', 'assets', 'default', 'audio')
+  ].find(d => fs.existsSync(d) && fs.existsSync(path.join(d, 'click.wav'))) || '';
+  if (sourceAudioDir && fs.existsSync(sourceAudioDir)) {
     fs.copyFileSync(path.join(sourceAudioDir, 'music-bed.mp3'), path.join(jobDir, 'assets', 'audio', 'music-bed.mp3'));
     fs.copyFileSync(path.join(sourceAudioDir, 'room-tone.wav'), path.join(jobDir, 'assets', 'audio', 'room-tone.wav'));
   }

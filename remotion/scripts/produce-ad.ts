@@ -238,17 +238,13 @@ async function main() {
   fs.mkdirSync(path.join(jobDir, 'scenes'), {recursive: true});
   fs.mkdirSync(path.join(jobDir, 'out', 'stills'), {recursive: true});
 
-  // Copy standard SFX assets from any existing audio source
-  const jobsRoot = path.resolve(process.cwd(), 'jobs');
+  // Copy standard SFX assets from central modern sound pack
   const candidateAudioDirs = [
+    path.resolve(process.cwd(), 'assets', 'default', 'audio'),
+    path.resolve(process.cwd(), '..', 'assets', 'default', 'audio'),
     path.resolve(process.cwd(), 'public', 'audio'),
-    ...(fs.existsSync(jobsRoot)
-      ? fs.readdirSync(jobsRoot, {withFileTypes: true})
-          .filter(d => d.isDirectory())
-          .map(d => path.join(jobsRoot, d.name, 'assets', 'audio'))
-      : [])
   ];
-  const sfxSrc = candidateAudioDirs.find(d => fs.existsSync(d) && fs.existsSync(path.join(d, 'room-tone.wav')));
+  const sfxSrc = candidateAudioDirs.find(d => fs.existsSync(d) && fs.existsSync(path.join(d, 'click.wav')));
   if (sfxSrc) {
     for (const f of ['room-tone.wav', 'click.wav', 'tick.wav', 'pop.wav', 'pop2.wav', 'swipe.wav', 'whoosh.wav', 'riser.wav', 'success.wav', 'logo-sting.wav', 'music-bed.mp3']) {
       const src = path.join(sfxSrc, f);
