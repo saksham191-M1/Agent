@@ -1,0 +1,113 @@
+{
+  "shots": [
+    {
+      "n": 1,
+      "t0": 0,
+      "t1": 3,
+      "role": "hook",
+      "source": "motion-graphic",
+      "visual": "hero-type",
+      "headline": "DESIGN WITHOUT FRICTION",
+      "subline": "Stop fighting fragmented workflows and design handoffs that break.",
+      "onScreenText": "Cinematic abstract 3D render of interconnected",
+      "dialogue": "",
+      "sfx": [
+        {
+          "t": 0.04,
+          "type": "whoosh",
+          "gain": 0.45
+        },
+        {
+          "t": 2.4,
+          "type": "tick",
+          "gain": 0.45
+        }
+      ],
+      "transitionOut": "wipe",
+      "camera": null
+    },
+    {
+      "n": 2,
+      "t0": 3,
+      "t1": 7.5,
+      "role": "feature",
+      "source": "motion-graphic",
+      "visual": "browser",
+      "headline": "SCALE DESIGN SYSTEMS",
+      "subline": "Deploy reusable components and design tokens directly into your system, keeping every",
+      "onScreenText": "Clean, high-fidelity UI shot of a",
+      "dialogue": "",
+      "sfx": [
+        {
+          "t": 0.04,
+          "type": "whoosh",
+          "gain": 0.45
+        },
+        {
+          "t": 0.9,
+          "type": "click",
+          "gain": 0.8
+        }
+      ],
+      "transitionOut": "carousel_glide",
+      "camera": null
+    },
+    {
+      "n": 3,
+      "t0": 7.5,
+      "t1": 11.5,
+      "role": "feature",
+      "source": "motion-graphic",
+      "visual": "browser",
+      "headline": "UNIFIED MULTIPLAYER CANVAS",
+      "subline": "Collaborate in real time across teams on a single source of truth.",
+      "onScreenText": "Cinematic close-up of a collaborative Figma",
+      "dialogue": "",
+      "sfx": [
+        {
+          "t": 0.16,
+          "type": "pop",
+          "gain": 0.55
+        },
+        {
+          "t": 0.9,
+          "type": "click",
+          "gain": 0.8
+        }
+      ],
+      "transitionOut": "flip",
+      "camera": null
+    },
+    {
+      "n": 4,
+      "t0": 11.5,
+      "t1": 15,
+      "role": "cta",
+      "source": "motion-graphic",
+      "visual": "cta",
+      "headline": "DESIGN TOGETHER",
+      "subline": "Connect your design process today. Visit Figma dot com to get started.",
+      "onScreenText": "Minimalist studio shot of the Figma",
+      "dialogue": "",
+      "sfx": [
+        {
+          "t": 0.16,
+          "type": "pop",
+          "gain": 0.55
+        },
+        {
+          "t": 0.2,
+          "type": "riser",
+          "gain": 0.45
+        },
+        {
+          "t": 2.8,
+          "type": "logo-sting",
+          "gain": 0.6
+        }
+      ],
+      "transitionOut": "none",
+      "camera": null
+    }
+  ]
+}

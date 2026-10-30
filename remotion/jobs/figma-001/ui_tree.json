@@ -1,0 +1,111 @@
+{
+  "brandId": "figma.com",
+  "worldBounds": {
+    "width": 1920,
+    "height": 1080,
+    "depth": 2000
+  },
+  "nodes": [
+    {
+      "id": "node_hook_0",
+      "type": "kinetic_typography",
+      "position3D": [
+        0,
+        0,
+        0
+      ],
+      "effect": "phrase_flash",
+      "words": [
+        "DESIGN WITHOUT FRICTION",
+        "HOW TEAMS BUILD PRODUCTS TOGETHER"
+      ],
+      "text": "DESIGN WITHOUT FRICTION",
+      "subtext": "Stop fighting fragmented workflows and design handoffs that break.",
+      "fontSize": 96
+    },
+    {
+      "id": "node_browser_1",
+      "type": "browser_mockup",
+      "position3D": [
+        0,
+        0,
+        0
+      ],
+      "title": "Deploy reusable components and design tokens directly into your system, keeping every team in sync",
+      "detail": "How teams build products together",
+      "location": "figma.com",
+      "cards": [
+        {
+          "label": "Design Canvas",
+          "detail": "How teams build products together",
+          "action": "Open →",
+          "icon": "🛍"
+        },
+        {
+          "label": "FigJam",
+          "detail": "How teams build products together",
+          "action": "Open →",
+          "icon": "❤️"
+        },
+        {
+          "label": "Dev Mode",
+          "detail": "How teams build products together",
+          "action": "Open →",
+          "icon": "🎁"
+        }
+      ],
+      "showCursor": true
+    },
+    {
+      "id": "node_browser_2",
+      "type": "browser_mockup",
+      "position3D": [
+        0,
+        0,
+        0
+      ],
+      "title": "Collaborate in real time across teams on a single source of truth",
+      "detail": "How teams build products together",
+      "location": "figma.com",
+      "cards": [
+        {
+          "label": "Design Canvas",
+          "detail": "How teams build products together",
+          "action": "Open →",
+          "icon": "🛍"
+        },
+        {
+          "label": "FigJam",
+          "detail": "How teams build products together",
+          "action": "Open →",
+          "icon": "❤️"
+        },
+        {
+          "label": "Dev Mode",
+          "detail": "How teams build products together",
+          "action": "Open →",
+          "icon": "🎁"
+        }
+      ],
+      "showCursor": true
+    },
+    {
+      "id": "node_cta_3",
+      "type": "kinetic_typography",
+      "position3D": [
+        0,
+        0,
+        0
+      ],
+      "effect": "word_carousel",
+      "words": [
+        "DESIGN TOGETHER",
+        "FIGMA",
+        "DESIGN TOGETHER"
+      ],
+      "text": "DESIGN TOGETHER",
+      "subtext": "Connect your design process today. Visit Figma dot com to get started.",
+      "fontSize": 88
+    }
+  ]
+}

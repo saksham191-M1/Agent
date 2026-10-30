@@ -1,0 +1,53 @@
+{
+  "name": "Figma",
+  "domain": "figma.com",
+  "tagline": "How teams build products together",
+  "description": "The collaborative interface design tool. Connect everyone in the design process to deliver better products faster with multiplayer canvas, prototypes, and design systems.",
+  "products": [
+    "Design Canvas",
+    "FigJam",
+    "Dev Mode"
+  ],
+  "logo": {
+    "src": "jobs/figma-001/assets/logo.png",
+    "text": "Figma",
+    "alt": "Figma Logo",
+    "source": "https://figma.com"
+  },
+  "colors": {
+    "accent": "#0D99FF",
+    "accentLight": "#A259FF",
+    "background": "#1E1E1E",
+    "background2": "#2C2C2C",
+    "surface": "#2C2C2C",
+    "surfaceText": "#FFFFFF",
+    "text": "#F8FAFC",
+    "muted": "#94A3B8",
+    "surfaceMuted": "#6E6E6E"
+  },
+  "fonts": {
+    "display": {
+      "family": "Inter, sans-serif",
+      "source": "Google Fonts"
+    },
+    "body": {
+      "family": "Inter, sans-serif",
+      "source": "Google Fonts"
+    }
+  },
+  "imagery": [],
+  "claims": [
+    {
+      "id": "collaboration",
+      "label": "Multiplayer Design",
+      "value": "Collaborate in real time across teams",
+      "sourceUrl": "https://figma.com"
+    },
+    {
+      "id": "scale",
+      "label": "Design Systems",
+      "value": "Reusable components and design tokens at scale",
+      "sourceUrl": "https://figma.com"
+    }
+  ]
+}
