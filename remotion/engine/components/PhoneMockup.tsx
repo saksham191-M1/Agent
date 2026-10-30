@@ -44,6 +44,37 @@ export const PhoneMockup: React.FC<PhoneMockupProps> = ({
   const activeHeaderColor = headerColor || tokens.colors.accent;
   const activeTabs = navTabs && navTabs.length > 0 ? navTabs.slice(0, 4) : [];
 
+  // Dynamic typewriter for search bar
+  const searchPrompt = search || `Search ${tokens.name}...`;
+  const typeStart = 14;
+  const charsTyped = Math.floor(
+    interpolate(frame - typeStart, [0, 24], [0, searchPrompt.length], {
+      extrapolateLeft: 'clamp',
+      extrapolateRight: 'clamp',
+    })
+  );
+  const typedSearch = searchPrompt.slice(0, charsTyped);
+  const cursorBlink = frame >= typeStart && Math.floor(frame / 14) % 2 === 0 ? '|' : '';
+
+  // Interactive tap micro-choreography on first grid item at frame 48
+  const tapFrame = 48;
+  const isTapped = frame >= tapFrame;
+  const tapCompression = isTapped
+    ? interpolate(frame - tapFrame, [0, 5, 15], [0.94, 0.97, 1.0], {
+        extrapolateLeft: 'clamp',
+        extrapolateRight: 'clamp',
+      })
+    : 1.0;
+  const showRipple = frame >= tapFrame && frame < tapFrame + 22;
+  const rippleScale = interpolate(frame - tapFrame, [0, 22], [0.6, 2.2], {
+    extrapolateLeft: 'clamp',
+    extrapolateRight: 'clamp',
+  });
+  const rippleOpacity = interpolate(frame - tapFrame, [0, 22], [0.8, 0], {
+    extrapolateLeft: 'clamp',
+    extrapolateRight: 'clamp',
+  });
+
   return (
     <div
       style={{
@@ -161,7 +192,7 @@ export const PhoneMockup: React.FC<PhoneMockupProps> = ({
                 </div>
               )}
 
-              {/* Search bar */}
+              {/* Search bar with Typewriter */}
               <div
                 style={{
                   marginTop: 16,
@@ -171,32 +202,73 @@ export const PhoneMockup: React.FC<PhoneMockupProps> = ({
                   display: 'flex',
                   alignItems: 'center',
                   padding: '0 14px',
-                  color: tokens.colors.surfaceMuted,
+                  color: tokens.colors.surfaceText,
                   fontSize: 13,
+                  border: `1px solid ${tokens.colors.surfaceMuted}30`,
                 }}
               >
-                ⌕ {search}
+                <span style={{marginRight: 8, color: tokens.colors.accent}}>⌕</span>
+                <span>{typedSearch}</span>
+                <span style={{color: tokens.colors.accent, fontWeight: 700}}>{cursorBlink}</span>
               </div>
 
               {/* Items Grid */}
               <div style={{display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 10, marginTop: 16}}>
-                {items.slice(0, 4).map(item => (
-                  <div
-                    key={item.label}
-                    style={{
-                      height: 108,
-                      borderRadius: 18,
-                      background: `${tokens.colors.surfaceMuted}0d`,
-                      padding: 12,
-                      display: 'flex',
-                      flexDirection: 'column',
-                      justifyContent: 'space-between',
-                    }}
-                  >
-                    {item.icon ? <Glyph label={item.icon} tokens={tokens} size={30} /> : null}
-                    <div style={{fontWeight: 700, fontSize: 13, lineHeight: 1.2}}>{item.label}</div>
-                  </div>
-                ))}
+                {items.slice(0, 4).map((item, idx) => {
+                  const isFirstItem = idx === 0;
+                  const itemScale = isFirstItem ? tapCompression : 1.0;
+                  const isHighlight = isFirstItem && isTapped;
+
+                  return (
+                    <div
+                      key={item.label}
+                      style={{
+                        position: 'relative',
+                        height: 108,
+                        borderRadius: 18,
+                        background: isHighlight ? `${tokens.colors.accent}18` : `${tokens.colors.surfaceMuted}0d`,
+                        border: isHighlight ? `1.5px solid ${tokens.colors.accent}` : `1px solid transparent`,
+                        boxShadow: isHighlight ? `0 6px 18px ${tokens.colors.accent}25` : 'none',
+                        padding: 12,
+                        display: 'flex',
+                        flexDirection: 'column',
+                        justifyContent: 'space-between',
+                        transform: `scale(${itemScale})`,
+                        overflow: 'hidden',
+                      }}
+                    >
+                      {/* Ripple effect on tap */}
+                      {isFirstItem && showRipple && (
+                        <div
+                          style={{
+                            position: 'absolute',
+                            top: '50%',
+                            left: '50%',
+                            width: 50,
+                            height: 50,
+                            marginTop: -25,
+                            marginLeft: -25,
+                            borderRadius: '50%',
+                            background: `${tokens.colors.accent}40`,
+                            border: `2px solid ${tokens.colors.accent}`,
+                            transform: `scale(${rippleScale})`,
+                            opacity: rippleOpacity,
+                            pointerEvents: 'none',
+                          }}
+                        />
+                      )}
+                      {item.icon ? <Glyph label={item.icon} tokens={tokens} size={30} /> : null}
+                      <div style={{fontWeight: 700, fontSize: 13, lineHeight: 1.2}}>
+                        {item.label}
+                        {isHighlight && (
+                          <span style={{marginLeft: 4, fontSize: 10, color: tokens.colors.accent, fontWeight: 800}}>
+                            ✓
+                          </span>
+                        )}
+                      </div>
+                    </div>
+                  );
+                })}
               </div>
             </div>
           )}
