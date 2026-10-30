@@ -136,89 +136,64 @@ function makeHookNode(brand: BrandJson, scene: any, idx: number): VectorNode {
   } as VectorNode;
 }
 
-function makeUINode(brand: BrandJson, scene: any, category: ProductCategory, idx: number): VectorNode {
-  if (category === 'mobile_app' || category === 'social' || category === 'ecommerce') {
-    // Phone mockup
-    const fallbackNav = categoryFallbackNav(category);
-    const icons = categoryIcons(category);
-    const products = brand.products.length >= 4
-      ? brand.products
-      : [...brand.products, ...fallbackNav].slice(0, 4);
-    return {
-      id: `node_phone_${idx}`,
-      type: 'phone_mockup',
-      position3D: [0, 0, 0],
-      greeting: `Welcome to ${brand.name}`,
-      prompt: scene.voiceover?.slice(0, 60) || brand.tagline,
-      search: `Search ${brand.name}...`,
-      items: products.slice(0, 4).map((p, i) => ({
-        label: p,
-        icon: icons[i] || '●',
-      })),
-    } as VectorNode;
-  }
+// ──────────────────────────────────────────────────────────────────────────────
+// Distinct Modular VectorNode Builders
+// ──────────────────────────────────────────────────────────────────────────────
 
-  if (category === 'ai_agent' || category === 'dev_tool') {
-    // Interactive input / chat for AI; app_frame for dev tools
-    if (category === 'ai_agent') {
-      return {
-        id: `node_chat_${idx}`,
-        type: 'chat_messaging',
-        position3D: [0, 0, 0],
-        messages: [
-          {id: 'm1', sender: 'user',   text: `Analyze ${brand.products[0] || brand.name}`},
-          {id: 'm2', sender: 'agent',  text: scene.voiceover?.slice(0, 100) || `${brand.name}`},
-        ],
-        typingIndicator: true,
-      } as VectorNode;
-    }
-    // dev_tool → app_frame with dev-flavored sidebar
-    return {
-      id: `node_appframe_${idx}`,
-      type: 'app_frame',
-      position3D: [0, 0, 0],
-      appName: brand.name,
-      topbarTitle: scene.voiceover?.slice(0, 50) || `${brand.name} Studio`,
-      badgeText: '● Live',
-      activePane: 'editor',
-      sidebarItems: (brand.products.length > 0 ? brand.products : ['Dashboard', 'Editor', 'Deploy', 'Analytics']).slice(0, 4).map(
-        (p, i) => ({id: `s${i}`, label: p, icon: ['◈', '⬡', '◉', '△'][i] || '•', active: i === 0})
-      ),
-    } as VectorNode;
-  }
+function getRotatedProducts(products: string[], idx: number, count: number): string[] {
+  if (!products || products.length === 0) return [];
+  const offset = (idx * count) % products.length;
+  return [...products.slice(offset), ...products.slice(0, offset)].slice(0, count);
+}
 
-  if (category === 'creator') {
-    // Browser mockup showing creator/video platform UI
-    return {
-      id: `node_browser_${idx}`,
-      type: 'browser_mockup',
-      position3D: [0, 0, 0],
-      title: scene.voiceover?.split('.')[0] || `${brand.name} Studio`,
+function makePhoneNode(brand: BrandJson, scene: any, category: ProductCategory, idx: number): VectorNode {
+  const fallbackNav = categoryFallbackNav(category);
+  const icons = categoryIcons(category);
+  const pool = brand.products.length >= 4 ? brand.products : [...brand.products, ...fallbackNav];
+  const items = getRotatedProducts(pool, idx, 4);
+
+  return {
+    id: `node_phone_${idx}`,
+    type: 'phone_mockup',
+    position3D: [0, 0, 0],
+    greeting: `Welcome to ${brand.name}`,
+    prompt: scene.voiceover?.slice(0, 60) || brand.tagline,
+    search: `Search ${brand.name}...`,
+    items: items.map((p, i) => ({
+      label: p,
+      icon: icons[i] || '●',
+    })),
+  } as VectorNode;
+}
+
+function makeBrowserNode(brand: BrandJson, scene: any, category: ProductCategory, idx: number): VectorNode {
+  const fallbackCards = categoryFallbackNav(category);
+  const pool = brand.products.length > 0 ? brand.products : fallbackCards;
+  const cards = getRotatedProducts(pool, idx, 3);
+  const icons = categoryIcons(category);
+
+  return {
+    id: `node_browser_${idx}`,
+    type: 'browser_mockup',
+    position3D: [0, 0, 0],
+    title: scene.voiceover?.split('.')[0] || `${brand.name} Studio`,
+    detail: brand.tagline,
+    location: brand.domain,
+    cards: cards.map((p, i) => ({
+      label: p,
       detail: brand.tagline,
-      location: brand.domain,
-      cards: (brand.products.length > 0 ? brand.products : ['Trending', 'For You', 'New Release']).slice(0, 3).map(
-        (p, i) => ({label: p, detail: brand.tagline, action: 'Open →', icon: ['▶', '★', '◎'][i] || '▶'})
-      ),
-      showCursor: true,
-    } as VectorNode;
-  }
+      action: 'Open →',
+      icon: icons[i] || '▶',
+    })),
+    showCursor: true,
+  } as VectorNode;
+}
 
-  if (category === 'analytics') {
-    // Chart node
-    const points = [22, 38, 55, 70, 88, 95, 99];
-    return {
-      id: `node_chart_${idx}`,
-      type: 'chart',
-      position3D: [0, 0, 0],
-      chartType: 'area',
-      title: scene.voiceover?.split('.')[0] || `${brand.name} Growth`,
-      data: ['Jan','Feb','Mar','Apr','May','Jun','Jul'].map((m, i) => ({label: m, value: points[i]})),
-      accentColor: brand.colors.accent,
-      showAxis: true,
-    } as VectorNode;
-  }
+function makeAppFrameNode(brand: BrandJson, scene: any, category: ProductCategory, idx: number): VectorNode {
+  const fallbackItems = categoryFallbackNav(category);
+  const pool = brand.products.length > 0 ? brand.products : fallbackItems;
+  const sidebar = getRotatedProducts(pool, idx, 4);
 
-  // web_saas + generic → cinematic app_frame
   return {
     id: `node_appframe_${idx}`,
     type: 'app_frame',
@@ -226,11 +201,84 @@ function makeUINode(brand: BrandJson, scene: any, category: ProductCategory, idx
     appName: brand.name,
     topbarTitle: scene.voiceover?.split('.')[0] || `${brand.name} Dashboard`,
     badgeText: '● Live',
-    activePane: 'dashboard',
-    sidebarItems: (brand.products.length > 0 ? brand.products : ['Overview', 'Analytics', 'Team', 'Settings']).slice(0, 4).map(
-      (p, i) => ({id: `s${i}`, label: p, active: i === 0})
-    ),
+    activePane: idx % 2 === 0 ? 'dashboard' : 'editor',
+    sidebarItems: sidebar.map((p, i) => ({
+      id: `s${i}`,
+      label: p,
+      active: i === 0,
+    })),
   } as VectorNode;
+}
+
+function makeBentoNode(brand: BrandJson, scene: any, category: ProductCategory, idx: number): VectorNode {
+  const pool = brand.products.length > 0 ? brand.products : categoryFallbackNav(category);
+  const cards = getRotatedProducts(pool, idx, 3);
+  const icons = categoryIcons(category);
+
+  return {
+    id: `node_bento_${idx}`,
+    type: 'bento_grid',
+    position3D: [0, 0, 0],
+    columns: 2,
+    cards: cards.map((p, i) => ({
+      id: `bento_${i}`,
+      title: p,
+      subtitle: scene.voiceover?.slice(0, 40) || brand.tagline,
+      icon: icons[i] || '✦',
+      colSpan: i === 0 ? 2 : 1,
+    })),
+  } as VectorNode;
+}
+
+function makeChartNode(brand: BrandJson, scene: any, idx: number): VectorNode {
+  const points = [22, 38, 55, 70, 88, 95, 99];
+  return {
+    id: `node_chart_${idx}`,
+    type: 'chart',
+    position3D: [0, 0, 0],
+    chartType: 'area',
+    title: scene.voiceover?.split('.')[0] || `${brand.name} Growth`,
+    data: ['Jan','Feb','Mar','Apr','May','Jun','Jul'].map((m, i) => ({label: m, value: points[i]})),
+    accentColor: brand.colors.accent,
+    showAxis: true,
+  } as VectorNode;
+}
+
+function makeUINode(brand: BrandJson, scene: any, category: ProductCategory, idx: number, previousType?: string): VectorNode {
+  // If the previous scene was already a specific type, enforce alternation
+  if (previousType === 'browser_mockup') {
+    return makePhoneNode(brand, scene, category, idx);
+  }
+  if (previousType === 'phone_mockup') {
+    return makeBrowserNode(brand, scene, category, idx);
+  }
+
+  if (category === 'mobile_app' || category === 'social' || category === 'ecommerce') {
+    return makePhoneNode(brand, scene, category, idx);
+  }
+
+  if (category === 'ai_agent') {
+    return {
+      id: `node_chat_${idx}`,
+      type: 'chat_messaging',
+      position3D: [0, 0, 0],
+      messages: [
+        {id: 'm1', sender: 'user',   text: `Analyze ${brand.products[0] || brand.name}`},
+        {id: 'm2', sender: 'agent',  text: scene.voiceover?.slice(0, 100) || `${brand.name}`},
+      ],
+      typingIndicator: true,
+    } as VectorNode;
+  }
+
+  if (category === 'analytics') {
+    return makeChartNode(brand, scene, idx);
+  }
+
+  if (category === 'creator') {
+    return makeBrowserNode(brand, scene, category, idx);
+  }
+
+  return makeAppFrameNode(brand, scene, category, idx);
 }
 
 function makeMetricNode(brand: BrandJson, idx: number): VectorNode {
@@ -389,43 +437,65 @@ export function assembleScenes(opts: AssembleOptions): {uiTree: UITree; spec: an
   console.log(`[Scene Assembler] Building ${scenes.length} scenes from Opus storyboard...`);
 
   // Build one VectorNode per scene matching the layout specified in the storyboard
-  const nodes: VectorNode[] = scenes.map((scene: any, idx: number) => {
+  const nodes: VectorNode[] = [];
+  for (let idx = 0; idx < scenes.length; idx++) {
+    const scene = scenes[idx];
     const isFirst = idx === 0;
     const isLast  = idx === scenes.length - 1;
     const requiresUI = scene.requires_ui_image === true;
-    const sceneLayout = scene.layout;
+    const sceneLayout = (scene.layout || '').toLowerCase();
+    const prevNode = nodes[idx - 1];
+    const prevType = prevNode?.type;
 
-    if (sceneLayout === 'metrics' || sceneLayout === 'big-number') {
-      return makeMetricNode(brand, idx);
+    let node: VectorNode;
+
+    // 1. Hook / Hero
+    if (sceneLayout === 'hero-type' || (isFirst && !sceneLayout)) {
+      node = makeHookNode(brand, scene, idx);
     }
-    if (sceneLayout === 'browser') {
-      return makeUINode(brand, scene, category, idx);
+    // 2. CTA
+    else if (isLast && (sceneLayout === 'cta' || !sceneLayout)) {
+      node = makeCTANode(brand, scene, category, idx);
     }
-    if (sceneLayout === 'hero-type') {
-      return makeHookNode(brand, scene, idx);
+    // 3. Metrics / Big number
+    else if (sceneLayout === 'metrics' || sceneLayout === 'big-number') {
+      node = makeMetricNode(brand, idx);
     }
-    if (isFirst && !sceneLayout) {
-      return makeHookNode(brand, scene, idx);
+    // 4. Phone Mockup
+    else if (sceneLayout === 'phone' || sceneLayout === 'phone_mockup') {
+      node = makePhoneNode(brand, scene, category, idx);
     }
-    if (isLast && (sceneLayout === 'cta' || !sceneLayout)) {
-      return makeCTANode(brand, scene, category, idx);
+    // 5. Browser Mockup
+    else if (sceneLayout === 'browser' || sceneLayout === 'browser_mockup') {
+      node = makeBrowserNode(brand, scene, category, idx);
     }
-    if (requiresUI) {
-      // UI showcase scene — pick based on product category
-      if (uiDesc) {
-        return buildNodeFromUIDescription(uiDesc, brand, scene, idx, scenes.length);
-      }
-      return makeUINode(brand, scene, category, idx);
+    // 6. Split / Bento Grid
+    else if (sceneLayout === 'split' || sceneLayout === 'bento' || sceneLayout === 'bento_grid') {
+      node = makeBentoNode(brand, scene, category, idx);
     }
-    // Middle scene without ui requirement → metric card or chart depending on category
-    if (category === 'analytics' || category === 'dev_tool' || category === 'web_saas') {
-      return makeMetricNode(brand, idx);
+    // 7. App Frame / Dashboard
+    else if (sceneLayout === 'app_frame' || sceneLayout === 'dashboard') {
+      node = makeAppFrameNode(brand, scene, category, idx);
     }
-    if (uiDesc) {
-      return buildNodeFromUIDescription(uiDesc, brand, scene, idx, scenes.length);
+    // 8. Chart / Analytics
+    else if (sceneLayout === 'chart') {
+      node = makeChartNode(brand, scene, idx);
     }
-    return makeUINode(brand, scene, category, idx);
-  });
+    // 9. UI description bridge
+    else if (requiresUI && uiDesc) {
+      node = buildNodeFromUIDescription(uiDesc, brand, scene, idx, scenes.length);
+    }
+    // 10. Middle scene without ui requirement -> metric if analytical, else diverse UI
+    else if (!requiresUI && (category === 'analytics' || category === 'dev_tool') && prevType !== 'metric_card') {
+      node = makeMetricNode(brand, idx);
+    }
+    // 11. Fallback UI node (enforcing alternation against previous node type)
+    else {
+      node = makeUINode(brand, scene, category, idx, prevType);
+    }
+
+    nodes.push(node);
+  }
 
   const uiTree: UITree = {
     brandId: brand.domain,
