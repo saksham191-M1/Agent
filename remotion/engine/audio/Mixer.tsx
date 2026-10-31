@@ -42,7 +42,7 @@ export const AudioMixer: React.FC<{spec: AdSpec; mode?: AudioMode}> = ({
   const musicVolumeFn = (f: number) => {
     let duckingFactor = 1;
     for (const scene of spec.scenes) {
-      if (!voice.clips?.[scene.id]) continue;
+      if (!voice?.clips?.[scene.id]) continue;
       // Voice clip runs from frame 8 to duration - 8
       const clipStart = Math.round(scene.start * fps) + 8;
       const clipEnd = Math.round((scene.start + scene.duration) * fps) - 8;
@@ -152,7 +152,7 @@ export const AudioMixer: React.FC<{spec: AdSpec; mode?: AudioMode}> = ({
       {/* 4. Scene-Specific Voiceover Clips */}
       {mode !== 'option_a_sfx_v2' &&
         spec.scenes.map((scene) => {
-          const file = voice.clips?.[scene.id];
+          const file = voice?.clips?.[scene.id];
         if (!file) return null;
         const from = Math.round(scene.start * fps) + 8;
         const duration = Math.max(1, Math.round(scene.duration * fps) - 8);

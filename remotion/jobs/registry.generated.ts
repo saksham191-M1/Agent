@@ -21,84 +21,87 @@ import {default as scene5} from './flipkart-001/scenes';
 import brand6 from './instagram-001/brand.json';
 import spec6 from './instagram-001/spec.json';
 import {default as scene6} from './instagram-001/scenes';
-import brand7 from './motion-swell-clone/brand.json';
-import spec7 from './motion-swell-clone/spec.json';
-import {default as scene7} from './motion-swell-clone/scenes';
-import brand8 from './promo-chatgpt-saas/brand.json';
-import spec8 from './promo-chatgpt-saas/spec.json';
-import {default as scene8} from './promo-chatgpt-saas/scenes';
-import brand9 from './promo-gemini-agent/brand.json';
-import spec9 from './promo-gemini-agent/spec.json';
-import {default as scene9} from './promo-gemini-agent/scenes';
-import brand10 from './promo-linear-final/brand.json';
-import spec10 from './promo-linear-final/spec.json';
-import {default as scene10} from './promo-linear-final/scenes';
-import brand11 from './promo-youtube-saas/brand.json';
-import spec11 from './promo-youtube-saas/spec.json';
-import {default as scene11} from './promo-youtube-saas/scenes';
-import brand12 from './raycast-001/brand.json';
-import spec12 from './raycast-001/spec.json';
-import {default as scene12} from './raycast-001/scenes';
-import brand13 from './reddit-001/brand.json';
-import spec13 from './reddit-001/spec.json';
-import {default as scene13} from './reddit-001/scenes';
-import brand14 from './sample-promo-prisma/brand.json';
-import spec14 from './sample-promo-prisma/spec.json';
-import {default as scene14} from './sample-promo-prisma/scenes';
-import brand15 from './sample-promo-resend/brand.json';
-import spec15 from './sample-promo-resend/spec.json';
-import {default as scene15} from './sample-promo-resend/scenes';
-import brand16 from './sample-promo-supabase/brand.json';
-import spec16 from './sample-promo-supabase/spec.json';
-import {default as scene16} from './sample-promo-supabase/scenes';
-import brand17 from './skillme-003/brand.json';
-import spec17 from './skillme-003/spec.json';
-import {default as scene17} from './skillme-003/scenes';
-import brand18 from './skillme-004/brand.json';
-import spec18 from './skillme-004/spec.json';
-import {default as scene18} from './skillme-004/scenes';
-import brand19 from './supabase-001/brand.json';
-import spec19 from './supabase-001/spec.json';
-import {default as scene19} from './supabase-001/scenes';
-import brand20 from './swiggy-001/brand.json';
-import spec20 from './swiggy-001/spec.json';
-import {default as scene20} from './swiggy-001/scenes';
-import brand21 from './test-brand-002/brand.json';
-import spec21 from './test-brand-002/spec.json';
-import {default as scene21} from './test-brand-002/scenes';
-import brand22 from './test-promo-001/brand.json';
-import spec22 from './test-promo-001/spec.json';
-import {default as scene22} from './test-promo-001/scenes';
-import brand23 from './test-swiggy-new/brand.json';
-import spec23 from './test-swiggy-new/spec.json';
-import {default as scene23} from './test-swiggy-new/scenes';
-import brand24 from './test-swiggy-scraped/brand.json';
-import spec24 from './test-swiggy-scraped/spec.json';
-import {default as scene24} from './test-swiggy-scraped/scenes';
-import brand25 from './test-walkthrough-001/brand.json';
-import spec25 from './test-walkthrough-001/spec.json';
-import {default as scene25} from './test-walkthrough-001/scenes';
-import brand26 from './test-wired-gemini/brand.json';
-import spec26 from './test-wired-gemini/spec.json';
-import {default as scene26} from './test-wired-gemini/scenes';
-import brand27 from './vercel-001/brand.json';
-import spec27 from './vercel-001/spec.json';
-import {default as scene27} from './vercel-001/scenes';
-import brand28 from './walkthrough-demo-001/brand.json';
-import spec28 from './walkthrough-demo-001/spec.json';
-import {default as scene28} from './walkthrough-demo-001/scenes';
-import brand29 from './zerodha-001/brand.json';
-import spec29 from './zerodha-001/spec.json';
-import {default as scene29} from './zerodha-001/scenes';
-import brand30 from './zerodha-002/brand.json';
-import spec30 from './zerodha-002/spec.json';
-import {default as scene30} from './zerodha-002/scenes';
-import brand31 from './zomato-001/brand.json';
-import spec31 from './zomato-001/spec.json';
-import {default as scene31} from './zomato-001/scenes';
-import brand32 from './zomato-002/brand.json';
-import spec32 from './zomato-002/spec.json';
-import {default as scene32} from './zomato-002/scenes';
+import brand7 from './linear-bright-001/brand.json';
+import spec7 from './linear-bright-001/spec.json';
+import {default as scene7} from './linear-bright-001/scenes';
+import brand8 from './motion-swell-clone/brand.json';
+import spec8 from './motion-swell-clone/spec.json';
+import {default as scene8} from './motion-swell-clone/scenes';
+import brand9 from './promo-chatgpt-saas/brand.json';
+import spec9 from './promo-chatgpt-saas/spec.json';
+import {default as scene9} from './promo-chatgpt-saas/scenes';
+import brand10 from './promo-gemini-agent/brand.json';
+import spec10 from './promo-gemini-agent/spec.json';
+import {default as scene10} from './promo-gemini-agent/scenes';
+import brand11 from './promo-linear-final/brand.json';
+import spec11 from './promo-linear-final/spec.json';
+import {default as scene11} from './promo-linear-final/scenes';
+import brand12 from './promo-youtube-saas/brand.json';
+import spec12 from './promo-youtube-saas/spec.json';
+import {default as scene12} from './promo-youtube-saas/scenes';
+import brand13 from './raycast-001/brand.json';
+import spec13 from './raycast-001/spec.json';
+import {default as scene13} from './raycast-001/scenes';
+import brand14 from './reddit-001/brand.json';
+import spec14 from './reddit-001/spec.json';
+import {default as scene14} from './reddit-001/scenes';
+import brand15 from './sample-promo-prisma/brand.json';
+import spec15 from './sample-promo-prisma/spec.json';
+import {default as scene15} from './sample-promo-prisma/scenes';
+import brand16 from './sample-promo-resend/brand.json';
+import spec16 from './sample-promo-resend/spec.json';
+import {default as scene16} from './sample-promo-resend/scenes';
+import brand17 from './sample-promo-supabase/brand.json';
+import spec17 from './sample-promo-supabase/spec.json';
+import {default as scene17} from './sample-promo-supabase/scenes';
+import brand18 from './skillme-003/brand.json';
+import spec18 from './skillme-003/spec.json';
+import {default as scene18} from './skillme-003/scenes';
+import brand19 from './skillme-004/brand.json';
+import spec19 from './skillme-004/spec.json';
+import {default as scene19} from './skillme-004/scenes';
+import brand20 from './supabase-001/brand.json';
+import spec20 from './supabase-001/spec.json';
+import {default as scene20} from './supabase-001/scenes';
+import brand21 from './swiggy-001/brand.json';
+import spec21 from './swiggy-001/spec.json';
+import {default as scene21} from './swiggy-001/scenes';
+import brand22 from './test-brand-002/brand.json';
+import spec22 from './test-brand-002/spec.json';
+import {default as scene22} from './test-brand-002/scenes';
+import brand23 from './test-promo-001/brand.json';
+import spec23 from './test-promo-001/spec.json';
+import {default as scene23} from './test-promo-001/scenes';
+import brand24 from './test-swiggy-new/brand.json';
+import spec24 from './test-swiggy-new/spec.json';
+import {default as scene24} from './test-swiggy-new/scenes';
+import brand25 from './test-swiggy-scraped/brand.json';
+import spec25 from './test-swiggy-scraped/spec.json';
+import {default as scene25} from './test-swiggy-scraped/scenes';
+import brand26 from './test-walkthrough-001/brand.json';
+import spec26 from './test-walkthrough-001/spec.json';
+import {default as scene26} from './test-walkthrough-001/scenes';
+import brand27 from './test-wired-gemini/brand.json';
+import spec27 from './test-wired-gemini/spec.json';
+import {default as scene27} from './test-wired-gemini/scenes';
+import brand28 from './vercel-001/brand.json';
+import spec28 from './vercel-001/spec.json';
+import {default as scene28} from './vercel-001/scenes';
+import brand29 from './walkthrough-demo-001/brand.json';
+import spec29 from './walkthrough-demo-001/spec.json';
+import {default as scene29} from './walkthrough-demo-001/scenes';
+import brand30 from './zerodha-001/brand.json';
+import spec30 from './zerodha-001/spec.json';
+import {default as scene30} from './zerodha-001/scenes';
+import brand31 from './zerodha-002/brand.json';
+import spec31 from './zerodha-002/spec.json';
+import {default as scene31} from './zerodha-002/scenes';
+import brand32 from './zomato-001/brand.json';
+import spec32 from './zomato-001/spec.json';
+import {default as scene32} from './zomato-001/scenes';
+import brand33 from './zomato-002/brand.json';
+import spec33 from './zomato-002/spec.json';
+import {default as scene33} from './zomato-002/scenes';
 
 type GeneratedJobDefinition = {id: string; brand: BrandJson; spec: AdSpec; renderScene: SceneRenderer};
 
@@ -110,30 +113,31 @@ export const generatedJobs: Record<string, GeneratedJobDefinition> = {
   'figma-001': {id: 'figma-001', brand: brand4 as BrandJson, spec: spec4 as AdSpec, renderScene: scene4},
   'flipkart-001': {id: 'flipkart-001', brand: brand5 as BrandJson, spec: spec5 as AdSpec, renderScene: scene5},
   'instagram-001': {id: 'instagram-001', brand: brand6 as BrandJson, spec: spec6 as AdSpec, renderScene: scene6},
-  'motion-swell-clone': {id: 'motion-swell-clone', brand: brand7 as BrandJson, spec: spec7 as AdSpec, renderScene: scene7},
-  'promo-chatgpt-saas': {id: 'promo-chatgpt-saas', brand: brand8 as BrandJson, spec: spec8 as AdSpec, renderScene: scene8},
-  'promo-gemini-agent': {id: 'promo-gemini-agent', brand: brand9 as BrandJson, spec: spec9 as AdSpec, renderScene: scene9},
-  'promo-linear-final': {id: 'promo-linear-final', brand: brand10 as BrandJson, spec: spec10 as AdSpec, renderScene: scene10},
-  'promo-youtube-saas': {id: 'promo-youtube-saas', brand: brand11 as BrandJson, spec: spec11 as AdSpec, renderScene: scene11},
-  'raycast-001': {id: 'raycast-001', brand: brand12 as BrandJson, spec: spec12 as AdSpec, renderScene: scene12},
-  'reddit-001': {id: 'reddit-001', brand: brand13 as BrandJson, spec: spec13 as AdSpec, renderScene: scene13},
-  'sample-promo-prisma': {id: 'sample-promo-prisma', brand: brand14 as BrandJson, spec: spec14 as AdSpec, renderScene: scene14},
-  'sample-promo-resend': {id: 'sample-promo-resend', brand: brand15 as BrandJson, spec: spec15 as AdSpec, renderScene: scene15},
-  'sample-promo-supabase': {id: 'sample-promo-supabase', brand: brand16 as BrandJson, spec: spec16 as AdSpec, renderScene: scene16},
-  'skillme-003': {id: 'skillme-003', brand: brand17 as BrandJson, spec: spec17 as AdSpec, renderScene: scene17},
-  'skillme-004': {id: 'skillme-004', brand: brand18 as BrandJson, spec: spec18 as AdSpec, renderScene: scene18},
-  'supabase-001': {id: 'supabase-001', brand: brand19 as BrandJson, spec: spec19 as AdSpec, renderScene: scene19},
-  'swiggy-001': {id: 'swiggy-001', brand: brand20 as BrandJson, spec: spec20 as AdSpec, renderScene: scene20},
-  'test-brand-002': {id: 'test-brand-002', brand: brand21 as BrandJson, spec: spec21 as AdSpec, renderScene: scene21},
-  'test-promo-001': {id: 'test-promo-001', brand: brand22 as BrandJson, spec: spec22 as AdSpec, renderScene: scene22},
-  'test-swiggy-new': {id: 'test-swiggy-new', brand: brand23 as BrandJson, spec: spec23 as AdSpec, renderScene: scene23},
-  'test-swiggy-scraped': {id: 'test-swiggy-scraped', brand: brand24 as BrandJson, spec: spec24 as AdSpec, renderScene: scene24},
-  'test-walkthrough-001': {id: 'test-walkthrough-001', brand: brand25 as BrandJson, spec: spec25 as AdSpec, renderScene: scene25},
-  'test-wired-gemini': {id: 'test-wired-gemini', brand: brand26 as BrandJson, spec: spec26 as AdSpec, renderScene: scene26},
-  'vercel-001': {id: 'vercel-001', brand: brand27 as BrandJson, spec: spec27 as AdSpec, renderScene: scene27},
-  'walkthrough-demo-001': {id: 'walkthrough-demo-001', brand: brand28 as BrandJson, spec: spec28 as AdSpec, renderScene: scene28},
-  'zerodha-001': {id: 'zerodha-001', brand: brand29 as BrandJson, spec: spec29 as AdSpec, renderScene: scene29},
-  'zerodha-002': {id: 'zerodha-002', brand: brand30 as BrandJson, spec: spec30 as AdSpec, renderScene: scene30},
-  'zomato-001': {id: 'zomato-001', brand: brand31 as BrandJson, spec: spec31 as AdSpec, renderScene: scene31},
-  'zomato-002': {id: 'zomato-002', brand: brand32 as BrandJson, spec: spec32 as AdSpec, renderScene: scene32},
+  'linear-bright-001': {id: 'linear-bright-001', brand: brand7 as BrandJson, spec: spec7 as AdSpec, renderScene: scene7},
+  'motion-swell-clone': {id: 'motion-swell-clone', brand: brand8 as BrandJson, spec: spec8 as AdSpec, renderScene: scene8},
+  'promo-chatgpt-saas': {id: 'promo-chatgpt-saas', brand: brand9 as BrandJson, spec: spec9 as AdSpec, renderScene: scene9},
+  'promo-gemini-agent': {id: 'promo-gemini-agent', brand: brand10 as BrandJson, spec: spec10 as AdSpec, renderScene: scene10},
+  'promo-linear-final': {id: 'promo-linear-final', brand: brand11 as BrandJson, spec: spec11 as AdSpec, renderScene: scene11},
+  'promo-youtube-saas': {id: 'promo-youtube-saas', brand: brand12 as BrandJson, spec: spec12 as AdSpec, renderScene: scene12},
+  'raycast-001': {id: 'raycast-001', brand: brand13 as BrandJson, spec: spec13 as AdSpec, renderScene: scene13},
+  'reddit-001': {id: 'reddit-001', brand: brand14 as BrandJson, spec: spec14 as AdSpec, renderScene: scene14},
+  'sample-promo-prisma': {id: 'sample-promo-prisma', brand: brand15 as BrandJson, spec: spec15 as AdSpec, renderScene: scene15},
+  'sample-promo-resend': {id: 'sample-promo-resend', brand: brand16 as BrandJson, spec: spec16 as AdSpec, renderScene: scene16},
+  'sample-promo-supabase': {id: 'sample-promo-supabase', brand: brand17 as BrandJson, spec: spec17 as AdSpec, renderScene: scene17},
+  'skillme-003': {id: 'skillme-003', brand: brand18 as BrandJson, spec: spec18 as AdSpec, renderScene: scene18},
+  'skillme-004': {id: 'skillme-004', brand: brand19 as BrandJson, spec: spec19 as AdSpec, renderScene: scene19},
+  'supabase-001': {id: 'supabase-001', brand: brand20 as BrandJson, spec: spec20 as AdSpec, renderScene: scene20},
+  'swiggy-001': {id: 'swiggy-001', brand: brand21 as BrandJson, spec: spec21 as AdSpec, renderScene: scene21},
+  'test-brand-002': {id: 'test-brand-002', brand: brand22 as BrandJson, spec: spec22 as AdSpec, renderScene: scene22},
+  'test-promo-001': {id: 'test-promo-001', brand: brand23 as BrandJson, spec: spec23 as AdSpec, renderScene: scene23},
+  'test-swiggy-new': {id: 'test-swiggy-new', brand: brand24 as BrandJson, spec: spec24 as AdSpec, renderScene: scene24},
+  'test-swiggy-scraped': {id: 'test-swiggy-scraped', brand: brand25 as BrandJson, spec: spec25 as AdSpec, renderScene: scene25},
+  'test-walkthrough-001': {id: 'test-walkthrough-001', brand: brand26 as BrandJson, spec: spec26 as AdSpec, renderScene: scene26},
+  'test-wired-gemini': {id: 'test-wired-gemini', brand: brand27 as BrandJson, spec: spec27 as AdSpec, renderScene: scene27},
+  'vercel-001': {id: 'vercel-001', brand: brand28 as BrandJson, spec: spec28 as AdSpec, renderScene: scene28},
+  'walkthrough-demo-001': {id: 'walkthrough-demo-001', brand: brand29 as BrandJson, spec: spec29 as AdSpec, renderScene: scene29},
+  'zerodha-001': {id: 'zerodha-001', brand: brand30 as BrandJson, spec: spec30 as AdSpec, renderScene: scene30},
+  'zerodha-002': {id: 'zerodha-002', brand: brand31 as BrandJson, spec: spec31 as AdSpec, renderScene: scene31},
+  'zomato-001': {id: 'zomato-001', brand: brand32 as BrandJson, spec: spec32 as AdSpec, renderScene: scene32},
+  'zomato-002': {id: 'zomato-002', brand: brand33 as BrandJson, spec: spec33 as AdSpec, renderScene: scene33},
 };
