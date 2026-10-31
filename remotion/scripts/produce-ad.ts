@@ -175,12 +175,20 @@ const Scene: React.FC<SceneRendererProps> = ({scene, tokens}) => {
         }}
       />
 
-      {/* Main semantic stage */}
+      {/* 3D Spatial Stage with Continuous Camera Push and Dynamic Perspective */}
       <div
         style={{
-          transform: \`scale(\${scaleIn(entrance)}) translateY(\${(1 - entrance) * 35}px)\`,
+          perspective: 1200,
+          perspectiveOrigin: '50% 50%',
+          transformStyle: 'preserve-3d',
+          transform: \`scale(\${scaleIn(entrance) * (1 + progress * 0.05)}) translateY(\${(1 - entrance) * 35}px)\`,
           opacity: entrance,
           zIndex: 10,
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          width: '100%',
+          height: '100%',
         }}
       >
         {active && (
@@ -346,7 +354,7 @@ async function main() {
   // Step 3: Assemble scenes → ui_tree.json + spec.json
   // ─────────────────────────────────────────────────────────────────────
   step(3, `Assembling scenes for: ${brand.name} (${storyboard.scenes?.length} scenes)`);
-  assembleScenes({storyboard, brand, jobId, fps: 60});
+  assembleScenes({storyboard, brand, jobId, fps: 60, format: args['format'] as any});
 
   // Validate job right after spec is written
   const guardAfterSpec = validateJob(path.resolve(process.cwd(), 'jobs'), jobId);

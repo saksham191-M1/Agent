@@ -156,7 +156,8 @@ function makePhoneNode(brand: BrandJson, scene: any, category: ProductCategory, 
   return {
     id: `node_phone_${idx}`,
     type: 'phone_mockup',
-    position3D: [0, 0, 0],
+    position3D: [0, 0, 50],
+    rotationDeg: [12, -6, 0],
     greeting: `Welcome to ${brand.name}`,
     prompt: scene.voiceover?.slice(0, 60) || brand.tagline,
     search: `Search ${brand.name}...`,
@@ -176,7 +177,8 @@ function makeBrowserNode(brand: BrandJson, scene: any, category: ProductCategory
   return {
     id: `node_browser_${idx}`,
     type: 'browser_mockup',
-    position3D: [0, 0, 0],
+    position3D: [0, 10, 60],
+    rotationDeg: [16, -10, 0],
     title: scene.voiceover?.split('.')[0] || `${brand.name} Studio`,
     detail: brand.tagline,
     location: brand.domain,
@@ -198,7 +200,8 @@ function makeAppFrameNode(brand: BrandJson, scene: any, category: ProductCategor
   return {
     id: `node_appframe_${idx}`,
     type: 'app_frame',
-    position3D: [0, 0, 0],
+    position3D: [0, 0, 50],
+    rotationDeg: [14, -8, 0],
     appName: brand.name,
     topbarTitle: scene.voiceover?.split('.')[0] || `${brand.name} Dashboard`,
     badgeText: '● Live',
@@ -211,21 +214,37 @@ function makeAppFrameNode(brand: BrandJson, scene: any, category: ProductCategor
   } as VectorNode;
 }
 
+function makeCommandPaletteNode(brand: BrandJson, scene: any, category: ProductCategory, idx: number): VectorNode {
+  const query = scene.voiceover?.split('.')[0]?.slice(0, 36) || `Search ${brand.name}...`;
+  return {
+    id: `node_cmd_${idx}`,
+    type: 'interactive_input',
+    position3D: [0, 20, 80],
+    rotationDeg: [18, -12, 0],
+    scale: 1,
+    placeholder: `⌘K  ${query}`,
+    typedValue: query,
+  } as VectorNode;
+}
+
 function makeBentoNode(brand: BrandJson, scene: any, category: ProductCategory, idx: number): VectorNode {
   const pool = brand.products.length > 0 ? brand.products : categoryFallbackNav(category);
   const cards = getRotatedProducts(pool, idx, 3);
   const icons = categoryIcons(category);
+  const metrics = ['10x faster', '0ms latency', '99.9% uptime', '100k+ active'];
 
   return {
     id: `node_bento_${idx}`,
     type: 'bento_grid',
-    position3D: [0, 0, 0],
+    position3D: [0, 0, 90],
+    rotationDeg: [14, -8, 0],
     columns: 2,
     cards: cards.map((p, i) => ({
       id: `bento_${i}`,
       title: p,
       subtitle: scene.voiceover?.slice(0, 40) || brand.tagline,
       icon: icons[i] || '✦',
+      metric: metrics[i % metrics.length],
       colSpan: i === 0 ? 2 : 1,
     })),
   } as VectorNode;
@@ -246,23 +265,12 @@ function makeChartNode(brand: BrandJson, scene: any, idx: number): VectorNode {
 }
 
 function makeUINode(brand: BrandJson, scene: any, category: ProductCategory, idx: number, previousType?: string): VectorNode {
-  // If the previous scene was already a specific type, enforce alternation
-  if (previousType === 'browser_mockup') {
-    return makePhoneNode(brand, scene, category, idx);
-  }
-  if (previousType === 'phone_mockup') {
-    return makeBrowserNode(brand, scene, category, idx);
-  }
-
-  if (category === 'mobile_app' || category === 'social' || category === 'ecommerce') {
-    return makePhoneNode(brand, scene, category, idx);
-  }
-
   if (category === 'ai_agent') {
     return {
       id: `node_chat_${idx}`,
       type: 'chat_messaging',
-      position3D: [0, 0, 0],
+      position3D: [0, 0, 60],
+      rotationDeg: [12, -6, 0],
       messages: [
         {id: 'm1', sender: 'user',   text: `Analyze ${brand.products[0] || brand.name}`},
         {id: 'm2', sender: 'agent',  text: scene.voiceover?.slice(0, 100) || `${brand.name}`},
@@ -271,15 +279,36 @@ function makeUINode(brand: BrandJson, scene: any, category: ProductCategory, idx
     } as VectorNode;
   }
 
-  if (category === 'analytics') {
-    return makeChartNode(brand, scene, idx);
-  }
+  const isSaaSOrDev = category === 'web_saas' || category === 'dev_tool';
+  const isMobile = category === 'mobile_app' || category === 'social' || category === 'ecommerce';
+  const isAnalytics = category === 'analytics';
 
-  if (category === 'creator') {
+  // Generous Director Archetype Matrix — Bespoke selection, never rigid 2D alternating!
+  if (isSaaSOrDev) {
+    if (idx <= 1 && previousType !== 'interactive_input') {
+      return makeCommandPaletteNode(brand, scene, category, idx);
+    }
+    if (idx >= 2 && previousType !== 'bento_grid') {
+      return makeBentoNode(brand, scene, category, idx);
+    }
     return makeBrowserNode(brand, scene, category, idx);
   }
 
-  return makeAppFrameNode(brand, scene, category, idx);
+  if (isAnalytics) {
+    if (previousType !== 'chart') return makeChartNode(brand, scene, idx);
+    return makeBentoNode(brand, scene, category, idx);
+  }
+
+  if (isMobile) {
+    if (idx <= 1 && previousType !== 'phone_mockup') {
+      return makePhoneNode(brand, scene, category, idx);
+    }
+    return makeBentoNode(brand, scene, category, idx);
+  }
+
+  return previousType === 'bento_grid'
+    ? makeBrowserNode(brand, scene, category, idx)
+    : makeBentoNode(brand, scene, category, idx);
 }
 
 function makeMetricNode(brand: BrandJson, idx: number): VectorNode {
@@ -347,6 +376,30 @@ export interface AssembleOptions {
   brand: BrandJson;
   jobId: string;
   fps?: number;
+  format?: '16:9' | '9:16' | '1:1';
+}
+
+function decideFormat(
+  category: ProductCategory,
+  storyboard: any,
+  requested?: '16:9' | '9:16' | '1:1'
+): '16:9' | '9:16' | '1:1' {
+  if (requested) return requested;
+  if (storyboard?.format === '9:16' || storyboard?.format === '16:9' || storyboard?.format === '1:1') {
+    return storyboard.format;
+  }
+  // SaaS, Dev Tools, AI agents, Mobile apps, Creator, and Social products default to 9:16 vertical
+  if (
+    category === 'web_saas' ||
+    category === 'dev_tool' ||
+    category === 'ai_agent' ||
+    category === 'mobile_app' ||
+    category === 'creator' ||
+    category === 'social'
+  ) {
+    return '9:16';
+  }
+  return '9:16'; // Generous mobile-first modern standard
 }
 
 function resolveCategoryFromML(mlCategory?: string, techTags: string[] = []): ProductCategory | null {
@@ -498,9 +551,16 @@ export function assembleScenes(opts: AssembleOptions): {uiTree: UITree; spec: an
     nodes.push(node);
   }
 
+  const chosenFormat: '16:9' | '9:16' | '1:1' = decideFormat(category, storyboard, opts.format);
+  const isVertical = chosenFormat === '9:16';
+
   const uiTree: UITree = {
     brandId: brand.domain,
-    worldBounds: {width: 1920, height: 1080, depth: 2000},
+    worldBounds: {
+      width: isVertical ? 1080 : 1920,
+      height: isVertical ? 1920 : 1080,
+      depth: 2000,
+    },
     nodes,
   };
 
@@ -628,7 +688,7 @@ export function assembleScenes(opts: AssembleOptions): {uiTree: UITree; spec: an
   const aesthetic = storyboard.aesthetic || storyboard.ml_match?.aesthetic;
   const spec = {
     brand: brand.name,
-    format: '16:9' as const,
+    format: chosenFormat,
     fps,
     durationSec: totalSec,
     bpm: aesthetic?.suggested_bpm || 120,

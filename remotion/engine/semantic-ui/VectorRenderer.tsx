@@ -587,7 +587,8 @@ export const VectorRenderer: React.FC<VectorRendererProps> = ({
   const blurPx = computeDofBlur(node.position3D, cameraPosition, cameraTarget);
   const dofFilter = blurPx > 0.1 ? `blur(${blurPx.toFixed(1)}px)` : undefined;
 
-  switch (node.type) {
+  const renderContent = () => {
+    switch (node.type) {
     case 'metric_card':
       return <MetricCardView node={node} tokens={tokens} sheenProgress={sheenProgress} dofFilter={dofFilter} />;
     case 'asset_card':
@@ -715,5 +716,33 @@ export const VectorRenderer: React.FC<VectorRendererProps> = ({
     }
     default:
       return null;
+    }
+  };
+
+  const content = renderContent();
+  if (!content) return null;
+
+  const [posX = 0, posY = 0, posZ = 0] = node.position3D || [0, 0, 0];
+  const [rotX = 0, rotY = 0, rotZ = 0] = node.rotationDeg || [0, 0, 0];
+  const scale = node.scale ?? 1;
+  const opacity = node.opacity ?? 1;
+
+  const hasTransform = posX !== 0 || posY !== 0 || posZ !== 0 || rotX !== 0 || rotY !== 0 || rotZ !== 0 || scale !== 1 || opacity !== 1;
+
+  if (!hasTransform) {
+    return content;
   }
+
+  return (
+    <div
+      style={{
+        transform: `translate3d(${posX}px, ${posY}px, ${posZ}px) rotateX(${rotX}deg) rotateY(${rotY}deg) rotateZ(${rotZ}deg) scale(${scale})`,
+        transformStyle: 'preserve-3d',
+        opacity,
+        willChange: 'transform',
+      }}
+    >
+      {content}
+    </div>
+  );
 };
